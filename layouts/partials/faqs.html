@@ -1,30 +1,30 @@
 <section class="[ section--padding ]" arialabelledby="faq-heading">
-  <div class="[ wrapper ][ grid middle lg:col--2 col-gap--4 row-gap--2 ]">
-    <div class="[ o--2 ]">
+  <div class="[ wrapper ][ grid lg:col--2 col-gap--4 row-gap--2 ]">
+    <div>
       <h2 id="faq-heading" class="[ grid ]">
         <span class="[ font--5 upper clever--blue ]">{{ .Title }}</span>
-        <span class="[ font--2 ]">Frequently Asked Questions</span>
+        <abbr class="[ font--2 ]" title="Frequently Asked Questions" aria-label="Frequently Asked Questions">FAQs</abbr>
       </h2>
       <p class="[ lg:ch--35 ]">If you don't see your question here, <a href="/contact-us">get in touch</a> — we're happy to answer anything about our web design services in The Bahamas and how we can help your business succeed online.</p>
 
+    </div>
+    <div class="[ grid gap--2 ]">
       {{ range .Params.faqs.items }}
       <details class="[ faq ]" name="faqs">
-        <summary class="[ question ][ flex between middle font--600 py--1 ]">
+        <summary class="[ question ][ flex between middle font--600 pb--1 ]">
           <span>{{ .question }} </span>
           <span class="marker">{{ readFile "static/icons/chevron-right.svg" | safeHTML }}</span>
         </summary>
         <div class="[ answer ][ pb--2 ]">{{ .answer }}</div>
       </details>
       {{ end }}
-    </div>
-    <div class="[ o--1 ]">
-      <figure class="[ ratio--1:1 o--1 ]">
+      {{/*  <figure class="[ ratio--1:1 o--1 ]">
         <picture class="[ bg ][ r--10 ]">
           <style>picture {background-image: url('https://{{ .Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview');}</style>
           <img data-twic-src="image:home/website-design-satisfied-customer-clever-marketing.jpg" data-twic-focus="auto" alt=""/>
           <noscript><img class="[ script ]" src="https://{{ .Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview"/></noscript>
         </picture>
-      </figure>
+      </figure>  */}}
     </div>
   </div>
 </section>

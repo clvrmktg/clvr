@@ -37,28 +37,28 @@ key   = "web-design"
 title = "Web Design"
 blurb = "Custom websites built for speed, mobile performance, and conversion — designed for businesses in The Bahamas."
 cta   = "Request a Quote"
-href  = "/contact"
+href  = "/bahamas-web-design-services/website-design-bahamas/"
 
 [[services.items]]
 key   = "seo"
 title = "Search Engine Optimization"
 blurb = "Strategies that help you rank higher on Google and reach more local and international customers."
 cta   = "Request an SEO Review"
-href  = "/contact"
+href  = "/bahamas-web-design-services/search-engine-optimization-seo/"
 
 [[services.items]]
 key   = "digital-marketing"
 title = "Digital Marketing"
 blurb = "Social media, PPC, and email campaigns tailored to your audience in The Bahamas."
 cta   = "Plan a Campaign"
-href  = "/contact"
+href  = "/bahamas-web-design-services/digital-marketing-bahamas/"
 
 [[services.items]]
 key   = "maintenance"
 title = "Website Maintenance"
 blurb = "Keeping your site secure, updated, and running smoothly so you can focus on your business."
 cta   = "Start Maintenance"
-href  = "/contact"
+href  = "/bahamas-web-design-services/website-maintenance/"
 
 [features]
 headline = "Fast, Secure and Affordable"

@@ -13,7 +13,7 @@
 {{ end }}
 {{ if gt (len $all) 0 }}
 <section class="[ full-width content-grid bg:blue--50 section--padding layout--spacing ]">
-  <h2 class="[ flex--col ]">
+  <h2 class="[ flex flex--column ]">
     <span class="[ font--5 text--center upper clever--blue ]">Real People, Real Reviews</span>
     <span class="[ font--2 text--center ]">What Our Clients Are Saying</span>
   </h2>
@@ -40,9 +40,9 @@
             <p>{{ .text }}</p>
           {{ end }}
         </div>
-        <footer class="[ flex--col lg:flex--row lg:middle gap--1 ]">
+        <footer class="[ flex flex--column lg:flex--row lg:middle gap--1 ]">
           <div class="[ reviewer ][ o--2 ]">
-            <cite class="[ flex--col pb--0.25 ]">
+            <cite class="[ flex flex--column pb--0.25 ]">
               <span class="[ font--600 ]">- {{ .author_name }}</span>
             </cite>
             <div class="stars">
