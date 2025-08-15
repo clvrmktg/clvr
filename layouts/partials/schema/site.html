@@ -1,0 +1,60 @@
+{{- if .IsHome -}}
+<script type="application/ld+json">  
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": {{ .Permalink }},
+      "name": "{{ .Site.Title }}",
+      "description": {{ .Description }},
+      "publisher": {
+        "@type": "Person",
+        "name": "{{ .Site.Title }}",
+        "url": {{ .Permalink }},
+        {{- with .Site.Params.social -}}
+        "sameAs": [
+          {{- with .facebook }}"https://www.facebook.com/{{ . }}",{{ end }}
+          {{- with .instagram }}"https://www.instagram.com/{{ . }}",{{ end }}
+          {{- with .linkedin }}"https://www.linkedin.com/in/{{ . }}",{{ end }}
+          {{- with .github }}"https://github.com/{{ . }}",{{ end }}
+          {{- with .x }}"https://x.com/{{ . }}"{{ end }}
+        ]
+        {{- end -}}
+      },
+      // "potentialAction": {
+      //   "@type": "SearchAction",
+      //   "target": "https://josephpinder.com/?s={search_term_string}",
+      //   "query-input": "required name=search_term_string"
+      // }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": {{ .Site.Title }},
+      "url": {{ .Permalink }},
+      "image": {{ .Params.avatar.image }},
+      "jobTitle": {
+        "@type": "DefinedTerm",
+        "inDefinedTermSet": "https://targetjobs.co.uk/careers-advice/job-descriptions",
+        "termCode": "456249-web-developer-job-description",
+        "name": "Web Developer",
+        "url": "https://targetjobs.co.uk/careers-advice/job-descriptions/456249-web-developer-job-description"
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Clever Marketing, Ltd.",
+        "url": "https://getclever.marketing"
+      },
+      {{- with .Site.Params.social -}}
+        "sameAs": [
+          {{- with .facebook }}"https://www.facebook.com/{{ . }}",{{ end }}
+          {{- with .instagram }}"https://www.instagram.com/{{ . }}",{{ end }}
+          {{- with .linkedin }}"https://www.linkedin.com/in/{{ . }}",{{ end }}
+          {{- with .github }}"https://github.com/{{ . }}",{{ end }}
+          {{- with .x }}"https://x.com/{{ . }}"{{ end }}
+        ],
+        {{- end -}}
+    }
+  ]
+</script>
+{{- end -}}

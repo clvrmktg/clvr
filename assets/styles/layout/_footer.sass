@@ -1,0 +1,81 @@
+@use 'abstracts' as *
+
+.funnel
+  background: color('clvr-blue')
+  //  url(../../uploads/squares.svg) no-repeat center
+  background-size: cover
+
+
+.ipad
+  max-width: 75%
+  border: em(18) solid #333
+  box-shadow: 0.5em 0.5em em(18) 0 rgba(0,0,0,0.3)
+  transform: rotateZ(3deg)
+
+.footer
+  background-color: #2d2d2d
+
+  +breakpoint(desktop)
+    .wrapper
+      grid-template-columns: minmax(#{em(280)},1fr) repeat(3, max-content)
+
+    
+  a:not(.logo)
+    color: inherit    
+    border-bottom: em(1) solid transparent
+    +transition('border-bottom')
+
+    +hover
+      border-bottom: em(1) solid color('white')
+
+
+  .logo
+
+    > svg
+      fill: color('white')
+
+  // +breakpoint(desktop)
+  //   .explore
+  //     grid-template-columns: repeat(3, max-content)
+
+
+.slogan
+  grid-template-rows: min-content min-content 1fr
+
+.copy
+  background-color: #252525
+
+
+.footer h3, .cookie-banner h2
+
+  &::before, &::after
+    content: ''
+    position: absolute
+    height: em(3)
+    background-color:  color('clever-blue')
+    bottom: 0
+    
+  &::before
+    width: em(15)
+    left: 0
+    
+  &:after
+    width: em(40)
+    left: em(25)
+  
+.markers
+  width: em(15)
+  
+  svg
+    fill:  color('clever-blue')
+
+.cookie-banner
+  z-index: 20
+
+  +breakpoint(xl)
+
+    > div
+      grid-template-columns: 1fr max-content
+
+.white
+  color: color('white')

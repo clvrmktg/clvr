@@ -1,0 +1,91 @@
+{{- define "variables" -}}
+{{- .Store.Set "hasTwic" true -}}
+{{- .Store.Set "hasObscure" true -}}
+{{- end -}}
+{{- define "main" -}}
+<article class="[ full-width content-grid ]">
+  {{ partial "hero.html" . }}
+  <div class="[ grid ]">    
+    {{ partial "laptop.html" . }}
+    <div class="[ layout--sidebar--right grid col-gap--5 pb--2 ]">
+      <div class="[ content ]">
+        <h2>About This Project</h2>
+        {{ .Content }}
+      </div>
+      <div class="[ sidebar ]">
+        <div class="[ grid gap--1 ]">
+          {{/* 
+            <div class="[ review ][ bg:blue--50 px--1 py--3 r--5 mb--2 ]">
+              <blockquote>
+                <div>
+                  <div class="[ quote ][ mb--1 ]"><svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 68 53.7"><path d="M27.6 0C18.8 0 10.8 3.9 5.5 10.2c-.6.7-1.2 1.5-1.7 2.2-2.1 3.1-3.5 7.1-3.7 12v29.3H29.8V24h-15c1-3.5 3.3-6.5 6.5-8.2l2.7-1.1c1.2-.3 2.4-.5 3.6-.5.7 0 1.4.1 2.1.2V.1C29 0 28.3 0 27.6 0zM65.9 0C57 0 49.1 3.9 43.7 10.2c-.6.7-1.2 1.5-1.7 2.2-2.1 3.1-3.5 7.1-3.7 12v29.3H68V24H53.1c1-3.5 3.3-6.5 6.5-8.2l2.7-1.1c1.2-.3 2.4-.5 3.6-.5.7 0 1.4.1 2.1.2V.1c-.7-.1-1.4-.1-2.1-.1z" fill="#1464ff"/></svg></div>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia, quaerat? Hic vel, ipsa itaque labore doloribus commodi non eveniet, laborum et unde consequatur voluptatem esse. 
+                  </p>
+                </div>
+                <footer class="[ flex--col lg:flex--row lg:middle g--1 ]">
+                  <div class="[ reviewer ][ o--2 ]">
+                    <cite class="[ flex--col font--normal pb--0.25 ]"> <span class="[ font--600 ]">Tom Jones</span><small>Port Bahamas</small></cite>
+                  </div>
+                  <figure class="[ reviewer__img ][ ratio--1:1 o--1 ]">
+                    <picture class="[ bg ]">
+                      <style>
+                        picture {
+                          background-image: url('https://clvrmktg.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview');
+                        }
+                        
+                      </style><img data-twic-src="image:home/website-design-satisfied-customer-clever-marketing.jpg" data-twic-focus="auto" alt=""/>
+                      <noscript><img class="[ script ]" src="https://clvrmktg.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview"/></noscript>
+                    </picture>
+                  </figure>
+                </footer>
+              </blockquote>
+            </div>  
+          */}}
+          <div>
+            <h3 class="[ font--4 ]">Deliverables </h3>
+            {{ with .GetTerms "portfolio_deliverables" }}
+            <ul class="[ deliverables ][ grid gr--0.5 pt--0.5 ]">
+                {{ range . }}
+                  <li class="[ relative py--0.5 ]">
+                    <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                  </li>
+                {{ end }}
+              </ul>
+            {{ end }}
+            
+          </div>
+          <div>
+            <h3 class="[ font--4 ]">Category</h3>
+            <ul class="[ grid gr--0.5 pt--0.5 ]">
+              <li class="[ relative py--0.5 ]">Business</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+<div class="[ section--padding-bottom ]">
+  {{ partial "buttons/primary.html" (dict "url" .Params.project_link "text" "Visit Website" "external" true)}}
+</div>
+
+<section class="[ full-width content-grid bg:blue--50 ]">
+  <div class="[ grid layout--spacing section--padding ]">
+    <div class="[ lg:flex between middle ]">
+      <div>
+        <h2 class="[ font--5 upper clever--blue ]">Recent Work</h2>
+        <h3 class="[ font--2 ]">From Our Portfolio</h3>
+        <p class="[ ch--35 ]">See something you like? Ask us about it. We'll use it as inpsiration for your next project.</p>
+      </div>
+      <div>
+        {{ partial "buttons/ghost.html" (dict "url" "/portfolio/" "text" "See Our Work")}}
+      </div>
+    </div>
+    <ul class="[ projects ][ grid md:col--2 lg:col--3 gap--2 ]">
+      {{ $all := (site.GetPage "section" "portfolio").Pages.ByWeight }}
+      {{ $related := first 3 (where $all "RelPermalink" "ne" .RelPermalink) }}
+      {{ partial "projects.html" (dict "pages" $related) }}
+    </ul>
+  </div>
+</section>
+{{ end }}

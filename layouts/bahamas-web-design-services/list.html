@@ -1,0 +1,60 @@
+{{- define "variables" -}}
+{{- .Store.Set "hasTwic" true -}}
+{{- .Store.Set "hasObscure" true -}}
+{{- end -}}
+{{- define "main" -}}
+  {{ partial "hero.html" . }}
+  {{ partial "services.html" . }}
+  {{ with .Params.why_work_with_us }}
+  <section class="[ full-width content-grid grid layout--spacing section--padding bg:blue--50 ]" aria-labelledby="why-heading">
+    <div class="[ grid center ]">
+      <h2 id="why-heading" class="[ grid center ]">
+        <span class="[ font--5 text--center upper clever--blue ]">{{ .headline }}</span>
+        <span class="[ font--2 text--center ]">{{ .title }}</span>
+      </h2>
+      <p class="[ text--center font--4 ch--60 ]">{{ .intro }} </p>
+    </div>
+    <ul class="[ grid lg:col--3 gap--2 ]">
+      {{ range .items }}
+      <li class="[ feature ][ flex flex--column g--1 ]">
+        <div class="[ o--2 ]">
+          <h3>
+            <span class="[ font--5 upper clever--blue ]">{{ .highlight }}</span>
+            <br>{{ .title }}
+          </h3>
+          <p class="[ tagline ][ pb--0 ]">{{ .tagline }}</p>
+          <p>{{ .description }}</p>
+        </div>
+        <div class="[ o--1 ]">
+          {{ with .icon }}
+          {{ readFile (printf "static/icons/%s" .) | safeHTML }}
+          {{ end }}
+        </div>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  <section class="[ full-width content-grid layout--spacing section--padding ]">
+    <div class="[ lg:flex between middle ]">
+      <div>
+        <h2 class="[ font--5 upper clever--blue ]">Recent Work</h2>
+        <h3 class="[ font--2 ]">From Our Portfolio</h3>
+        <p class="[ ch--35 ]">See something you like? Ask us about it. We'll use it as inpsiration for your next project.</p>
+      </div>
+      <div>
+        {{ partial "buttons/ghost.html" (dict "url" "/portfolio" "text" "See Our Work")}}
+      </div>
+    </div>
+    {{ with site.GetPage "section" "portfolio" }}
+      {{ $items := first 3 (.Pages.ByWeight) }}
+      {{ partial "projects.html" (dict "pages" $items) }}
+    {{ end }}
+  </section>
+
+  {{ partial "reviews/reviews.html" . }}
+
+  {{partial "faqs.html" . }}
+  {{ partial "cta.html" . }}
+{{ end }}

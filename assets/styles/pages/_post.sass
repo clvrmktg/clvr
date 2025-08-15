@@ -1,0 +1,74 @@
+@use 'abstracts' as *
+
+.post-single
+  display: grid
+  row-gap: 3em
+
+  > footer
+    display: inherit
+    row-gap: inherit
+
+.content
+
+  figure
+    margin-bottom: 1em
+
+.meta
+  color: color('text-grey')
+  padding-bottom: 0
+
+  &--spaced
+    padding-bottom: 1em
+
+.blockquote
+  padding:
+    top: 1em
+    bottom: 1em
+
+  > div
+    border-left: em(2) solid color('white')
+    padding:
+      top: 1.75em
+      bottom: 1em
+      left: 2em
+    margin-bottom: 1em
+
+  > svg
+    width: 2em
+
+.citation
+  font:
+    size: 0.8em
+    weight: 600
+  text-transform: uppercase
+  letter-spacing: em(1)
+  color: color('text-grey')
+
+  &::before
+    content: '—'
+    color: currentcolor
+    margin-right: 1em
+
+.original-publish-date
+  color: color('text-grey')
+
+.bio
+  display: flex
+  flex-wrap: wrap
+  gap: 1.5em
+  padding: 1em
+  border: em(1) solid var(--border)
+  border-radius: em(5)
+
+  > :first-child
+    flex-grow: 1
+
+  > :last-child
+    flex-grow: 999
+    flex-basis: calc((#{em(500)} - (100% - 5em - 1.5em)) * 9999)
+
+lite-youtube
+  margin-bottom: 1em
+
+
+

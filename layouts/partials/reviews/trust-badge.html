@@ -1,0 +1,27 @@
+{{- $placeId := site.Params.google.place_id -}}
+{{- $apiKey  := site.Params.google.api_key -}}
+
+{{- $url := printf "https://maps.googleapis.com/maps/api/place/details/json?place_id=%s&fields=rating&key=%s" (urlquery $placeId) (urlquery $apiKey) -}}
+{{ $remote := resources.GetRemote $url }}
+{{ $json := $remote.Content | transform.Unmarshal }}
+
+{{- $fallbackRating := 5 -}}
+{{- $fallbackStars  := "★★★★★" -}}
+
+{{- $rating := $fallbackRating -}}
+{{- $stars  := $fallbackStars -}}
+{{- if and $placeId $apiKey -}}
+  {{- with $json.result -}}
+    {{- $rating = .rating | default $fallbackRating -}}
+    {{- $full  := int (math.Round $rating) -}}
+    {{- $empty := sub 5 $full -}}
+    {{- $stars = printf "%s%s" (strings.Repeat $full "★") (strings.Repeat $empty "☆") -}}
+  {{- end -}}
+{{- end -}}
+
+<div class="[ trust-badge ]" aria-live="polite">
+  <span class="stars" aria-hidden="true">{{ $stars }}</span>
+  <small class="trust-badge__text">
+    Rated {{ $rating }} out of 5 stars — based on Google Reviews
+  </small>
+</div>

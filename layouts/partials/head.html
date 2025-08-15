@@ -1,0 +1,84 @@
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  {{- $pageTitle := "" -}}
+  {{- if .IsHome -}}
+  {{- $pageTitle = printf "%s | %s" .Site.Params.tagline .Site.Title -}}
+  {{- else -}}
+  {{- $pageTitle = printf "%s | %s" .Title .Site.Title -}}
+  {{- end -}}
+  {{- $feature := .Params.feature -}}
+  {{- $cover := .Params.cover -}}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>{{ $pageTitle }}</title>
+  <meta name="description" content="{{- .Description -}}">
+  <link rel="canonical" href="{{ .Permalink  }}">
+  {{- if eq .Page.Kind "404" -}}
+  <meta name="robots" content="noindex">
+  <meta name="googlebot" content="noindex">
+  {{- end -}}
+  {{- if .Store.Get "hasTwic" }}
+  <link rel="preconnect" href="https://{{- .Site.Params.twic -}}.twic.pics/?v1">
+  <link rel="preload" href="https://{{- .Site.Params.twic -}}.twic.pics/?v1" as="script">
+  {{- end }}
+  {{- with resources.Get "styles/style.sass" -}}
+    {{- $opts := dict
+      "enableSourceMap" (not hugo.IsProduction)
+      "outputStyle" (cond hugo.IsProduction "compressed" "expanded")
+      "targetPath" "styles/style.css"
+      "transpiler" "dartsass"
+    -}}
+    {{- $hash := hash.XxHash now -}}
+    {{- with . | toCSS $opts -}}
+      {{- if hugo.IsProduction -}}
+        {{- with . | fingerprint "sha256" -}}
+  <link rel="preload" href="{{ .RelPermalink }}" as="style" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+        {{- end -}}
+      {{- else -}}
+  <link rel="preload" href="{{ .RelPermalink }}?v={{ $hash }}" as="style">
+  <link rel="stylesheet" href="{{ .RelPermalink }}?v={{ $hash }}">
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  <noscript>
+    <style>.script { display: none; visibility: hidden }</style>
+  </noscript>
+  {{ if .Store.Get "hasTwic" -}}
+  <script src="https://{{- .Site.Params.twic -}}.twic.pics/?v1" async defer></script>
+  {{- end -}}
+  {{- if .IsHome -}}
+  {{- if $cover.image -}}
+  <link rel="preload" href="https://{{- .Site.Params.twic -}}.twic.pics{{- (printf "/uploads/%s" $cover.image) -}}?twic=v1/focus=auto/cover=700x300" as="image">
+  {{- end }}
+  {{- end -}}
+  {{- if $feature.image -}}
+  <link rel="preload" href="https://{{- .Site.Params.twic -}}.twic.pics{{- (printf "/uploads/%s" $feature.image) -}}?twic=v1/focus=auto/resize=700" as="image">
+  {{- end }}
+  <link rel="icon" type="image/png" href="/favicon-light.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)">
+  <link rel="mask-icon" href="/favicon-light.svg" color="#9395A1">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0d1117">
+  {{- $iso := "2006-01-02T15:04:05Z07:00" -}}
+  <meta property="fb:app_id" content="384650276688740">
+  <meta property="og:url" content="{{ .Permalink  }}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ $pageTitle }}">
+  {{- $image := $feature.image | default .Site.Params.share -}}
+  {{- $alt := $feature.alt | default "Default share image of Joseph Pinder's logo" -}}
+  <meta property="og:description" content="{{- .Description -}}">
+  <meta property="og:image" content="{{- $image | absURL -}}">
+  <meta property="og:image:alt" content="{{ $alt  }}">
+  <meta property="fb:app_id" content="{{ $.Site.Params.app_id }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="{{ .Site.Params.twitter }}">
+  <meta name="twitter:creator" content="{{ .Site.Params.twitter }}">
+  <meta name="twitter:title" content="{{ $pageTitle }}">
+  <meta name="twitter:description" content="{{- .Description -}}">
+  <meta name="twitter:image" content="{{- $image | absURL -}}">
+  <meta name="author" content="Joseph Pinder">
+  <meta name="publish_date" property="og:publish_date" content="{{- .Date.Format "2006-01-02T15:04:05Z0700" -}}">
+  {{ partial "schema/site.html" . }}
+  {{ partial "schema/post.html" . }}
+</head>

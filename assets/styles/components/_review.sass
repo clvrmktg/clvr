@@ -1,0 +1,36 @@
+@use 'abstracts' as *
+
+.reviews
+  grid-template-rows: 1fr max-content
+
+.review
+  grid-template-rows: subgrid
+  grid-row: span 2
+  background-color: color('white')
+  border: em(1) solid color('clever-blue')
+
+  > blockquote
+    grid-template-rows: subgrid
+    grid-row: span 2
+
+.reviewer
+
+  &__img
+    width: em(64)
+    height: em(64)
+    border-radius: 50%
+
+    > picture, picture > img
+      height: 100%
+      border-radius: inherit
+
+    > picture > img
+      height: inherit
+      object-fit: cover
+
+.star
+  width: 1em
+
+
+.quote
+  width: 2em

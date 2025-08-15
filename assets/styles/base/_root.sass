@@ -1,0 +1,48 @@
+@use 'sass:math'
+@use '../abstracts' as *
+
+\:root
+
+  +hsl('white', #fcfcfc)
+  +hsl('black', rgb(13 17 23))
+  +hsl('black', rgb(13 17 23), 3)
+
+  +hsl('grey-300', #e0e0e0)
+
+  +hsl('blue-grey', #546e7a)
+  +hsl('section-background', #edf5ff)
+
+
+  +hsl('clever-light', #edf5ff)   // /* Soft background */
+  +hsl('clever-blue', #1464ff, 1)
+  +hsl('clever-blue', #1464ff, 5)
+  +hsl('clever-navy', #0a1e46, 0)
+  +hsl('clever-navy', #0a1e46, 5)
+  +hsl('clever-navy', #0a1e46, 8)
+
+  +hsl('clever-blue', #1464ff)    // /* Primary blue */
+  +hsl('clever-blue-dark', #004ee4) // /* Deep accent */
+  +hsl('clever-navy', #0a1e46)    // /* Dark base */
+
+  +hsl('text-color', #333333)
+
+  --navbar-height: #{em(100)}
+  
+  --background: rgb(101 108 118 / 20%)
+  // --border: rgb(44, 44, 44)
+  --border: rgb(61 68 77)
+
+  // --code-color: rgb(155, 157, 157)
+  // --code-background: rgb(35, 35, 35)
+  // --monospace: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace
+  
+  --sans-serif: Inter, system-ui, sans-serif
+
+  $headings: (h1: 4, h2: 3, h3: 2, h4: 1, h5: 0, h6: -1)
+
+  @each $tag, $step in $headings
+    $min-size: type-scale($step, $min-font-size, $min-scale)
+    $max-size: type-scale($step, $max-font-size, $max-scale)
+
+    // @debug "Step: #{$step}, Min Size: #{$min-size}, Max Size: #{$max-size}"
+    +clamp('--step-#{$step}', $min-size, $max-size)

@@ -1,0 +1,15 @@
+{{ define "main" }}
+<header>
+  <h1>Bahamas Web Design</h1>
+  {{ $steps := .Params.steps }}
+  <ul class="[ steps ][ grid ]">
+    {{ range $index, $step := $steps }}
+      <li class="[ grid ]">
+        <span>0{{add $index 1 }}</span>
+        <h2 class="[ font--4 ]">{{$step.title}}</h2>
+        <p>{{$step.description}}</p>
+      </li>
+    {{end}}
+  </ul>
+</header>
+{{ end }}

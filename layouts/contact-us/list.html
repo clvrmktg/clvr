@@ -1,0 +1,138 @@
+{{- define "variables" -}}
+{{- .Store.Set "hasTwic" true -}}
+{{- .Store.Set "hasObscure" true -}}
+{{- end -}}
+{{- define "main" -}}
+{{ partial "hero.html" . }}
+<div class="[  bg:color--blue--50 lg:bg:color--blue--50--0 ]">
+  <div class="[ grid lg:col--2 col-gap--4 layout--spacing section--pading lg:py--0 ]">
+    <section class="[ ]">
+      <div class="[ mb--1 ]">
+        <h2>We'd love to hear from you!</h2>
+        <p>Want to know more about our services? Or do you have questions? Please don’t hesitate to reach out and we will gladly help.</p>
+      </div>
+      <div class="[ mb--1 ]">
+        <h3>Contact Details </h3>
+        <ul class="[ contact ][ grid md:col--2 row-gap--1 md:row-gap--3 ]">
+          <li>
+            <address> 
+              <ul class="[ details ][ mb--0.5 ]">
+                <li class="[ font--700 ]">Nassau, Bahamas</li>
+              </ul>
+            </address>
+            <template obscure="obscure" data-p1="+1" data-p2="242" data-p3="601" data-p4="3613"><a href="tel:%1%2%3%4">(%2) %3-%4</a></template>
+          </li>
+          {{/* 
+            <li>
+              <address>
+                <ul class="[ details ][ mb--0.5 ]">
+                  <li class="[ font--700 ]">United States</li>
+                </ul>
+                <template obscure="obscure" data-p1="+1" data-p2="813" data-p3="816" data-p4="5978"><a href="tel:%1%2%3%4">(%2) %3-%4</a></template>
+              </address>
+            </li>  
+          */}}
+        </ul>
+      </div>
+      <div class="[ mb--1 ]">
+        <h3>Email</h3>
+        <p class="[ pb--0 ]">For general inquiries: 
+          <template obscure="obscure" data-p1="lets" data-p2="getclever.marketing"><a href="mailto:%1@%2">%1@%2</a></template>.
+        </p><small>For immediate assistance, please call the office nearest you.</small>
+      </div>
+      <div class="[ mb--1 ]">
+        <h3>Business Hours </h3>
+        <p class="[ pb--0 ]">Monday - Friday, 9 am - 5 pm (EST)</p>
+      </div>
+      <div>
+        <h3 class="[ mb--0.5 ]">Connect With Us</h3>
+        <ul class="[ social ][ flex col-gap--2 px--0.5 ]">
+          <li class="[ social__item ]"><a class="[ social__link ]" href="https://www.facebook.com/#" target="_blank" rel="noopener" aria-label="Follow us on Facebook">
+              <svg class="[ social__icon ]" id="fb_follow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" xml:space="preserve" role="img">
+                <title>Follow us on Facebook</title>
+                <path d="M37 64H25.1V32h-8V21h8v-6.5c0-2.3.3-4.2.6-6.1.4-1.8 1-3.2 2-4.5.9-1.2 2.3-2.2 3.9-2.9 1.7-.7 3.8-1 6.5-1H47v11h-5.5c-1.1 0-1.9.1-2.5.3-.6.3-1 .5-1.3.9s-.4.9-.5 1.4c-.1.6-.1 1.3-.1 2v5.5H47l-1.1 11h-8.8L37 64z"></path>
+              </svg></a></li>
+          <li class="[ social__item ]"><a class="[ social__link ]" href="https://instagram.com/#" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+              <svg class="[ social__icon ]" id="ig_follow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <title>Follow us on Instagram</title>
+                <path d="M73.3 100H26.7C12 100 0 88 0 73.3V26.7C0 12 12 0 26.7 0h46.5C88 0 100 12 100 26.7v46.5C100 88 88 100 73.3 100zM26.7 7C15.8 7 7 15.8 7 26.7v46.5C7 84.2 15.8 93 26.7 93h46.5c11 0 19.8-8.8 19.8-19.7V26.7C93 15.8 84.2 7 73.3 7H26.7z"></path>
+                <path d="M50.2 71.9c-4.7 0-9.3-1.5-13.1-4.4-4.7-3.5-7.8-8.7-8.7-14.5-1.8-12 6.5-23.3 18.6-25.1 2.2-.3 4.3-.3 6.5 0 9.7 1.4 17.2 8.9 18.6 18.6.9 5.8-.6 11.7-4.1 16.4-3.5 4.7-8.7 7.8-14.5 8.7-1.2.2-2.3.3-3.3.3zm0-37.2c-.7 0-1.5.1-2.2.2-8.2 1.2-14 8.9-12.7 17.2.6 4 2.7 7.5 5.9 9.9 3.2 2.4 7.2 3.4 11.2 2.8 8.2-1.2 14-8.9 12.7-17.2-1-6.6-6.1-11.8-12.7-12.7-.7-.2-1.5-.2-2.2-.2zM75.6 27.9c-1.9 0-3.5-1.6-3.5-3.5s1.5-3.5 3.5-3.5c1.9 0 3.5 1.6 3.5 3.5s-1.5 3.5-3.5 3.5z"></path>
+              </svg></a></li>
+          <li class="[ social__item ]"><a class="[ social__link ]" href="https://www.linkedin.com/in/#" target="_blank" rel="noopener" aria-label="Follow us on LinkedIn">
+              <svg class="[ social__icon ]" id="in_follow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" xml:space="preserve" role="img">
+                <title>Follow us on LinkedIn</title>
+                <path d="M22.2 33.6v.1-4.2c-.1-1.1-.1-2.4-.1-3.7-.1-1.1-.1-2.2-.1-3.4-.1-1-.1-2-.1-3.2l11.9.1.6 6.1.3.1c.4-.8 1-1.5 1.9-2.4.8-.8 1.8-1.5 2.9-2.3 1.1-.8 2.4-1.4 3.9-1.9 1.5-.4 3.1-.6 5-.8 2.3.1 4.4.5 6.2 1.3 1.9.8 3.6 1.9 5 3.5s2.5 3.5 3.4 6c.7 2.4 1.1 5.2 1.1 8.6v26.2l-13.8.3V39.2c0-1.4-.1-2.7-.4-3.9-.3-1.1-.6-2.2-1.1-3-.6-.8-1.3-1.4-2.1-1.9-.9-.5-2-.8-3.2-.6-.9-.1-1.8 0-2.5.4-.9.4-1.5.8-2.1 1.1-.6.5-1 1-1.4 1.6-.4.6-.8 1.3-1 1.9-.1.4-.1.6-.3.8-.2.2-.2.4-.2.8-.1.4-.1.6-.1.9v26.6l-13.6.1-.1-30.4zM.4 63.9V19.4l13.6-.1V64L.4 63.9zM14.5 7c0 .9-.1 1.8-.5 2.7s-.9 1.6-1.5 2.3c-.6.6-1.4 1-2.3 1.4-.9.4-2 .6-3.1.5-1.1.1-2-.1-2.9-.5-.9-.4-1.6-.8-2.3-1.4-.6-.6-1.1-1.4-1.5-2.3S0 7.9 0 7c0-1 .1-1.9.5-2.8.4-.8.9-1.5 1.5-2.2S3.5.9 4.4.5C5.2.3 6.1.1 7.3 0c1.1.1 2.3.3 3.1.5.9.4 1.5.9 2.1 1.5s1.1 1.4 1.5 2.2c.4.9.5 1.8.5 2.8z"></path>
+              </svg></a></li>
+          <li class="[ social__item ]">
+            <template obscure="obscure" data-p1="+1" data-p2="242" data-p3="376" data-p4="3340"><a class="[ social__link ]" href="https://wa.me/%1%2%3%4" target="_blank" rel="noopener nofollow" aria-label="Message us on WhatsApp">
+                <svg class="[ social__icon ]" id="wa_follow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" xml:space="preserve" role="img">
+                  <title>Message us on WhatsApp</title>
+                  <path d="M54.7 9.3c-6-6-14-9.3-22.5-9.3C14.6 0 .3 14.2.3 31.7c0 5.6 1.5 11 4.3 15.9L0 64l16.9-4.4c4.7 2.5 9.9 3.9 15.2 3.9C49.7 63.4 64 49.2 64 31.7c0-8.4-3.3-16.4-9.3-22.4zm-7 33.7c-.7 1.9-3.8 3.5-5.4 3.8-1.4.2-3.1.3-5-.3-1.2-.4-2.6-.9-4.5-1.7-8-3.4-13.2-11.4-13.6-12-.4-.5-3.3-4.3-3.3-8.2 0-3.9 2.1-5.8 2.8-6.6.7-.8 1.6-1 2.1-1h1.5c.5 0 1.1-.2 1.8 1.4.7 1.6 2.3 5.5 2.5 5.9.2.4.3.9.1 1.4-.3.5-.4.9-.8 1.3-.4.5-.8 1-1.2 1.4-.4.4-.8.8-.3 1.6s2.1 3.4 4.4 5.5c3 2.7 5.6 3.5 6.4 3.9.8.4 1.3.3 1.7-.2s2-2.3 2.5-3.1c.5-.8 1.1-.7 1.8-.4.7.3 4.6 2.2 5.4 2.6.8.4 1.3.6 1.5.9.3.4.3 2-.4 3.8z"></path>
+                </svg></a></template>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <form class="[ form form--contact ][ bg:white py--5 px--1 r--10 lg:relative ]" id="form" data-validate>
+      <div class="[ grid row-gap--1 ]">
+        <div class="[ grid md:col--2 g--1 ]">   
+          <div>
+            <div class="[ form__field ][ grid row-gap--0.5 ]" x-data="{value: &quot;&quot;}">
+              <label class="[ form__label ][ font--500 font--600 ]" for="first_name">First Name<abbr class="[ required ]" title="This field is required" aria-label="This field is required">*</abbr>
+              </label>
+              <input class="[ form__input ][ p--0.5 ]" name="first_name" id="first_name" type="text" placeholder="i.e. John/Jane" required="" :class="{&quot;has-value&quot;: value.length &gt; 0 }" x-model="value"/>
+            </div>
+          </div>
+          <div>
+            <div class="[ form__field ][ grid row-gap--0.5 ]" x-data="{value: &quot;&quot;}">
+              <label class="[ form__label ][ font--500 font--600 ]" for="last_name">Last Name
+              </label>
+              <input class="[ form__input ][ p--0.5 ]" name="last_name" id="last_name" type="text" placeholder="i.e. Doe" :class="{&quot;has-value&quot;: value.length &gt; 0 }" x-model="value"/>
+            </div>
+          </div>
+        </div>
+        <div class="[ form__field ][ grid row-gap--0.5 ]" x-data="{value: &quot;&quot;}">
+          <label class="[ form__label ][ font--500 font--600 ]" for="business">Business
+          </label>
+          <input class="[ form__input ][ p--0.5 ]" name="business" id="business" type="text" placeholder="i.e. My Business Name" :class="{&quot;has-value&quot;: value.length &gt; 0 }" x-model="value"/>
+        </div>
+        <div class="[ grid md:col--2 g--1 ]">
+          <div>
+            <div class="[ form__field ][ grid row-gap--0.5 ]" x-data="{value: &quot;&quot;}">
+              <label class="[ form__label ][ font--500 font--600 ]" for="email">Email<abbr class="[ required ]" title="This field is required" aria-label="This field is required">*</abbr>
+              </label>
+              <input class="[ form__input ][ p--0.5 ]" name="email" id="email" type="email" placeholder="i.e. your@email.com" required="" :class="{&quot;has-value&quot;: value.length &gt; 0 }" x-model="value"/>
+            </div>
+          </div>
+          <div>
+            <div class="[ form__field ][ grid row-gap--0.5 ]" x-data="{value: &quot;&quot;}">
+              <label class="[ form__label ][ font--500 font--600 ]" for="phone">Phone
+              </label>
+              <input class="[ form__input ][ p--0.5 ]" name="phone" id="phone" type="tel" placeholder="i.e. (813) 816-5978/(242) 376-3340" :class="{&quot;has-value&quot;: value.length &gt; 0 }" x-model="value"/>
+            </div>
+          </div>
+        </div>
+        <div class="[ form__field ][ grid row-gap--0.5 ]" x-data="{value: &quot;&quot;}">
+          <label class="[ form__label ][ font--500 font--600 ]" for="message">Message<abbr class="[ required ]" title="This field is required" aria-label="This field is required">*</abbr>
+          </label>
+          <textarea class="[ form__message ][ p--0.5 ]" name="message" id="message" placeholder="Tell us how we can help..." required="" :class="{&quot;has-value&quot;: value.length &gt; 0 }" x-model="value"></textarea>
+        </div>
+        <div class="[ notice ][ grid row-gap--1 ]">
+          <label class="[ flex col-gap--0.5 ]" for="newsletter"><span>
+              <input id="newsletter" type="checkbox" name="newsletter"></span><span>Please send me marketing tips by adding me to your email newsletter.</span></label><small class="[ block blue-grey--600 ]">By submitting this form, you consent to receive marketing and promotional emails from Clever Marketing, Ltd. Email frequency may vary. You may unsubscribe at any time by clicking the "Unsubscribe" link in our emails. Your information will be handled in accordance with our  <a href="/privacy-policy">Privacy Policy.</a></small>
+        </div>
+        <!-- Hidden field to identify the site-->
+        <input id="site" type="hidden" name="site" value="https://getclever.marketing">
+        <!-- Google reCAPTCHA widget-->
+        <div class="g-recaptcha" data-sitekey="6Lfmo2MqAAAAAO4f8uE4mzY1_oYaH8xle9g8xpey"></div>
+        <div class="[ flex end ]">
+          <label class="[ btn btn--solid--lg btn--cta ][ white ]" id="submit" type="submit"><span class="[ btn__text ][ flex center middle col-gap--0.25 ]"><span>Send</span><span class="[ relative ]">
+                 <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 139.4 119.2"><path d="M105.1 69.3H10.3C3.4 69-.4 65.4-.4 59.3c.1-5.9 3.8-9.4 10.4-9.8 1.3-.1 2.7 0 4 0H105.6c-1.9-2-3-3.3-4.2-4.5-9.1-9.3-18.4-18.5-27.7-27.6-3.3-3.2-5-7.3-3.1-11.3 1.3-2.7 4.6-5.6 7.5-6.2 2.7-.6 6.9.8 9 2.9 16.6 16.1 32.9 32.5 49.1 48.9 4.8 4.8 4.7 10.7-.2 15.6-16 16.2-32.1 32.3-48.3 48.3-4.9 4.9-11.2 5.1-15.2.9-3.8-4-3.3-10.4 1.4-15.2 10.2-10.6 20.4-20.9 31.2-32z"/></svg></span></span>
+            <input class="[ hidden ]" type="submit" name="submit" value="send">
+          </label>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{{ end }}

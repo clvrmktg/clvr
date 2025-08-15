@@ -1,0 +1,7 @@
+/public
+/resources
+/node_modules
+/content/blog/local-test-post/
+/**/.DS_Store
+.DS_Store
+functions.md

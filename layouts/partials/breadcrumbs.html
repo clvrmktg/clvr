@@ -1,0 +1,28 @@
+<nav class="[ breadcrumbs ]" aria-label="Breadcrumb">
+  <ol class="[ flex ][ col-gap--1 {{ if .Store.Get "noPadding" }}{{else}}py--0.5 {{end}}]">
+
+    {{/* Home icon link */}}
+    <li class="[ breadcrumb ][ flex middle ]">
+      <a class="[ breadcrumb__link ]" href="/" aria-label="Home" data-prefetch>
+        <span class="[ icon ][ flex middle ]">
+          {{ readFile "static/icons/home.svg" | safeHTML }}
+        </span>
+      </a>
+    </li>
+
+    {{- range .Ancestors.Reverse -}}
+    {{- if not .IsHome -}}
+    <li class="[ breadcrumb ][ font--600 ]">
+      <a class="[ breadcrumb__link ]" href="{{ .RelPermalink }}" data-prefetch>
+        {{ .LinkTitle }}
+      </a>
+    </li>
+    {{- end -}}
+  {{- end -}}
+    <li class="[ breadcrumb ][ font--600 ]">
+      <a class="[ breadcrumb__link--last ]" href="{{ .RelPermalink }}" aria-current="page" data-prefetch>
+        {{ .LinkTitle }}
+      </a>
+    </li>
+  </ol>
+</nav>

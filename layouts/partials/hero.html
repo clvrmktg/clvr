@@ -1,0 +1,42 @@
+{{ if .IsHome -}}
+<header id="hero" class="[ hero hero--home ][ full-width bg ]"{{ with .Resources.GetMatch (.Params.hero.path ) }} data-twic-background="url(image:{{ .RelPermalink }})"{{ end }}>
+  {{ with .Resources.GetMatch (.Params.hero.path ) -}}
+  <style>#hero {background-image: url('https://{{ $.Site.Params.twic }}.twic.pics{{ .RelPermalink }}?twic=v1/output=preview');}</style>
+  {{- end }}
+  <div class="[ wrapper ][ full-width content-grid ]">
+    <div class="[ grid middle lg:col--2 col-gap--4 gr--2 pt--5 lg:pt--0 pb--5 ]">
+      <div class="[ hero__content ]">
+        <div>
+          <h1 class="[ primer ][ font--5 font--400 ]">{{ .Page.Title }}</h1>
+          <h2 class="[ font--1 mb--0.5 ]">{{ .Page.Params.proposition_heading }}</h2>
+          <p>{{ .Params.subtitle }}</p>
+          <div class="[ grid gap--1 ]">
+            <div class="[ flex--col lg:flex--row col-gap--1 gr--0.5 ]">
+              {{ partial "buttons/cta.html" (dict "url" "/contact-us/" "text" "Request a Quote")}}
+              {{ partial "buttons/ghost.html" (dict "url" "/price-calculator" "text" "Price Calculator" "white" true) }}
+            </div>
+            {{ partial "reviews/trust-badge.html" . }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{{- else -}}
+<header class="[ hero ][ full-width content-grid ]">
+  <div class="[ wrapper ][ grid lg:col--2 section--padding ]">
+    <div class="[ hero__content ]">
+      {{ if .Params.subhead }}
+      <div class="[ lead__heading ][ mb--1 ]">
+        <h1 class="[ bar-before ][ relative font--4 font--400 upper flex--col row-gap--1 ]">{{ .Title }}</h1>
+      </div>
+      <h2 class="[ font--1 ch--24 pb--0 mb--0.5 ]">{{ .Params.proposition_heading }}</h2>
+      <p>{{ .Params.subhead }}</p>
+      {{- else -}}
+      <h1>{{ .Title }}</h1>
+      {{ end }}
+    </div>
+  </div>
+</header>
+{{ partial "breadcrumbs.html" . }}
+{{- end }}

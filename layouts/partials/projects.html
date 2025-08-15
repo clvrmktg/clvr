@@ -1,0 +1,36 @@
+{{- $pages := .pages -}}
+
+<ul class="[ projects ][ grid md:col--2 lg:col--3 gap--2 ]">
+  {{- range $i, $p := $pages -}}
+    {{- $id := printf "picture-%d" (add $i 1) -}}
+    <li class="[ project ][ relative r--5 shadow ]">
+
+      {{- with $p.Resources.GetMatch $p.Params.thumb.path -}}
+        {{- $bg := printf "https://%s.twic.pics%s?twic=v1/output=preview" site.Params.Twic .RelPermalink -}}
+        <figure class="[ project__img ][ ratio--1:1 o--1 ]">
+          <picture id="{{ $id }}" class="[ bg ][ rt--5 lg:rb--5 ]">
+            <style>#{{ $id }}{background-image:url('{{ $bg }}')}</style>
+            <img data-twic-src="image:{{ .RelPermalink }}" data-twic-focus="auto"
+                 alt="{{ $p.Params.thumb.alt | default $p.Title }}">
+            <noscript><img class="[ script ]" src="{{ $bg }}" alt="{{ $p.Params.thumb.alt | default $p.Title }}"></noscript>
+          </picture>
+        </figure>
+      {{- end -}}
+
+      <a class="[ project__overlay ][ block absolute ]"
+         href="{{ $p.RelPermalink }}" aria-label="{{ $p.Title }}"></a>
+
+      <div class="[ project__text ][ grid pt--1.5 px--1 pb--1 ]">
+        <h3 class="[ o--2 ]">{{ $p.Title }}</h3>
+        <span class="[ font--700 upper clever--blue o--1 ]">Business</span>
+        <div class="[ o--3 ]">
+          {{ partial "buttons/primary.html" (dict
+            "url"    $p.RelPermalink
+            "text"   "Learn More"
+            "hidden" (printf "About %s" $p.Title)
+          ) }}
+        </div>
+      </div>
+    </li>
+  {{- end -}}
+</ul>

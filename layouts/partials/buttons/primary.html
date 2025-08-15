@@ -1,0 +1,12 @@
+<a class="[ btn btn--lg btn--primary ]" href="{{ .url }}" {{if .external }} target="_blank" rel="noopener" {{end}}data-prefetch>
+  <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
+    <span>{{ .text }}
+      {{ if .hidden -}}
+      <span class="[ hidden ]">{{ .hidden }}</span>
+      {{- end }}
+    </span>
+    <span>
+      {{ readFile "static/icons/arrow-right.svg" | safeHTML }}
+    </span>
+  </span>
+</a>

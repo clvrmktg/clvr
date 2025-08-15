@@ -1,0 +1,31 @@
+{{- block "variables" . -}}{{- end -}}
+<!DOCTYPE html>
+<html id="page" lang="{{ .Site.LanguageCode }}" prefix="og: https://ogp.me/ns#">
+  {{ partial "head.html" . }}
+  <body>
+    <div id="container" class="[ container ]">
+      {{ $currentPage := . }}
+      {{ partial "navbar.html" (dict "context" . "currentPage" $currentPage) }}
+      <main class="[ main ][ content-grid {{ if eq .Page.Kind "404" }} error {{ end }}]" id="main">
+        {{ block "main" . -}}{{- end }}
+      </main>
+      {{- partial "footer.html" . }}
+      <script src="/scripts/app-{{ .Site.Params.Version }}.min.js" defer></script>
+      {{partial "script.html" (dict "path" "scripts/components/prefetch.js" "targetPath" "scripts/prefetch.js")}}
+      {{ if or .IsHome ( .Store.Get "hasObscure" ) }}
+      {{ partial "script.html" (dict "path" "scripts/components/obscure.js" "targetPath" "scripts/obscure.js") }}
+      {{- end }}
+      {{ if .Store.Get "hasCode" -}}
+      {{ partial "script.html" (dict "path" "scripts/vendor/prism.js" "targetPath" "scripts/prism.js") }}
+      {{- end }}
+      {{- if .Store.Get "hasYouTube" -}}
+      {{-
+        $attributes := dict
+        "module" true
+        "defer" true
+      -}}
+      {{ partial "script.html" (dict "path" "scripts/vendor/lite-youtube.js" "targetPath" "scripts/lite-youtube.js" "attributes" $attributes) }}
+      {{- end -}}
+    </div>
+  </body>
+</html>

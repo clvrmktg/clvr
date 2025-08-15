@@ -1,0 +1,91 @@
+{{- define "variables" -}}
+{{- .Store.Set "hasTwic" true -}}
+{{- .Store.Set "hasObscure" true -}}
+{{- end -}}
+{{- define "main" -}}
+  {{ partial "hero.html" . }}
+
+  {{ with .Params.intro }}
+  <section class="[ section--padding ]" aria-labelledby="intro-heading">
+    <div class="[ grid middle lg:col--2 col-gap--4 row-gap--2 ]">
+      <div class="[ o--2 lg:o--1 ]">
+        <h2 id="intro-heading">{{ .heading }}</h2>
+        {{ .text | markdownify }}
+      </div>
+      <div class="[ o--1 lg:o--2 ]">
+        <figure class="[ ratio--1:1 ]">
+          <picture class="[ bg ][ r--10 ]">
+            <style>picture {background-image: url('https://{{ .Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview');}</style>
+            <img data-twic-src="image:home/website-design-satisfied-customer-clever-marketing.jpg" data-twic-focus="auto" alt=""/>
+            <noscript><img class="[ script ]" src="https://{{ .Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview"/></noscript>
+          </picture>
+        </figure>
+      </div>
+    </div>
+  </section>
+  {{ end }}
+  {{ with .Params.get }}
+  <section class="[ get ][ relative ]" aria-labelledby="get-heading">
+    <div class="[ grid lg:col--2 col-gap--4 row-gap--2 section--padding ]">
+
+      <div>
+        <h2 id="get-heading">What You Get</h2>
+        <p class="[ ch--35 ]">{{ .tagline }}</p>
+      </div>
+
+      <ul class="[ benefits ][ grid gap--1 ]">
+        {{ range .items }}
+        <li>
+          {{ with $.Page.Resources.GetMatch .icon }}
+          <span class="icon" aria-hidden="true">
+            {{ .Content | safeHTML }}
+          </span>
+        {{ end }}
+          <p>
+            <strong>{{ .title }}</strong>
+            <br>{{ .description }}
+          </p>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </section>
+  {{ end }}
+  <section aria-labelledby="why-heading" class="[ section--padding ]">
+    <div class="[ grid middle lg:col--2 lg:col-gap--4 col-gap--2 row-gap--2 ]">
+      <div class="[ o--2 lg:o--1 ]">
+        <h2 id="why-heading">Why It Matters</h2>
+        <p>A slow, outdated, or poorly designed website can cost you customers. Studies show that visitors form an opinion about your business within seconds of landing on your site.</p>
+          
+         <p>We make sure those seconds work in your favor — with clear navigation, engaging visuals, and calls to action that guide visitors to contact or buy.</p>
+      </div>
+      <div class="[ o--1 lg:o--2 ]">
+        <figure class="[ ratio--1:1 ]">
+          <picture class="[ bg ][ r--10 ]">
+            <style>picture {background-image: url('https://{{ .Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview');}</style>
+            <img data-twic-src="image:home/website-design-satisfied-customer-clever-marketing.jpg" data-twic-focus="auto" alt=""/>
+            <noscript><img class="[ script ]" src="https://{{ .Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview"/></noscript>
+          </picture>
+        </figure>
+      </div>
+    </div>
+  </section>
+  {{ with .Params.process }}
+  <section class="[ full-width content-grid bg:blue--50 section--padding ]">
+
+    
+    <ul class="[ grid lg:col--2 lg:col--4 gap--2 ]">
+      {{ range .items }}
+      <li>
+        <h3>{{ .title }}</h3>
+        <p class="[ pb--0 ]">{{ .description }}</p>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+  {{partial "faqs.html" . }}
+
+  {{ partial "cta.html" . }}
+{{ end }}
+

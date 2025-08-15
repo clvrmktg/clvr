@@ -1,0 +1,58 @@
+@use '../abstracts' as *
+
+.hero
+  color: color('white')
+  background-color: color('clever-navy')
+
+  h1, h2
+    color: inherit
+    
+  &.hero--home
+    background-color: color('clever-navy')
+    min-height: em(800)
+    max-height: calc(100svh - var(--navbar-height))
+
+  > .wrapper
+    min-height: inherit
+    max-height: inherit
+    position: relative
+
+
+    &::before
+      content: ""
+      height: inherit
+      position: absolute
+      inset: 0
+      background: linear-gradient(to right, color('clever-navy-8') 10%, color('clever-navy-5') 40%, color('clever-navy-0') 100%)
+      z-index: 1
+
+  &__content
+    z-index: 2
+
+.bar-before
+  
+  &::before, &::after
+    content: ''
+    position: absolute
+    height: em(3)
+    background-color: var(--white)
+    bottom: em(-4)
+    
+  &::before
+    width: em(15)
+    left: 0
+    
+  &:after
+    width: em(40)
+    left: em(25)
+  
+.bg
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center
+
+.bg\:blue--50
+  background-color: color('section-background')
+
+.primer
+  text-transform: uppercase

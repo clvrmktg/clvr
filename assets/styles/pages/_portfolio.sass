@@ -1,0 +1,111 @@
+@use 'abstracts' as *
+
+// .project
+//     grid-template-columns: [content-start] 1fr [content-end website-start] repeat(2, 1fr) [website-end]
+//     grid-template-rows: [content-start website-start] 1fr [content-end website-end]
+
+//     &__content
+//       grid-area: content
+
+//     &__website
+//       grid-area: website
+    
+// +ratio(16,13)
+
+
+.project
+
+  +device(desktop)
+  
+    overflow: hidden
+
+    &:focus-within
+      
+      .project
+
+        &__overlay, &__text
+          opacity: 1
+
+    &__overlay, &__text
+      opacity: 0
+      +transition(opacity)
+      
+    +hover
+
+      .project
+
+        &__overlay, &__text
+          opacity: 1
+
+    &__overlay
+      width: 100%
+      height: 100%
+      background-color: color('clever-blue-5')
+      border-radius: inherit
+      inset: 0
+      margin: auto
+      
+    &__text
+      background-color: white
+      border-radius: inherit
+      position: absolute
+      right: em(40)
+      bottom: 1em
+      left: em(30)
+
+
+  +device(tablet)
+    display: grid
+    grid-template-rows: repeat(2, min-content) 1fr min-content
+
+    &__img
+      grid-row: span 1 / 2
+
+    &--overlay
+      display: none
+      visibility: hidden
+
+    &__text
+      grid-row: 2 / 5
+      display: grid
+      grid-template-rows: subgrid
+
+
+.shadow
+  box-shadow: 0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24)
+  
+.project
+
+  &-display
+    position: relative
+
+foreignObject
+
+  > figure
+    height: 100%
+
+    > picture
+      height: 100%
+
+      > img
+        height: inherit
+        object-fit: cover
+
+.deliverables
+
+  > li
+
+    &::after
+      content: ''
+      width: 100%
+      height: em(2)
+      background-color: color('clever-blue')
+      position: absolute
+      bottom: -0.5em
+      left: 0
+      
+    &:last-of-type
+      
+      &::after
+        content: none
+      

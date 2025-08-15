@@ -1,0 +1,72 @@
+@use 'abstracts' as *
+
+.block
+  display: block
+
+.relative
+  position: relative
+
+.absolute
+  position: absolute
+  
++radius(10)
++radius(15)
+
+.text--center
+  text-align: center
+
+.hidden
+  position: absolute !important
+  width: 1px
+  height: 1px
+  padding: 0
+  margin: -1px
+  overflow: hidden
+  clip: rect(0 0 0 0)
+
+  /* legacy
+  clip-path: inset(50%)
+
+  /* modern
+  border: 0
+  white-space: nowrap
+
+  /* prevent line breaks
+
+
+.get
+
+  &::before, &::after
+    content: ''
+    width: 100%
+    height: rem(1)
+    background-color: color('clever-navy')
+    position: absolute
+    left: 0
+    
+
+  &::before
+    top: 0
+    
+  &::after
+    bottom: 0
+
+.benefits
+
+  > li
+    position: relative
+
+    &::after
+      content: ''
+      width: 100%
+      height: em(2)
+      background-color: color('grey-300')
+      position: absolute
+      bottom: -0.5em
+      left: 0
+
+    &:last-of-type
+      
+      &::after
+        content: none
+        

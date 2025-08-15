@@ -1,0 +1,50 @@
+@use 'abstracts' as *
+
+details
+  position: relative
+
+  &::after
+    content: ''
+    width: 100%
+    height: em(2)
+    background-color: color('grey-300')
+    position: absolute
+    bottom: -0.5em
+    left: 0
+
+  &:last-of-type
+    
+    &::after
+      content: none
+
+  summary
+    list-style: none
+    cursor: pointer
+    +transition(color)
+
+    > .marker
+      width: 0.75em
+      min-width: 0.75em
+      fill: currentColor
+      transform: rotate(0deg)
+      +transition((fill, transform))
+
+  &::details-content
+    display: block
+    block-size: 0
+    overflow: hidden
+    +transition((block-size, content-visibility))
+    transition-behavior: allow-discrete
+
+details[open]
+  
+  summary
+    color: color('clever-blue')
+
+    > .marker
+      transform: rotate(180deg)
+      
+  &::details-content
+    block-size: auto
+    block-size: calc-size(auto)
+

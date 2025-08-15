@@ -1,0 +1,15 @@
+{{ define "variables" }}
+{{ .Store.Set "hasObscure" true }}
+{{ .Store.Set "noPadding" true }}
+{{ end }}
+{{ define "main" }}
+<article class="[ x--800 grid layout--spacing section--padding ]">
+  <header>
+    <h1 class="[ pb--0 ]">{{ .Title }}</h1>
+    {{ partial "breadcrumbs.html" . }}
+  </header>
+  <div class="[ longform ]">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

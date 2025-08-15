@@ -1,0 +1,17 @@
+<nav>
+  {{ $paginator := .Paginator }}
+  <ul class="[ pagination ]">
+    {{ if $paginator.HasPrev }}
+    <li class="[ newer ]">
+      <a class="[ btn btn--sm btn--ghost ]" href="{{ $paginator.Prev.URL }}" data-prefetch>
+        <abbr title="Previous" aria-label="Previous">Prev</abbr>
+      </a>
+    </li>
+    {{ end }}
+    {{ if $paginator.HasNext }}
+    <li class="[ older ]">
+      <a class="[ btn btn--sm btn--ghost ]" href="{{ $paginator.Next.URL }}" data-prefetch>Next</a>
+    </li>
+    {{ end }}
+  </ul>
+</nav>

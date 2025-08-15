@@ -1,0 +1,41 @@
+{{- define "variables" -}}
+{{- .Store.Set "hasTwic" true -}}
+{{- .Store.Set "hasObscure" true -}}
+{{- end -}}
+{{- define "main" -}}
+  {{ partial "hero.html" . }}
+  <div class="[ grid row-gap--3 section--padding-top ]">
+    {{/* 
+      <ul class="[ flex--wrap col-gap--1 row-gap--0.25 ]">
+        <li>
+          <a class="[ btn btn--lg btn--ghost ]" href="#"><span class="[ btn__text ][ flex center middle col-gap--0.25 ]"><span>All</span></span>
+        </a>
+        </li>
+        <li>
+          <a class="[ btn btn--lg btn--ghost ]" href="#"><span class="[ btn__text ][ flex center middle col-gap--0.25 ]"><span>Business</span></span></a>
+        </li>
+        <li>
+          {{ partial "buttons/ghost.html" (dict "url" "#" "text" "Charity/Non-Profit") }}
+        </li>
+      </ul>
+    */}}
+    {{ partial "projects.html" (dict "pages" (sort .Pages "Weight" "asc")) }}
+    {{ partial "pagination.html" . }}
+  </div>
+  <section class="[ countries ][ py--5 ]">
+    <div class="[ x--wide grid gr--5 ]">
+      <h2 class="[ flex--col ]"><span class="[ font--5 text--center upper blue--900 ]">Worldwide Reach, Great Web Design</span><span class="[ font--2 text--center ]">We Help Clients Around The World</span></h2>
+      <div>
+        <div class="[ country ][ grid g--2 middle py--2 ]">
+          <h3 class="[ font--4 text--center lg:text--left ]">Bahamas</h3>
+          <ul class="[ clients ][ grid ]">
+            <li class="[ client ]">
+            </li>
+            <li class="[ client ]">
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ end }}

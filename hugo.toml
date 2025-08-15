@@ -1,0 +1,155 @@
+baseURL = 'https://getclever.marketing/'
+languageCode = 'en-us'
+title = 'Clever Marketing, Ltd.'
+enableGitInfo = true
+
+
+[sass]
+  use_dart_sass = true
+
+# upload_dir = "assets/uploads"
+# public_path = "/uploads"
+# disableKinds = [ "taxonomy", "term" ]
+
+[taxonomies]
+  insights_category  = "insights_categories"     # for blog/Insights
+  portfolio_category = "portfolio_categories"    # for Projects
+  portfolio_deliverables = "portfolio_deliverables"
+
+[permalinks]
+  insights_categories  = "/insights/categories/:slug/"
+  portfolio_categories = "/portfolio/categories/:slug/"
+  portfolio_deliverables = "/portfolio/deliverables/:slug/"
+
+# config.toml
+[outputs]
+home     = ["HTML"]      # no /index.xml on homepage
+section  = ["HTML"]      # no /<section>/index.xml
+taxonomy = ["HTML"]      # no /<taxonomy>/index.xml
+term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
+
+
+[pagination]
+  pagerSize = 9
+
+[ params ]
+  twic = "clvrmktg"
+  share = "/uploads/joseph-pinder-share.jpg"
+  logo = "/uploads/joseph-pinder-logo.png"
+
+  # Homepage Title | Tagline
+  tagline = 'Bahamas Web Design | Nassau, Bahamas'
+
+[params.google]
+  api_key = "AIzaSyDGa9bRzCbbmJ-L9PIX1hrZSymdSC4ZEtA"
+  place_id = "ChIJpwI7ux9nL4kRn7lrM-ie_dk"
+
+
+  # Facebook App ID
+  app_id = "223848628924279"
+  error = true
+
+
+[params.social]
+  facebook = "clvrmktg"
+  twitter = "clvrmktg"
+  instagram = "clvrmktg"
+  linkedin = "clvrmktg"
+  github = "clvrmktg"
+  x = "clvrmktg"
+
+[[menu.main]]
+  identifier = "services"
+  name = "Services"
+  url = "/bahamas-web-design-services/"
+  weight = 1
+
+[[menu.main]]
+  parent = "services"
+  name = "Web Design"
+  url = "/bahamas-web-design-services/website-design-bahamas/"
+  weight = 1
+
+[[menu.main]]
+  parent = "services"
+  name = "Search Engine Optimization"
+  url = "/bahamas-web-design-services/search-engine-optimization-seo/"
+  weight = 2
+
+[[menu.main]]
+  parent = "services"
+  name = "Digital Marketing"
+  url = "/bahamas-web-design-services/digital-marketing-bahamas/"
+  weight = 3
+
+[[menu.main]]
+  parent = "services"
+  name = "Website Maintenance"
+  url = "/bahamas-web-design-services/website-maintenance/"
+  weight = 4
+
+[[menu.main]]
+  identifier = "portfolio"
+  name = "Portfolio"
+  url = "/portfolio/"
+  weight = 2
+
+[[menu.main]]
+  identifier = "about-us"
+  name = "About Us"
+  url = "/about-us/"
+  weight = 3
+
+[[menu.main]]
+  identifier = "insights"
+  name = "Insights"
+  url = "/insights/"
+  weight = 4
+
+[[menu.main]]
+  identifier = "contact-us"
+  name = "Contact Us"
+  url = "/contact-us/"
+  weight = 5
+
+
+[[menu.policies]]
+  identifier = "privacy-policy"
+  name = "Privacy Policy"
+  url = "/privacy-policy/"
+  weight = 1
+
+[[menu.policies]]
+  identifier = "terms-service"
+  name = "Terms of Service"
+  url = "/terms-service/"
+  weight = 2
+
+[[menu.policies]]
+  identifier = "cookie-policy"
+  name = "Cookie Policy"
+  url = "/cookie-policy/"
+  weight = 3
+
+[[menu.policies]]
+  identifier = "accessibility-statement"
+  name = "Accessibility Statement"
+  url = "/accessibility-statement/"
+  weight = 4
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      wrapStandAloneImageWithinParagraph = false
+      [markup.goldmark.parser.attribute]
+        block = true
+
+    # Links
+    [markup.goldmark.renderHooks]
+      [markup.goldmark.renderHooks.link]
+        enableDefault = true
+
+[sitemap]
+  filename = "sitemap"  # Remove .xml
+  changefreq = "monthly"
+  priority = 0.5

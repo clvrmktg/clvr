@@ -1,0 +1,88 @@
+{{- define "main" -}}
+{{- .Store.Set "hasTwic" true -}}
+<article class="[ post-single h-entry]">
+  <header class="[ post-single__header ]">
+    <h1>{{ .Title }}</h1>
+    {{- $format := "January 2, 2006" -}}
+    {{- $iso := "2006-01-02T15:04:05Z07:00" -}}
+    {{- $timeFormat := "3:04pm" -}}
+    
+    {{- $published := .Date -}}
+    {{- $lastModified := .Lastmod | default .Date -}}
+    {{- $hourDiff := div (sub $lastModified.Unix $published.Unix) 3600 -}}
+    <p class="[ meta{{ if .Params.feature.image }} meta--spaced{{ end }} ][ font--small ]">
+        Joseph Pinder |  
+        <time datetime="{{ $published.Format $iso }}">
+          {{ $published.Format $format }} | {{ $published.Format $timeFormat }}
+        </time>
+      | {{ .ReadingTime }} min read
+    </p>
+    {{- with .Params.feature -}}
+    {{- if .image -}}
+    {{- $image := (printf "/uploads/%s" .image) -}}
+    <figure class="[ pb--2 ]">
+      <picture id="feature" class="[ bg ]">
+        <style>#feature { background-image: url('https://{{ $.Site.Params.twic }}.twic.pics{{ $image }}?twic=v1/output=preview'); }</style>
+        <img data-twic-src="image:{{ $image }}" data-twic-focus="auto" alt="{{ if .alt }}{{ .alt }}{{ end }}" width="700" height="700"/>
+        <noscript>
+        <img class="[ script ]" src="https://{{ $.Site.Params.twic }}.twic.pics{{ $image }}?twic=v1/output=preview" alt="{{ if .alt }}{{ .alt }}{{ end }}" width="683" height="385"/></noscript>
+      </picture>
+      {{- if .figcaption -}}
+      <figcaption class="[ pt--0.5 ]">{{ .figcaption }}</figcaption>
+      {{- end -}}
+    </figure>
+    {{- end -}}
+    {{- end -}}
+  </header>
+  <div class="[ content ]">
+    {{ .Content }}
+  </div>
+  <footer>
+    {{- if gt $hourDiff 1 -}}
+    <div class="[ original-publish-date ]"> 
+      <p class="[ font--small ]">Last Updated: 
+        <time datetime="{{ $lastModified.Format $iso }}">{{ $lastModified.Format $format }} at {{ $lastModified.Format $timeFormat }}</time>
+      </p>
+    </div>
+    {{ end }}
+    {{- partial "footnotes.html" . -}}
+    {{- with .Site.Home.Params.avatar -}}
+    {{- $image := (printf "/uploads/%s" .image) -}}
+    <section class="[ bio ]">
+      <div>
+        <figure class="[ profile__avatar ]">
+          <picture id="avatar" class="[ bg ]">
+            <style>#avatar {background-image: url('https://{{ $.Site.Params.twic }}.twic.pics{{ $image }}?twic=v1/output=preview');}</style>
+            <img data-twic-src="image:{{ $image }}" data-twic-focus="auto" alt="Joseph Pinder" width="90" height="90"/>
+            <noscript><img class="[ script ]" src="https://{{ $.Site.Params.twic }}.twic.pics{{ $image }}?twic=v1/output=preview" alt="Joseph Pinder" width="90" height="90"/></noscript>
+          </picture>
+        </figure>
+      </div>
+      <div>
+        <h2 class="[ flex middle ]">About The Author</h2>
+        <p>{{ .snippet }}</p>
+      </div>
+    </section>
+    {{- end -}}
+    <section>
+      <h2 class="[ tag-header ]">Related Posts</h2>
+      <ul class="[ posts ]">
+        {{ $currentPost := .Permalink }}
+        {{ $posts := where .Site.RegularPages "Section" "blog" }}
+        {{ $posts = shuffle $posts }} <!-- Randomize the posts -->
+        {{- range first 2 $posts -}} <!-- Show the first 2 posts after randomizing -->
+        {{- if ne .Permalink $currentPost -}} <!-- Exclude the current post -->
+          <li class="[ post ]">
+            <a class="[ post__link ]" href="{{ .RelPermalink }}" data-prefetch>
+              <h3 class="[ font--2 ]">{{ .LinkTitle }}</h3>
+              <time class="[ font--small ]" datetime="{{ .Date.Format $iso }}">{{ .Date.Format $format }}</time>
+              <p>{{ (.Description | plainify) | strings.Truncate 145 "[...]" | htmlUnescape }}</p>
+            </a>
+          </li>
+        {{- end -}}
+      {{- end -}}
+      </ul>
+    </section>
+  </footer>
+</article>
+{{- end -}}

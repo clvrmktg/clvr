@@ -1,0 +1,56 @@
+@use 'abstracts' as *
+
+.social
+  // --fb-blue: #1877f2
+  // --tw-blue: #009bde
+  // --in-blue: #0077b5
+  // --ig-pink: #d62976
+  // --wa-green: #25d366
+
+  &__item
+    width: 1.2em
+
+  &__link
+    display: block
+    fill: var(--white)
+    position: relative
+    z-index: 1
+
+    &::after
+      content: ''
+      width: 200%
+      height: 200%
+      background-color:  color('clever-blue')
+      border-radius: em(5)
+      position: absolute
+      top: 50%
+      left: 50%
+      z-index: -1
+      transform: translate(-50%, -50%)
+      +transition((fill, background-color))
+
+    
+    +hover
+      fill: color('white')
+
+      &::after
+        background-color:  color('clever-blue-dark')
+    
+  &--dark
+
+    .social
+
+      &__link
+
+        > svg
+         fill:  color('clever-blue')
+
+        &::after
+          background-color: #252525
+
+        +hover
+          > svg
+            fill: var(--white)
+
+          &::after
+            background-color:  color('clever-blue')          

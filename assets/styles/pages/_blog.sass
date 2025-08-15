@@ -1,0 +1,120 @@
+@use 'abstracts' as *
+
+
+.scale
+  overflow: hidden
+  
+  > img
+    +transition('scale')
+    transition-duration: 600ms
+
+    +hover
+
+      scale: 1.15
+
+.loop
+
+  &__item
+    grid-template-rows: max-content 1fr
+    box-shadow: 0 em(5) em(10) 0 rgba(0, 0, 0, 0.13)
+
+    +transition('color')
+
+  &__link
+    border-bottom: em(2) solid var(--blue--800--0)
+    +transition('color, border-bottom')
+
+    +hover
+      color: var(--blue--800)
+      border-bottom: em(2) solid var(--blue--800)
+
+
+  @supports (grid-template-rows: subgrid)
+    &__item
+      // grid-template-rows: max-content 1fr max-content max-content
+      grid-template-rows: repeat(2, max-content) 1fr repeat(3, max-content)
+
+    &__link
+      grid-row: span 1
+      
+    &__content
+      grid-row: span 5
+
+  
+.utensil
+  fill: currentColor
+  width: 1em
+
+.related
+  border: em(1) solid var(--grey--400)
+
+.animate-border
+  position: relative
+  display: inline-block
+  width: 25px
+  height: 4px
+  background: #096bd8
+  margin-right: 10px
+  top: -3px
+  overflow: hidden
+
+  &::after
+    position: absolute
+    content: ""
+    width: 35px
+    height: 4px
+    left: 5%
+    bottom: 0
+    border-left: 10px solid #fff
+    border-right: 10px solid #fff
+    animation: animborder 2s linear infinite
+
+@keyframes animborder
+
+  0% 
+    transform: translateX(0)
+
+  100% 
+    transform: translateX(25px)
+
+.listed
+
+  li
+    border-bottom: em(1) solid var(--grey--400)
+
+    &:last-of-type
+      border-bottom: none
+
+a.non-standard
+  color: inherit
+  border-bottom: em(1) solid var(--blue--800--0)
+  +transition('color, border-bottom')
+
+  +hover
+    color: var(--blue--800)
+    border-bottom: em(1) solid var(--blue--800)
+
+.others
+  +breakpoint(desktop)
+    grid-template-columns: [one-start] 35% [one-end] 1fr [two-start] 35% [two-end]
+    grid-template-columns: [one-start] minmax(#{em(238)}, 35%) [one-end] 1fr [two-start] minmax(#{em(238)}, 35%) [two-end]
+    grid-template-rows: max-content 1fr
+
+    #article-1
+      grid-column: one
+        
+    #article-2
+      grid-column: two
+
+    > li
+      grid-row: span 2
+
+.related
+  top: 5em
+
+.sidebar
+  +breakpoint(desktop)
+    height: 100%
+
+// .hero .utensil
+//   fill: $tertiary

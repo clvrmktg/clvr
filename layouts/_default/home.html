@@ -1,0 +1,161 @@
+{{- define "variables" -}}
+{{- .Store.Set "hasTwic" true -}}
+{{- .Store.Set "hasObscure" true -}}
+{{- end -}}
+{{- define "main" -}}
+  {{ partial "hero.html" . }}
+  {{ with .Params.snapshot }}
+  <section class="[ full-width content-grid bg:blue--50 ]" aria-labelledby="snapshot-heading">
+    <div class="[ grid middle lg:col--2 lg:col-gap--4 col-gap--2 row-gap--2 section--padding ]">
+        <div class="[ o--2 ]">
+          <h2 id="snapshot-heading">{{ .heading }}</h2>
+          {{ .text | markdownify }}
+          <p>Find out what makes Clever a trusted Bahamas web design partner.</p>
+        <div>
+          {{ partial "buttons/primary.html" (dict "url" "/about-us" "text" "More About Us")}}
+        </div>
+      </div>
+      <div class="[ o--1 ]">
+        {{ with .image }}
+          {{ $twic := site.Params.twic }} {{/* e.g., params.twic = "your-subdomain" */}}
+          {{ $bg := printf "https://%s.twic.pics/%s?twic=v1/output=preview" $twic .path }}
+          {{ $uniq := hash.FNV32a .path }}
+          {{ $hex  := replace (printf "%x" $uniq) "-" "" }}
+          <figure class="[ ratio--1:1 o--1 ]">
+            <picture id="picture-{{ $hex }}" class="[ bg ][ r--10 ]">
+              <style> #picture-{{ $hex }} {background-image: url('{{ $bg }}')} </style>
+              <img data-twic-src="image:{{ .path }}" data-twic-focus="auto" alt="{{ .alt | default $.Title }}">
+              <noscript><img class="[ script ]" src="{{ $bg }}" alt="{{ .alt | default $.Title }}"></noscript>
+            </picture>
+          </figure>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+  {{ partial "services.html" . }}
+  <section class="[ full-width content-grid layout--spacing section--padding bg:blue--50">
+    <div class="[ lg:flex between middle ]">
+      <div>
+        <h2 class="[ font--5 upper clever--blue ]">Recent Work</h2>
+        <h3 class="[ font--2 ]">From Our Portfolio</h3>
+        <p class="[ ch--35 ]">See something you like? Ask us about it. We'll use it as inpsiration for your next project.</p>
+      </div>
+      <div>
+        {{ partial "buttons/ghost.html" (dict "url" "/portfolio" "text" "See Our Work")}}
+      </div>
+    </div>
+    {{ with site.GetPage "section" "portfolio" }}
+      {{ $items := first 3 (.Pages.ByWeight) }}
+      {{ partial "projects.html" (dict "pages" $items) }}
+    {{ end }}
+  </section>
+  {{ with .Params.features }}
+  <section class="[ features ]" aria-labelledby="features-heading">
+    <div class="[ grid section--padding layout--spacing ]">
+      <h2 id="features-heading" class="[ flex--col ]">
+        <span class="[ font--5 text--center upper clever--blue ]">{{ .headline }}</span>
+        <span class="[ font--2 text--center ]">{{ .subhead }}</span>
+      </h2>
+      <ul class="[ grid lg:col--3 gap--2 ]">
+        {{ range .items }}
+        <li class="[ feature ][ flex--col gap--1 ]">
+          <div class="[ o--2 ]">
+            <h3>
+              <span class="[ font--5 upper clever--blue ]">{{ .key }}</span>
+              <br>{{ .title }}
+            </h3>
+            <p>{{ .description }}</p>
+          </div>
+          <div class="[ o--1 ]">
+            {{ readFile (printf "static/icons/%s" .icon) | safeHTML }}
+          </div>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </section>
+  {{ end }}
+  {{ partial "reviews/reviews.html" . }}
+  <section class="[ section--padding ]" arialabelledby="faq-heading">
+    <div class="[ wrapper ][ grid middle lg:col--2 col-gap--4 row-gap--2 ]">
+      <div class="[ o--2 ]">
+        <h2 id="faq-heading" class="[ grid ]">
+          <span class="[ font--5 upper clever--blue ]">Bahamas Web Design</span>
+          <span class="[ font--2 ]">Frequently Asked Questions</span>
+      
+        </h2>
+        <p class="[ lg:ch--35 ]">If you don't see your question here, <a href="/contact-us">get in touch</a> — we're happy to answer anything about our web design services in The Bahamas and how we can help your business succeed online.</p>
+
+        {{ range .Params.faqs.items }}
+        <details class="[ faq ]" name="faqs">
+          <summary class="[ question ][ flex between middle font--600 py--1 ]">
+            <span>{{ .question }} </span>
+            <span class="marker">{{ readFile "static/icons/chevron-right.svg" | safeHTML }}</span>
+          </summary>
+          <div class="[ answer ][ pb--2 ]">{{ .answer }}</div>
+        </details>
+        {{ end }}
+      </div>
+      <div class="[ o--1 ]">
+        <figure class="[ ratio--1:1 o--1 ]">
+          <picture class="[ bg ][ r--10 ]">
+            <style>
+              picture {
+                background-image: url('https://{{ .Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview');
+              }
+              
+            </style><img data-twic-src="image:home/website-design-satisfied-customer-clever-marketing.jpg" data-twic-focus="auto" alt=""/>
+            <noscript><img class="[ script ]" src="https://{{ .Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview"/></noscript>
+          </picture>
+        </figure>
+      </div>
+    </div>
+  </section>
+  <section class="[ full-width content-grid bg:blue--50 section--padding layout--spacing ]" aria-labelledby="insights-heading">
+    <div class="[ lg:flex between middle ]">
+      <div>
+        <h2 id="insights-heading" class="[ font--5 upper clever--blue ]">Insights</h2>
+        <h3 class="[ font--2 ]">Tips &amp; Tricks To Help Your Business Grow</h3>
+        <p class="[ ch--35 ]"> Practical tips and expert advice to help you grow your online presence.</p>
+      </div>
+      <div><a class="[ btn btn--lg btn--ghost ][ clever--blue hvr:white ]" href="/insights"><span class="[ btn__text ][ flex center middle col-gap--0.25 ]"><span>Get More Insights</span><span class="[ relative ]">
+               <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 139.4 119.2"><path d="M105.1 69.3H10.3C3.4 69-.4 65.4-.4 59.3c.1-5.9 3.8-9.4 10.4-9.8 1.3-.1 2.7 0 4 0H105.6c-1.9-2-3-3.3-4.2-4.5-9.1-9.3-18.4-18.5-27.7-27.6-3.3-3.2-5-7.3-3.1-11.3 1.3-2.7 4.6-5.6 7.5-6.2 2.7-.6 6.9.8 9 2.9 16.6 16.1 32.9 32.5 49.1 48.9 4.8 4.8 4.7 10.7-.2 15.6-16 16.2-32.1 32.3-48.3 48.3-4.9 4.9-11.2 5.1-15.2.9-3.8-4-3.3-10.4 1.4-15.2 10.2-10.6 20.4-20.9 31.2-32z"/></svg></span></span></a>
+      </div>
+    </div>
+    {{/* 
+      <ul class="[ loop ][ grid md:col--2 lg:col--3 gap--2 ]">
+        <li class="[ article article--1 loop__item ][ grid bg:white r--10 ]" id="article-1">
+          <a class="[ thumb__link ]" href="/insights/post" aria-label="The Future of SEO: Navigating Trends and Tactics in Digital Marketing">
+            <figure class="[ ratio--1:1 ]">
+              <picture class="[ bg ][ rt--10 scale ]">
+                <style>
+                  picture {
+                    background-image: url('https://{{ .Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview');
+                  }
+                  
+                </style><img data-twic-src="image:home/website-design-satisfied-customer-clever-marketing.jpg" data-twic-focus="auto" alt=""/>
+                <noscript><img class="[ script ]" src="https://{{ .Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview"/></noscript>
+              </picture>
+            </figure>
+          </a>
+          <div class="[ loop__content ][ grid subgrid--y gr--0.5 p--1 rb--10 ]">
+            <ul class="[ flex--wrap col-gap--0.5 ]">
+              <li><a class="[ btn btn--sm btn--cta ][ white bg:clever--blue ]" href="/insights/"><span class="[ btn__text ][ flex center middle col-gap--0.25 ]"><span>Web Development</span><span class="[ hidden ]">abcdefg</span></span></a></li>
+              <li><a class="[ btn btn--sm btn--cta ][ white bg:clever--blue ]" href="/insights/"><span class="[ btn__text ][ flex center middle col-gap--0.25 ]"><span>Business</span><span class="[ hidden ]">abcdefg</span></span></a></li>
+            </ul>
+            <h3 class="[ font--4 ]"><a class="[ loop__link ]" href="/insights/post">The Future of SEO: Navigating Trends and Tactics in Digital Marketing</a></h3>
+            <div class="[ flex middle col-gap--0.5 ]"><span class="[ utensil ]">
+                 <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 512 512"><path d="M349.2 69.6V29.8c0-2.9.1-5.9.6-8.8 1.5-8.8 6.8-13.1 15.5-12.8 8.4.3 13.9 5.3 14.2 14.2.4 13.2.2 26.4.3 39.6v7.9c9.5 0 18.5-.1 27.4 0 10.5.1 20.8 1.6 30.3 6.5 24 12.2 35.3 32.3 35.3 58.8.1 66.4 0 132.8 0 199.2V439c0 14.8-3.7 28.5-12.8 40.3-13.6 17.5-31.9 24.7-53.7 24.7-100.3-.1-200.6 0-300.9-.1-6.6 0-13.5-.5-19.9-2.3-29.1-8-46.6-31.4-46.6-62-.1-45.5 0-91 0-136.5 0-56.2-.2-112.3.1-168.5.1-26.2 11.6-46.1 35.3-58.2 9.3-4.7 19.4-6.3 29.7-6.5 9-.2 18.1 0 28 0v-7.3c0-13.2-.3-26.4.2-39.6.5-12.5 12.5-18.8 23.3-12.7 6.2 3.5 6.9 9.7 7 15.9.2 12.2.1 24.4.1 36.6v6.7c62.5.1 124.3.1 186.6.1zM69.8 194c-.1 2-.2 3.4-.2 4.7 0 80.6.2 161.1-.2 241.7-.1 18.1 12.7 33.2 33.9 33.1 101.6-.4 203.3-.2 304.9-.2 4.3 0 8.8-.2 12.8-1.5 14.2-4.5 21.2-15.4 21.2-32.4V193.9c-124.5.1-248.1.1-372.4.1zm372-31.1c0-12.8.5-25.2-.3-37.5-.3-4.3-3-8.9-5.6-12.7-6.9-9.8-17.1-12.3-28.5-12.3-100.8.1-201.7 0-302.5.1-3.1 0-6.3.3-9.4.7-12.9 1.8-22.3 9.4-24.3 21.6-2.1 12.9-.5 26.5-.5 40 123.4.1 247 .1 371.1.1z"/></svg></span>
+              <time class="[ font--small ]" datetime="2008-02-14 20:00">November 15, 2024</time>
+            </div>
+            <div class="[ flex middle col-gap--0.5 ]"><span class="[ utensil ]"><svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 512 512"><path d="M504 102.5c-.3 16.1-5.4 29.3-16.1 40C385.7 244.3 283.5 346.1 181.4 448c-10.6 10.5-23.1 17.6-37.3 21.8-38 11.1-76.1 22.1-114.1 33.1-7.4 2.2-13.7 1.4-18.8-5-2.8-3.5-3.8-7.3-2.6-11.6 4.6-16.2 9.2-32.3 13.9-48.4 7.1-24.4 14.1-48.9 21.4-73.2 4.3-14.5 12.2-26.9 22.9-37.5 100.7-101 201.6-201.9 302.6-302.7 22-22 56-21.9 78.1-.1 13.4 13.2 26.7 26.6 39.9 39.9 10.8 10.9 16.5 23.8 16.6 38.2zM46.5 465.6c1.2-.3 1.8-.3 2.4-.5 28.7-8.4 57.5-16.7 86.1-25.2 12-3.6 22.4-10 31.3-18.9 74.1-74.2 148.3-148.4 222.5-222.6.9-.9 1.8-1.9 2.3-2.4-25-25-49.8-49.9-74.8-74.8-.7.6-1.6 1.5-2.5 2.4-74.4 74.1-148.7 148.4-223 222.7-9.1 9.1-15.3 19.8-18.9 32.1-5.2 17.6-10.3 35.2-15.4 52.8-3.3 11.2-6.6 22.5-10 34.4zM339.4 97.7c25.1 25.1 49.9 49.9 74.8 74.9-.2.1.1 0 .3-.1 17.2-17.5 34.6-34.7 51.4-52.5 10-10.6 9.6-23.9-.3-34-13-13.3-26.1-26.4-39.4-39.4-9.6-9.4-21.5-10-32.1-1.7-4.4 3.4-8.2 7.5-12.2 11.4-14.3 13.7-28.4 27.6-42.5 41.4z"/></svg></span><small class="[ pb--0 ]">Joseph Pinder</small></div>
+            <div><a class="[ btn btn--lg btn--ghost ][ clever--blue hvr:white ]" href="/insights/post"><span class="[ btn__text ][ flex center middle col-gap--0.25 ]"><span>Read More</span><span class="[ relative ]">
+                     <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 139.4 119.2"><path d="M105.1 69.3H10.3C3.4 69-.4 65.4-.4 59.3c.1-5.9 3.8-9.4 10.4-9.8 1.3-.1 2.7 0 4 0H105.6c-1.9-2-3-3.3-4.2-4.5-9.1-9.3-18.4-18.5-27.7-27.6-3.3-3.2-5-7.3-3.1-11.3 1.3-2.7 4.6-5.6 7.5-6.2 2.7-.6 6.9.8 9 2.9 16.6 16.1 32.9 32.5 49.1 48.9 4.8 4.8 4.7 10.7-.2 15.6-16 16.2-32.1 32.3-48.3 48.3-4.9 4.9-11.2 5.1-15.2.9-3.8-4-3.3-10.4 1.4-15.2 10.2-10.6 20.4-20.9 31.2-32z"/></svg></span></span></a>
+            </div>
+          </div>
+        </li>
+      </ul>  
+    */}}
+  </section>
+{{- end -}}

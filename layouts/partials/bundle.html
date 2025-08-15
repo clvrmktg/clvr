@@ -1,0 +1,7 @@
+{{ with js.Batch "scripts/components" }}
+  {{ with .Group "app" }}
+      {{ with .Script "app" }}
+          {{ .SetOptions (dict "resource" (resources.Get "prefetch.js")) }}
+      {{ end }}
+  {{ end }}
+{{ end }}
