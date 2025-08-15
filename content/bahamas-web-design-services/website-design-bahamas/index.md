@@ -1,7 +1,7 @@
 +++
 date = '2025-08-14T20:04:05-04:00'
 draft = false
-description = ''
+description = "Professional website design in The Bahamas — custom-built for speed, security, and results. We create mobile-friendly, SEO-ready websites that help Bahamian businesses attract customers, build trust, and grow online."
 
 # Hero
 title = 'Website Design Bahamas'
