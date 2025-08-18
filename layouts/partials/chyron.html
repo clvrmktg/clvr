@@ -1,0 +1,29 @@
+{{- /* Accept pages or default to all portfolio pages */ -}}
+{{- $pages := .pages | default (where site.RegularPages "Section" "portfolio") -}}
+{{- $pages = where $pages "Params.logo" "ne" nil -}}
+
+<ul class="[ chyron chyron--logos ][ flex gap--1 py--2 ]" aria-label="Client logos">
+  {{- range $p := $pages }}
+    {{- $file := $p.Params.logo | default "" -}}
+    {{- $res  := cond (ne $file "") ($p.Resources.GetMatch $file) nil -}}
+
+    {{/* Optional: fallback to /assets or other pipeline */}}
+    {{- if and (not $res) (ne $file "") -}}
+      {{- $res = resources.Get $file -}}
+    {{- end -}}
+
+    {{- if or $res (strings.HasPrefix $file "/") -}}
+      <li class="[ chyron__item ][ shrink-0 p--0.5 md:p--1 ]">
+        <a href="{{ $p.RelPermalink }}" aria-label="{{ printf "%s case study" $p.Title }}" class="[ block center middle ]">
+          {{- with $res -}}
+            {{/* Inline the SVG for crisp rendering & easy theming */}}
+            <span class="[ chyron__logo ][ block w--auto h--2.5 md:h--3.5 ]" aria-hidden="true">
+              {{ .Content | safeHTML }}
+          {{- end -}}
+        </a>
+      </li>
+    {{- else -}}
+      {{- warnf "Logo %q not found in bundle for %q" $file $p.Path -}}
+    {{- end -}}
+  {{- end }}
+</ul>

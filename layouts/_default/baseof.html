@@ -10,7 +10,9 @@
         {{ block "main" . -}}{{- end }}
       </main>
       {{- partial "footer.html" . }}
-      <script src="/scripts/app-{{ .Site.Params.Version }}.min.js" defer></script>
+      {{/* 
+        <script src="/scripts/app-{{ .Site.Params.Version }}.min.js" defer></script>  
+      */}}
       {{partial "script.html" (dict "path" "scripts/components/prefetch.js" "targetPath" "scripts/prefetch.js")}}
       {{ if or .IsHome ( .Store.Get "hasObscure" ) }}
       {{ partial "script.html" (dict "path" "scripts/components/obscure.js" "targetPath" "scripts/obscure.js") }}

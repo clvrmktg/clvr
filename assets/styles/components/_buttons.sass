@@ -96,7 +96,8 @@ $inline: 2em
   // #FF6B35
   &--cta
     color: color('white')
-    background-color: #FF6B35
+    text-shadow: em(1) em(1) em(5) color('black-5')
+    background-color: #F97316
     position: relative
 
     &::before
@@ -119,8 +120,9 @@ $inline: 2em
         +transition(width)
 
   &--ghost
-    color: color('clever-blue-dark')
-    border: $border solid color('clever-blue-dark')
+    --button-color: #{color('clever-navy')}
+    color: var(--button-color)
+    border: $border solid var(--button-color)
     position: relative
     +transition((color, border))
 
@@ -128,7 +130,7 @@ $inline: 2em
       content: ''
       width: 0
       height: 100%
-      background-color: color('clever-blue-dark')
+      background-color: var(--button-color)
       position: absolute
       top: 0
       left: 100%
@@ -137,7 +139,6 @@ $inline: 2em
 
     +hover
       color: color('white')
-      border: $border solid color('clever-blue-dark')
 
       &::before
         width: 100%

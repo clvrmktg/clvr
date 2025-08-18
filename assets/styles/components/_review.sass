@@ -1,19 +1,29 @@
 @use 'abstracts' as *
 
+// section:has(.reviews)
+//   background-color: #F7F7F7
+
+
+.text--grey
+  color: #707070
+  
 .reviews
   grid-template-rows: 1fr max-content
 
 .review
   grid-template-rows: subgrid
   grid-row: span 2
-  background-color: color('white')
-  border: em(1) solid color('clever-blue')
-
+  // background-color: color('white')
+  border: em(1) solid color('clever-navy')
+  
   > blockquote
     grid-template-rows: subgrid
     grid-row: span 2
 
 .reviewer
+
+  > cite
+    font-style: normal
 
   &__img
     width: em(64)
@@ -33,4 +43,4 @@
 
 
 .quote
-  width: 2em
+  width: 1.5em

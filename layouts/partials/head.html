@@ -41,8 +41,9 @@
     {{- end -}}
   {{- end -}}
   <noscript>
-    <style>.script { display: none; visibility: hidden }</style>
+    <style>figure[data-script] { display: none; visibility: hidden }</style>
   </noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
   {{ if .Store.Get "hasTwic" -}}
   <script src="https://{{- .Site.Params.twic -}}.twic.pics/?v1" async defer></script>
   {{- end -}}

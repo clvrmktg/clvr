@@ -8,22 +8,27 @@ description = "Clever designs and develops fast, secure, SEO-friendly websites f
 # Hero
 title = 'Bahamas Web Design'
 proposition_heading = 'Manage Your Business, Not Your Website'
+# proposition_heading = "We create fast, secure websites and keep them running"
 subtitle = "We build fast, secure, SEO-friendly websites for Bahamian businesses — helping you get online, reach more customers, and focus on what matters most."
+# subtitle = "We’ll get you online, help you reach more customers, and save time so you can manage your business, not your website."
 
 [hero]
-path = "young-black-woman-working-laptop-bahamas-cafe-clever-brand-colors.jpg"
+path = "young-black-woman-blue-hoodie-pointing.jpg"
 alt = "Young Black woman working on a laptop at a colorful café in The Bahamas, sipping coffee and smiling"
 
 
 [snapshot]
-heading = "Hassle-Free Web Design, Every Time"
-text = """
-We provide specialized web design, development, and maintenance services for small to medium-sized businesses in The Bahamas — solutions that prioritize your goals, delight your customers, and deliver results on time and on budget.
-
-- **User-Focused Design**: We create websites that are intuitive, easy to navigate, and crafted for a seamless user experience.
-- **Results-Driven**: Our designs don’t just look good—they convert visitors into customers and help grow your business.
-- **Best Practices**: We follow proven web design standards to ensure your site performs at its best, both in design and functionality.
+heading = """
+Smart, Stress-Free Web Design
 """
+text = """
+We design, develop, and maintain websites for small and medium-sized businesses in The Bahamas — solutions that focus on your goals, delight your customers, and deliver results on time and on budget.
+
+- **User-Focused:** Websites that are intuitive, easy to navigate, and built for a seamless experience.
+- **Results-Driven:** Designs that convert visitors into customers and help your business grow.
+- **Proven Process:** Built with industry best practices to ensure performance, security, and reliability.
+"""
+
 [snapshot.image]
 path = "bahamas-web-design-collaboration-clever-marketing.jpg"
 alt = "Young Bahamian man and woman collaborating on a website design at a bright modern workspace in Nassau, The Bahamas"
@@ -36,15 +41,15 @@ subhead  = "Website Design Services"
 key   = "web-design"
 title = "Web Design"
 blurb = "Custom websites built for speed, mobile performance, and conversion — designed for businesses in The Bahamas."
-cta   = "Request a Quote"
 href  = "/bahamas-web-design-services/website-design-bahamas/"
+icon = "monitor.svg"
 
 [[services.items]]
 key   = "seo"
-title = "Search Engine Optimization"
+title = "Local SEO"
 blurb = "Strategies that help you rank higher on Google and reach more local and international customers."
 cta   = "Request an SEO Review"
-href  = "/bahamas-web-design-services/search-engine-optimization-seo/"
+href  = "/bahamas-web-design-services/seo-bahamas/"
 
 [[services.items]]
 key   = "digital-marketing"
@@ -61,48 +66,48 @@ cta   = "Start Maintenance"
 href  = "/bahamas-web-design-services/website-maintenance/"
 
 [features]
-headline = "Fast, Secure and Affordable"
-subhead  = "Websites Designed for Success"
+headline = "Websites Designed for Success"
+subhead  = "When you choose Clever, you don’t just get a website — you get a complete solution built to support your business. Every site we create comes with the essentials that help you attract customers, build trust, and grow online."
 
 [[features.items]]
 key = "Responsive"
 title = "Web Design"
-description = "Your website will be visually appealing and fully responsive, ensuring a seamless experience for users across all devices, from desktops to smartphones."
-icon = "responsive-web-design.svg"
+description = "Look great on every device — from desktop to mobile — so your business always makes the right first impression."
+icon = "devices.svg"
 
 [[features.items]]
-key = "Fast"
-title = "Page Performance"
-description = "Your website will load quickly and run smoothly, delivering a seamless user experience while boosting search engine rankings and keeping users engaged."
-icon = "speed.svg"
+key = "Faster"
+title = "Page Speeds"
+description = "Fast-loading pages keep visitors engaged, boost your Google ranking, and stop customers from clicking away."
+icon = "bolt.svg"
 
 
 [[features.items]]
 key = "Custom"
 title = "Web Development"
-description = "Your website will be built with custom features tailored to your unique needs, a lightweight, secure, high-performance website supporting your business goals."
-icon = "web-development.svg"
+description = "Custom features built for your business — giving you a secure, high-performance site that supports your goals."
+icon = "code.svg"
 
 
 [[features.items]]
 key = "Enhanced"
 title = "SEO"
-description = "Your website will follow proven SEO practices to boost its search engine ranking, making it easier for users to find, driving traffic, and improving online visibility."
-icon = "seo.svg"
+description = "Be found when it matters. Smart SEO helps customers discover you, drives traffic, and builds long-term visibility."
+icon = "search.svg"
 
 
 [[features.items]]
 key = "Better"
 title = "Web Accessibility"
-description = "Your website will be accessible to everyone, including people with disabilities, improving usability and ensuring compliance with WCAG standards and legal requirements."
-icon = "accessibility.svg"
+description = "Reach everyone. Accessible design ensures your site works for all users and meets modern standards."
+icon = "accessibility_new.svg"
 
 
 [[features.items]]
 key = "Ongoing"
 title = "Website Maintenance"
-description = "Your website will remain secure and up-to-date with proactive support, ensuring smooth functionality and uninterrupted service for your users at all times."
-icon = "customizable-websites.svg"
+description = "Stay worry-free. We keep your site secure, updated, and running smoothly so you can focus on your business."
+icon = "construction.svg"
 
 [[faqs.items]]
 question = "How much does a website cost in The Bahamas?"

@@ -12,19 +12,21 @@
   {{ end }}
 {{ end }}
 {{ if gt (len $all) 0 }}
-<section class="[ full-width content-grid bg:blue--50 section--padding layout--spacing ]">
+<section class="[ full-width content-grid section--padding layout--spacing bg:blue--50 ]">
   <h2 class="[ flex flex--column ]">
     <span class="[ font--5 text--center upper clever--blue ]">Real People, Real Reviews</span>
-    <span class="[ font--2 text--center ]">What Our Clients Are Saying</span>
+    <span class="[ merriweather font--2 text--center ]">What Our Clients Are Saying</span>
   </h2>
   {{ $shuffled := shuffle $all }}
-  {{ $limited := first 3 $shuffled }}
-  <ul class="[ reviews ][ grid lg:col--3 gap--2 ]">
+  {{ $limited := first 4 $shuffled }}
+  <ul class="[ reviews ][ grid md:col--2 lg:col--3 gap--1 ]">
     {{ range $limited }}
-    <li class="[ review ][ grid subgrid--y px--1 py--3 r--5 ]">
-      <blockquote class="[ grid subgrid--y ]">
+    <li class="[ review ][ grid px--1 py--3 r--10 ]">
+      <blockquote class="[ grid ]">
         <div>
-          <div class="[ quote ][ mb--1 ]"><svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 68 53.7"><path d="M27.6 0C18.8 0 10.8 3.9 5.5 10.2c-.6.7-1.2 1.5-1.7 2.2-2.1 3.1-3.5 7.1-3.7 12v29.3H29.8V24h-15c1-3.5 3.3-6.5 6.5-8.2l2.7-1.1c1.2-.3 2.4-.5 3.6-.5.7 0 1.4.1 2.1.2V.1C29 0 28.3 0 27.6 0zM65.9 0C57 0 49.1 3.9 43.7 10.2c-.6.7-1.2 1.5-1.7 2.2-2.1 3.1-3.5 7.1-3.7 12v29.3H68V24H53.1c1-3.5 3.3-6.5 6.5-8.2l2.7-1.1c1.2-.3 2.4-.5 3.6-.5.7 0 1.4.1 2.1.2V.1c-.7-.1-1.4-.1-2.1-.1z" fill="#1464ff"/></svg></div>
+          <div class="[ quote ][ mb--1 ]">
+            {{ readFile "static/icons/quote.svg" | safeHTML }}
+          </div>  
           {{ if gt (len .text) 150 }}
           {{ $clip := substr .text 0 150 }}
           {{ $words := findRE ".*\\s" $clip }}
@@ -40,18 +42,16 @@
             <p>{{ .text }}</p>
           {{ end }}
         </div>
-        <footer class="[ flex flex--column lg:flex--row lg:middle gap--1 ]">
-          <div class="[ reviewer ][ o--2 ]">
-            <cite class="[ flex flex--column pb--0.25 ]">
-              <span class="[ font--600 ]">- {{ .author_name }}</span>
-            </cite>
+        <footer class="[ reviewer ]">
             <div class="stars">
               {{- $fullStars := int .rating -}}
               {{- $emptyStars := sub 5 $fullStars -}}
               {{- range seq $fullStars -}}★{{- end -}}
               {{- range seq $emptyStars -}}☆{{- end -}}
-            </div>
-          </div>
+            </div>  
+            <cite class="[ flex flex--column pb--0.25 ]">
+              <span class="[ font--600 ]">{{ .author_name }}</span>
+            </cite>
         </footer>
       </blockquote>
     </li>

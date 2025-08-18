@@ -6,6 +6,7 @@
   +hsl('white', #fcfcfc)
   +hsl('black', rgb(13 17 23))
   +hsl('black', rgb(13 17 23), 3)
+  +hsl('black', rgb(13 17 23), 5)
 
   +hsl('grey-300', #e0e0e0)
 
@@ -13,18 +14,19 @@
   +hsl('section-background', #edf5ff)
 
 
-  +hsl('clever-light', #edf5ff)   // /* Soft background */
+  // +hsl('clever-light', #edf5ff)   // /* Soft background */
+  +hsl('clever-light', #D8E2E7)
   +hsl('clever-blue', #1464ff, 1)
   +hsl('clever-blue', #1464ff, 5)
   +hsl('clever-navy', #0a1e46, 0)
-  +hsl('clever-navy', #0a1e46, 5)
-  +hsl('clever-navy', #0a1e46, 8)
+  +hsl('clever-navy', #0a1e46, 3)
+  +hsl('clever-navy', #0a1e46, 7)
 
-  +hsl('clever-blue', #1464ff)    // /* Primary blue */
-  +hsl('clever-blue-dark', #004ee4) // /* Deep accent */
+  +hsl('clever-blue', #0016EC)    // /* Primary blue */
+  +hsl('clever-blue-dark', #0015D6) // /* Deep accent */
   +hsl('clever-navy', #0a1e46)    // /* Dark base */
 
-  +hsl('text-color', #333333)
+  +hsl('text-color', #001018)
 
   --navbar-height: #{em(100)}
   
@@ -36,9 +38,9 @@
   // --code-background: rgb(35, 35, 35)
   // --monospace: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace
   
-  --sans-serif: Inter, system-ui, sans-serif
+  --sans-serif: system-ui, sans-serif
 
-  $headings: (h1: 4, h2: 3, h3: 2, h4: 1, h5: 0, h6: -1)
+  $headings: (large: 5, h1: 4, h2: 3, h3: 2, h4: 1, h5: 0, h6: -1)
 
   @each $tag, $step in $headings
     $min-size: type-scale($step, $min-font-size, $min-scale)
@@ -46,3 +48,5 @@
 
     // @debug "Step: #{$step}, Min Size: #{$min-size}, Max Size: #{$max-size}"
     +clamp('--step-#{$step}', $min-size, $max-size)
+
+  interpolate-size: allow-keywords

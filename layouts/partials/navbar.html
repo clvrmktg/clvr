@@ -4,7 +4,7 @@
     <a class="[ logo ][ flex middle blue--900 ]" href="/" title="Home" aria-label="Home">
       {{- readFile "static/icons/logo.svg" | safeHTML }}
     </a>
-    <label class="[ navicon ][ flex middle relative ]" id="navicon" for="click">
+    <label class="[ navicon ][ middle relative ]" id="navicon" for="click">
       <input class="[ hidden ]" id="click" type="checkbox" aria-label="Menu"><b class="[ bar ][ block ]"></b>
     </label>
     <nav class="[ navigation--main ][ none lg:flex lg:middle ]">
@@ -14,18 +14,27 @@
       {{with $context}}
         {{ range .Site.Menus.main }}
         <li class="[ menu__item ][ font--600 relative no-wrap  ]">
-            <a class="[ menu__link ][ flex--col center ]{{ if eq $.currentPage.RelPermalink .URL }}[ current ]{{ end }}" href="{{ .URL }}" {{ if eq $.currentPage.RelPermalink .URL }}aria-current="page"{{ end }} data-prefetch>{{ .Name }}</a>
             {{ if .HasChildren }}
-            <button popovertarget="submenu_{{ .Weight }}" class="[ submenu--trigger down-arrow ][ flex middle ]">
-              {{- readFile "static/icons/down-arrow.svg" | safeHTML }}
-            </button>
+            <div class="[ col-gap--0.5 ]">
+              <a class="[ menu__link ][ flex flex--column center {{ if eq $.currentPage.RelPermalink .URL }}current {{ end }}]" href="{{ .URL }}" {{ if eq $.currentPage.RelPermalink .URL }}aria-current="page"{{ end }} data-prefetch>{{ .Name }}</a>
+              <label class="[ arrow ][ flex center middle ]" for="submenu">
+                <input class="[ hidden ]" id="submenu" type="checkbox" aria-label="Submenu">
+                <span class="[ icon icon--arrow ]">
+                  {{- readFile "static/icons/down-arrow.svg" | safeHTML }}
+                </span>
+              </label>
+            </div>
+            {{else}}
+            <a class="[ menu__link ][ flex flex--column center ]{{ if eq $.currentPage.RelPermalink .URL }}[ current ]{{ end }}" href="{{ .URL }}" {{ if eq $.currentPage.RelPermalink .URL }}aria-current="page"{{ end }} data-prefetch>
+              <span>{{ .Name }}</span>
+            </a>
             {{ end }}
           {{ if .HasChildren }}
-          <ul id="submenu_{{ .Weight }}" popover class="[ submenu ]">
+          <ul id="submenu-{{ .Weight }}" class="[ submenu ]">
             {{ range .Children }}
-            <li class="[ submenu__item ]">
-              <a class="[ submenu__link ][ block no-wrap py--1 ]" href="{{ .URL }}" data-prefetch>{{ .Name }}</a>
-            </li>
+              <li class="[ submenu__item ]">
+                <a class="[ submenu__link ][ block no-wrap py--1 ]" href="{{ .URL }}" data-prefetch>{{ .Name }}</a>
+              </li>
             {{ end }}
           </ul>
           {{ end }}

@@ -11,6 +11,8 @@ portfolio_deliverables = ["Web Design", "Website Maintenance"]
 
 project_link = "https://abacoaggregate.net"
 
+logo = "aac-logo-white.svg"
+
 [thumb]
 path = "aac-thumb.jpg"
 alt= ""

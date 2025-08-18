@@ -61,9 +61,6 @@
 .block
   display: block
 
-.grid
-  display: grid
-
 .flex
   display: flex
 
@@ -76,9 +73,6 @@
 +direction(row)
 +direction(row, 'md')
 +direction(row, 'lg')
-
-
-
 
   
 .flex--wrap
@@ -101,4 +95,8 @@
 .end
   justify-content: flex-end
 
-// +width(700)
+.grid
+  display: grid
+
+  &.center
+    justify-items: center

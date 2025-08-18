@@ -48,6 +48,15 @@ title = "Ongoing Monitoring"
 description = "We track rankings, traffic, and performance — adjusting your strategy for long-term results."
 icon = "insights.svg"
 
+# Why It Matters
+
+[why]
+text = """
+Even the best-looking website won’t help if no one can find it. Search engines are how most people discover businesses today, and ranking low means lost traffic and missed opportunities.
+
+We focus on strategies that improve your visibility, build credibility with search engines, and connect you with the customers already searching for your services in The Bahamas.
+"""
+
 # The Process
 [[process.items]]
 title = "Audit"

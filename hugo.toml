@@ -73,7 +73,7 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
 [[menu.main]]
   parent = "services"
   name = "Search Engine Optimization"
-  url = "/bahamas-web-design-services/search-engine-optimization-seo/"
+  url = "/bahamas-web-design-services/seo-bahamas/"
   weight = 2
 
 [[menu.main]]
@@ -100,17 +100,17 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
   url = "/about-us/"
   weight = 3
 
-[[menu.main]]
-  identifier = "insights"
-  name = "Insights"
-  url = "/insights/"
-  weight = 4
+# [[menu.main]]
+#   identifier = "insights"
+#   name = "Insights"
+#   url = "/insights/"
+#   weight = 4
 
 [[menu.main]]
   identifier = "contact-us"
   name = "Contact Us"
   url = "/contact-us/"
-  weight = 5
+  weight = 4
 
 
 [[menu.policies]]

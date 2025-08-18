@@ -1,14 +1,19 @@
 @use 'sass:math'
 @use '../abstracts' as *
-  
+
 .navbar
   --_animationStartsAfter: 50vh
   --_animationDistance: 400px
-  background-color: var(--white)
+  background-color: color('white')
   width: 100%
   height: var(--navbar-height)
+  // position: sticky
+  // top: 0
+  // left: 0
+  // z-index: 10
 
   @supports (animation-timeline: view())
+    // position: fixed
     top: calc(var(--navbar-height) * -1)
 
     animation: navScroll linear forwards
@@ -25,18 +30,20 @@
     fill: color('clever-blue')
 
 .backdrop
+  width: 100vw
   height: inherit
   position: absolute
-  top: 0
-  left: 0
+  inset: 0
+  margin: auto
   z-index: -1
 
 .logo
   +clamp(width, 100, 120)
 
+
 .navigation--main
   height: inherit
-  background-color: var(--white)
+  background-color: color('white')
 
   +device(tablet)
     display: block
@@ -51,11 +58,42 @@
     z-index: -5
     +transition((visibility, left, background-color))
 
-.down-arrow
+.icon--arrow
   width: 0.75em
   transform: rotate(0deg)
   +transition(transform)
 
+.arrow
+
+  +device(tablet)
+    width: 3em
+    position: relative
+    cursor: pointer
+
+    &::before
+      content: ''
+      width: em(2)
+      height: 100%
+      background-color: color('black')
+      position: absolute
+      left: 0
+      top: 0
+
+    &:has(#submenu:focus-visible)
+      outline: -webkit-focus-ring-color auto 1px
+
+  +device(desktop)
+    display: block
+    pointer-events: none
+    user-select: none
+    cursor: not-allowed
+
+    > input
+      display: none
+      visibility: hidden
+      pointer-events: inherit
+      user-select: inherit
+      cursor: inherit
   
 .menu
   display: flex
@@ -63,12 +101,9 @@
 
   +device(tablet)
     flex-direction: column
-    +clamp(padding-right, 10, 20)
-    +clamp(padding-left, 10, 20)
-  
 
   &__item
-    color: var(--black)
+    color: color('black')
     align-items: center
 
     +device(desktop)
@@ -98,12 +133,20 @@
         &::after
           width: 100%
 
+        > .submenu
+          top: 100%
+          z-index: -2
+
+        .icon--arrow
+          transform: rotate(180deg)
+
     +device(tablet)
       flex-direction: column
       padding:
         top: 1em
         bottom: 1em
-      border-bottom: em(2) solid var(--grey--400)
+      border-bottom: em(2) solid color('grey--300')
+
 
       > div
         display: grid
@@ -120,31 +163,26 @@
             bottom: 1em
           justify-content: space-between
 
-          
+      &:has(#submenu:checked)
+
+        .icon--arrow
+          transform: rotate(-180deg)
+
+        .submenu
+          max-height: 2000em
+          visibility: visible
+        
 
   &__link
-    // height: 100%
     color: inherit
     position: relative
     +transition(color)
 
-    // +device(tablet)
-    //   display: block
-
-    //     &::before
-    //     content: ''
-    //     width: em(4)
-    //     height: 80%
-    //     background-color: var(--blue--800-0)
-    //     position: absolute
-    //     top: 10%
-    //     +clamp(left, -10, -20)
-    //     +transition(background-color)
-    
-    //   +hover
-
-    //     &::before
-    //       background-color: color('clever-blue-dark')
+    +device(tablet)
+      display: block
+      +clamp(padding-right, 10, 20)
+      +clamp(padding-left, 10, 20)
+  
 
   +device(desktop)
 
@@ -156,83 +194,54 @@
 
 
 .submenu
-  background-color: var(--white)
-  border: 0
-  border-bottom: em(6) solid color('clever-blue-dark')
-  box-shadow: 0 em(4) em(4) color('black-3')
-  position: absolute
-  position-anchor: --submenu-btn
-  inset: auto
-  top: anchor(top)
-  right: anchor(right)
-  // margin: 0
-  margin-block-start: 3.2em
-  margin-right: -7em
-  opacity: 0
-  +transition((display, opacity))
-  transition-behavior: allow-discrete
 
-  &--trigger
-    anchor-name: --submenu-btn
-    top: anchor(top)
-    right: anchor(right)
+  +device(desktop)
+    background-color: color('white')
+    border-bottom: em(6) solid color('clever-blue-dark')
+    box-shadow: 0 em(4) em(4) var(--black--3)
+    position: absolute
+    top: -500%
+    left: 0
+    z-index: -2
 
-  &:popover-open
-    display: grid
-    opacity: 1
+    +transition(top)
 
-    @starting-style
-      opacity: 0
-
-    // transform: rotate(180deg)
-
-  // +device(desktop)
-  //   position: absolute
-  //   top: -500%
-  //   left: 0
-  //   z-index: -2
-
-  //   +transition(top)
-
-  // +device(tablet)
-  //   max-height: 0
-  //   background-color: color('clever-blue-dark')
-  //   border-radius: em(10)
-  //   visibility: hidden
-  //   overflow: hidden
-  //   +transition((max-height, visibility))
+  +device(tablet)
+    max-height: 0
+    background-color: color('clever-light')
+    visibility: hidden
+    overflow: hidden
+    +transition((max-height, visibility))
   
   &__link
-    color: var(--black)
+    color: color('black')
+    position: relative
+    
+    &::after
+      content: ''
+      width: 100%
+      height: rem(1)
+      background-color: color('clever-light')
+      position: absolute
+      bottom: 0
+      left: 0
+      z-index: 1
+
+    &:last-of-type::after
+      content: none
 
     +device(tablet)
-      color: var(--white)
-      // border-bottom: em(2) solid var(--grey--400)
       position: relative
+
       +clamp(padding-right, 10, 20)
       +clamp(padding-left, 10, 20)
 
-      // &:first-of-type
-      //   border-top: em(2) solid var(--grey--400)  
-
-      // &:last-of-type
-      //   border-bottom: none
-
-      // &::before
-      //   content: ''
-      //   width: em(4)
-      //   height: 80%
-      //   background-color: var(--blue--800-0)
-      //   position: absolute
-      //   top: 10%
-      //   left: 0
-      //   +transition('background-color')
-      
       +hover
-        background-color: var(--blue--900)
+        color: color('white')
+        background-color: color('clever-blue-dark')
 
-      //   &::before
-      //     background-color: color('clever-blue-dark')
+        
+
 
     +device(desktop)
       padding: 
@@ -241,13 +250,14 @@
       +transition((color, background-color))
 
       +hover
-        color: var(--white)
+        color: color('white')
         background-color: color('clever-blue-dark')
 
     
 .navicon
   width: em(25)
   height: em(20)
+  display: flex
   position: relative
   z-index: 2
   cursor: pointer
@@ -291,16 +301,13 @@
   position: fixed
 
   .navigation--main
-    // background-color: var(--black--4)
     visibility: visible
-    left: calc(100vw - #{em(338)})
-
+    left: calc(100vw - 20.5em)
 
     > ul
       opacity: 1
   
   .bar
-    background-color: var(--blue--A700)
     transform: rotate(225deg)
   
     &::before
@@ -310,5 +317,3 @@
     &::after
       bottom: 0
       transform: rotate(-90deg)
-
-+radius(5)

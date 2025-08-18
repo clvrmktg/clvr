@@ -4,42 +4,35 @@
 {{- end -}}
 {{- define "main" -}}
   {{ partial "hero.html" . }}
+  {{/* 
+    {{ partial "chyron.html" (dict "pages" (where .Site.RegularPages "Section" "portfolio")) }}
+  */}}
   {{ with .Params.snapshot }}
   <section class="[ full-width content-grid bg:blue--50 ]" aria-labelledby="snapshot-heading">
     <div class="[ grid middle lg:col--2 lg:col-gap--4 col-gap--2 row-gap--2 section--padding ]">
         <div class="[ o--2 ]">
-          <h2 id="snapshot-heading">{{ .heading }}</h2>
+          <h2 id="snapshot-heading" class="[ merriweather ]">{{ .heading | safeHTML }}</h2>
           {{ .text | markdownify }}
-          <p>Find out what makes Clever a trusted Bahamas web design partner.</p>
         <div>
-          {{ partial "buttons/primary.html" (dict "url" "/about-us" "text" "More About Us")}}
+          <div class="[ flex flex--column lg:flex--row col-gap--1 row-gap--0.5 ]">
+            {{ partial "buttons/cta.html" (dict "url" "/contact-us/" "text" "Get Your Quote Today")}}
+            {{ partial "buttons/ghost.html" (dict "url" "/about-us" "text" "More About Us")}}
+          </div>
         </div>
       </div>
       <div class="[ o--1 ]">
-        {{ with .image }}
-          {{ $twic := site.Params.twic }} {{/* e.g., params.twic = "your-subdomain" */}}
-          {{ $bg := printf "https://%s.twic.pics/%s?twic=v1/output=preview" $twic .path }}
-          {{ $uniq := hash.FNV32a .path }}
-          {{ $hex  := replace (printf "%x" $uniq) "-" "" }}
-          <figure class="[ ratio--1:1 o--1 ]">
-            <picture id="picture-{{ $hex }}" class="[ bg ][ r--10 ]">
-              <style> #picture-{{ $hex }} {background-image: url('{{ $bg }}')} </style>
-              <img data-twic-src="image:{{ .path }}" data-twic-focus="auto" alt="{{ .alt | default $.Title }}">
-              <noscript><img class="[ script ]" src="{{ $bg }}" alt="{{ .alt | default $.Title }}"></noscript>
-            </picture>
-          </figure>
-        {{ end }}
+        {{partial "image.html" (dict "image" .image "ratio" "1:1" "helper" "lg:ratio--4:5" "page" $)}}
       </div>
     </div>
-  </section>
+</section>
   {{ end }}
   {{ partial "services.html" . }}
   <section class="[ full-width content-grid layout--spacing section--padding bg:blue--50">
-    <div class="[ lg:flex between middle ]">
+    <div class="[ lg:flex between ]">
       <div>
-        <h2 class="[ font--5 upper clever--blue ]">Recent Work</h2>
-        <h3 class="[ font--2 ]">From Our Portfolio</h3>
-        <p class="[ ch--35 ]">See something you like? Ask us about it. We'll use it as inpsiration for your next project.</p>
+        <h2 class="[ font--5 font--400 text-grey ]">Recent Work</h2>
+        <h3 class="[ merriweather font--2 ]">From Our Portfolio</h3>
+        <p class="[ font--4 ch--45 ]">Browse some of our recent web design projects. If you see something that inspires you, let us know — we’ll tailor a solution that fits your business.</p>
       </div>
       <div>
         {{ partial "buttons/ghost.html" (dict "url" "/portfolio" "text" "See Our Work")}}
@@ -47,29 +40,32 @@
     </div>
     {{ with site.GetPage "section" "portfolio" }}
       {{ $items := first 3 (.Pages.ByWeight) }}
-      {{ partial "projects.html" (dict "pages" $items) }}
+      {{ partial "projects.html" (dict "pages" $items ) }}
     {{ end }}
   </section>
   {{ with .Params.features }}
   <section class="[ features ]" aria-labelledby="features-heading">
     <div class="[ grid section--padding layout--spacing ]">
-      <h2 id="features-heading" class="[ flex flex--column ]">
-        <span class="[ font--5 text--center upper clever--blue ]">{{ .headline }}</span>
-        <span class="[ font--2 text--center ]">{{ .subhead }}</span>
-      </h2>
-      <ul class="[ grid lg:col--3 gap--2 ]">
+      <div class="[ grid center text--center ]">
+        <h2 id="features-heading" class="[ merriweather ]">{{ .headline }}</h2>
+        <p class="[ font--4 ch--60 ]">{{ .subhead }}</p>
+      </div>
+      <ul class="[ grid md:col--2 lg:col--3 gap--2 ]">
         {{ range .items }}
-        <li class="[ feature ][ flex flex--column gap--1 ]">
-          <div class="[ o--2 ]">
-            <h3>
-              <span class="[ font--5 upper clever--blue ]">{{ .key }}</span>
-              <br>{{ .title }}
+        <li class="[ feature ][ flex flex--column gap--0.5 ]">
+          <div class="[ feature__heading ][ flex middle col-gap--0.5 ]">
+            {{ with $.Resources.GetMatch .icon }}
+            <div class="[ icon ]">
+              {{ .Content | safeHTML }}
+            </div>
+            {{ end }}
+            <h3 class="[ grid ]">
+              <span class="[ key ][ font--5 ]">{{ .key }}</span>
+              <span class="[ merriweather ]">{{ .title }}</span>
             </h3>
-            <p>{{ .description }}</p>
           </div>
-          <div class="[ o--1 ]">
-            {{ readFile (printf "static/icons/%s" .icon) | safeHTML }}
-          </div>
+          <p>{{ .description }}</p>
+
         </li>
         {{ end }}
       </ul>
@@ -78,6 +74,11 @@
   {{ end }}
   {{ partial "reviews/reviews.html" . }}
   {{ partial "faqs.html" . }}
+  {{ partial "cta.html" . }}
+{{- end -}}
+
+
+{{/* 
   <section class="[ full-width content-grid bg:blue--50 section--padding layout--spacing ]" aria-labelledby="insights-heading">
     <div class="[ lg:flex between middle ]">
       <div>
@@ -89,7 +90,6 @@
                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 139.4 119.2"><path d="M105.1 69.3H10.3C3.4 69-.4 65.4-.4 59.3c.1-5.9 3.8-9.4 10.4-9.8 1.3-.1 2.7 0 4 0H105.6c-1.9-2-3-3.3-4.2-4.5-9.1-9.3-18.4-18.5-27.7-27.6-3.3-3.2-5-7.3-3.1-11.3 1.3-2.7 4.6-5.6 7.5-6.2 2.7-.6 6.9.8 9 2.9 16.6 16.1 32.9 32.5 49.1 48.9 4.8 4.8 4.7 10.7-.2 15.6-16 16.2-32.1 32.3-48.3 48.3-4.9 4.9-11.2 5.1-15.2.9-3.8-4-3.3-10.4 1.4-15.2 10.2-10.6 20.4-20.9 31.2-32z"/></svg></span></span></a>
       </div>
     </div>
-    {{/* 
       <ul class="[ loop ][ grid md:col--2 lg:col--3 gap--2 ]">
         <li class="[ article article--1 loop__item ][ grid bg:white r--10 ]" id="article-1">
           <a class="[ thumb__link ]" href="/insights/post" aria-label="The Future of SEO: Navigating Trends and Tactics in Digital Marketing">
@@ -122,6 +122,5 @@
           </div>
         </li>
       </ul>  
-    */}}
-  </section>
-{{- end -}}
+  </section>  
+*/}}

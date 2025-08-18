@@ -318,7 +318,7 @@
     display: block
     height: 100%
 
-    > img, > noscript > img
+    > img
       height: inherit
       object-fit: cover
 
@@ -326,15 +326,22 @@
     padding-top: $width/$height
     position: relative
 
-    > img, > noscript > img
+    > img
       position: absolute
       top: 0
       left: 0
       
-=ratio($width, $height)
+=ratio($width, $height, $breakpoint: null)
+  $breakpoints: (sm: phone, md: tablet, lg: desktop, xl: xl)
 
-  +util('ratio--#{$width}\\:#{$height}')
-    +block($width, $height)
+  @if map.get($breakpoints, $breakpoint) != null
+    .#{$breakpoint}\:ratio--#{$width}\:#{$height}
+      +breakpoint(map.get($breakpoints, $breakpoint))
+        +block($width, $height)
+
+  @else
+    .ratio--#{$width}\:#{$height}
+      +block($width, $height)
 
 =transition($properties, $duration: null)
   @if $duration

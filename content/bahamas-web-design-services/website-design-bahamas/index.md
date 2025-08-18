@@ -47,8 +47,23 @@ description = "Structured for search engine visibility so you can rank higher."
 title = "Easy to Manage"
 description = "Edit content without touching code (optional CMS integration)."
 
+# Why It Matters
+
+[why]
+text = """
+A slow, outdated, or poorly designed website can cost you customers. Studies show that visitors form an opinion about your business within seconds of landing on your site.
+
+We make sure those seconds work in your favor — with clear navigation, engaging visuals, and calls to action that guide visitors to contact or buy.
+"""
+
+[why.image]
+path = "john-doe-design.jpg"
+alt = "A path"
+
 
 # The Process
+[process]
+subhead = "A clear, stress-free path to launching your website."
 
 [[process.items]]
 title = "Discovery"

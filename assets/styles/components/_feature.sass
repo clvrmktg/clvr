@@ -1,7 +1,23 @@
 @use 'abstracts' as *
   
-.feature svg
-  max-width: em(65)
+.feature 
+  &__heading
+
+    outline: $bg
+
+  > h3
+    outline: $bg
+  
+  .icon
+    width: 0.75em
+    background-color: rgba(#e67e22, 0.1)
+
+  svg
+    fill: #e67e22
 
 .line
   height: em(2)
+
+.key
+  color: #e67e22
+

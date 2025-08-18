@@ -1,47 +1,65 @@
-{{/* services.html (partial or section) */}}
+{{ $svc := site.Data.services.services }}
 
-{{/* Prefer page params; fall back to site params */}}
-{{- $svc := .Params.services -}}
-{{- if not $svc -}}
-  {{- $svc = .Site.Params.services -}}
-{{- end -}}
-
-{{- with $svc }}
+{{ with $svc }}
 <section class="[ grid layout--spacing section--padding ]" aria-labelledby="services-heading">
-  <h2 id="services-heading" class="[ flex flex--column center ]">
-    <span class="[ font--5 text--center upper clever--blue ]">{{ .headline }}</span>
-  <span class="[ text--center ]">{{ .subhead }}</span>
-  </h2>
+  <div class="[ grid center text--center ]">
+    <h2 id="services-heading" class="[ merriweather ]">{{ .subhead }}</h2>
+  
+    <p class="[ font--4 ch--60 ]">
+      Our web design services cover everything from getting your site online 
+      to keeping it secure and performing at its best. Whether you need a new 
+      website, SEO, or ongoing support, Clever makes it simple.
+    </p>
+  </div>
 
-  <ul class="[ services ][ grid  row-gap--2 col-gap--2 lg:col-gap--4 ]">
-    {{- range $i, $item := .items }}
-      {{- $isPrimary := eq $item.key "web-design" -}}
-      <li class="{{ if $isPrimary }}[ service--primary ][ flex flex--column center middle gap--2 text--center p--2 r--15 ]{{ else }}[ service service--{{ $i }} ][ flex flex--column lg:flex--row center lg:middle col-gap--1.5 row-gap--2 ]{{ end }}">
-        <div class="[ o--2 ]">
-          <h3{{ if $isPrimary }} class="[ flex center ]"{{ end }}>
-            <a class="[ service__link ][ flex middle col-gap--0.25 ]" href="{{ $item.href }}" data-prefetch>{{ $item.title }}</a>
-          </h3>
-          <p>{{ $item.blurb }}</p>
+  <div class="[ services ][ grid middle lg:col--2 lg:col-gap--4 row-gap--4 ]">
+    {{ range $i, $item := .items }}
+      {{ $isPrimary := eq $item.key "web-design" }}
 
-          {{/* Primary gets the full button; others get a subtle text CTA if provided */}}
-          {{- if $isPrimary -}}
-            {{- partial "buttons/cta.html" (dict "url" $item.href "text" $item.cta) -}}
-          {{- end }}
+      {{ if $isPrimary }}
+      <article class="[ service--primary ][ grid center middle gap--2 text--center p--2 r--15 ]">
+        <a class="[ service__link ][ grid center ]" href="{{ $item.href }}" data-prefetch>
+          {{ if $item.icon }}
+          <div class="icon">
+            {{ readFile (printf "static/icons/%s" $item.icon) | safeHTML }}
+          </div>
+          {{ end }}
+          <div>
+            <h3 class="[ merriweather flex center middle col-gap--0.25 ]">
+              <span>{{ $item.title }}</span>
+            </h3>
+            <p>{{ $item.blurb }}</p>
+          </div>
+        </a>
+        <div>
+          {{ partial "buttons/cta.html" (dict "url" $item.href "text" "Get Your Quote Today") }}
         </div>
+      </article>
+      {{ end }}
+    {{ end }}
 
-        <div class="[ o--1 ]">
-          {{/* Map service keys to SVG icons */}}
-          {{- $iconMap := dict
-              "web-design"        "static/icons/responsive-web-design.svg"
-              "seo"               "static/icons/seo.svg"
-              "digital-marketing" "static/icons/marketing.svg"
-              "maintenance"       "static/icons/customizable-websites.svg"
-            -}}
-          {{- $iconPath := index $iconMap $item.key | default "static/icons/placeholder.svg" -}}
-          {{- readFile $iconPath | safeHTML -}}
-        </div>
-      </li>
-    {{- end }}
-  </ul>
+    <div class="[ grid gap--2 ]">
+      {{ range $i, $item := .items }}
+        {{ $isPrimary := eq $item.key "web-design" }}
+        {{ if not $isPrimary }}
+        <article class="[ service service--{{ $i }} ][ flex flex--column lg:flex--row center lg:middle col-gap--1.5 row-gap--2 ]">
+          <a class="[ service__link ]" href="{{ $item.href }}" data-prefetch>
+            {{ if $item.icon }}
+            <div class="icon">
+              {{ readFile (printf "static/icons/%s" $item.icon) | safeHTML }}
+            </div>
+            {{ end }}
+            <div>
+              <h3 class="[ merriweather flex middle col-gap--0.25 ]">
+                <span>{{ $item.title }}</span>
+              </h3>
+              <p>{{ $item.blurb }}</p>
+            </div>
+          </a>
+        </article>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
 </section>
-{{- end }}
+{{ end }}

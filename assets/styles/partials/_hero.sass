@@ -10,7 +10,10 @@
   &.hero--home
     background-color: color('clever-navy')
     // min-height: em(800)
-    min-height: calc(100svh - var(--navbar-height))
+    min-height: calc(90vh - var(--navbar-height))
+    
+    @supports (min-height: 100svh)
+      min-height: calc(90svh - var(--navbar-height))
 
   > .wrapper
     min-height: inherit
@@ -23,7 +26,7 @@
       height: inherit
       position: absolute
       inset: 0
-      background: linear-gradient(to right, color('clever-navy-8') 10%, color('clever-navy-5') 40%, color('clever-navy-0') 100%)
+      background: linear-gradient(to right, color('clever-navy-7') 20%, color('clever-navy-3') 50%, color('clever-navy-0') 100%)
       z-index: 1
 
   &__content

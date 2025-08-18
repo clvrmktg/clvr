@@ -1,7 +1,7 @@
 +++
 
 date = '2025-08-13T19:20:21-04:00'
-draft = true
+draft = false
 title = 'Nexia Cochinamogulos'
 description = ""
 
@@ -10,19 +10,21 @@ portfolio_categories = ["Business"]
 portfolio_deliverables = ["Website Design", "Website Maintenance"]
 
 # External link
-project_link = ""
+project_link = "https://nexiafsb.com"
+
+logo = "nexia-logo-white.svg" 
 
 # Page resource refs (add the files to this folder)
 [thumb]
-path = ""
+path = "nexia-cochinamogulos-website-thumbnail.jpg"
 alt  = ""
 
 [share]
-path = ""
+path = "nexia-cochinamogulos-website-share.jpg"
 alt  = ""
 
 [screen]
-path = ""
+path = "nexia-cochinamogulos-website-laptop-view.jpg"
 alt  = ""
 
 +++

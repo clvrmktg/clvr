@@ -13,13 +13,15 @@
         {{ .text | markdownify }}
       </div>
       <div class="[ o--1 lg:o--2 ]">
-        <figure class="[ ratio--1:1 ]">
-          <picture class="[ bg ][ r--10 ]">
-            <style>picture {background-image: url('https://{{ .Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview');}</style>
-            <img data-twic-src="image:home/website-design-satisfied-customer-clever-marketing.jpg" data-twic-focus="auto" alt=""/>
-            <noscript><img class="[ script ]" src="https://{{ .Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview"/></noscript>
-          </picture>
-        </figure>
+        {{/* 
+          <figure class="[ ratio--1:1 ]">
+            <picture class="[ bg ][ r--10 ]">
+              <style>picture {background-image: url('https://{{ .Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview');}</style>
+              <img data-twic-src="image:home/website-design-satisfied-customer-clever-marketing.jpg" data-twic-focus="auto" alt=""/>
+              <noscript><img class="[ script ]" src="https://{{ .Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview"/></noscript>
+            </picture>
+          </figure>  
+        */}}
       </div>
     </div>
   </section>
@@ -51,33 +53,46 @@
     </div>
   </section>
   {{ end }}
+  {{ with .Params.why}}
   <section aria-labelledby="why-heading" class="[ section--padding ]">
     <div class="[ grid middle lg:col--2 lg:col-gap--4 col-gap--2 row-gap--2 ]">
       <div class="[ o--2 lg:o--1 ]">
         <h2 id="why-heading">Why It Matters</h2>
-        <p>A slow, outdated, or poorly designed website can cost you customers. Studies show that visitors form an opinion about your business within seconds of landing on your site.</p>
-          
-         <p>We make sure those seconds work in your favor — with clear navigation, engaging visuals, and calls to action that guide visitors to contact or buy.</p>
+        {{ .text | markdownify }}
       </div>
       <div class="[ o--1 lg:o--2 ]">
-        <figure class="[ ratio--1:1 ]">
-          <picture class="[ bg ][ r--10 ]">
-            <style>picture {background-image: url('https://{{ .Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview');}</style>
-            <img data-twic-src="image:home/website-design-satisfied-customer-clever-marketing.jpg" data-twic-focus="auto" alt=""/>
-            <noscript><img class="[ script ]" src="https://{{ .Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview"/></noscript>
+        <figure class="[ ratio--1:1 ]" data-script>
+          <picture id="why-3432" class="[ bg ][ r--10 ]">
+            <img data-twic-src="image:home/website-design-satisfied-customer-clever-marketing.jpg" data-twic-focus="auto" alt=""  width="1000" height="1000"/>
           </picture>
         </figure>
+        <style>#why-3432 {background-image: url('https://{{ $.Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview');}</style>
+        <noscript>
+          <figure class="[ ratio--1:1 ]">
+            <picture id="why-noscript-3432"  class="[ bg ][ r--10 ]">
+              <img src="https://{{ $.Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg/cover=1:1" alt="" width="1000" height="1000"/>
+            </picture>
+          </figure>
+          <style>#why-noscript-3432 {background-image: url('https://{{ $.Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/cover=1:1/output=preview')}#why-noscript-3432>img{opacity:1}</style>
+        </noscript>
       </div>
     </div>
   </section>
+  {{ end }}
   {{ with .Params.process }}
-  <section class="[ full-width content-grid bg:blue--50 section--padding ]">
+  <section class="[ full-width content-grid bg:blue--50 layout--spacing section--padding ]">
+    {{ with .subhead }}
+    <h2 id="services-heading" class="[ flex flex--column center ]">
+      <span class="[ font--5 text--center upper clever--blue ]">Expert Help, Time Saved</span>
+      <span class="[ text--center ]">From Idea to Online — Without the Stress</span>
+    </h2>
+    {{end}}
 
-    
-    <ul class="[ grid lg:col--2 lg:col--4 gap--2 ]">
-      {{ range .items }}
-      <li>
-        <h3>{{ .title }}</h3>
+    <ul class="[ steps ][ grid md:col--2 lg:col--4 col-gap--1 row-gap--2 ]">
+      {{ range $i, $_ := .items }}
+      {{ $count := printf "0%d" (add $i 1)}}
+      <li class="[ step ][ p--1 r--15 ]">
+        <h3 data-list-number="{{ $count }}">{{ .title }}</h3>
         <p class="[ pb--0 ]">{{ .description }}</p>
       </li>
       {{ end }}
