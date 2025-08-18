@@ -105,7 +105,7 @@ icon = "accessibility_new.svg"
 
 [[features.items]]
 key = "Ongoing"
-title = "Website Maintenance"
+title = "Support"
 description = "Stay worry-free. We keep your site secure, updated, and running smoothly so you can focus on your business."
 icon = "construction.svg"
 
