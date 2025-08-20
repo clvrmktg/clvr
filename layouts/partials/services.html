@@ -3,13 +3,11 @@
 {{ with $svc }}
 <section class="[ grid layout--spacing section--padding ]" aria-labelledby="services-heading">
   <div class="[ grid center text--center ]">
-    <h2 id="services-heading" class="[ merriweather ]">{{ .subhead }}</h2>
-  
-    <p class="[ font--4 ch--60 ]">
-      Our web design services cover everything from getting your site online 
-      to keeping it secure and performing at its best. Whether you need a new 
-      website, SEO, or ongoing support, Clever makes it simple.
-    </p>
+    <h2 id="services-heading" class="[ grid ]">
+      <span class="[ key ][ font--5 upper ]">{{ .key }}</span>
+      <span>{{ .headline }}</span>
+    </h2>
+    <p class="[ font--4 ch--35 ]">{{ .subhead }}</p>
   </div>
 
   <div class="[ services ][ grid middle lg:col--2 lg:col-gap--4 row-gap--4 ]">
@@ -32,7 +30,7 @@
           </div>
         </a>
         <div>
-          {{ partial "buttons/cta.html" (dict "url" $item.href "text" "Get Your Quote Today") }}
+          {{ partial "buttons/cta.html" (dict "url" $item.href "text" "Get Your Quote") }}
         </div>
       </article>
       {{ end }}

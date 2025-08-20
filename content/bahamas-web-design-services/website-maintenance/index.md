@@ -8,6 +8,10 @@ title = "Website Maintenance Bahamas"
 proposition_heading = "Stay Secure. Stay Online. Stay Ahead."
 subhead = "We keep your website updated, protected, and performing — so you can focus on running your business."
 
+[hero]
+path = "website-maintenance-bahamas-relaxed-business-owner.jpg"
+alt = "Confident Bahamian business owner smiling with coffee and tablet, stress-free while website runs smoothly in the background."
+
 # Intro
 [intro]
 heading = "Maintenance That Gives You Peace of Mind"
@@ -16,6 +20,10 @@ Your website is never finished — it needs ongoing updates, security checks, an
 
 Our website maintenance services in The Bahamas take the hassle out of keeping your site running smoothly. From updates and backups to monitoring and technical support, we handle it all so you can stay focused on your business.
 """
+
+[intro.image]
+path = "peace-of-mind-website-maintenance-bahamas.jpg"
+alt = "Smiling Bahamian businesswoman sitting comfortably at her desk, using a smartphone with confidence, showing peace of mind knowing her website is maintained and secure."
 
 # What You Get
 [get]
@@ -55,22 +63,32 @@ A website isn’t “set it and forget it.” Without regular updates and monito
 With ongoing maintenance, we keep your site fast, secure, and reliable so you can focus on your business with peace of mind.
 """
 
+[why.image]
+path = "why-website-maintenance-matters-bahamas.jpg"
+alt = "Business owner working stress-free with a fast, secure, and reliable website thanks to ongoing maintenance services in The Bahamas."
+
 # The Process
+[process]
+key = "Secure. Updated. Supported."
+headline = "Keep Your Website Running Smoothly"
+subhead = "Proactive monitoring, updates, and protection — so you can focus on your business."
+
 [[process.items]]
 title = "Monitor"
-description = "We keep watch on your site’s health, uptime, and performance 24/7."
+description = "Track your site’s uptime, speed, and performance around the clock."
 
 [[process.items]]
 title = "Update"
-description = "We apply software, theme, and security updates regularly to keep everything running."
+description = "Apply software, theme, and security updates to keep everything current."
 
 [[process.items]]
 title = "Protect"
-description = "We safeguard your website with proactive security measures and daily backups."
+description = "Defend against threats with proactive security and daily backups."
 
 [[process.items]]
 title = "Support"
-description = "We’re here when you need us — offering fixes, advice, and improvements as your site grows."
+description = "Get expert help when you need it — fixes, advice, and improvements."
+
 
 # FAQs
 [[faqs.items]]

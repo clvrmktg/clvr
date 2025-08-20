@@ -1,6 +1,7 @@
 [services]
-headline = "Affordable and Trustworthy"
-subhead  = "Website Design Services"
+key = "From Click To Customers"
+headline  = "Website Design Services"
+subhead = "We don't just put you online — we build websites that bring customers to your door."
 
 [[services.items]]
 key   = "web-design"

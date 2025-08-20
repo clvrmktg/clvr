@@ -8,6 +8,9 @@ title = 'Website Design Bahamas'
 proposition_heading = "Websites Built for Speed, Style, and Results"
 subhead = "Custom websites for Bahamian businesses — fast, secure, and designed to attract customers and grow your brand."
 
+[hero]
+path = "bahamas-web-design-professionals-collaboration.jpg"
+alt = "Two professionals working on laptops and a tablet in a bright office with ocean views in The Bahamas, representing modern, results-driven website design services."
 
 # Intro
 [intro]
@@ -20,6 +23,10 @@ Our website design services give you a fast, mobile-friendly, and SEO-ready site
 Whether you're launching a new business or refreshing your current site, we'll design it to perform in The Bahamas and beyond.
 
 """
+
+[intro.image]
+path = "woman-laptop-abaco-aggregate.jpg"
+alt = "Woman browsing a Bahamian construction company website on her laptop while sitting on a sofa, representing professional web design in The Bahamas."
 
 # What You Get
 
@@ -34,18 +41,22 @@ icon = "brush.svg"
 [[get.items]]
 title = "Mobile-First Approach"
 description = "Optimized for phones, tablets, and desktops from day one."
+icon = "mobile.svg"
 
 [[get.items]]
 title = "Fast & Secure"
 description = "Lightweight code, optimized images, and built-in security measures."
+icon = "speed.svg"
 
 [[get.items]]
 title = "SEO-Friendly"
 description = "Structured for search engine visibility so you can rank higher."
+icon = "search.svg"
 
 [[get.items]]
 title = "Easy to Manage"
 description = "Edit content without touching code (optional CMS integration)."
+icon = "edit_note.svg"
 
 # Why It Matters
 
@@ -57,29 +68,31 @@ We make sure those seconds work in your favor — with clear navigation, engagin
 """
 
 [why.image]
-path = "john-doe-design.jpg"
-alt = "A path"
+path = "happy-customer-calling-business-bahamas.jpg"
+alt = "Smiling man making a phone call on his mobile, representing a satisfied customer contacting a business after a positive online experience."
 
 
 # The Process
 [process]
-subhead = "A clear, stress-free path to launching your website."
+key = "Expert Help. Time Saved."
+headline = "From Idea to Online"
+subhead = "A simple 4-step process to get your website live and working for your business."
 
 [[process.items]]
 title = "Discovery"
-description = "We begin with discovery and planning — discussing your goals, brand, and audience to set a clear direction for your new website."
+description = "We learn about your goals, brand, and audience to set the right direction."
 
 [[process.items]]
 title = "Design"
-description = "In design and development, we create a custom layout, content structure, and features tailored to your brand and business needs."
+description = "We create a custom layout and features tailored to your business."
 
 [[process.items]]
 title = "Launch"
-description = "After your review and approval, we launch your site — ensuring it’s fast, functional, and ready to impress your customers."
+description = "Your site goes live — fast, functional, and ready to impress customers."
 
 [[process.items]]
 title = "Support"
-description = "We offer ongoing maintenance and support to keep your site secure, updated, and performing at its best year-round."
+description = "We keep your site secure, updated, and running smoothly year-round."
 
 
 # FAQs

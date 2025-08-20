@@ -1,16 +1,24 @@
 @use 'abstracts' as *
 
 .step
-  border: rem(1) solid color('clever-blue')
+  // border: rem(1) solid color('clever-blue')
+  
+  > h3
+
+    &::before
+      content: attr(data-list-number)
+      font-size: var(--step-5)
+      -webkit-text-fill-color: white
+      -webkit-text-stroke-width: em(0.6)
+      -webkit-text-stroke-color: color('clever-blue-light')
+      color: #fff0
+      margin-right: 0.25em
 
 .icon
-  fill: color('clever-navy')
+  fill: color('clever-blue')
 
   > svg
       width: 100%
       max-width: 100%
       height: auto
       display: block
-
-.feature .icon
-  width: 3em

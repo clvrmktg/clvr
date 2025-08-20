@@ -10,10 +10,11 @@
   &.hero--home
     background-color: color('clever-navy')
     // min-height: em(800)
-    min-height: calc(90vh - var(--navbar-height))
+    +clamp(min-height, 450, 850)
+    // min-height: calc(90vh - var(--navbar-height))
     
-    @supports (min-height: 100svh)
-      min-height: calc(90svh - var(--navbar-height))
+    // @supports (min-height: 100svh)
+    //   min-height: calc(90svh - var(--navbar-height))
 
   > .wrapper
     min-height: inherit

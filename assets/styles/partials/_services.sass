@@ -37,13 +37,19 @@
       > span
         +transition((opacity, transform))
 
-        &::before
+        &::before, &::after
           content: url('data:image/svg+xml;utf8,%0A%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20139.4%20119.2%22%3E%3Cpath%20d%3D%22M105.1%2069.3H10.3C3.4%2069-.4%2065.4-.4%2059.3c.1-5.9%203.8-9.4%2010.4-9.8%201.3-.1%202.7%200%204%200H105.6c-1.9-2-3-3.3-4.2-4.5-9.1-9.3-18.4-18.5-27.7-27.6-3.3-3.2-5-7.3-3.1-11.3%201.3-2.7%204.6-5.6%207.5-6.2%202.7-.6%206.9.8%209%202.9%2016.6%2016.1%2032.9%2032.5%2049.1%2048.9%204.8%204.8%204.7%2010.7-.2%2015.6-16%2016.2-32.1%2032.3-48.3%2048.3-4.9%204.9-11.2%205.1-15.2.9-3.8-4-3.3-10.4%201.4-15.2%2010.2-10.6%2020.4-20.9%2031.2-32z%22%20fill%3D%22%231565C0%22/%3E%3C/svg%3E%0A')
           width: 0.65em
           position: absolute
+          +transition((opacity, transform))
+
+        &::before
           left: -2em
           opacity: 0
-          +transition((opacity, transform))
+
+        &::after
+          right: -1em
+          opacity: 1
 
     +hover
 
@@ -52,9 +58,14 @@
         > span
           transform: translateX(1em)
 
+          &::before, &::after
+            transform: translateX(1em)
+            
           &::before
             opacity: 1
-            transform: translateX(1em)
+
+          &::after
+            opacity: 0
 
 
 

@@ -5,67 +5,32 @@ description = 'Bahamas web design services for busy business owners. We handle y
 
 # Hero
 title = 'Bahamas Web Design Services'
-proposition_heading = "You're busy running your business — we'll handle your website."
-subhead = "We take care of the technical work so you can focus on your customers. From building a website that looks great and performs well to keeping it updated and secure, we make sure your online presence works as hard as you do."
+proposition_heading = "We design websites that work as hard as you do"
+subhead = "Get a website that looks professional, loads fast, and helps your business get found online. From setup to ongoing maintenance, we take care of the technical details so you can focus on your customers."
 
-
-[services]
-headline = "From Clicks to Customers"
-subhead  = "Website Design Services"
-
-[[services.items]]
-key   = "web-design"
-title = "Web Design"
-blurb = "Custom-built, mobile-ready websites that load fast, look great, and convert visitors into customers."
-cta   = "Request a Quote"
-href  = "/bahamas-web-design-services/website-design-bahamas/"
-
-[[services.items]]
-key   = "seo"
-title = "Search Engine Optimization"
-blurb = "Strategies that help you rank higher on Google and reach more local and international customers."
-cta   = "Request an SEO Review"
-href  = "/bahamas-web-design-services/search-engine-optimization/"
-
-[[services.items]]
-key   = "digital-marketing"
-title = "Digital Marketing"
-blurb = "Social media, PPC, and email campaigns tailored to the Bahamian market."
-cta   = "Plan a Campaign"
-href  = "/bahamas-web-design-services/digital-marketing/"
-
-[[services.items]]
-key   = "maintenance"
-title = "Website Maintenance"
-blurb = "Keeping your site secure, updated, and running smoothly so you can focus on your business."
-cta   = "Start Maintenance"
-href  = "/bahamas-web-design-services/website-maintenance/"
+[hero]
+path = "bahamas-business-owner-using-tablet-web-design.jpg"
+alt = "Smiling Bahamian business owner in a café using a tablet, representing professional web design services that support local businesses."
 
 [why_work_with_us]
 headline = "From Search to Sale"
 title = "Why Work With Us"
-intro = "We know The Bahamas, and we know web design. Our sites are built to perform here — fast load times, mobile-friendly layouts, and SEO that connects you with the customers who matter most."
+intro = "Websites built for Bahamian businesses — fast, mobile, and customer-focused."
 
 [[why_work_with_us.items]]
-highlight = "MORE"
 title = "Visibility"
-tagline = "Be seen by the right people."
-description = "We use proven strategies to help your site stand out and improve visibility so customers can find you easily."
-icon = "product.svg"
+description = "Be seen by the right people. Proven strategies make your site easy to find."
+icon = "visibility.svg"
 
 [[why_work_with_us.items]]
-highlight = "MORE"
 title = "Traffic"
-tagline = "Turn searches into visits."
-description = "We drive targeted traffic to your site so the right people land on your pages and engage with your business online."
-icon = "traffic-data.svg"
+description = "Turn searches into visits. We drive targeted traffic so the right people land on your site."
+icon = "trending_up.svg"
 
 [[why_work_with_us.items]]
-highlight = "MORE"
 title = "Leads"
-tagline = "Visitors become customers."
-description = "Strong calls to action and user-friendly design help turn new visitors into valuable leads for your business."
-icon= "line-chart.svg"
+description = "Visitors become customers. Clear calls to action turn new visitors into valuable leads."
+icon= "person_add.svg"
 
 [[faqs.items]]
 question = "Which service should I start with?"

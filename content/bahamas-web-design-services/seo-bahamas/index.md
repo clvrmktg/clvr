@@ -8,6 +8,10 @@ title = "SEO Bahamas"
 proposition_heading = "Rank Higher. Reach More Customers."
 subhead = "Proven search engine optimization strategies for Bahamian businesses — designed to improve visibility, attract targeted traffic, and drive more sales."
 
+[hero]
+path = "seo-bahamas-business-growth-analytics.jpg"
+alt = "Professional in The Bahamas reviewing SEO analytics on a laptop, representing higher search rankings, increased traffic, and sales growth for local businesses."
+
 # Intro
 [intro]
 heading = "More Than Just Rankings — Real Business Growth"
@@ -18,6 +22,10 @@ Our SEO services for Bahamian businesses combine technical optimization, content
 
 Whether you’re starting fresh or improving an existing site, we’ll help you outrank competitors and grow sustainably.
 """
+
+[intro.image]
+path = "bahamas-business-customer-growth-seo.jpg"
+alt = "Bahamian business owner helping customers, representing SEO turning visibility into real business growth."
 
 # What You Get
 [get]
@@ -57,22 +65,31 @@ Even the best-looking website won’t help if no one can find it. Search engines
 We focus on strategies that improve your visibility, build credibility with search engines, and connect you with the customers already searching for your services in The Bahamas.
 """
 
+[why.image]
+path = "bahamas-customer-finding-local-business-seo.jpg"
+alt = "Customer using a smartphone to connect with a local business owner in The Bahamas, representing how SEO improves visibility and drives real customer interactions."
+
 # The Process
+[process]
+key = "Search To Success"
+headline = "SEO That Delivers Growth"
+subhead = "A clear, step-by-step path to better rankings and more leads."
+
 [[process.items]]
 title = "Audit"
-description = "We start with a full site and competitor audit to understand your current position and opportunities."
+description = "Full site and competitor review to spot opportunities."
 
 [[process.items]]
 title = "Optimize"
-description = "We implement technical fixes, on-page improvements, and keyword targeting to boost visibility."
+description = "Fix issues and refine pages for better visibility."
 
 [[process.items]]
 title = "Promote"
-description = "We create and promote content that earns backlinks, builds authority, and drives qualified traffic."
+description = "Build authority with content and backlinks."
 
 [[process.items]]
 title = "Measure"
-description = "We monitor rankings, conversions, and ROI — refining your strategy for sustained growth."
+description = "Track rankings, ROI, and refine your strategy."
 
 # FAQs
 [[faqs.items]]

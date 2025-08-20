@@ -12,36 +12,34 @@
         <span class="[ font--5 text--center upper clever--blue ]">{{ .headline }}</span>
         <span class="[ font--2 text--center ]">{{ .title }}</span>
       </h2>
-      <p class="[ text--center font--4 ch--60 ]">{{ .intro }} </p>
+      <p class="[ text--center font--4 ch--35 ]">{{ .intro }} </p>
     </div>
     <ul class="[ grid lg:col--3 gap--2 ]">
       {{ range .items }}
-      <li class="[ feature ][ flex flex--column g--1 ]">
-        <div class="[ o--2 ]">
-          <h3>
-            <span class="[ font--5 upper clever--blue ]">{{ .highlight }}</span>
-            <br>{{ .title }}
-          </h3>
-          <p class="[ tagline ][ pb--0 ]">{{ .tagline }}</p>
-          <p>{{ .description }}</p>
-        </div>
-        <div class="[ o--1 ]">
-          {{ with .icon }}
-          {{ readFile (printf "static/icons/%s" .) | safeHTML }}
+      <li class="[ feature ][ grid row-gap--0.5 ]">
+        <div class="[ feature__heading ][ flex middle col-gap--0.5 ]">
+          {{ with $.Resources.GetMatch .icon }}
+          <div class="[ icon ]">
+            {{ .Content | safeHTML }}
+          </div>
           {{ end }}
+          <h3 class="[ pb--0 ]">{{ .title }}</h3>
         </div>
+        <p>{{ .description }}</p>
       </li>
       {{ end }}
     </ul>
   </section>
   {{ end }}
 
-  <section class="[ full-width content-grid layout--spacing section--padding ]">
-    <div class="[ lg:flex between middle ]">
+  <section class="[ full-width content-grid layout--spacing section--padding ]" aria-labelledby="portfolio-heading">
+    <div class="[ lg:flex between ]">
       <div>
-        <h2 class="[ font--5 upper clever--blue ]">Recent Work</h2>
-        <h3 class="[ font--2 ]">From Our Portfolio</h3>
-        <p class="[ ch--35 ]">See something you like? Ask us about it. We'll use it as inpsiration for your next project.</p>
+        <h2 id="portfolio-heading" class="[ grid row-gap--0.5 ]">
+          <span class="[ font--5 upper clever--blue ]">Recent Work</span>
+          <span>From Our Portfolio</span>
+        </h2>
+        <p class="[ font--4 ch--35 ]">See how we've helped Bahamian businesses with modern, results-driven websites.</p>      
       </div>
       <div>
         {{ partial "buttons/ghost.html" (dict "url" "/portfolio" "text" "See Our Work")}}

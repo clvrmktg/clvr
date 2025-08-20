@@ -18,8 +18,17 @@ $inline: 2em
   cursor: pointer
   +transition((color, fill, background-color, border, border-color))
 
+  .arrow-right
+    +transition(transform)
+    
+  +hover
+
+    .arrow-right
+      transform: translateX(0.5em)
+
   +breakpoint(desktop)
     display: inline-flex
+
 
 .btn, button.btn
   @extend %btn
@@ -93,18 +102,16 @@ $inline: 2em
         left: 0
         +transition(width)
 
-  // #FF6B35
   &--cta
-    color: color('white')
-    text-shadow: em(1) em(1) em(5) color('black-5')
-    background-color: #F97316
+    color: color('clever-navy')
+    background-color: color('clever-cta')
     position: relative
 
     &::before
       content: ''
       width: 0
       height: 100%
-      background-color: #E65F2F
+      background-color: color('clever-cta-dark')
       border-radius: inherit
       position: absolute
       top: 0
@@ -120,7 +127,7 @@ $inline: 2em
         +transition(width)
 
   &--ghost
-    --button-color: #{color('clever-navy')}
+    --button-color: #{color('clever-blue')}
     color: var(--button-color)
     border: $border solid var(--button-color)
     position: relative

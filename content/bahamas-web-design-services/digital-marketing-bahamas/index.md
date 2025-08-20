@@ -8,6 +8,10 @@ title = "Digital Marketing Bahamas"
 proposition_heading = "Reach the Right Audience. Grow Your Business."
 subhead = "Social media, PPC, and email marketing tailored for Bahamian businesses — designed to attract, engage, and convert customers."
 
+[hero]
+path = "bahamas-digital-marketing-customer-engagement.jpg"
+alt = "Young woman using her smartphone while dining at a Bahamian restaurant, symbolizing how digital marketing connects businesses with customers."
+
 # Intro
 [intro]
 heading = "Marketing That Works Where It Matters"
@@ -16,6 +20,10 @@ Digital marketing isn’t just about being online — it’s about reaching the 
 
 Our digital marketing services in The Bahamas help you stand out in competitive markets, connect with your audience, and drive measurable growth. From social media campaigns to paid ads and email marketing, we create strategies that deliver real results.
 """
+
+[intro.image]
+path = "bahamas-digital-marketing-mobile-customer.jpg"
+alt = "Young woman in The Bahamas wearing a sunhat and sunglasses, using her smartphone by the beach — representing how digital marketing reaches customers wherever they are."
 
 # What You Get
 [get]
@@ -46,22 +54,40 @@ title = "Analytics & Reporting"
 description = "Track your campaigns with clear reports that show ROI and opportunities for growth."
 icon = "analytics.svg"
 
+[why]
+text = """
+Being online isn’t enough — if you’re not reaching the right people, your marketing isn’t working. With so many choices, customers connect with brands that stand out and speak directly to their needs.  
+
+Our digital marketing services in The Bahamas focus on visibility, engagement, and conversion — helping you attract the right audience and turn them into loyal customers.
+"""
+
+[why.image]
+path = "bahamas-digital-marketing-customer-smartphone.jpg"
+alt = "Bahamian woman browsing her smartphone while shopping, representing how digital marketing connects businesses with the right audience at the right time."
+
 # The Process
+[process]
+key = "Planned. Targeted. Optimized."
+headline = "Smart Strategy for Lasting Results"
+subhead = "A clear 4-step framework to plan, launch, and refine campaigns that grow your business."
+
+
 [[process.items]]
 title = "Plan"
-description = "We start by defining your goals, audience, and the best mix of digital channels."
+description = "Define your goals, audience, and the best mix of channels."
 
 [[process.items]]
 title = "Create"
-description = "We design and develop content, ads, and campaigns tailored to your business."
+description = "Design tailored content, ads, and campaigns for your business."
 
 [[process.items]]
 title = "Promote"
-description = "We launch your campaigns across chosen channels — reaching the right people at the right time."
+description = "Launch across chosen platforms to reach the right people."
 
 [[process.items]]
 title = "Optimize"
-description = "We track results and adjust your campaigns for continuous improvement and growth."
+description = "Track performance and refine campaigns for better results."
+
 
 # FAQs
 [[faqs.items]]

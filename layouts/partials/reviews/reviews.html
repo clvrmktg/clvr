@@ -1,7 +1,7 @@
 {{- $placeId := site.Params.google.place_id -}}
 {{- $apiKey  := site.Params.google.api_key -}}
 
-{{- $url := printf "https://maps.googleapis.com/maps/api/place/details/json?place_id=%s&fields=name,rating,reviews,user_ratings_total&key=%s" (urlquery $placeId) (urlquery $apiKey) -}}
+{{- $url := printf "https://maps.googleapis.com/maps/api/place/details/json?place_id=%s&fields=name,rating,user_ratings_total,reviews(author_name,profile_photo_url,rating,text,time)&key=%s" (urlquery $placeId) (urlquery $apiKey) -}}
 {{ $remote := resources.GetRemote $url }}
 {{ $json := $remote.Content | transform.Unmarshal }}
 
@@ -12,13 +12,16 @@
   {{ end }}
 {{ end }}
 {{ if gt (len $all) 0 }}
-<section class="[ full-width content-grid section--padding layout--spacing bg:blue--50 ]">
-  <h2 class="[ flex flex--column ]">
-    <span class="[ font--5 text--center upper clever--blue ]">Real People, Real Reviews</span>
-    <span class="[ merriweather font--2 text--center ]">What Our Clients Are Saying</span>
-  </h2>
+<section class="[ full-width content-grid section--padding layout--spacing bg:blue--50 ]" aria-labelledby="reviews-heading">
+  <div class="[ grid center text--center ]">
+    <h2 id="reviews-heading" class="[ grid row-gap--0.5 ]">
+      <span class="[ key ][ font--5 upper ]">Real people. Real reviews.</span>
+      <span>People Love Working With Us</span>
+    </h2>
+    <p class="[ font--4 ch--35 ]">Real feedback from clients who've trusted Clever with their business.</p>
+  </div>
   {{ $shuffled := shuffle $all }}
-  {{ $limited := first 4 $shuffled }}
+  {{ $limited := first 3 $shuffled }}
   <ul class="[ reviews ][ grid md:col--2 lg:col--3 gap--1 ]">
     {{ range $limited }}
     <li class="[ review ][ grid px--1 py--3 r--10 ]">
@@ -42,21 +45,34 @@
             <p>{{ .text }}</p>
           {{ end }}
         </div>
-        <footer class="[ reviewer ]">
+        <footer class="[ reviewer ][ flex middle ]">
+          {{ if .profile_photo_url }}
+          <figure class="avatar">
+            <picture>
+              <img src="{{ .profile_photo_url }}" alt="Photo of {{ .author_name }}" width="40" height="40" loading="lazy" decoding="async" referrerpolicy="no-referrer" crossorigin="anonymous">
+            </picture>
+          </figure>
+          {{ end }}
+          <div>
+            <cite class="[ flex flex--column pb--0.25 ]">
+              <span class="[ font--600 ]">{{ .author_name }}</span>
+            </cite>
             <div class="stars">
               {{- $fullStars := int .rating -}}
               {{- $emptyStars := sub 5 $fullStars -}}
               {{- range seq $fullStars -}}★{{- end -}}
               {{- range seq $emptyStars -}}☆{{- end -}}
-            </div>  
-            <cite class="[ flex flex--column pb--0.25 ]">
-              <span class="[ font--600 ]">{{ .author_name }}</span>
-            </cite>
+            </div>
+          </div>
         </footer>
       </blockquote>
     </li>
     {{ end }}
   </ul>
+  <div class="[ text--center ]">
+    {{- $reviewsUrl := printf "https://search.google.com/local/reviews?placeid=%s" (urlquery site.Params.google.place_id) -}}
+    <a href="{{ $reviewsUrl }}" target="_blank" rel="noopener">Read more reviews</a>
+  </div>
 </section>
 {{ end }}
 

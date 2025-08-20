@@ -13,15 +13,7 @@
         {{ .text | markdownify }}
       </div>
       <div class="[ o--1 lg:o--2 ]">
-        {{/* 
-          <figure class="[ ratio--1:1 ]">
-            <picture class="[ bg ][ r--10 ]">
-              <style>picture {background-image: url('https://{{ .Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview');}</style>
-              <img data-twic-src="image:home/website-design-satisfied-customer-clever-marketing.jpg" data-twic-focus="auto" alt=""/>
-              <noscript><img class="[ script ]" src="https://{{ .Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview"/></noscript>
-            </picture>
-          </figure>  
-        */}}
+        {{partial "image.html" (dict "image" .image "ratio" "1:1" "page" $)}}
       </div>
     </div>
   </section>
@@ -35,21 +27,17 @@
         <p class="[ ch--35 ]">{{ .tagline }}</p>
       </div>
 
-      <ul class="[ benefits ][ grid gap--1 ]">
-        {{ range .items }}
-        <li>
-          {{ with $.Page.Resources.GetMatch .icon }}
-          <span class="icon" aria-hidden="true">
-            {{ .Content | safeHTML }}
-          </span>
-        {{ end }}
-          <p>
+      <div>
+        <ul class="[ grid gap--1 ]">
+          {{ range .items }}
+          <li class="[ attribute ]">
             <strong>{{ .title }}</strong>
-            <br>{{ .description }}
-          </p>
-        </li>
-        {{ end }}
-      </ul>
+            <br>
+            {{ .description }}
+          </li>
+          {{ end }}
+        </ul>
+      </div>
     </div>
   </section>
   {{ end }}
@@ -61,36 +49,25 @@
         {{ .text | markdownify }}
       </div>
       <div class="[ o--1 lg:o--2 ]">
-        <figure class="[ ratio--1:1 ]" data-script>
-          <picture id="why-3432" class="[ bg ][ r--10 ]">
-            <img data-twic-src="image:home/website-design-satisfied-customer-clever-marketing.jpg" data-twic-focus="auto" alt=""  width="1000" height="1000"/>
-          </picture>
-        </figure>
-        <style>#why-3432 {background-image: url('https://{{ $.Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/output=preview');}</style>
-        <noscript>
-          <figure class="[ ratio--1:1 ]">
-            <picture id="why-noscript-3432"  class="[ bg ][ r--10 ]">
-              <img src="https://{{ $.Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg/cover=1:1" alt="" width="1000" height="1000"/>
-            </picture>
-          </figure>
-          <style>#why-noscript-3432 {background-image: url('https://{{ $.Site.Params.Twic }}.twic.pics/home/website-design-satisfied-customer-clever-marketing.jpg?twic=v1/cover=1:1/output=preview')}#why-noscript-3432>img{opacity:1}</style>
-        </noscript>
+        {{partial "image.html" (dict "image" .image "ratio" "1:1" "page" $)}}
       </div>
     </div>
   </section>
   {{ end }}
   {{ with .Params.process }}
   <section class="[ full-width content-grid bg:blue--50 layout--spacing section--padding ]">
-    {{ with .subhead }}
-    <h2 id="services-heading" class="[ flex flex--column center ]">
-      <span class="[ font--5 text--center upper clever--blue ]">Expert Help, Time Saved</span>
-      <span class="[ text--center ]">From Idea to Online — Without the Stress</span>
-    </h2>
-    {{end}}
+    <div class="[ grid center text--center ]">
+      <h2 id="services-heading" class="[ grid ]">
+        <span class="[ font--5 upper clever--blue ]">{{ .key }}</span>
+        <span>{{ .headline }}</span>
+      </h2>
+      <p class="[ font--4 ch--35 pb--0.5 ]">{{ .subhead }}</p>
+    </div>
 
     <ul class="[ steps ][ grid md:col--2 lg:col--4 col-gap--1 row-gap--2 ]">
       {{ range $i, $_ := .items }}
       {{ $count := printf "0%d" (add $i 1)}}
+      {{ $count := add $i 1}}
       <li class="[ step ][ p--1 r--15 ]">
         <h3 data-list-number="{{ $count }}">{{ .title }}</h3>
         <p class="[ pb--0 ]">{{ .description }}</p>

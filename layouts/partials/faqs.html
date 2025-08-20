@@ -1,12 +1,13 @@
 <section class="[ section--padding ]" arialabelledby="faq-heading">
   <div class="[ wrapper ][ grid lg:col--2 col-gap--4 row-gap--2 ]">
     <div>
-      <h2 id="faq-heading" class="[ grid ]">
-        <span class="[ font--5 upper clever--blue ]">{{ .Title }}</span>
-        <abbr class="[ font--2 ]" title="Frequently Asked Questions" aria-label="Frequently Asked Questions">FAQs</abbr>
+      <h2 id="faq-heading" class="[ grid row-gap--0.5 ]">
+        <span class="[ key ][ font--5 upper ]">{{ .Title }}</span>
+        <span>Frequently Asked Questions</span>
       </h2>
-      <p class="[ lg:ch--35 ]">If you don't see your question here, <a href="/contact-us">get in touch</a> — we're happy to answer anything about our web design services in The Bahamas and how we can help your business succeed online.</p>
-
+      <p class="[ lg:ch--35 ]">Got questions about our web design services in The Bahamas? We're here to help your business grow online.</p>
+      <p>Don't see your question?</p>
+      {{partial "buttons/primary.html" (dict "url" "/contact-us/" "text" "Ask a Question")}}
     </div>
     <div class="[ grid gap--2 ]">
       {{ range .Params.faqs.items }}

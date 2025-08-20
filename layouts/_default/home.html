@@ -11,28 +11,37 @@
   <section class="[ full-width content-grid bg:blue--50 ]" aria-labelledby="snapshot-heading">
     <div class="[ grid middle lg:col--2 lg:col-gap--4 col-gap--2 row-gap--2 section--padding ]">
         <div class="[ o--2 ]">
-          <h2 id="snapshot-heading" class="[ merriweather ]">{{ .heading | safeHTML }}</h2>
-          {{ .text | markdownify }}
-        <div>
+          <h2 id="snapshot-heading">{{ .heading | safeHTML }}</h2>
+            <p>{{ .text }}</p>
+            <ul class="[ benefits ][ mb--1 ]">
+              {{ range .benefits }}
+              <li class="[ benefit ][ flex col-gap--0.5 ]">
+                <span class="[ icon ][ pt--0.35 ]">{{ readFile "static/icons/checkmark.svg" | safeHTML }}</span>
+                <span>{{ .text | markdownify}}</span>
+              </li>
+              {{end }}
+            </ul>
+            <p><strong>Stop missing out on customers</strong> — get a website that works for you.</p>
           <div class="[ flex flex--column lg:flex--row col-gap--1 row-gap--0.5 ]">
-            {{ partial "buttons/cta.html" (dict "url" "/contact-us/" "text" "Get Your Quote Today")}}
             {{ partial "buttons/ghost.html" (dict "url" "/about-us" "text" "More About Us")}}
+            {{ partial "buttons/cta.html" (dict "url" "/contact-us/" "text" "Get Your Quote")}}
           </div>
-        </div>
       </div>
       <div class="[ o--1 ]">
-        {{partial "image.html" (dict "image" .image "ratio" "1:1" "helper" "lg:ratio--4:5" "page" $)}}
+        {{partial "image.html" (dict "image" .image "ratio" "1:1" "page" $)}}
       </div>
     </div>
 </section>
   {{ end }}
   {{ partial "services.html" . }}
-  <section class="[ full-width content-grid layout--spacing section--padding bg:blue--50">
+  <section class="[ full-width content-grid layout--spacing section--padding bg:blue--50" aria-labelledby="portfolio-heading">
     <div class="[ lg:flex between ]">
       <div>
-        <h2 class="[ font--5 font--400 text-grey ]">Recent Work</h2>
-        <h3 class="[ merriweather font--2 ]">From Our Portfolio</h3>
-        <p class="[ font--4 ch--45 ]">Browse some of our recent web design projects. If you see something that inspires you, let us know — we’ll tailor a solution that fits your business.</p>
+        <h2 id="portfolio-heading" class="[ grid row-gap--0.5 ]">
+          <span class="[ font--5 upper clever--blue ]">Recent Work</span>
+          <span>From Our Portfolio</span>
+        </h2>
+        <p class="[ font--4 ch--35 ]">See how we've helped Bahamian businesses with modern, results-driven websites.</p>
       </div>
       <div>
         {{ partial "buttons/ghost.html" (dict "url" "/portfolio" "text" "See Our Work")}}
@@ -47,25 +56,24 @@
   <section class="[ features ]" aria-labelledby="features-heading">
     <div class="[ grid section--padding layout--spacing ]">
       <div class="[ grid center text--center ]">
-        <h2 id="features-heading" class="[ merriweather ]">{{ .headline }}</h2>
-        <p class="[ font--4 ch--60 ]">{{ .subhead }}</p>
+        <h2 id="features-heading" class="[ grid row-gap--0.5 ]">
+          <span class="[ key ][ font--5 upper ]">{{ .key }}</span>
+          <span>{{ .headline }}</span>
+        </h2>
+        <p class="[ font--4 ch--35 ]">{{ .subhead }}</p>
       </div>
       <ul class="[ grid md:col--2 lg:col--3 gap--2 ]">
         {{ range .items }}
-        <li class="[ feature ][ flex flex--column gap--0.5 ]">
-          <div class="[ feature__heading ][ flex middle col-gap--0.5 ]">
+        <li class="[ feature ][ grid row-gap--0.5 ]">
+          <div class="[ feature__heading ][ flex middle col-gap--0.5 pb--0 ]">
             {{ with $.Resources.GetMatch .icon }}
             <div class="[ icon ]">
               {{ .Content | safeHTML }}
             </div>
             {{ end }}
-            <h3 class="[ grid ]">
-              <span class="[ key ][ font--5 ]">{{ .key }}</span>
-              <span class="[ merriweather ]">{{ .title }}</span>
-            </h3>
+            <h3 class="[ pb--0 ]">{{ .title }}</h3>
           </div>
           <p>{{ .description }}</p>
-
         </li>
         {{ end }}
       </ul>

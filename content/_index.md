@@ -23,90 +23,67 @@ Smart, Stress-Free Web Design
 """
 text = """
 We design, develop, and maintain websites for small and medium-sized businesses in The Bahamas — solutions that focus on your goals, delight your customers, and deliver results on time and on budget.
+"""
+[[snapshot.benefits]]
+text = """
+**User-Focused:** Websites that are intuitive, easy to navigate, and built for a seamless experience.
+"""
+[[snapshot.benefits]]
+text = """
+**Results-Driven:** Designs that convert visitors into customers and help your business grow.
+"""
 
-- **User-Focused:** Websites that are intuitive, easy to navigate, and built for a seamless experience.
-- **Results-Driven:** Designs that convert visitors into customers and help your business grow.
-- **Proven Process:** Built with industry best practices to ensure performance, security, and reliability.
+[[snapshot.benefits]]
+text = """
+**Proven Process:** Built with industry best practices to ensure performance, security, and reliability.
 """
 
 [snapshot.image]
-path = "bahamas-web-design-collaboration-clever-marketing.jpg"
+path = "woman-laptop-clear-choice-glass.jpg"
 alt = "Young Bahamian man and woman collaborating on a website design at a bright modern workspace in Nassau, The Bahamas"
 
-[services]
-headline = "Affordable and Trustworthy"
-subhead  = "Website Design Services"
-
-[[services.items]]
-key   = "web-design"
-title = "Web Design"
-blurb = "Custom websites built for speed, mobile performance, and conversion — designed for businesses in The Bahamas."
-href  = "/bahamas-web-design-services/website-design-bahamas/"
-icon = "monitor.svg"
-
-[[services.items]]
-key   = "seo"
-title = "Local SEO"
-blurb = "Strategies that help you rank higher on Google and reach more local and international customers."
-cta   = "Request an SEO Review"
-href  = "/bahamas-web-design-services/seo-bahamas/"
-
-[[services.items]]
-key   = "digital-marketing"
-title = "Digital Marketing"
-blurb = "Social media, PPC, and email campaigns tailored to your audience in The Bahamas."
-cta   = "Plan a Campaign"
-href  = "/bahamas-web-design-services/digital-marketing-bahamas/"
-
-[[services.items]]
-key   = "maintenance"
-title = "Website Maintenance"
-blurb = "Keeping your site secure, updated, and running smoothly so you can focus on your business."
-cta   = "Start Maintenance"
-href  = "/bahamas-web-design-services/website-maintenance/"
 
 [features]
-headline = "Websites Designed for Success"
-subhead  = "When you choose Clever, you don’t just get a website — you get a complete solution built to support your business. Every site we create comes with the essentials that help you attract customers, build trust, and grow online."
+key = "Fast, Secure, and Affordable"
+headline = "Websites That Work"
+subhead  = "At Clever, you don’t just get a website — you get solutions that help your business grow."
 
 [[features.items]]
-key = "Responsive"
-title = "Web Design"
+# key = "Responsive"
+title = "Responsive"
 description = "Look great on every device — from desktop to mobile — so your business always makes the right first impression."
 icon = "devices.svg"
 
 [[features.items]]
-key = "Faster"
-title = "Page Speeds"
-description = "Fast-loading pages keep visitors engaged, boost your Google ranking, and stop customers from clicking away."
+# key = "Faster"
+title = "Fast"
+description = "Load instantly to keep visitors engaged, boost your Google ranking, and stop customers from clicking away."
 icon = "bolt.svg"
 
-
 [[features.items]]
-key = "Custom"
-title = "Web Development"
-description = "Custom features built for your business — giving you a secure, high-performance site that supports your goals."
+# key = "Custom"
+title = "Custom"
+description = "Get tailored features built for your business — delivering a secure, high-performance site that supports your goals."
 icon = "code.svg"
 
+[[features.items]]
+# key = "Enhanced"
+title = "Visible"
+description = "Be found when it matters. Smart SEO helps customers discover you, drives traffic, and builds long-term growth."
+icon = "visibility.svg"
+
 
 [[features.items]]
-key = "Enhanced"
-title = "SEO"
-description = "Be found when it matters. Smart SEO helps customers discover you, drives traffic, and builds long-term visibility."
-icon = "search.svg"
-
-
-[[features.items]]
-key = "Better"
-title = "Web Accessibility"
-description = "Reach everyone. Accessible design ensures your site works for all users and meets modern standards."
+# key = "Better"
+title = "Accessible"
+description = "Reach everyone. Web accessibility ensures your site works for all users and meets modern standards."
 icon = "accessibility_new.svg"
 
 
 [[features.items]]
-key = "Ongoing"
+# key = "Ongoing"
 title = "Support"
-description = "Stay worry-free. We keep your site secure, updated, and running smoothly so you can focus on your business."
+description = "Stay worry-free with ongoing updates, security, and maintenance — so you can focus on your business."
 icon = "construction.svg"
 
 [[faqs.items]]

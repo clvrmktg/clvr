@@ -36,39 +36,3 @@
 .no-wrap
   white-space: nowrap
   
-.get
-
-  &::before, &::after
-    content: ''
-    width: 100%
-    height: rem(1)
-    background-color: color('clever-navy')
-    position: absolute
-    left: 0
-    
-
-  &::before
-    top: 0
-    
-  &::after
-    bottom: 0
-
-.benefits
-
-  > li
-    position: relative
-
-    &::after
-      content: ''
-      width: 100%
-      height: em(2)
-      background-color: color('grey-300')
-      position: absolute
-      bottom: -0.5em
-      left: 0
-
-    &:last-of-type
-      
-      &::after
-        content: none
-        

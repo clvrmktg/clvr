@@ -1,24 +1,60 @@
 @use 'abstracts' as *
-  
+
+.get
+
+  &::before, &::after
+    content: ''
+    width: 100%
+    height: rem(1)
+    background-color: color('clever-navy')
+    position: absolute
+    left: 0
+    
+
+  &::before
+    top: 0
+    
+  &::after
+    bottom: 0
+
+
+.icon
+  fill: color('clever-blue-light')
+
 .feature 
-  //   &__heading
 
-  //     outline: $bg
+  .icon
+    width: rem(40)
 
-  //   > h3
-  //     outline: $bg
+.benefit
+
+  .icon
+    width: rem(26)
+
+.attribute
+  position: relative
+
+  &::after
+    content: ''
+    width: 100%
+    height: em(2)
+    background-color: color('grey-300')
+    position: absolute
+    bottom: -0.5em
+    left: 0
+
+  &:last-of-type
+    
+    &::after
+      content: none
   
   .icon
-    width: 0.75em
-    background-color: rgba(#e67e22, 0.1)
-    border-radius: 50%
+    width: rem(32)
 
-  svg
-    fill: #e67e22
 
 .line
   height: em(2)
 
 .key
-  color: #e67e22
+  color: color('clever-blue-light')
 

@@ -20,6 +20,10 @@
   <link rel="preconnect" href="https://{{- .Site.Params.twic -}}.twic.pics/?v1">
   <link rel="preload" href="https://{{- .Site.Params.twic -}}.twic.pics/?v1" as="script">
   {{- end }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;700&display=swap" rel="stylesheet">
+
   {{- with resources.Get "styles/style.sass" -}}
     {{- $opts := dict
       "enableSourceMap" (not hugo.IsProduction)
