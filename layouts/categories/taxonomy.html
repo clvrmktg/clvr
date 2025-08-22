@@ -6,7 +6,7 @@
 {{- define "main" -}}
 <div class="[ grid layout--spacing section--padding ]">
   <header>
-    <h1>{{ .Title }} Web Design</h1>
+    <h1>{{ .Title }}</h1>
     {{ partial "breadcrumbs.html" . }}
     {{- /* Safely pull the taxonomy plural (e.g., "industries", "categories") */ -}}
     {{- $plural := "" -}}
@@ -20,7 +20,8 @@
     {{- $desc := printf "Explore %s in the %s %s from %s." $noun .Title $singular site.Title -}}
     <p>{{- $desc -}}</p>
   </header>
-  {{ partial "projects.html" (dict "pages" (sort .Pages "Weight" "asc")) }}
-  {{ partial "pagination.html" . }}
+  {{/* 
+    {{ partial "pagination.html" . }}
+  */}}
 </div>
 {{ end }}

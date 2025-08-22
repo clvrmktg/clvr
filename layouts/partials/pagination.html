@@ -1,16 +1,22 @@
 <nav>
   {{ $paginator := .Paginator }}
-  <ul class="[ pagination ]">
+  <ul class="[ pagination ][ flex between middle col-gap--2 ]">
     {{ if $paginator.HasPrev }}
     <li class="[ newer ]">
       <a class="[ btn btn--sm btn--ghost ]" href="{{ $paginator.Prev.URL }}" data-prefetch>
-        <abbr title="Previous" aria-label="Previous">Prev</abbr>
+        <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
+          <abbr title="Previous" aria-label="Previous">Prev</abbr>
+        </span>
       </a>
     </li>
     {{ end }}
     {{ if $paginator.HasNext }}
     <li class="[ older ]">
-      <a class="[ btn btn--sm btn--ghost ]" href="{{ $paginator.Next.URL }}" data-prefetch>Next</a>
+      <a class="[ btn btn--sm btn--ghost ]" href="{{ $paginator.Next.URL }}" data-prefetch>
+        <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
+          <span>Next</span>
+        </span>
+      </a>
     </li>
     {{ end }}
   </ul>
