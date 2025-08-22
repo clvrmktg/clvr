@@ -3,7 +3,7 @@
 date = 2024-12-11T16:35:00-04:00
 
 draft = false
-description = ""
+description = "Bahamas web design for Chickcharney Challenge. We built a fast, responsive adventure tourism website showcasing rock climbing, obstacle courses, and team events in Nassau."
 
 title = 'Chickcharney Challenge'
 

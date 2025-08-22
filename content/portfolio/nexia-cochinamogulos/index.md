@@ -3,7 +3,7 @@
 date = 2024-11-25T08:05:00-04:00
 
 draft = false
-description = ""
+description = "Bahamas web design for Nexia Bahamas, a trusted accounting firm. We refreshed their website with a clean, responsive design aligned with Nexia International's brand."
 
 title = "Nexia Bahamas"
 

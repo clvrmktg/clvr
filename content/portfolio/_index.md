@@ -2,7 +2,7 @@
 date = 2024-11-25T07:05:00-04:00
 
 draft = false
-description = "Explore Clever’s Bahamas web design portfolio—websites built to help businesses grow, stand out, and succeed online."
+description = "Explore our portfolio of Bahamas web design projects. See real websites we’ve built for local businesses—crafted to boost visibility, attract customers, and deliver results online."
 
 title = 'Portfolio'
 proposition_heading = "Websites That Work for Real Businesses"

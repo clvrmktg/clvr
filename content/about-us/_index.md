@@ -2,7 +2,7 @@
 date = 2024-11-25T07:00:00-04:00
 
 draft = false
-description = ""
+description = "Clever Marketing is a Bahamas web design company helping small and medium businesses build fast, secure websites that attract customers and drive growth."
 
 title = 'About Us'
 proposition_heading = "Smart, Stress-Free Web Design in The Bahamas"

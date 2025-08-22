@@ -2,7 +2,7 @@
 date = 2024-11-25T07:05:00-04:00
 
 draft = false
-description = 'Bahamas web design services for busy business owners. We handle your website so you can focus on customers and have a site that not only looks great but performs.'
+description = "Bahamas web design services for busy business owners. We handle your website so you can focus on customers and have a site that not only looks great but performs."
 
 # Hero
 title = 'Bahamas Web Design Services'
