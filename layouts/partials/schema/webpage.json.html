@@ -1,0 +1,34 @@
+{{- /* Resolve the page type in order of priority:
+  1) .Store "webpageType"
+  2) .Params.webpageType
+  3) sensible defaults based on page kind
+*/ -}}
+{{- $type := or (.Store.Get "webpageType") .Params.webpageType -}}
+{{- if not $type -}}
+{{- if .IsHome -}}
+{{- $type = "WebPage" -}}        {{/* homepage gets WebSite elsewhere */}}
+{{- else if .IsSection -}}
+{{- $type = "CollectionPage" -}}
+{{- else -}}
+{{- $type = "WebPage" -}}
+{{- end -}}
+{{- end -}}
+
+{{- $desc := .Description | default .Summary | default .Title -}}
+{{- $webpageID := print .Permalink "#webpage" -}}
+<!-- Webpage Schema -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": {{ printf "%q" $type }},
+"@id": {{ printf "%q" $webpageID }},
+"url": {{ printf "%q" .Permalink }},
+"name": {{ printf "%q" .Title }},
+"description": {{ printf "%q" $desc }},
+"isPartOf": { "@id": {{ printf "%q" (print .Site.BaseURL "#website") }} },
+"about":    { "@id": {{ printf "%q" (print .Site.BaseURL "#localbusiness") }} },
+"breadcrumb": { "@id": {{ printf "%q" (print .Permalink "#breadcrumbs") }} },
+"datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+"dateModified":  "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}"
+}
+</script>

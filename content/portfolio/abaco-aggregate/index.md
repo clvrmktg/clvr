@@ -28,14 +28,14 @@ logo = "aac-logo-white.svg"
 
 [thumb]
 path = "aac-thumb.jpg"
-alt= ""
+alt= "Snapshot of Abaco Aggregate & Cement, Ltd. website homepage"
 
 [share]
 path = "aac-share-image.jpg"
-alt = ""
+alt = "Snapshot of Abaco Aggregate & Cement, Ltd. website homepage"
 
 [screen]
 path = "aac-laptop-view.jpg"
-alt = ""
+alt = "Snapshot of Abaco Aggregate & Cement, Ltd. website homepage"
 
 +++

@@ -1,8 +1,8 @@
 +++
 date = 2024-11-25T08:00:00-04:00
-
 draft = false
 description = "Professional website design in The Bahamas — custom-built for speed, security, and results. We create mobile-friendly, SEO-ready websites that help Bahamian businesses attract customers, build trust, and grow online."
+
 
 # Hero
 title = 'Website Design Bahamas'
@@ -35,12 +35,12 @@ alt = "Woman browsing a Bahamian construction company website on her laptop whil
 tagline = "Everything included to launch a professional, high-performing website."
 
 [[get.items]]
-title = "Custom Design"
+title = "Custom Development"
 description = "No templates here. Your site will be built to fit your brand and your audience."
 icon = "brush.svg"
 
 [[get.items]]
-title = "Mobile-First Approach"
+title = "Responsive Design"
 description = "Optimized for phones, tablets, and desktops from day one."
 icon = "mobile.svg"
 

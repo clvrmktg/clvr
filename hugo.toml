@@ -3,7 +3,6 @@ languageCode = 'en-us'
 title = 'Clever Marketing, Ltd.'
 enableGitInfo = true
 
-
 [sass]
   use_dart_sass = true
 

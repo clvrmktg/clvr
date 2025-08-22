@@ -1,6 +1,7 @@
 {{- define "variables" -}}
 {{- .Store.Set "hasForm" true -}}
-{{- $.Store.Set "hasObscure" true -}}
+{{- .Store.Set "hasObscure" true -}}
+{{- .Store.Set "webpageType" "ContactPage" -}}
 {{- end -}}
 {{- define "main" -}}
 {{ partial "hero.html" . }}

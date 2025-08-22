@@ -1,6 +1,7 @@
 {{- define "variables" -}}
 {{- .Store.Set "hasTwic" true -}}
 {{- .Store.Set "hasObscure" true -}}
+{{- .Store.Set "webpageType" "AboutPage" -}}
 {{- end -}}
 {{- define "main" -}}
 {{ partial "hero.html" . }}

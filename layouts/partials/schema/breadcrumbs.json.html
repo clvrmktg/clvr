@@ -27,12 +27,20 @@
 {{- end }}
 {{- $items = $items | append $item -}}
 {{- end }}
-
+<!-- Breadcrumbs Schema -->
 <script type="application/ld+json">
-{{ dict
-    "@context" "https://schema.org"
-    "@type" "BreadcrumbList"
-    "itemListElement" $items
-
-}}
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {{- range $i, $n := $items -}}{{ if $i }},{{ end }}
+    {
+      "@type": "ListItem",
+      "position": {{ add $i 1 }},
+      "name": {{ printf "%q" $n.name }}{{ if $n.url }},
+      "item": {{ printf "%q" $n.url }}{{ end }}
+    }
+    {{- end }}
+  ]
+}
 </script>

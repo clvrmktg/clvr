@@ -1,0 +1,49 @@
+{{- /* JSON-LD FAQPage: renders only if .Params.faqs has items */ -}}
+{{- $faqs := .Params.faqs -}}
+{{- if not $faqs -}}{{- /* nothing to do */ -}}{{- else -}}
+
+  {{- /* Support both shapes: { items: [...] } OR just [...] */ -}}
+  {{- $iter := slice -}}
+  {{- with $faqs.items -}}
+    {{- $iter = . -}}
+  {{- else -}}
+    {{- $iter = $faqs -}}
+  {{- end -}}
+
+  {{- /* Collect valid Q/A pairs (supports q/a or question/answer) */ -}}
+  {{- $pairs := slice -}}
+  {{- range $it := $iter -}}
+    {{- $q := "" -}}
+    {{- $a := "" -}}
+
+    {{- with $it.q }}{{- $q = . -}}{{- end -}}
+    {{- with $it.question }}{{- if eq $q "" }}{{- $q = . -}}{{- end -}}{{- end -}}
+
+    {{- with $it.a }}{{- $a = . -}}{{- end -}}
+    {{- with $it.answer }}{{- if eq $a "" }}{{- $a = . -}}{{- end -}}{{- end -}}
+
+    {{- /* Clean up text (strip HTML, trim whitespace) */ -}}
+    {{- $q = trim (plainify $q) " \t\r\n" -}}
+    {{- $a = trim (plainify $a) " \t\r\n" -}}
+
+    {{- if and $q $a -}}
+      {{- $pairs = $pairs | append (dict "q" $q "a" $a) -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- if gt (len $pairs) 0 -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {{- range $i, $f := $pairs -}}{{ if $i }}, {{ end }}{
+      "@type": "Question",
+      "name": {{ printf "%q" $f.q }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ printf "%q" $f.a }} }
+    }{{- end -}}
+  ]
+}
+</script>
+  {{- end -}}
+{{- end -}}

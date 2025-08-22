@@ -1,0 +1,28 @@
+{{- $serviceName := .Title -}}
+{{- $serviceDesc := .Description | default .Summary | default .Title -}}
+{{- $areaServed := slice "Nassau" "The Bahamas" -}} {{/* adjust as needed */}}
+<!-- Service Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": {{ printf "%q" (print .Permalink "#service") }},
+  "name": {{ printf "%q" $serviceName }},
+  "description": {{ printf "%q" $serviceDesc }},
+  "url": {{ printf "%q" .Permalink }},
+  "serviceType": {{ printf "%q" $serviceName }},
+  "provider": { "@id": {{ printf "%q" (print .Site.BaseURL "#localbusiness") }} },
+  "areaServed": [
+    {{- range $i, $a := $areaServed -}}{{ if $i }}, {{ end }}{{ printf "%q" $a }}{{- end -}}
+  ],
+  {{ with .Params.get }}
+  {{- if gt (len .items) 0 -}}
+  "serviceOutput": [
+    {{- range $i, $it := .items -}}{{ if $i }}, {{ end }}{ "@type": "Thing", "name": {{ printf "%q" $it.title }} }{{- end }}
+  ],
+  {{- end -}}
+{{ end }} 
+"serviceAudience": { "@type": "Audience", "audienceType": "Small businesses in Nassau, Bahamas" }
+
+}
+</script>

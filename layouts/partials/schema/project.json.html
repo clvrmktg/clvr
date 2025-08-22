@@ -1,0 +1,87 @@
+{{/* ==== Collect fields from front matter ==== */}}
+{{- $title := .Title -}}
+{{- $desc := .Description | default .Summary | default $title -}}
+{{- $prop := .Params.proposition_heading | default "" -}}
+{{- $sub  := .Params.subhead | default "" -}}
+
+{{- $industries := .Params.industries | default (slice) -}}
+{{- $deliverables := .Params.deliverables | default (slice) -}}
+
+{{- $clientName := .Params.client | default "" -}}
+{{- $clientURL  := .Params.project_link | default "" -}}
+
+{{- $datePublished := (.Date | time.Format "2006-01-02T15:04:05Z07:00") -}}
+{{- $dateModified  := (.Lastmod | default .Date | time.Format "2006-01-02T15:04:05Z07:00") -}}
+
+{{/* Choose best image (share > screen > thumb) */}}
+{{- $img := "" -}}
+{{- with .Params.share.path }}{{- $img = (print $.Site.BaseURL .) -}}{{- end -}}
+{{- if eq $img "" }}{{ with .Params.screen.path }}{{- $img = (print $.Site.BaseURL .) -}}{{ end }}{{ end -}}
+{{- if eq $img "" }}{{ with .Params.thumb.path  }}{{- $img = (print $.Site.BaseURL .) -}}{{ end }}{{ end -}}
+
+{{/* Build keywords from industries + deliverables */}}
+{{- $keywords := slice -}}
+{{- range $industries }}{{- $keywords = $keywords | append . -}}{{- end -}}
+{{- range $deliverables }}{{- $keywords = $keywords | append . -}}{{- end -}}
+
+{{/* IDs for linking entities */}}
+{{- $webpageID := print .Permalink "#webpage" -}}
+{{- $workID    := print .Permalink "#case-study" -}}
+{{- $siteID    := print .Site.BaseURL "#website" -}}
+{{- $bizID     := print .Site.BaseURL "#localbusiness" -}}
+<!-- WebPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": {{ printf "%q" $webpageID }},
+  "url": {{ printf "%q" .Permalink }},
+  "name": {{ printf "%q" $title }},
+  "description": {{ printf "%q" $desc }},
+  "isPartOf": { "@id": {{ printf "%q" $siteID }} },
+  "breadcrumb": { "@id": {{ printf "%q" (print .Permalink "#breadcrumbs") }} },
+  "primaryImageOfPage": {{ if $img }}{ "@type":"ImageObject", "url": {{ printf "%q" $img }} }{{ else }}null{{ end }},
+  "datePublished": {{ printf "%q" $datePublished }},
+  "dateModified":  {{ printf "%q" $dateModified }},
+  "mainEntity": { "@id": {{ printf "%q" $workID }} }
+}
+</script>
+<!-- CreativeWork (Case Study) Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "@id": {{ printf "%q" $workID }},
+  "name": {{ printf "%q" (cond (ne $prop "") (print $prop " — " $title) $title) }},
+  "headline": {{ printf "%q" (cond (ne $prop "") $prop $title) }},
+  "alternativeHeadline": {{ printf "%q" $sub }},
+  "description": {{ printf "%q" $desc }},
+  "url": {{ printf "%q" .Permalink }},
+  {{ if $img -}}
+  "image": {{ printf "%q" $img }},
+  {{- end -}}
+  "inLanguage": "en",
+  "genre": "Case Study",
+  "keywords": {{ printf "%q" (delimit $keywords ", ") }},
+  "datePublished": {{ printf "%q" $datePublished }},
+  "dateModified":  {{ printf "%q" $dateModified }},
+
+  "creator":   { "@id": {{ printf "%q" $bizID }} },
+  "provider":  { "@id": {{ printf "%q" $bizID }} }{{ if or $clientName $clientURL }},
+  "recipient": {
+    "@type": "Organization",
+    {{- if $clientName -}}"name": {{ printf "%q" $clientName }}{{ end }}{{ if and $clientName $clientURL }},{{ end }}
+    {{- if $clientURL -}}"url":  {{ printf "%q" $clientURL }}{{ end }}
+  }{{ end }}
+
+  {{/* Industries → about */}}
+  {{- if gt (len $industries) 0 -}},
+  "about": [{{- range $i, $v := $industries -}}{{ if $i }}, {{ end }}{ "@type":"Thing", "name": {{ printf "%q" $v }} }{{- end -}}]
+  {{- end -}}
+
+  {{/* Deliverables → mentions */}}
+  {{- if gt (len $deliverables) 0 -}},
+  "mentions": [{{- range $i, $d := $deliverables -}}{{ if $i }}, {{ end }}{ "@type":"Service", "name": {{ printf "%q" $d }} }{{- end -}}]
+  {{- end }}
+}
+</script>

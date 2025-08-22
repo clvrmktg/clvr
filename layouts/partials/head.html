@@ -44,6 +44,16 @@
   <meta name="publish_date" property="og:publish_date" content="{{- .Date.Format "2006-01-02T15:04:05Z0700" -}}">
   {{ partial "schema/website.json.html" . }}
   {{ partial "schema/local.json.html" . }}
+  {{ if not (.Store.Get "isProject") }}
+  {{ partial "schema/webpage.json.html" . }}
+  {{ end }}
+  {{ if .Store.Get "isService" }}
+    {{ partial "schema/service.json.html" . }}
+  {{ end }}
+  {{ if .Store.Get "isProject" }}
+    {{ partial "schema/project.json.html" . }}
+  {{ end }}
   {{ partial "schema/post.html" . }}
   {{ partial "schema/breadcrumbs.json.html" .}}
+  {{ partial "schema/faqs.json.html" . }}
 </head>

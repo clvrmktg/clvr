@@ -1,3 +1,6 @@
+{{- define "variables" -}}
+{{- .Store.Set "webpageType" "CollectionPage" -}}
+{{- end -}}
 {{ define "main" }}
   <header>
     <h1>{{ .Title }}</h1>
