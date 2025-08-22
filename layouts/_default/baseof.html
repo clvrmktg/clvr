@@ -3,31 +3,46 @@
 <html id="page" lang="{{ .Site.LanguageCode }}" prefix="og: https://ogp.me/ns#">
   {{ partial "head.html" . }}
   <body>
+    <a class="screen-reader-text" href="#main">Skip to main content</a>
     <div id="container" class="[ container ]">
       {{ $currentPage := . }}
       {{ partial "navbar.html" (dict "context" . "currentPage" $currentPage) }}
-      <main class="[ main ][ content-grid {{ if eq .Page.Kind "404" }} error {{ end }}]" id="main">
+      <main id="main" class="[ main ][ content-grid {{ if eq .Page.Kind "404" }} error {{ end }}]" id="main">
         {{ block "main" . -}}{{- end }}
       </main>
       {{- partial "footer.html" . }}
-      {{/* 
-        <script src="/scripts/app-{{ .Site.Params.Version }}.min.js" defer></script>  
-      */}}
-      {{partial "script.html" (dict "path" "scripts/components/prefetch.js" "targetPath" "scripts/prefetch.js")}}
-      {{ if or .IsHome ( .Store.Get "hasObscure" ) }}
-      {{ partial "script.html" (dict "path" "scripts/components/obscure.js" "targetPath" "scripts/obscure.js") }}
-      {{- end }}
-      {{ if .Store.Get "hasCode" -}}
-      {{ partial "script.html" (dict "path" "scripts/vendor/prism.js" "targetPath" "scripts/prism.js") }}
-      {{- end }}
-      {{- if .Store.Get "hasYouTube" -}}
-      {{-
-        $attributes := dict
-        "module" true
-        "defer" true
-      -}}
-      {{ partial "script.html" (dict "path" "scripts/vendor/lite-youtube.js" "targetPath" "scripts/lite-youtube.js" "attributes" $attributes) }}
-      {{- end -}}
     </div>
+    <div id="cookie-banner" class="[ cookie--banner ][ gap--2 p--1 ]">
+      <div class="[ flex gap--1 ]">
+        {{ readFile "static/icons/cookie.svg" | safeHTML }}
+        <p class="[ font--500 pb--0 ]">This site uses cookies to improve performance and your experience. By using our website, you agree to our <a href="/privacy-policy/" data-prefetch>Privacy Policy</a>.</p>
+      </div>
+      <div>
+        <button id="accept-cookies"class="[ btn btn--lg btn--primary ]">Okay, thanks</button>
+      </div>
+    </div>
+    {{partial "script.html" (dict "path" "scripts/components/prefetch.js" "targetPath" "scripts/prefetch.js")}}
+    {{ if or .IsHome ( $.Store.Get "hasObscure" ) }}
+    {{ partial "script.html" (dict "path" "scripts/components/obscure.js" "targetPath" "scripts/obscure.js") }}
+    {{- end }}
+    {{- if .Store.Get "hasYouTube" -}}
+    {{-
+      $attributes := dict
+      "module" true
+      "defer" true
+    -}}
+    {{ partial "script.html" (dict "path" "scripts/vendor/lite-youtube.js" "targetPath" "scripts/lite-youtube.js" "attributes" $attributes) }}
+    {{- end -}}
+    {{- if .Store.Get "project" -}}
+    {{ partial "script.html" (dict "path" "scripts/vendor/lightgallery.js" "targetPath" "scripts/lightgallery.js") }}
+    {{end}}
+    {{ if .Store.Get "hasForm" }}
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/bouncer/dist/bouncer.polyfills.min.js"></script>
+    {{ partial "script.html" (dict "path" "scripts/components/validate.js" "targetPath" "scripts/validate.js") }}
+    {{ end }}
+    {{ if $.Store.Get "hasThankYou" }}
+    {{ partial "script.html" (dict "path" "scripts/components/thank-you.js" "targetPath" "scripts/thank-you.js") }}
+    {{ end }}
+    {{ partial "script.html" (dict "path" "scripts/components/notice.js" "targetPath" "scripts/notice.js") }}
   </body>
 </html>

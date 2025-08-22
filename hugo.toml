@@ -12,14 +12,8 @@ enableGitInfo = true
 # disableKinds = [ "taxonomy", "term" ]
 
 [taxonomies]
-  insights_category  = "insights_categories"     # for blog/Insights
-  portfolio_category = "portfolio_categories"    # for Projects
-  portfolio_deliverables = "portfolio_deliverables"
-
-[permalinks]
-  insights_categories  = "/insights/categories/:slug/"
-  portfolio_categories = "/portfolio/categories/:slug/"
-  portfolio_deliverables = "/portfolio/deliverables/:slug/"
+  category  = "categories"     # for blog/Insights
+  industry = "industries"    # for Projects
 
 # config.toml
 [outputs]
@@ -52,11 +46,11 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
 
 [params.social]
   facebook = "clvrmktg"
-  twitter = "clvrmktg"
   instagram = "clvrmktg"
   linkedin = "clvrmktg"
-  github = "clvrmktg"
   x = "clvrmktg"
+  whatsapp = "+1 (242) 376-3340"
+  linkedinType = "company" # or "in" for personal profile URLs
 
 [[menu.main]]
   identifier = "services"
@@ -148,6 +142,9 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
     [markup.goldmark.renderHooks]
       [markup.goldmark.renderHooks.link]
         enableDefault = true
+        
+[security.funcs]
+getenv = ['^HUGO_', '^GA_TRACKING_ID$']
 
 [sitemap]
   filename = "sitemap"  # Remove .xml

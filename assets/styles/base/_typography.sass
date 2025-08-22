@@ -55,13 +55,11 @@ p
   padding-bottom: 1em
   
 a:not([class])
-  font-weight: 600
-  color: color('clever-blue')
+  color: color('text-color')
   border-bottom: em(2) solid color('clever-blue')
-  +transition('color, background-color')
+  +transition(background-color)
 
   +hover
-    color: color('clever-blue')
     background-color: color('clever-blue-1')
 
 small, figcaption, .font--small

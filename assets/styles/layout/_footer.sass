@@ -1,16 +1,15 @@
 @use 'abstracts' as *
 
-.funnel
-  background: color('clvr-blue')
-  //  url(../../uploads/squares.svg) no-repeat center
-  background-size: cover
+// .funnel
+//   background-color: color('clvr-blue')
+//   background-size: cover
 
 
-.ipad
-  max-width: 75%
-  border: em(18) solid #333
-  box-shadow: 0.5em 0.5em em(18) 0 rgba(0,0,0,0.3)
-  transform: rotateZ(3deg)
+// .ipad
+//   max-width: 75%
+//   border: em(18) solid #333
+//   box-shadow: 0.5em 0.5em em(18) 0 rgba(0,0,0,0.3)
+//   transform: rotateZ(3deg)
 
 .footer
   background-color: #2d2d2d
@@ -19,11 +18,10 @@
     .wrapper
       grid-template-columns: minmax(#{em(280)},1fr) repeat(3, max-content)
 
-    
   a:not(.logo)
     color: inherit    
     border-bottom: em(1) solid transparent
-    +transition('border-bottom')
+    +transition(border-bottom)
 
     +hover
       border-bottom: em(1) solid color('white')
@@ -52,7 +50,7 @@
     content: ''
     position: absolute
     height: em(3)
-    background-color:  color('clever-blue')
+    background-color:  color('clever-blue-light')
     bottom: 0
     
   &::before
@@ -64,11 +62,11 @@
     left: em(25)
   
 .markers
-  width: em(15)
+  width: em(24)
   
-  svg
-    fill:  color('clever-blue')
-
+  > svg
+    stroke: color('clever-blue-light')
+  
 .cookie-banner
   z-index: 20
 
@@ -79,3 +77,31 @@
 
 .white
   color: color('white')
+
+$min-spacing: 3 * 16
+$max-spacing: 5 * 20
+
+
+.cookie--banner
+  display: none
+  max-width: em(1000)
+  // color: color('white')
+  background-color: color('section-background')
+  border-radius: em(5)
+  position: fixed
+  inset-block: auto 1em 
+  +clamp(inset-inline, 0, $max-spacing)
+  margin-inline: auto
+  bottom: 1em
+  z-index: 2
+
+  // p > a
+  //   color: color('white')
+
+  svg
+    width: 6rem
+    fill: color('cc-teal')
+
+  +breakpoint(desktop)
+    grid-template-columns: 1fr max-content
+  

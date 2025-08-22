@@ -8,33 +8,40 @@
   // --wa-green: #25d366
 
   &__item
-    width: 1.2em
+    width: 2rem
+    height: 2rem
 
   &__link
     display: block
-    fill: var(--white)
+    width: inherit
+    height: inherit
     position: relative
     z-index: 1
 
+    > svg
+      stroke: color('white')
+
+      &.icon-tabler-brand-x
+        fill: color('white')  
+
     &::after
       content: ''
-      width: 200%
-      height: 200%
-      background-color:  color('clever-blue')
+      width: 150%
+      height: 150%
+      background-color:  color('clever-blue-light')
       border-radius: em(5)
       position: absolute
       top: 50%
       left: 50%
       z-index: -1
-      transform: translate(-50%, -50%)
-      +transition((fill, background-color))
+      transform: translate(-50%, -55%)
+      +transition((fill, stroke, background-color))
 
     
     +hover
-      fill: color('white')
 
       &::after
-        background-color:  color('clever-blue-dark')
+        background-color:  color('clever-blue')
     
   &--dark
 
@@ -43,14 +50,21 @@
       &__link
 
         > svg
-         fill:  color('clever-blue')
+         stroke:  color('clever-blue-light')
+
+         &.icon-tabler-brand-x
+            fill: color('clever-blue-light')
 
         &::after
           background-color: #252525
 
         +hover
           > svg
-            fill: var(--white)
+            stroke: color('white')
+            
+            &.icon-tabler-brand-x
+                fill: color('white')
 
           &::after
-            background-color:  color('clever-blue')          
+            background-color:  color('clever-blue-light')          
+

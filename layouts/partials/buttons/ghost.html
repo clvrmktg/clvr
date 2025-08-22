@@ -1,4 +1,4 @@
-<a class="[ btn btn--lg btn--ghost {{ if .white }}ghost--white {{end}}]{{ if .current }}[ current ]{{end}}" href="{{ .url }}" data-prefetch>
+<a class="[ btn btn--{{ if .small }}sm{{else}}lg{{end}} btn--ghost {{ if .white }}ghost--white {{end}}]{{ if .current }}[ current ]{{end}}" href="{{ .url }}" data-prefetch>
   <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
     <span>{{ .text }}</span>
     <span class="[ arrow-right ]">

@@ -15,7 +15,7 @@
           <p class="[ ch--50 ]">{{ .Params.subtitle }}</p>
           <div class="[ grid gap--1 ]">
             <div class="[ flex flex--column lg:flex--row col-gap--1 row-gap--0.5 ]">
-              {{ partial "buttons/cta.html" (dict "url" "/contact-us/" "text" "Get Your Quote")}}
+              {{ partial "buttons/primary.html" (dict "url" "/contact-us/" "text" "Get Your Quote")}}
             </div>
             {{ partial "reviews/trust-badge.html" . }}
           </div>
@@ -36,7 +36,7 @@
       <div class="[ lead__heading ][ mb--1 ]">
         <h1 class="[ bar-before ][ relative font--5 font--400 upper flex flex--column row-gap--1 ]">{{ .Title }}</h1>
       </div>
-      <h2 class="[ merriweather font--1 ch--24 pb--0 mb--0.5 ]">{{ .Params.proposition_heading }}</h2>
+      <h2 class="[ font--1 ch--18 pb--0 mb--0.5 ]">{{ .Params.proposition_heading }}</h2>
       <p>{{ .Params.subhead }}</p>
       {{- else -}}
       <h1 class="[ merriweather ]">{{ .Title }}</h1>

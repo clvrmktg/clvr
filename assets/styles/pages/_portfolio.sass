@@ -15,102 +15,72 @@
 
 .project
 
-  +device(desktop)
-  
-    overflow: hidden
+  > a
+    border: em(1) solid color('grey-300')
 
-    &:focus-within
-      
-      .project
-
-        &__overlay, &__text
-          opacity: 1
-
-    &__overlay, &__text
-      opacity: 0
-      +transition(opacity)
-      
     +hover
+      outline: em(3) solid color('clever-blue-light')
 
-      .project
+  &__img
+    border-top-right-radius: em(5)
+    border-top-left-radius: em(5)
 
-        &__overlay, &__text
-          opacity: 1
-
-    &__overlay
-      width: 100%
-      height: 100%
-      background-color: color('clever-blue-5')
-      border-radius: inherit
-      inset: 0
-      margin: auto
-      
-    &__text
-      background-color: white
-      border-radius: inherit
-      position: absolute
-      right: em(40)
-      bottom: 1em
-      left: em(30)
-
-
-  +device(tablet)
-    display: grid
-    grid-template-rows: repeat(2, min-content) 1fr min-content
-
-    &__img
-      grid-row: span 1 / 2
-
-    &--overlay
-      display: none
-      visibility: hidden
-
-    &__text
-      grid-row: 2 / 5
-      display: grid
-      grid-template-rows: subgrid
-
-
-.shadow
-  box-shadow: 0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24)
+//   +device(desktop)
   
-.project
+//     overflow: hidden
 
-  &-display
-    position: relative
-
-foreignObject
-
-  > figure
-    height: 100%
-
-    > picture
-      height: 100%
-
-      > img
-        height: inherit
-        object-fit: cover
-
-.deliverables
-
-  > li
-
-    &::after
-      content: ''
-      width: 100%
-      height: em(2)
-      background-color: color('clever-blue')
-      position: absolute
-      bottom: -0.5em
-      left: 0
+//     &:focus-within
       
-    &:last-of-type
+//       .project
+
+//         &__overlay, &__text
+//           opacity: 1
+
+//     &__overlay, &__text
+//       opacity: 0
+//       +transition(opacity)
       
-      &::after
-        content: none
+//     +hover
+
+//       .project
+
+//         &__overlay, &__text
+//           opacity: 1
+
+//     &__overlay
+//       width: 100%
+//       height: 100%
+//       background-color: color('clever-blue-5')
+//       border-radius: inherit
+//       inset: 0
+//       margin: auto
       
-.countries
-  // #f7f7f7
+//     &__text
+//       background-color: white
+//       border-radius: inherit
+//       position: absolute
+//       right: em(40)
+//       bottom: 1em
+//       left: em(30)
+
+
+//   +device(tablet)
+//     display: grid
+//     grid-template-rows: repeat(2, min-content) 1fr min-content
+
+//     &__img
+//       grid-row: span 1 / 2
+
+//     &--overlay
+//       display: none
+//       visibility: hidden
+
+//     &__text
+//       grid-row: 2 / 5
+//       display: grid
+//       grid-template-rows: subgrid
+
+
 
 .chyron__logo
   filter: brightness(45%) contrast(100%) saturate(100%) blur(0) hue-rotate(0deg)

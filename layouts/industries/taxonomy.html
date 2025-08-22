@@ -1,0 +1,14 @@
+{{- define "variables" -}}
+{{- .Store.Set "hasTwic" true -}}
+{{- .Store.Set "hasObscure" true -}}
+{{- end -}}
+{{- define "main" -}}
+<div class="[ grid layout--spacing section--padding ]">
+  <header>
+    <h1>{{ .Title }} Web Design</h1>
+    {{ partial "breadcrumbs.html" . }}
+  </header>
+  {{ partial "projects.html" (dict "pages" (sort .Pages "Weight" "asc")) }}
+  {{ partial "pagination.html" . }}
+</div>
+{{ end }}

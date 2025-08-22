@@ -1,31 +1,31 @@
 <header class="[ navbar ][ full-width content-grid ]" id="navbar">
-  <div class="[ wrapper ][ flex between middle col-gap--2 relative ]">
+  <div class="[ wrapper ][ middle col-gap--2 relative ]">
     <div class="[ backdrop ]"></div>
-    <a class="[ logo ][ flex middle blue--900 ]" href="/" title="Home" aria-label="Home">
+    <a class="[ logo ][ flex middle ]" href="/" title="Home" aria-label="Home">
       {{- readFile "static/icons/logo.svg" | safeHTML }}
     </a>
     <label class="[ navicon ][ middle relative ]" id="navicon" for="click">
       <input class="[ hidden ]" id="click" type="checkbox" aria-label="Menu"><b class="[ bar ][ block ]"></b>
     </label>
-    <nav class="[ navigation--main ][ none lg:flex lg:middle ]">
+    <nav class="[ navigation--main ][ none lg:middle col-gap--1 ]">
       <ul class="[ menu menu--main ][ col-gap--2 ]">
       {{- $context := .context -}}
       {{- $currentPage := .currentPage -}}
       {{with $context}}
         {{ range .Site.Menus.main }}
-        <li class="[ menu__item ][ font--600 relative no-wrap  ]">
+        <li class="[ menu__item ][ font--600 relative no-wrap {{ if eq $.currentPage.RelPermalink .URL }}current {{ end }}]">
             {{ if .HasChildren }}
-            <div class="[ col-gap--0.5 ]">
-              <a class="[ menu__link ][ flex flex--column center {{ if eq $.currentPage.RelPermalink .URL }}current {{ end }}]" href="{{ .URL }}" {{ if eq $.currentPage.RelPermalink .URL }}aria-current="page"{{ end }} data-prefetch>{{ .Name }}</a>
+            <div class="[ col-gap--0.25 ]">
+              <a class="[ menu__link ][ flex flex--column center ]" href="{{ .URL }}" {{ if eq $.currentPage.RelPermalink .URL }}aria-current="page"{{ end }} data-prefetch>{{ .Name }}</a>
               <label class="[ arrow ][ flex center middle ]" for="submenu">
                 <input class="[ hidden ]" id="submenu" type="checkbox" aria-label="Submenu">
                 <span class="[ icon icon--arrow ]">
-                  {{- readFile "static/icons/down-arrow.svg" | safeHTML }}
+                  {{- readFile "static/icons/tabler/chevron-down.svg" | safeHTML }}
                 </span>
               </label>
             </div>
             {{else}}
-            <a class="[ menu__link ][ flex flex--column center ]{{ if eq $.currentPage.RelPermalink .URL }}[ current ]{{ end }}" href="{{ .URL }}" {{ if eq $.currentPage.RelPermalink .URL }}aria-current="page"{{ end }} data-prefetch>
+            <a class="[ menu__link ][ flex flex--column center ]" href="{{ .URL }}" {{ if eq $.currentPage.RelPermalink .URL }}aria-current="page"{{ end }} data-prefetch>
               <span>{{ .Name }}</span>
             </a>
             {{ end }}
@@ -42,14 +42,17 @@
         {{ end }}
       {{end}}
       </ul>
-    </nav>
-    <ul class="[ flex middle col-gap--1 ]">
-      <li>            
+      <!-- Actions (not a list) -->
+      <div class="[ nav-actions ][ middle col-gap--1 ]" role="group" aria-label="Contact options">
         <template obscure="obscure" data-p1="+1" data-p2="242" data-p3="376" data-p4="3340">
-          <a href="tel:%1%2%3%4">(%2) %3-%4</a>
+          <!-- Visible: nicely formatted number; Click: tel:+12423763340 -->
+          <a class="[ phone-link ][ font--700 ]" href="tel:%1%2%3%4" aria-label="Call Clever Marketing at (%2) %3-%4">
+            (%2) %3-%4
+          </a>
         </template>
-      </li>
-      <li>{{ partial "buttons/ghost.html" (dict "url" "/contact-us/" "text" "Get Your Quote") }}</li>
-    </ul>
+    
+        {{ partial "buttons/ghost.html" (dict "url" "/contact-us/" "text" "Get Your Quote" "small" true) }}
+      </div>
+    </nav>
   </div>
 </header>

@@ -8,9 +8,9 @@
   {{ with .Params.why_work_with_us }}
   <section class="[ full-width content-grid grid layout--spacing section--padding bg:blue--50 ]" aria-labelledby="why-heading">
     <div class="[ grid center ]">
-      <h2 id="why-heading" class="[ grid center ]">
-        <span class="[ font--5 text--center upper clever--blue ]">{{ .headline }}</span>
-        <span class="[ font--2 text--center ]">{{ .title }}</span>
+      <h2 id="why-heading" class="[ grid center text--center ]">
+        <span class="[ key ][ font--5 upper ]">{{ .headline }}</span>
+        <span>{{ .title }}</span>
       </h2>
       <p class="[ text--center font--4 ch--35 ]">{{ .intro }} </p>
     </div>
@@ -31,12 +31,11 @@
     </ul>
   </section>
   {{ end }}
-
   <section class="[ full-width content-grid layout--spacing section--padding ]" aria-labelledby="portfolio-heading">
     <div class="[ lg:flex between ]">
       <div>
         <h2 id="portfolio-heading" class="[ grid row-gap--0.5 ]">
-          <span class="[ font--5 upper clever--blue ]">Recent Work</span>
+          <span class="[ key ][ font--5 upper ]">Recent Work</span>
           <span>From Our Portfolio</span>
         </h2>
         <p class="[ font--4 ch--35 ]">See how we've helped Bahamian businesses with modern, results-driven websites.</p>      
@@ -50,9 +49,7 @@
       {{ partial "projects.html" (dict "pages" $items) }}
     {{ end }}
   </section>
-
   {{ partial "reviews/reviews.html" . }}
-
-  {{partial "faqs.html" . }}
+  {{ partial "faqs.html" . }}
   {{ partial "cta.html" . }}
 {{ end }}

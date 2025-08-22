@@ -1,0 +1,47 @@
+<div>
+  <h3 class="[ mb--0.5 ]">Connect With Us</h3>
+  <ul class="[ social ][ flex col-gap--1.5 px--0.5 ]">
+    {{/* partials/social.html */}}
+    {{- $social := site.Params.social -}}
+    
+    {{/* Control the display order here */}}
+    {{- $order := slice "facebook" "instagram" "linkedin" "x" "twitter" -}}
+    
+    {{/* Choose LinkedIn URL style: "company" or "in" (profile). Default: company */}}
+    {{- $linkedinType := site.Params.social.linkedinType | default "company" -}}
+    {{- $linkedinPath := cond (eq $linkedinType "in") "in" "company" -}}
+    
+    {{/* Provider definitions */}}
+    {{- $providers := dict
+      "facebook" (dict "url" "https://www.facebook.com/%s" "icon" "brand-facebook.svg" "label" "Follow us on Facebook")
+      "instagram" (dict "url" "https://instagram.com/%s"          "icon" "brand-instagram.svg" "label" "Follow us on Instagram")
+      "linkedin" (dict "url" (printf "https://www.linkedin.com/%s/%%s" $linkedinPath) "icon" "brand-linkedin.svg" "label" "Follow us on LinkedIn")
+      "x"        (dict "url" "https://x.com/%s"                   "icon" "brand-x.svg" "label" "Follow us on X")
+      "twitter"  (dict "url" "https://twitter.com/%s"             "icon" "brand-x.svg" "label" "Follow us on X")
+    -}}
+    
+      {{- range $order }}
+        {{- $handle := index $social . | default "" -}}
+        {{- if $handle }}
+          {{- with index $providers . }}
+            {{- $href := printf .url $handle -}}
+            <li class="[ social__item ]">
+              <a class="[ social__link ]" href="{{ $href }}" target="_blank" rel="noopener" aria-label="{{ .label }}">
+                {{- readFile (printf "static/icons/social/%s" .icon) | safeHTML -}}
+              </a>
+            </li>
+          {{- end }}
+        {{- end }}
+      {{- end }}
+      {{- with site.Params.social.whatsapp }}
+      {{- $num := replaceRE "\\D" "" . -}}
+      {{- if $num }}
+        <li class="[ social__item ]">
+          <a class="[ social__link ]" href="https://wa.me/{{ $num }}" target="_blank" rel="noopener nofollow" aria-label="Message us on WhatsApp">
+            {{ readFile "static/icons/social/brand-whatsapp.svg" | safeHTML }}
+          </a>
+        </li>
+      {{- end }}
+    {{- end }}
+  </ul>
+</div>

@@ -1,5 +1,5 @@
 +++
-date = '2025-01-27T10:06:46-05:00'
+date = 2024-11-25T07:05:00-04:00
 draft = false
 
 # Page Description
@@ -64,27 +64,27 @@ icon = "bolt.svg"
 # key = "Custom"
 title = "Custom"
 description = "Get tailored features built for your business — delivering a secure, high-performance site that supports your goals."
-icon = "code.svg"
+icon = "settings.svg"
 
 [[features.items]]
 # key = "Enhanced"
 title = "Visible"
 description = "Be found when it matters. Smart SEO helps customers discover you, drives traffic, and builds long-term growth."
-icon = "visibility.svg"
+icon = "eye.svg"
 
 
 [[features.items]]
 # key = "Better"
 title = "Accessible"
 description = "Reach everyone. Web accessibility ensures your site works for all users and meets modern standards."
-icon = "accessibility_new.svg"
+icon = "accessible.svg"
 
 
 [[features.items]]
 # key = "Ongoing"
 title = "Support"
 description = "Stay worry-free with ongoing updates, security, and maintenance — so you can focus on your business."
-icon = "construction.svg"
+icon = "headset.svg"
 
 [[faqs.items]]
 question = "How much does a website cost in The Bahamas?"

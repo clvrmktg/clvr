@@ -21,13 +21,18 @@
     animation-range-start: calc(100vh + var(--_animationStartsAfter))
     animation-range-end: calc(100vh + var(--_animationStartsAfter) + var(--_animationDistance))
 
-
   > .wrapper
+    display: flex
+    justify-content: space-between
     height: inherit
     z-index: 15
+
+    +device(desktop)
+      display: grid
+      grid-template-columns: max-content 1fr
   
   .logo > svg
-    fill: color('clever-blue')
+    fill: color('clever-blue-light')
 
 .backdrop
   width: 100vw
@@ -49,8 +54,8 @@
     display: block
     width: em(338)
     height: 100vh
-    padding-top: 1em
-    border-top: em(4) solid color('clever-blue-dark')
+    // padding-top: 1em
+    border-top: em(4) solid color('clever-blue-light')
     visibility: hidden
     position: absolute
     top: var(--navbar-height)
@@ -58,10 +63,18 @@
     z-index: -5
     +transition((visibility, left, background-color))
 
-.icon--arrow
-  width: 0.75em
+  +device(desktop)
+    display: grid
+    grid-template-columns: [menu-start] max-content [menu-end] 1fr [actions-start] max-content [actions-end]
+
+.icon.icon--arrow
+  width: rem(24)
   transform: rotate(0deg)
   +transition(transform)
+
+  > svg
+    stroke: color('clever-navy')
+    +transition(stroke)
 
 .arrow
 
@@ -94,13 +107,19 @@
       pointer-events: inherit
       user-select: inherit
       cursor: inherit
-  
+
+
 .menu
   display: flex
-  height: inherit
+  background-color: color('white')
 
   +device(tablet)
     flex-direction: column
+
+  +device(desktop)
+    height: inherit
+    padding-left: 1em
+    grid-column: menu
 
   &__item
     color: color('black')
@@ -115,11 +134,11 @@
         align-items: center
 
       &:focus-within
-        color: color('clever-blue-dark')
+        color: color('clever-blue-light')
 
       &::after
         content: ''
-        background-color: color('clever-blue-dark')
+        background-color: color('clever-blue-light')
         width: 0
         height: em(4)
         position: absolute
@@ -128,7 +147,7 @@
         +transition(width)
 
       +hover
-        color: color('clever-blue-dark')
+        color: color('clever-blue-light')
         
         &::after
           width: 100%
@@ -139,13 +158,27 @@
 
         .icon--arrow
           transform: rotate(180deg)
+          
+          > svg
+            stroke: color('clever-blue-light')
 
+      &.current
+        color: color('clever-blue-light')
+        
+        &::after
+          width: 100%
+
+        .icon--arrow
+          
+          > svg
+            stroke: color('clever-blue-light')
+          
     +device(tablet)
       flex-direction: column
       padding:
         top: 1em
         bottom: 1em
-      border-bottom: em(2) solid color('grey--300')
+      border-bottom: em(2) solid color('grey-300')
 
 
       > div
@@ -182,37 +215,36 @@
       display: block
       +clamp(padding-right, 10, 20)
       +clamp(padding-left, 10, 20)
-  
-
-  +device(desktop)
-
-    .current
-      color: color('clever-blue-dark')
-      
-      &::after
-        width: 100%
 
 
 .submenu
 
+  +device(tablet)
+    max-height: 0
+    background-color: color('section-background')
+    visibility: hidden
+    overflow: hidden
+    +transition((max-height, visibility))
+
   +device(desktop)
     background-color: color('white')
-    border-bottom: em(6) solid color('clever-blue-dark')
-    box-shadow: 0 em(4) em(4) var(--black--3)
+    border-bottom: em(6) solid color('clever-blue-light')
+    box-shadow: 0 em(4) em(4) color('black-3')
     position: absolute
     top: -500%
     left: 0
     z-index: -2
 
     +transition(top)
-
-  +device(tablet)
-    max-height: 0
-    background-color: color('clever-light')
-    visibility: hidden
-    overflow: hidden
-    +transition((max-height, visibility))
   
+  &__item
+    +device(tablet)
+      border-bottom: em(1) solid color('grey-300')
+
+      &:first-of-type
+        border-top: em(1) solid color('grey-300')
+
+
   &__link
     color: color('black')
     position: relative
@@ -238,10 +270,7 @@
 
       +hover
         color: color('white')
-        background-color: color('clever-blue-dark')
-
-        
-
+        background-color: color('clever-blue-light')
 
     +device(desktop)
       padding: 
@@ -251,9 +280,29 @@
 
       +hover
         color: color('white')
-        background-color: color('clever-blue-dark')
+        background-color: color('clever-blue-light')
 
-    
+
+.nav-actions
+ 
+
+  +device(tablet)
+    text-align: center
+    padding:
+      top: 1em
+      right: 1em
+      left: 1em
+
+  +device(desktop)
+    display: flex
+    grid-column: actions
+ 
+.phone-link
+  color: color('clever-navy')
+
+  +device(tablet)
+    font-size: var(--step-2)
+
 .navicon
   width: em(25)
   height: em(20)
@@ -271,7 +320,7 @@
 .bar
   width: inherit
   height: em(2)
-  background-color: color('clever-blue-dark')
+  background-color: color('clever-blue-light')
   border-radius: em(1)
   position: relative
   +transition((transform, background-color))

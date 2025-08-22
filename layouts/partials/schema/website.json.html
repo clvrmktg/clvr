@@ -1,0 +1,13 @@
+{{- if .IsHome -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": {{ printf "%q" (print .Site.BaseURL "#website") }},
+  "url": {{ printf "%q" .Permalink }},
+  "name": {{ printf "%q" .Site.Title }},
+  "description": {{ printf "%q" (.Description | default "") }},
+  "publisher": { "@id": {{ printf "%q" (print .Site.BaseURL "#localbusiness") }} }
+}
+</script>
+{{- end -}}

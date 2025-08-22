@@ -13,7 +13,7 @@
   {{- $noscriptHex  := replace (printf "%x" (hash.FNV32a (print $idSeed ":noscript"))) "-" "" -}}
 
   <figure{{ if or .class .ratio }} class="{{ if .class }}[ {{ .class }} ]{{ end }}{{ if .ratio }}[ ratio--{{ .ratio }} {{ if .helper }}{{ .helper }} {{end}}]{{end}}"{{end}} data-script>
-    <picture id="image-{{ $hex }}" class="[ bg ][ r--10 ]">
+    <picture id="image-{{ $hex }}" class="[ bg ]">
       <img
         data-twic-src="image:{{ $res.RelPermalink }}"
         data-twic-focus="auto"
@@ -27,7 +27,7 @@
 
   <noscript>
     <figure{{ if or .class .ratio }} class="{{ if .class }}[ {{ .class }} ]{{ end }}{{ if .ratio }}[ ratio--{{ .ratio }} {{ if .helper }}{{ .helper }} {{end}}]{{end}}"{{end}}>
-      <picture id="image-{{ $noscriptHex }}" class="[ bg ][ r--10 ]">
+      <picture id="image-{{ $noscriptHex }}" class="[ bg ]">
         <img
           src="https://{{ $twic }}.twic.pics/{{ $rel }}?twic=v1/focus=auto"
           alt="{{ $meta.alt | default $p.Title }}"

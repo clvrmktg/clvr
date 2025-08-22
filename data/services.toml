@@ -8,7 +8,7 @@ key   = "web-design"
 title = "Web Design"
 blurb = "Custom websites built for speed, mobile performance, and conversion — designed for businesses in The Bahamas."
 href  = "/bahamas-web-design-services/website-design-bahamas/"
-icon = "monitor.svg"
+icon = "responsive-glow-up.svg"
 
 [[services.items]]
 key   = "seo"

@@ -1,5 +1,6 @@
 +++
-date = 2025-08-15T15:58:18-04:00
+date = 2024-11-26T12:20:00-04:00
+
 draft = false
 description = "Digital marketing services in The Bahamas, including social media, PPC, and email campaigns that connect you with the right audience and drive measurable results."
 

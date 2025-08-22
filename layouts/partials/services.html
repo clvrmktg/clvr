@@ -18,19 +18,19 @@
       <article class="[ service--primary ][ grid center middle gap--2 text--center p--2 r--15 ]">
         <a class="[ service__link ][ grid center ]" href="{{ $item.href }}" data-prefetch>
           {{ if $item.icon }}
-          <div class="icon">
+          <div class="[ graphic ]">
             {{ readFile (printf "static/icons/%s" $item.icon) | safeHTML }}
           </div>
           {{ end }}
           <div>
-            <h3 class="[ merriweather flex center middle col-gap--0.25 ]">
+            <h3 class="[ flex center middle col-gap--0.25 ]">
               <span>{{ $item.title }}</span>
             </h3>
             <p>{{ $item.blurb }}</p>
           </div>
         </a>
         <div>
-          {{ partial "buttons/cta.html" (dict "url" $item.href "text" "Get Your Quote") }}
+          {{ partial "buttons/primary.html" (dict "url" $item.href "text" "Get Your Quote") }}
         </div>
       </article>
       {{ end }}
@@ -48,7 +48,7 @@
             </div>
             {{ end }}
             <div>
-              <h3 class="[ merriweather flex middle col-gap--0.25 ]">
+              <h3 class="[ flex middle col-gap--0.25 ]">
                 <span>{{ $item.title }}</span>
               </h3>
               <p>{{ $item.blurb }}</p>

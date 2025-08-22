@@ -3,30 +3,17 @@
 <ul class="[ projects ][ grid md:col--2 lg:col--3 gap--2 ]">
   {{- range $i, $p := $pages -}}
     {{- $id := printf "picture-%d" (add $i 1) -}}
-    <li class="[ project ][ relative r--5 shadow ]">
+    <li class="[ project ]">
+      <a href="{{ $p.RelPermalink }}" class="[ grid p--0.25 r--10 ]">
 
-      {{ partial "image.html" (dict
-          "image" $p.Params.thumb
-          "class" "project__img"
-          "ratio" "1:1"
-          "page"  $p
-      ) }}
-
-
-      <a class="[ project__overlay ][ block absolute ]"
-         href="{{ $p.RelPermalink }}" aria-label="{{ $p.Title }}"></a>
-
-      <div class="[ project__text ][ grid pt--1.5 px--1 pb--1 ]">
-        <h3 class="[ merriweather o--2 ]">{{ $p.Title }}</h3>
-        <span class="[ font--700 upper clever--blue o--1 ]">Business</span>
-        <div class="[ o--3 ]">
-          {{ partial "buttons/primary.html" (dict
-            "url"    $p.RelPermalink
-            "text"   "Learn More"
-            "hidden" (printf "About %s" $p.Title)
-          ) }}
-        </div>
-      </div>
+        {{ partial "image.html" (dict
+            "image" $p.Params.thumb
+            "class" "project__img"
+            "ratio" "1:1"
+            "page"  $p
+        ) }}
+        <h3 class="[ font--400 text--center p--1 ]">{{ $p.Title }}</h3>
+      </a>
     </li>
   {{- end -}}
 </ul>

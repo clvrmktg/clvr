@@ -15,28 +15,33 @@ textarea, input
   //   -webkit-appearance: none
 
   &.error
-    caret-color: var(--red--700)
+    caret-color: color('red-700')
 
 textarea
   min-height: 10em
   resize: none
 
 .required
-  color: var(--red--700)
+  color: color('red-700')
 
 +ignore
   .error
-    border-color: var(--red--700)
+    border-color: color('red-700')
 
     &-message
-      color: var(--red--700)
+      color: color('red-700')
 
 .form
 
   &--contact
-    box-shadow: 0 0 em(6) var(--black--3)
+    background-color: color('white')
+    box-shadow: 0 0 em(6) color('black-3')
     top: -5em
     left: 0
+    z-index: 5
+
+    +breakpoint(desktop)
+      position: relative
 
 .notice
   grid-template-rows: min-content 0fr

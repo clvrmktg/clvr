@@ -1,5 +1,5 @@
 +++
-date = '2025-01-27T10:11:24-05:00'
+date = 2024-12-11T15:05:00-04:00
 draft = false
 title = 'Accessibility Statement'
 description = "Clever Marketing, Ltd. is committed to providing an accessible website for all users, following WCAG 2.1 Level AA standards. Learn about our accessibility features, ongoing improvements, and how to share feedback."

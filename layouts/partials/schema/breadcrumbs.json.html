@@ -1,0 +1,38 @@
+{{- /* JSON-LD Breadcrumbs matching visual <nav>
+  Usage: {{ partial "breadcrumbs.jsonld.html" . }}
+*/ -}}
+
+{{- $nodes := slice
+ (dict "name" "Home" "url" ("/" | absURL))
+-}}
+
+{{/* Ancestors (top → down), skip home just in case */}}
+{{- with .Ancestors }}
+{{- range .Reverse }}
+ {{- if not .IsHome }}
+   {{- $nodes = $nodes | append (dict "name" .LinkTitle "url" .Permalink) -}}
+ {{- end }}
+{{- end }}
+{{- end }}
+
+{{/* Current page as final node (no URL) */}}
+{{- $nodes = $nodes | append (dict "name" .LinkTitle "url" "") -}}
+
+{{/* Build itemListElement */}}
+{{- $items := slice -}}
+{{- range $i, $n := $nodes }}
+{{- $item := dict "@type" "ListItem" "position" (add $i 1) "name" $n.name -}}
+{{- if $n.url }}
+ {{- $item = merge $item (dict "item" $n.url) -}}
+{{- end }}
+{{- $items = $items | append $item -}}
+{{- end }}
+
+<script type="application/ld+json">
+{{ dict
+    "@context" "https://schema.org"
+    "@type" "BreadcrumbList"
+    "itemListElement" $items
+
+}}
+</script>

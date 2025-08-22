@@ -1,9 +1,8 @@
 +++
-date = '2025-08-13T18:07:30-04:00'
-lastMod = '2025-08-13T18:07:30-04:00'
+date = 2024-11-25T07:00:00-04:00
 draft = true
 title = 'Insights'
-description = ""
+description = "Practical tips and strategies to help your business make the most of your website, SEO, and digital tools to attract more customers and drive growth."
 
 [feature]
   image = ""

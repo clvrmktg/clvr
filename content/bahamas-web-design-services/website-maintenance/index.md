@@ -1,5 +1,6 @@
 +++
-date = 2025-08-15T15:58:41-04:00
+date = 2024-11-26T12:20:00-04:00
+
 draft = false
 description = "Website maintenance services in The Bahamas — keeping your site secure, updated, and running smoothly so you can focus on your business."
 

@@ -1,0 +1,27 @@
+{{- define "variables" -}}
+{{- .Store.Set "hasTwic" true -}}
+{{- .Store.Set "hasObscure" true -}}
+{{- end -}}
+{{- define "main" -}}
+<div class="[ section--padding ]">
+  <header class="[ section--padding-bottom ]">
+    <h1>Industries</h1>
+    {{ partial "breadcrumbs.html" . }}
+  </header>
+  <ul>
+    {{ with $.Site.Taxonomies.industries }}
+      {{ range .ByCount }}
+        <li>
+          <a href="{{ if .Page }}{{ .Page.RelPermalink }}{{ else }}{{ (print "/industries/" (.Term | urlize) "/") | relLangURL }}{{ end }}" data-prefetch>
+            {{ if .Page }}{{ .Page.LinkTitle }}{{ else }}{{ .Term | humanize }}{{ end }}
+            <span class="count">({{ .Count }})</span>
+          </a>
+        </li>
+      {{ end }}
+    {{ end }}
+  </ul>
+  
+  
+</div>
+
+{{ end }}

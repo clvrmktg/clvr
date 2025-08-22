@@ -1,5 +1,6 @@
 +++
-date = '2025-08-14T20:03:39-04:00'
+date = 2024-11-25T07:05:00-04:00
+
 draft = false
 description = 'Bahamas web design services for busy business owners. We handle your website so you can focus on customers and have a site that not only looks great but performs.'
 
@@ -20,17 +21,17 @@ intro = "Websites built for Bahamian businesses — fast, mobile, and customer-f
 [[why_work_with_us.items]]
 title = "Visibility"
 description = "Be seen by the right people. Proven strategies make your site easy to find."
-icon = "visibility.svg"
+icon = "eye.svg"
 
 [[why_work_with_us.items]]
 title = "Traffic"
 description = "Turn searches into visits. We drive targeted traffic so the right people land on your site."
-icon = "trending_up.svg"
+icon = "trending-up.svg"
 
 [[why_work_with_us.items]]
 title = "Leads"
 description = "Visitors become customers. Clear calls to action turn new visitors into valuable leads."
-icon= "person_add.svg"
+icon= "user-plus.svg"
 
 [[faqs.items]]
 question = "Which service should I start with?"

@@ -1,5 +1,5 @@
 +++
-date = '2025-01-27T10:11:24-05:00'
+date = 2024-11-25T07:05:00-04:00
 draft = false
 title = 'Privacy Policy'
 description="Learn how Clever Marketing, Ltd. collects, uses, and protects your personal information, including details on analytics, tracking, and data sharing practices."

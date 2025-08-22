@@ -4,7 +4,7 @@
 {{- end -}}
 {{- define "main" -}}
   {{ partial "hero.html" . }}
-  <div class="[ grid row-gap--3 section--padding-top ]">
+  <div class="[ grid row-gap--3 section--padding ]">
     {{/* 
       <ul class="[ flex--wrap col-gap--1 row-gap--0.25 ]">
         <li>
@@ -22,20 +22,12 @@
     {{ partial "projects.html" (dict "pages" (sort .Pages "Weight" "asc")) }}
     {{ partial "pagination.html" . }}
   </div>
-  <section class="[ countries ][ section--padding ]">
-    <div class="[ full-width content-grid row-gap--5 ]">
-      <h2 class="[ flex--col ]"><span class="[ font--5 text--center upper blue--900 ]">Worldwide Reach, Great Web Design</span><span class="[ font--2 text--center ]">We Help Clients Around The World</span></h2>
-      <div>
-        <div class="[ country ][ grid g--2 middle py--2 ]">
-          <h3 class="[ font--4 text--center lg:text--left ]">Bahamas</h3>
-          <ul class="[ clients ][ grid ]">
-            <li class="[ client ]">
-            </li>
-            <li class="[ client ]">
-            </li>
-          </ul>
-        </div>
-      </div>
+  <section class="[ countries ][ full-width content-grid layout--spacing section--padding bg:blue--50 ]">
+    <h2 class="[ grid center text--center ]">
+      <span class="[ key ][ font--5 text--center upper ]">Bahamian Roots, Worldwide Reach</span>
+      <span>We Help Clients Around The World</span></h2>
+    <div>
+      {{partial "chyron.html" (dict "pages" .Pages )}}
     </div>
   </section>
 {{ end }}

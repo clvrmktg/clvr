@@ -2,7 +2,7 @@
 {{- $pages := .pages | default (where site.RegularPages "Section" "portfolio") -}}
 {{- $pages = where $pages "Params.logo" "ne" nil -}}
 
-<ul class="[ chyron chyron--logos ][ flex gap--1 py--2 ]" aria-label="Client logos">
+<ul class="[ chyron chyron--logos ][ grid md:col--2 lg:col--5 gap--1 py--2 ]" aria-label="Client logos">
   {{- range $p := $pages }}
     {{- $file := $p.Params.logo | default "" -}}
     {{- $res  := cond (ne $file "") ($p.Resources.GetMatch $file) nil -}}
