@@ -30,7 +30,7 @@ taxonomy = ["HTML"]      # no /<taxonomy>/index.xml
 term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
 
 
-[ params ]
+[params]
   twic = "clvrmktg"
   share = "/uploads/joseph-pinder-share.jpg"
   logo = "/uploads/joseph-pinder-logo.png"
@@ -149,6 +149,7 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
         
 [security.funcs]
 getenv = ['^HUGO_', '^GA_TRACKING_ID$']
+
 
 [sitemap]
   filename = "sitemap.xml"

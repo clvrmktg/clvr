@@ -1,6 +1,5 @@
 {{- define "variables" -}}
 {{- .Store.Set "hasObscure" true -}}
-{{- .Store.Set "webpageType" "CollectionPage" -}}
 {{- end -}}
 {{- define "main" -}}
 <div class="[ section--padding ]">
@@ -10,7 +9,7 @@
     <p>{{ printf "Browse all %s on %s" (.Title | pluralize) site.Title }}</p>
   </header>
   <ul>
-    {{ with $.Site.Taxonomies.categories }}
+    {{ with .Site.Taxonomies.categories }}
       {{ range .ByCount }}
         <li>
           <a href="{{ if .Page }}{{ .Page.RelPermalink }}{{ else }}{{ (print "/industries/" (.Term | urlize) "/") | relLangURL }}{{ end }}" data-prefetch>
