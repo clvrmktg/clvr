@@ -37,21 +37,3 @@
   status = 301
   force = true
 
-[[redirects]]
-  from = "/about-me"
-  to = "/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/get-in-touch"
-  to = "/"
-  status = 301
-  force = true
-
-
-[[redirects]]
-  from = "/blog/inlining-svg-files-in-hugo/"
-  to = "/blog/inline-svg-files-in-hugo/"
-  status = 301
-  force = true
