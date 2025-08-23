@@ -1,51 +1,60 @@
-# Joseph Pinder  [![committers.top badge](https://user-badge.committers.top/the_bahamas/jsphpndr.svg)](https://user-badge.committers.top/the_bahamas/jsphpndr)
+# Clever Marketing, Ltd.
 
-[![Website Status](https://img.shields.io/website?url=https%3A%2F%2Fjosephpinder.com)](https://josephpinder.com)
+**Smart, Stress-Free Web Design in The Bahamas**
 
+Clever Marketing, Ltd. (“Clever”) is a digital marketing and web design company based in Nassau, Bahamas.  
+We help small and medium-sized businesses stand out online with websites and digital solutions that are fast, secure, and built to grow with them.
 
-Hey! I'm Joseph, a web designer and developer based in The Bahamas, with a passion for creating clean, efficient and accessible websites. 
+---
 
-I believe in using modern tools and approaches to solve problems and help individuals and businesses succeed online.
+## 🚀 Our Mission
+We believe every business deserves a strong online presence.  
+Our mission is to make web design simple, affordable, and effective for Bahamian businesses—without the stress.
 
-## 🔧 Technologies & Tools I Use:
-- **Frontend:** HTML, CSS/SASS, JavaScript
-- **Backend:** Laravel, Node.js, PHP
-- **Static Site Generators:** HUGO
-- **Desktop Apps:** Wails
-- **Version Control:** Git, GitHub
-- **Design Tools:** Adobe CC
-- **Content Management Systems (CMS):** Kirby CMS, Decap CMS, WordPress (if I have to)
+---
 
+## 💻 Services
+- **Web Design & Development** – Fast, responsive, and secure websites tailored to your business.  
+- **SEO Optimization** – Improve your visibility and rank higher in search results.  
+- **Digital Marketing** – Strategies to reach more customers and grow your brand.  
+- **Website Maintenance** – Ongoing updates, backups, and monitoring for peace of mind.  
 
-## 🌱 What I’m Working On:
-- Building websites with [HUGO](https://gohugo.io/)
-- Developing applications with [Laravel](https://laravel.com/)
-- Exploring desktop app creation with [Wails](https://wails.io/)
-- Writing articles about coding, web development, and my journey in the tech world.
+---
 
-## 📝 Blog
+## 📂 Repository Purpose
+This repository contains assets, documentation, and code related to Clever’s projects, including:
+- Website builds (Hugo, Laravel, Kirby, etc.)
+- Reusable components and templates
+- Documentation for internal workflows
+- Marketing and brand guidelines
 
-<!-- START_DYNAMIC_CONTENT -->
-- [Horses From The Front (Dealing With Imposter Syndrome)](https://josephpinder.com/blog/horses-from-the-front-dealing-with-imposter-syndrome/) - Feb 5, 2025
-- [Escape Shortcodes in HUGO](https://josephpinder.com/blog/escape-shortcodes-in-hugo/) - Feb 3, 2025
-- [Inline SVG Files in HUGO](https://josephpinder.com/blog/inline-svg-files-in-hugo/) - Feb 1, 2025
-- [The Need to Be Remembered](https://josephpinder.com/blog/the-need-to-be-remembered/) - Jan 30, 2025
-- [Stop Email Spam With Obscure.js (Hide Your Email Address From Spammers)](https://josephpinder.com/blog/stop-email-spam-with-obscurejs-hide-your-email-address-from-spammers/) - May 28, 2021
-<!-- END_DYNAMIC_CONTENT -->
+---
 
+## 🛠️ Tech Stack
+Clever primarily works with:
+- **Frontend:** HTML5, CSS3, TailwindCSS, Alpine.js  
+- **Static Sites:** Hugo, Decap CMS  
+- **Web Apps:** Laravel, Livewire, Volt  
+- **Hosting & Infra:** Netlify, RunCloud, VULTR  
+- **Analytics & SEO:** Google Analytics (proxy-based GA4), JSON-LD structured data  
 
-## 📘 Latest Projects:
+---
 
-- **[My Website](https://josephpinder.com/)**
+## 📞 Contact
+**Clever Marketing, Ltd.**  
+Nassau, Bahamas  
 
-## 📫 How to Reach Me
+- 🌐 Website: [getclever.marketing](https://getclever.marketing)  
+- 📧 Email: [lets@getclever.marketing](mailto:lets@getclever.marketing)  
+- 📱 Phone: (242) 376-3340  
+- 📍 Hours: Monday – Friday, 9:00 am – 5:00 pm (EST)  
 
-- [Email Me](mailto:hello@josephpinder.com)
-- [LinkedIn](https://www.linkedin.com/in/jsphpndr/)
-- [X (Twitter)](https://x.com/jsphpndr)
+Follow us on [Facebook](https://facebook.com/clvrmktg), [Instagram](https://instagram.com/clvrmktg), and [LinkedIn](https://linkedin.com/company/clvrmktg).  
 
+---
 
+## 📜 License
+This repository and its contents are © 2025 Clever Marketing, Ltd.  
+All rights reserved. Unauthorized use, reproduction, or distribution is prohibited.  
 
-Feel free to explore my repositories and articles. I’m always open to collaborating on interesting projects or sharing ideas!
-
-Happy coding!
+---
