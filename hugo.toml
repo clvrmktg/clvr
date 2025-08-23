@@ -151,6 +151,6 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
 getenv = ['^HUGO_', '^GA_TRACKING_ID$']
 
 [sitemap]
-  filename = "sitemap"  # Remove .xml
+  filename = "sitemap.xml"
   changefreq = "monthly"
   priority = 0.5

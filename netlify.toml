@@ -1,23 +1,13 @@
 [build]
-publish = "public"
-command = """
-set -euo pipefail
-
-: "${DART_SASS_VERSION:=1.83.4}"
-
-# Download to a known name (don't use -J)
-curl -fsSL "https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz" -o dart-sass.tgz
-
-# Extract & clean up
-tar -xzf dart-sass.tgz
-rm dart-sass.tgz
-
-# Use repo path so it works regardless of CWD
-export PATH="$(pwd)/dart-sass:$PATH"
-
-hugo --gc --minify
-"""
-
+  publish = "public"
+  command = """\
+    curl -LJO https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz && \
+    tar -xf dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz && \
+    rm dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz && \
+    export PATH=/opt/build/repo/dart-sass:$PATH && \
+    hugo --gc --minify \
+    """
+    
 [build.environment]
   HUGO_VERSION = "0.142.0"
   HUGO_ENV = "production"
