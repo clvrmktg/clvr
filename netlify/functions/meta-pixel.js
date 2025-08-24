@@ -1,33 +1,29 @@
 // netlify/functions/meta-pixel.js
-export default async function handler(req, res) {
-  const PIXEL_ID = process.env.META_PIXEL_ID;
-  if (!PIXEL_ID) {
-    res.statusCode = 200;
-    res.setHeader("Content-Type", "application/javascript; charset=utf-8");
-    return res.end(`/* META_PIXEL_ID not set; no-op */`);
-  }
+export const handler = async () => {
+  try {
+    const PIXEL_ID = process.env.META_PIXEL_ID;
 
-  // Long cache (bust with ?v=hash from Hugo)
-  res.setHeader("Content-Type", "application/javascript; charset=utf-8");
-  res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+    // Always return a 200 with JS (so your <script> never 404s/502s)
+    if (!PIXEL_ID) {
+      return {
+        statusCode: 200,
+        headers: {
+          'Content-Type': 'application/javascript; charset=utf-8',
+          'Cache-Control': 'public, max-age=31536000, immutable',
+        },
+        body: '/* META_PIXEL_ID not set; no-op */',
+      };
+    }
 
-  // This script:
-  //  - creates the fbq stub (queue only; no network yet)
-  //  - on idle (or timeout fallback), injects Facebook's library
-  //  - inits and sends the initial PageView
-  //  - exposes a safe fbq wrapper for later calls (events)
-  //  - optional: respects a consent flag window.__consent?.ad === true
-  const js = `
+    const js = `
 (function(){
   if (window.__metaPixelLoaded) return;
 
-  // ---- consent gate (optional): only initialize if allowed
   function hasAdConsent() {
     try { return !!(window.__consent && window.__consent.ad === true); }
-    catch (e) { return true; } // default allow if you don't use consent
+    catch (e) { return true; }
   }
 
-  // fbq stub (queue only)
   (function(f,b){
     if (f.fbq) return;
     var n = f.fbq = function(){ n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
@@ -35,7 +31,6 @@ export default async function handler(req, res) {
     n.push = n; n.loaded = false; n.version = '2.0'; n.queue = [];
   })(window, document);
 
-  // loader
   function loadPixel(){
     if (window.__metaPixelLoaded) return;
     var s = document.createElement('script');
@@ -47,11 +42,9 @@ export default async function handler(req, res) {
   }
 
   function initAndTrack(){
-    if (!hasAdConsent()) return; // don't initialize if consent says no
+    if (!hasAdConsent()) return;
     if (!window.fbq) return;
-    // Initialize
     fbq('init', '${PIXEL_ID}');
-    // First hit
     fbq('track', 'PageView');
   }
 
@@ -63,13 +56,11 @@ export default async function handler(req, res) {
     }
   }
 
-  // load FB lib after idle, then init
   onIdle(function(){
     loadPixel();
-    // In case the lib is not immediately ready, attempt init a few times
     var tries = 0;
     (function waitForFB(){
-      if (typeof fbq === 'function' && fbq.callMethod) { // fbq real is present
+      if (typeof fbq === 'function' && fbq.callMethod) {
         try { initAndTrack(); } catch(e){}
       } else if (tries++ < 20) {
         setTimeout(waitForFB, 150);
@@ -77,13 +68,29 @@ export default async function handler(req, res) {
     })();
   });
 
-  // Optional: SPA virtual pageviews helper
-  // Call window.metaPixelTrackPageView() yourself on route changes.
   window.metaPixelTrackPageView = function(){
     try { if (typeof fbq === 'function') fbq('track', 'PageView'); } catch(e){}
   };
 })();
-  `.trim();
+`.trim();
 
-  return res.end(js);
-}
+    return {
+      statusCode: 200,
+      headers: {
+        'Content-Type': 'application/javascript; charset=utf-8',
+        'Cache-Control': 'public, max-age=31536000, immutable',
+      },
+      body: js,
+    };
+  } catch (err) {
+    // Surface an error as JS comment instead of 502
+    return {
+      statusCode: 200,
+      headers: {
+        'Content-Type': 'application/javascript; charset=utf-8',
+        'Cache-Control': 'no-store',
+      },
+      body: `/* meta-pixel error: ${String(err)} */`,
+    };
+  }
+};
