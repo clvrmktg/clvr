@@ -85,7 +85,8 @@
   align-items: center
 
 .lg\:middle
-  align-items: center
+  +breakpoint(desktop)
+    align-items: center
 
 .bottom
   align-items: flex-end
@@ -99,7 +100,8 @@
   justify-content: space-between
 
 .lg\:between
-  justify-content: space-between
+  +breakpoint(desktop)
+    justify-content: space-between
 
 .end
   justify-content: flex-end

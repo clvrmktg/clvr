@@ -102,7 +102,7 @@
     </div>
   </div>
   <div class="[ copy ][ content-grid py--2 ]">
-    <div class="[ flex flex--column lg:flex--row lg:between lg:middle gap--2 ]"><small class="[ o--2 lg:o--1 ]">© 2024 Clever Marketing, Ltd. All rights reserved.</small>
+    <div class="[ flex flex--column lg:flex--row lg:between lg:middle gap--2 ]">
       <nav class="[ o--1 lg:o--2 ]">
         <ul class="[ flex flex--column md:flex--row gap--1 ]">        
           {{ range .Site.Menus.policies }}
@@ -114,6 +114,7 @@
         {{end}}
         </ul>
       </nav>
+      <small class="[ o--2 lg:o--1 ]">© {{ time.Now.Format "2006"}} Clever Marketing, Ltd. All rights reserved.</small>
     </div>
   </div>
 </footer>
