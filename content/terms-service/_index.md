@@ -12,7 +12,7 @@ These Terms of Service (“Terms”) govern your use of services provided by Cle
 
 ## Services Overview
 
-Clever provides digital services to support your business’s online presence and growth:
+Clever provides digital services to support your business's online presence and growth:
 
 - **Search Engine Optimization (SEO)** – On-page and off-page optimization, content strategy, technical SEO, and performance tracking.
 - **Digital Marketing** – Platform-based campaigns across Google, Meta (Facebook, Instagram), LinkedIn, and others for brand awareness, lead generation, and conversions.
@@ -48,13 +48,13 @@ Results may be affected by third-party platforms or algorithms. Clever does not 
 Clients must:  
 - Provide necessary content, access, and approvals promptly.  
 - Comply with third-party platform terms.  
-- Understand delays due to client inaction are not Clever’s responsibility.
+- Understand delays due to client inaction are not Clever's responsibility.
 
 ## Intellectual Property
 
-- **Client Content** – Remains the client’s property.  
+- **Client Content** – Remains the client's property.  
 - **Clever Content** – Clever retains ownership of proprietary tools, templates, and raw files; grants perpetual license for agreed deliverables.  
-- **Third-Party Materials** – May require ongoing fees at client’s expense.  
+- **Third-Party Materials** – May require ongoing fees at client's expense.  
 - **Portfolio Use** – Clever may showcase non-confidential work unless the client opts out in writing.
 
 ## Confidentiality & Privacy
@@ -68,8 +68,8 @@ Payments are non-refundable once services begin. Subscriptions must be cancelled
 ## Termination
 
 Either party may terminate with written notice:  
-- **Client** – 14 days’ notice, no refunds for services rendered.  
-- **Clever** – Immediate termination for violations; 30 days’ notice for business reasons.  
+- **Client** – 14 days' notice, no refunds for services rendered.  
+- **Clever** – Immediate termination for violations; 30 days' notice for business reasons.  
 - Outstanding balances remain due.
 
 ## Dispute Resolution

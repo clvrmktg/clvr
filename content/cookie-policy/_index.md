@@ -23,7 +23,7 @@ Cookies are small text files placed on your device when you visit a website. The
 
 ## Managing Your Cookie Preferences
 
-You can manage or disable cookies by adjusting your browser settings. Instructions vary by browser, so please refer to your browser’s help section.
+You can manage or disable cookies by adjusting your browser settings. Instructions vary by browser, so please refer to your browser's help section.
 
 For more control over specific tracking tools:
 - [Opt out of Google Analytics](https://tools.google.com/dlpage/gaoptout)

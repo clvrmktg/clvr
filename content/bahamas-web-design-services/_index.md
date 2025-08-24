@@ -35,11 +35,11 @@ icon= "user-plus.svg"
 
 [[faqs.items]]
 question = "Which service should I start with?"
-answer = "If you don’t have a website yet, we recommend starting with Web Design, then adding SEO and marketing to grow your audience. If you already have a site but aren’t seeing results, SEO and Digital Marketing may be the right place to start."
+answer = "If you don't have a website yet, we recommend starting with Web Design, then adding SEO and marketing to grow your audience. If you already have a site but aren't seeing results, SEO and Digital Marketing may be the right place to start."
 
 [[faqs.items]]
 question = "Can I combine services into one package?"
-answer = "Yes — many clients combine Web Design with SEO or Digital Marketing for the best results. We’ll create a custom plan that fits your goals and budget."
+answer = "Yes — many clients combine Web Design with SEO or Digital Marketing for the best results. We'll create a custom plan that fits your goals and budget."
 
 [[faqs.items]]
 question = "Do you work with businesses outside Nassau?"
@@ -51,7 +51,7 @@ answer = "In many cases, yes. If your current site is in good shape, we can make
 
 [[faqs.items]]
 question = "How do I know if I need website maintenance?"
-answer = "If your site has outdated content, broken features, or hasn’t had security updates in months, maintenance is a smart investment to protect and improve it."
+answer = "If your site has outdated content, broken features, or hasn't had security updates in months, maintenance is a smart investment to protect and improve it."
 
 
 +++

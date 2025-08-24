@@ -17,11 +17,11 @@ subhead = "Proven search engine optimization strategies for Bahamian businesses 
 [intro]
 heading = "More Than Just Rankings — Real Business Growth"
 text = """
-SEO is about more than getting to the top of Google — it’s about attracting the right visitors and turning them into paying customers.
+SEO is about more than getting to the top of Google — it's about attracting the right visitors and turning them into paying customers.
 
 Our SEO services for Bahamian businesses combine technical optimization, content strategy, and link building to boost your visibility where it matters most.
 
-Whether you’re starting fresh or improving an existing site, we’ll help you outrank competitors and grow sustainably.
+Whether you're starting fresh or improving an existing site, we'll help you outrank competitors and grow sustainably.
 """
 
 [intro.image]
@@ -34,7 +34,7 @@ tagline = "Everything you need to boost visibility and attract targeted traffic.
 
 [[get.items]]
 title = "Comprehensive Audit"
-description = "We review your site’s structure, speed, content, and backlinks to identify improvement opportunities."
+description = "We review your site's structure, speed, content, and backlinks to identify improvement opportunities."
 icon = "search.svg"
 
 [[get.items]]
@@ -49,7 +49,7 @@ icon = "settings.svg"
 
 [[get.items]]
 title = "Content Strategy"
-description = "Engaging, SEO-friendly content that answers your customers’ questions and drives traffic."
+description = "Engaging, SEO-friendly content that answers your customers' questions and drives traffic."
 icon = "article.svg"
 
 [[get.items]]
@@ -61,7 +61,7 @@ icon = "insights.svg"
 
 [why]
 text = """
-Even the best-looking website won’t help if no one can find it. Search engines are how most people discover businesses today, and ranking low means lost traffic and missed opportunities.
+Even the best-looking website won't help if no one can find it. Search engines are how most people discover businesses today, and ranking low means lost traffic and missed opportunities.
 
 We focus on strategies that improve your visibility, build credibility with search engines, and connect you with the customers already searching for your services in The Bahamas.
 """

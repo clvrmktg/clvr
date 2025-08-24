@@ -48,7 +48,7 @@ You may control or disable cookies in your browser settings. For more informatio
 
 We do not sell or rent your personal information. We may share limited information with trusted service providers who help us operate our business, deliver services, or analyze site usage, but only as necessary and under confidentiality obligations.
 
-## Children’s Privacy
+## Children's Privacy
 
 Our website is not directed to children under 13, and we do not knowingly collect personal information from them. If you believe your child has provided us with personal information, please contact us so we can delete it.
 

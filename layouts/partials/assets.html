@@ -1,7 +1,9 @@
 {{- $font := .Site.Params.font -}}
 {{- /* 1. Preconnect */ -}}
 {{- if .Store.Get "hasTwic"}}
-  <link rel="preconnect" href="https://{{ .Site.Params.twic }}.twic.pics/?v1">
+<link rel="dns-prefetch" href="https://{{ .Site.Params.twic }}.twic.pics">
+<link rel="preconnect" href="https://{{ .Site.Params.twic }}.twic.pics" crossorigin>
+
 {{- end }}
 {{with $font }}
 <link rel="preconnect" href="https://fonts.googleapis.com">

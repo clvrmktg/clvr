@@ -60,7 +60,7 @@ answer = "We focus on stress-free, results-driven design. Every site is built fo
 
 [[faqs.items]]
 question = "How long does it take to build a website?"
-answer = "A typical 1–5 page site takes 2–4 weeks, while larger or more customized projects may take longer. We’ll provide a clear timeline before starting."
+answer = "A typical 1–5 page site takes 2–4 weeks, while larger or more customized projects may take longer. We'll provide a clear timeline before starting."
 
 [[faqs.items]]
 question = "Do you provide ongoing support after launch?"
@@ -71,7 +71,7 @@ question = "Can you redesign my existing website?"
 answer = "Absolutely. Whether you need a refresh or a complete rebuild, we can modernize your site and improve its performance."
 
 [[faqs.items]]
-question = "What’s included in your website pricing?"
+question = "What's included in your website pricing?"
 answer = "Our base packages cover design, development, hosting setup, domain configuration, and SEO-friendly structure. Add-ons like booking systems, blogs, or ecommerce can be included as needed."
 
 [[faqs.items]]
@@ -80,7 +80,7 @@ answer = "Yes. We typically require a 50% deposit to start, with the balance due
 
 [[faqs.items]]
 question = "How do I get started?"
-answer = "Just request a quote through our website or send us a message. We’ll guide you through the next steps and provide a tailored proposal."
+answer = "Just request a quote through our website or send us a message. We'll guide you through the next steps and provide a tailored proposal."
 
 
 +++

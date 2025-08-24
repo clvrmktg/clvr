@@ -59,7 +59,7 @@ icon = "support_agent.svg"
 
 [why] 
 text = """
-A website isn’t “set it and forget it.” Without regular updates and monitoring, your site can become slow, vulnerable to security risks, or even go offline — costing you customers and credibility.
+A website isn't “set it and forget it.” Without regular updates and monitoring, your site can become slow, vulnerable to security risks, or even go offline — costing you customers and credibility.
 
 With ongoing maintenance, we keep your site fast, secure, and reliable so you can focus on your business with peace of mind.
 """
@@ -76,7 +76,7 @@ subhead = "Proactive monitoring, updates, and protection — so you can focus on
 
 [[process.items]]
 title = "Monitor"
-description = "Track your site’s uptime, speed, and performance around the clock."
+description = "Track your site's uptime, speed, and performance around the clock."
 
 [[process.items]]
 title = "Update"
@@ -97,12 +97,12 @@ question = "Why do I need website maintenance?"
 answer = "Without maintenance, websites can slow down, become vulnerable to hacks, or even crash. Maintenance ensures your site stays fast, secure, and reliable."
 
 [[faqs.items]]
-question = "What’s included in your maintenance plans?"
+question = "What's included in your maintenance plans?"
 answer = "Plans typically include updates, security monitoring, backups, performance checks, and support. We tailor coverage to your needs."
 
 [[faqs.items]]
-question = "Can you maintain a website you didn’t build?"
-answer = "Yes — we can take over the maintenance of most websites, even if we didn’t originally design them."
+question = "Can you maintain a website you didn't build?"
+answer = "Yes — we can take over the maintenance of most websites, even if we didn't originally design them."
 
 [[faqs.items]]
 question = "How much does website maintenance cost?"

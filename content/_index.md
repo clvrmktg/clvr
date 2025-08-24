@@ -10,7 +10,7 @@ title = 'Bahamas Web Design'
 proposition_heading = 'Manage Your Business, Not Your Website'
 # proposition_heading = "We create fast, secure websites and keep them running"
 subtitle = "We build fast, secure, SEO-friendly websites for Bahamian businesses — helping you get online, reach more customers, and focus on what matters most."
-# subtitle = "We’ll get you online, help you reach more customers, and save time so you can manage your business, not your website."
+# subtitle = "We'll get you online, help you reach more customers, and save time so you can manage your business, not your website."
 
 [hero]
 path = "young-black-woman-blue-hoodie-pointing.jpg"
@@ -46,7 +46,7 @@ alt = "Young Bahamian man and woman collaborating on a website design at a brigh
 [features]
 key = "Fast, Secure, and Affordable"
 headline = "Websites That Work"
-subhead  = "At Clever, you don’t just get a website — you get solutions that help your business grow."
+subhead  = "At Clever, you don't just get a website — you get solutions that help your business grow."
 
 [[features.items]]
 # key = "Responsive"
@@ -100,7 +100,7 @@ answer = "Yes — every website we build is fully responsive, meaning it looks a
 
 [[faqs.items]]
 question = "Can you help my website rank higher on Google?"
-answer = "Absolutely. Our web design services include proven SEO practices to improve your site’s visibility in The Bahamas, helping local and international customers find you online. We also offer ongoing SEO support for sustained growth."
+answer = "Absolutely. Our web design services include proven SEO practices to improve your site's visibility in The Bahamas, helping local and international customers find you online. We also offer ongoing SEO support for sustained growth."
 
 [[faqs.items]]
 question = "Do you provide website maintenance after launch?"

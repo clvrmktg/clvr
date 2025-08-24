@@ -17,7 +17,7 @@ subhead = "Social media, PPC, and email marketing tailored for Bahamian business
 [intro]
 heading = "Marketing That Works Where It Matters"
 text = """
-Digital marketing isn’t just about being online — it’s about reaching the right people with the right message at the right time.
+Digital marketing isn't just about being online — it's about reaching the right people with the right message at the right time.
 
 Our digital marketing services in The Bahamas help you stand out in competitive markets, connect with your audience, and drive measurable growth. From social media campaigns to paid ads and email marketing, we create strategies that deliver real results.
 """
@@ -57,7 +57,7 @@ icon = "analytics.svg"
 
 [why]
 text = """
-Being online isn’t enough — if you’re not reaching the right people, your marketing isn’t working. With so many choices, customers connect with brands that stand out and speak directly to their needs.  
+Being online isn't enough — if you're not reaching the right people, your marketing isn't working. With so many choices, customers connect with brands that stand out and speak directly to their needs.  
 
 Our digital marketing services in The Bahamas focus on visibility, engagement, and conversion — helping you attract the right audience and turn them into loyal customers.
 """
