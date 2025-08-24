@@ -13,9 +13,9 @@
       {{- partial "footer.html" . }}
     </div>
     {{ partial "notice.html" . }}
-    {{partial "script.html" (dict "path" "scripts/components/prefetch.js" "targetPath" "scripts/prefetch.js")}}
+    {{partial "script.html" (dict "path" "scripts/components/prefetch.js" "targetPath" "scripts/prefetch.js" "attributes" (dict "defer" true))}}
     {{ if or .IsHome ( $.Store.Get "hasObscure" ) }}
-    {{ partial "script.html" (dict "path" "scripts/components/obscure.js" "targetPath" "scripts/obscure.js") }}
+    {{ partial "script.html" (dict "path" "scripts/components/obscure.js" "targetPath" "scripts/obscure.js" "attributes" (dict "defer" true))}}
     {{- end }}
     {{- if .Store.Get "hasYouTube" -}}
     {{-
@@ -29,7 +29,7 @@
     {{ partial "script.html" (dict "path" "scripts/vendor/lightgallery.js" "targetPath" "scripts/lightgallery.js") }}
     {{end}}
     {{ if .Store.Get "hasForm" }}
-    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/bouncer/dist/bouncer.polyfills.min.js"></script>
+    {{ partial "script.html" (dict "path" "scripts/vendor/bouncer.polyfills.js" "targetPath" "scripts/bouncer.js" "raw" true "attributes" (dict "defer" true))}}
     {{ partial "script.html" (dict "path" "scripts/components/validate.js" "targetPath" "scripts/validate.js") }}
     {{ end }}
     {{ if $.Store.Get "hasThankYou" }}

@@ -1,20 +1,53 @@
-{{ $partialPath := .path }}
-{{ $newPath := .targetPath }}
-{{ $defer := .attributes.defer }}
-{{ $module := .attributes.module }}
-{{ with resources.Get $partialPath }}
-{{ $opts := dict
-  "minify" hugo.IsProduction
-  "sourceMap" (cond hugo.IsProduction "" "external")
-  "targetPath" $newPath
-}}
-{{ with . | js.Build $opts }}
-  {{ if hugo.IsProduction }}
-    {{ with . | fingerprint }}
-      <script {{if $module }}type="module"{{end}} src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" {{if $defer }}defer{{end}}></script>
-    {{ end }}
-  {{ else }}
-    <script {{if $module }}type="module"{{end}} src="{{ .RelPermalink }}" {{if $defer }}defer{{end}}></script>
-  {{ end }}
-{{ end }}
-{{ end }}
+{{- /* Usage:
+  {{ partial "script.html" (dict
+      "path"       "scripts/vendor/bouncer.polyfills.min.js"
+      "targetPath" "scripts/bouncer.polyfills.min.js"
+      "raw"        true
+      "attributes" (dict "defer" true)
+  ) }}
+
+  {{ partial "script.html" (dict
+      "path"       "scripts/components/validate.js"
+      "targetPath" "scripts/validate.js"
+      "attributes" (dict "defer" true)
+  ) }}
+*/ -}}
+
+{{- $args        := . -}}
+{{- $path        := $args.path -}}
+{{- $targetPath  := or $args.targetPath $path -}}
+{{- $attrs       := or $args.attributes (dict) -}}
+{{- $raw         := $args.raw | default false -}}
+{{- $algo        := $args.integrity | default "sha384" -}}
+
+{{- $defer       := cond (isset $attrs "defer") ($attrs.defer) true -}}   {{/* default: true */}}
+{{- $module      := $attrs.module | default false -}}
+{{- $crossorigin := $attrs.crossorigin | default "anonymous" -}}
+
+{{- $res := resources.Get $path -}}
+{{- if not $res -}}
+  {{- errorf "script.html: resource not found: %q" $path -}}
+{{- end -}}
+
+{{- if $raw -}}
+  {{- $res = $res | resources.Fingerprint $algo -}}
+  <script {{ if $module }}type="module"{{ end }} src="{{ $res.RelPermalink }}"
+          integrity="{{ $res.Data.Integrity }}" crossorigin="{{ $crossorigin }}"
+          {{ if $defer }}defer{{ end }}></script>
+{{- else -}}
+  {{- $opts := dict
+      "minify"     hugo.IsProduction
+      "sourceMap"  (cond hugo.IsProduction "" "external")
+      "targetPath" $targetPath
+    -}}
+  {{- $built := $res | js.Build $opts -}}
+  {{- if hugo.IsProduction -}}
+    {{- $built = $built | resources.Fingerprint $algo -}}
+    <script {{ if $module }}type="module"{{ end }} src="{{ $built.RelPermalink }}"
+            integrity="{{ $built.Data.Integrity }}" crossorigin="{{ $crossorigin }}"
+            {{ if $defer }}defer{{ end }}></script>
+  {{- else -}}
+    <script {{ if $module }}type="module"{{ end }} src="{{ $built.RelPermalink }}"
+            {{ if $defer }}defer{{ end }}></script>
+  {{- end -}}
+{{- end -}}
