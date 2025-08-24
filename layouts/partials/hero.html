@@ -25,22 +25,24 @@
   </div>
 </header>
 {{- else -}}
-<header class="[ hero ][ full-width content-grid ]"{{ with .Resources.GetMatch (.Params.hero.path ) }} data-twic-background="url(image:{{ .RelPermalink }})"{{ end }}>
+<header class="[ hero ][ full-width content-grid bg ]"{{ with .Resources.GetMatch (.Params.hero.path ) }} data-twic-background="url(image:{{ .RelPermalink }})"{{ end }}>
   {{ with .Resources.GetMatch (.Params.hero.path ) -}}
   <style>#hero {background-image: url('https://{{ $.Site.Params.twic }}.twic.pics{{ .RelPermalink }}?twic=v1/output=preview');}</style>
   <noscript><style>#hero {background-image: url('https://{{ $.Site.Params.twic }}.twic.pics{{ .RelPermalink }}');}</style></noscript>
   {{- end }}
-  <div class="[ wrapper ][ grid lg:col--2 section--padding ]">
-    <div class="[ hero__content ]">
-      {{ if .Params.subhead }}
-      <div class="[ lead__heading ][ mb--1 ]">
-        <h1 class="[ bar-before ][ relative font--5 font--400 upper flex flex--column row-gap--1 ]">{{ .Title }}</h1>
+  <div class="[ wrapper ][ full-width content-grid section--padding ]">
+    <div class="[ grid middle ]">
+      <div class="[ hero__content ]">
+        {{ if .Params.subhead }}
+        <div class="[ lead__heading ][ mb--1 ]">
+          <h1 class="[ bar-before ][ relative font--5 font--400 upper flex flex--column row-gap--1 ]">{{ .Title }}</h1>
+        </div>
+        <h2 class="[ font--1 ch--18 pb--0 mb--0.5 ]">{{ .Params.proposition_heading }}</h2>
+        <p>{{ .Params.subhead }}</p>
+        {{- else -}}
+        <h1 class="[ merriweather ]">{{ .Title }}</h1>
+        {{ end }}
       </div>
-      <h2 class="[ font--1 ch--18 pb--0 mb--0.5 ]">{{ .Params.proposition_heading }}</h2>
-      <p>{{ .Params.subhead }}</p>
-      {{- else -}}
-      <h1 class="[ merriweather ]">{{ .Title }}</h1>
-      {{ end }}
     </div>
   </div>
 </header>

@@ -9,9 +9,9 @@ title = "Website Maintenance Bahamas"
 proposition_heading = "Stay Secure. Stay Online. Stay Ahead."
 subhead = "We keep your website updated, protected, and performing — so you can focus on running your business."
 
-[hero]
-path = "website-maintenance-bahamas-relaxed-business-owner.jpg"
-alt = "Confident Bahamian business owner smiling with coffee and tablet, stress-free while website runs smoothly in the background."
+# [hero]
+# path = "website-maintenance-bahamas-relaxed-business-owner.jpg"
+# alt = "Confident Bahamian business owner smiling with coffee and tablet, stress-free while website runs smoothly in the background."
 
 # Intro
 [intro]

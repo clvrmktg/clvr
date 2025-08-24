@@ -9,9 +9,9 @@ title = "Digital Marketing Bahamas"
 proposition_heading = "Reach the Right People. Grow Your Business."
 subhead = "Social media, PPC, and email marketing tailored for Bahamian businesses — designed to attract, engage, and convert customers."
 
-[hero]
-path = "bahamas-digital-marketing-customer-engagement.jpg"
-alt = "Young woman using her smartphone while dining at a Bahamian restaurant, symbolizing how digital marketing connects businesses with customers."
+# [hero]
+# path = "bahamas-digital-marketing-customer-engagement.jpg"
+# alt = "Young woman using her smartphone while dining at a Bahamian restaurant, symbolizing how digital marketing connects businesses with customers."
 
 # Intro
 [intro]

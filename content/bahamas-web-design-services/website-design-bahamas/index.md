@@ -9,9 +9,9 @@ title = 'Website Design Bahamas'
 proposition_heading = "Websites Built for Speed, Style, and Results"
 subhead = "Custom websites for Bahamian businesses — fast, secure, and designed to attract customers and grow your brand."
 
-[hero]
-path = "bahamas-web-design-professionals-collaboration.jpg"
-alt = "Two professionals working on laptops and a tablet in a bright office with ocean views in The Bahamas, representing modern, results-driven website design services."
+# [hero]
+# path = "bahamas-web-design-professionals-collaboration.jpg"
+# alt = "Two professionals working on laptops and a tablet in a bright office with ocean views in The Bahamas, representing modern, results-driven website design services."
 
 # Intro
 [intro]

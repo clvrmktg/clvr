@@ -9,9 +9,9 @@ title = 'Bahamas Web Design Services'
 proposition_heading = "We design websites that work as hard as you do"
 subhead = "Get a website that looks professional, loads fast, and helps your business get found online. From setup to ongoing maintenance, we take care of the technical details so you can focus on your customers."
 
-[hero]
-path = "bahamas-business-owner-using-tablet-web-design.jpg"
-alt = "Smiling Bahamian business owner in a café using a tablet, representing professional web design services that support local businesses."
+# [hero]
+# path = "bahamas-business-owner-using-tablet-web-design.jpg"
+# alt = "Smiling Bahamian business owner in a café using a tablet, representing professional web design services that support local businesses."
 
 [why_work_with_us]
 headline = "From Search to Sale"

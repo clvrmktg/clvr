@@ -32,7 +32,7 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
 
 [params]
   twic = "clvrmktg"
-  share = "/fallbacks/joseph-pinder-share.jpg"
+  share = "/fallbacks/clvr-cover.jpg"
   logo = "/logo.png"
 
   # Homepage Title | Tagline
@@ -41,10 +41,8 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
 [params.google]
   api_key = "AIzaSyDGa9bRzCbbmJ-L9PIX1hrZSymdSC4ZEtA"
   place_id = "ChIJpwI7ux9nL4kRn7lrM-ie_dk"
-
-
-  # Facebook App ID
-  app_id = "223848628924279"
+  app_id = 9879175018863603
+  # 384650276688740
   error = true
 
 

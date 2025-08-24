@@ -9,9 +9,9 @@ title = "SEO Bahamas"
 proposition_heading = "Rank Higher. Reach More Customers."
 subhead = "Proven search engine optimization strategies for Bahamian businesses — designed to improve visibility, attract targeted traffic, and drive more sales."
 
-[hero]
-path = "seo-bahamas-business-growth-analytics.jpg"
-alt = "Professional in The Bahamas reviewing SEO analytics on a laptop, representing higher search rankings, increased traffic, and sales growth for local businesses."
+# [hero]
+# path = "seo-bahamas-business-growth-analytics.jpg"
+# alt = "Professional in The Bahamas reviewing SEO analytics on a laptop, representing higher search rankings, increased traffic, and sales growth for local businesses."
 
 # Intro
 [intro]
