@@ -9,24 +9,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 {{end}}
-{{- $root := . -}}
-{{- with $root.Params.hero }}
-  {{- $twic := printf "https://%s.twic.pics" $root.Site.Params.twic -}}
-  {{- $href := printf "%s/%s?twic=v1/cover=1920x1080" $twic .path -}}
-
-  {{- if hugo.IsProduction }}
-  <link
-    rel="preload"
-    as="image"
-    href="{{ $href | safeURL }}"
-    imagesrcset="
-      {{ $twic }}/{{ .path }}?twic=v1/cover=640x360    640w,
-      {{ $twic }}/{{ .path }}?twic=v1/cover=1024x576  1024w,
-      {{ $twic }}/{{ .path }}?twic=v1/cover=1536x864  1536w,
-      {{ $twic }}/{{ .path }}?twic=v1/cover=1920x1080 1920w"
-    imagesizes="100vw">
-  {{- end }}
-{{- end }}
 {{- /* 2. Preload styles first */ -}}
 {{- $style := resources.Get "styles/style.sass" }}
 {{- $opts := dict

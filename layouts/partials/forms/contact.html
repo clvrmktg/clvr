@@ -1,0 +1,144 @@
+<!-- ====================
+Contact Form
+==================== -->
+<form id="contact" name="contact"
+class="[ form form--contact ][ bg:white pt--5 pb--2 px--1 r--10 ]"
+action="/thank-you/" method="POST"
+data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true"
+data-validate novalidate>
+
+  <!-- Hidden fields -->
+  <input type="hidden" name="form-name" value="contact" />
+  <div class="hidden">
+    <label>
+      Don't fill this out if you're human: <input name="bot-field" />
+    </label>
+  </div>
+  <input id="site" type="hidden" name="site" value="{{ .Permalink }}">
+
+  <div class="[ grid row-gap--1 ]">
+    <!-- ====================
+    Name fields
+    ==================== -->
+    <div class="[ grid md:col--2 gap--1 ]">   
+      <div>
+        <div class="[ form__field ][ grid row-gap--0.5 ]">
+          <label class="[ form__label ][ font--500 font--600 ]" for="first_name">
+            <span>First Name</span>
+            <abbr class="[ required ]" title="This field is required" aria-label="This field is required">*</abbr>
+          </label>
+          <input class="[ form__input ][ p--0.5 ]"
+            name="first_name" id="first_name" type="text"
+            minlength="2"
+            placeholder="i.e. John/Jane"
+            autocomplete="given-name"
+            required />
+        </div>
+      </div>
+      <div>
+        <div class="[ form__field ][ grid row-gap--0.5 ]">
+          <label class="[ form__label ][ font--500 font--600 ]" for="last_name">Last Name</label>
+          <input class="[ form__input ][ p--0.5 ]"
+            name="last_name" id="last_name" type="text"
+            minlength="2"
+            placeholder="i.e. Doe"
+            autocomplete="family-name" />
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================
+      Business field
+      ==================== -->
+    <div class="[ form__field ][ grid row-gap--0.5 ]">
+      <label class="[ form__label ][ font--500 font--600 ]" for="business">Business</label>
+      <input class="[ form__input ][ p--0.5 ]"
+        name="business" id="business" type="text"
+        minlength="2"
+        placeholder="i.e. My Business Name"
+        autocomplete="organization" />
+    </div>
+
+    <!-- ====================
+      Email and Phone fields
+      ==================== -->
+    <div class="[ grid md:col--2 gap--1 ]">
+      <div>
+        <div class="[ form__field ][ grid row-gap--0.5 ]">
+          <label class="[ form__label ][ font--500 font--600 ]" for="email">
+            Email<abbr class="[ required ]" title="This field is required" aria-label="This field is required">*</abbr>
+          </label>
+          <input class="[ form__input ][ p--0.5 ]"
+            name="email" id="email" type="email"
+            placeholder="i.e. your@email.com"
+            autocomplete="email"
+            required />
+        </div>
+      </div>
+      <div>
+        <div class="[ form__field ][ grid row-gap--0.5 ]">
+          <label class="[ form__label ][ font--500 font--600 ]" for="phone">Phone</label>
+          <input class="[ form__input ][ p--0.5 ]"
+            name="phone" id="phone" type="tel"
+            pattern="^(?:\+1[ \-]?(?:\(\d{3}\)|\d{3})[ \-]?\d{3}[ \-]?\d{4}|(?:\(\d{3}\)|\d{3})?[ \-]?\d{3}[ \-]?\d{4})$"
+            inputmode="tel" autocomplete="tel"
+            minlength="7" maxlength="18"
+            title="Enter 7-digit local (376-3340) or 10-digit with area code (242-376-3340). +1 optional."
+            placeholder="i.e. (242) 376-3340"
+            data-bouncer-message="Enter a 7-digit local number (376-3340) or 10-digit with area code (242-376-3340). +1 is optional." />
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================
+      Message field
+      ==================== -->
+    <div class="[ form__field ][ grid row-gap--0.5 ]">
+      <label class="[ form__label ][ font--500 font--600 ]" for="message">
+        Message<abbr class="[ required ]" title="This field is required" aria-label="This field is required">*</abbr>
+      </label>
+      <textarea class="[ form__message ][ p--0.5 ]"
+        name="message" id="message"
+        placeholder="Tell us how we can help..."
+        minlength="10" maxlength="2000"
+        autocomplete="off" spellcheck="true"
+        required></textarea>
+    </div>
+
+    <!-- ====================
+      Newsletter opt-in
+      ==================== -->
+    <div class="[ notice ][ grid row-gap--1 ]">
+      <label class="[ flex col-gap--0.5 ]" for="newsletter">
+        <span>
+          <input id="newsletter" type="checkbox" name="newsletter">
+        </span>
+        <span>Please send me marketing tips by adding me to your email newsletter.</span>
+      </label>
+      <small class="[ block blue-grey--600 ]">
+        By submitting this form, you consent to receive marketing and promotional emails from Clever Marketing, Ltd. 
+        Email frequency may vary. You may unsubscribe at any time by clicking the "Unsubscribe" link in our emails. 
+        Your information will be handled in accordance with our <a href="/privacy-policy">Privacy Policy.</a>
+      </small>
+    </div>
+
+    <!-- ====================
+      reCAPTCHA + Submit
+      ==================== -->
+    <div data-netlify-recaptcha="true"></div>
+    <div class="[ flex end ]">
+      <button class="[ btn btn--lg btn--primary ]"
+        form="contact" type="submit" value="submit">
+        <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
+          <span>Send</span>
+          <span class="[ arrow-right ]">
+            {{ readFile "static/icons/arrow-right.svg" | safeHTML }}
+          </span>
+        </span>
+      </button>
+    </div>
+
+    <!-- Error region for accessibility -->
+    <div id="form-errors" class="visually-hidden" aria-live="polite"></div>
+  </div>
+</form>
