@@ -3,8 +3,14 @@
 {{- if .Store.Get "hasTwic"}}
 <link rel="dns-prefetch" href="https://{{ .Site.Params.twic }}.twic.pics">
 <link rel="preconnect" href="https://{{ .Site.Params.twic }}.twic.pics" crossorigin>
-
 {{- end }}
+{{- $mpID := getenv "META_PIXEL_ID" -}}
+{{- if and (eq hugo.Environment "production") $mpID -}}
+<link rel="dns-prefetch" href="https://connect.facebook.net">
+<link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+<link rel="dns-prefetch" href="https://www.facebook.com">
+<link rel="preconnect" href="https://www.facebook.com" crossorigin>
+{{- end -}}
 {{with $font }}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
