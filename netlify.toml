@@ -45,7 +45,7 @@ for = "/*"
   # --- CSP (the plugin will add: 'nonce-…' to script-src at runtime) ---
   Content-Security-Policy = """
     default-src 'none';
-    script-src 'self' https: 'strict-dynamic';
+    script-src 'self';
     style-src 'self' 'unsafe-inline' https:;
     font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com;
     img-src 'self' https://*.twic.pics https://lh*.googleusercontent.com https://*.googleusercontent.com https://maps.gstatic.com data:;
