@@ -50,6 +50,7 @@ for = "/*"
     style-src 'self' 'unsafe-inline' https:;
     font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://www.googletagmanager.com;
     img-src 'self' https://*.twic.pics data:;
+    media-src 'self';
     form-action 'self';
     frame-ancestors 'none';
     manifest-src 'self';
