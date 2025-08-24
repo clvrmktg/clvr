@@ -78,30 +78,3 @@
 .white
   color: color('white')
 
-$min-spacing: 3 * 16
-$max-spacing: 5 * 20
-
-
-.cookie--banner
-  display: none
-  max-width: em(1000)
-  // color: color('white')
-  background-color: color('section-background')
-  border-radius: em(5)
-  position: fixed
-  inset-block: auto 1em 
-  +clamp(inset-inline, 0, $max-spacing)
-  margin-inline: auto
-  bottom: 1em
-  z-index: 2
-
-  // p > a
-  //   color: color('white')
-
-  svg
-    width: 6rem
-    fill: color('cc-teal')
-
-  +breakpoint(desktop)
-    grid-template-columns: 1fr max-content
-  

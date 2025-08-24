@@ -67,7 +67,9 @@
       <div class="[ grid md:col--2 gap--1 ]">   
         <div>
           <div class="[ form__field ][ grid row-gap--0.5 ]">
-            <label class="[ form__label ][ font--500 font--600 ]" for="first_name">First Name<abbr class="[ required ]" title="This field is required" aria-label="This field is required">*</abbr>
+            <label class="[ form__label ][ font--500 font--600 ]" for="first_name">
+              <span>First Name</span>
+              <abbr class="[ required ]" title="This field is required" aria-label="This field is required">*</abbr>
             </label>
             <input class="[ form__input ][ p--0.5 ]" name="first_name" id="first_name" type="text" placeholder="i.e. John/Jane" required=""/>
           </div>
@@ -118,7 +120,14 @@
       <input id="site" type="hidden" name="site" value="{{ .Permalink }}">
       <div data-netlify-recaptcha="true"></div>
       <div class="[ flex end ]">
-        <button class="[ btn btn--lg btn--primary ]">Send</button>
+        <button class="[ btn btn--lg btn--primary ]" form="contact" type="submit" value="submit">
+          <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
+            <span>Send</span>
+            <span class="[ arrow-right ]">
+              {{ readFile "static/icons/arrow-right.svg" | safeHTML }}
+            </span>
+          </span>
+        </button>
       </div>
     </div>
   </form>
