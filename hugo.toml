@@ -146,7 +146,7 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
         enableDefault = true
         
 [security.funcs]
-getenv = ['^HUGO_', '^GA_TRACKING_ID$']
+  getenv = ['^HUGO_', '^GA_TRACKING_ID$', '^META_PIXEL_ID$']
 
 
 [sitemap]
