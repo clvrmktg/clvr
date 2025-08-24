@@ -1,6 +1,6 @@
 +++
 date = 2025-08-23T10:53:48-04:00
-draft = false
+draft = true
 title = 'Your Website Is Not About You'
 description = ""
 

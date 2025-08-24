@@ -1,90 +1,72 @@
-{{- $iso := "2006-01-02T15:04:05Z07:00" -}}
-{{- $feature := .Params.feature -}}
-{{- $image := $feature.image | default .Site.Params.share -}}
-{{- $alt := $feature.alt | default "Default share image of {{ .Site.Title }}'s logo" -}}
-{{- $tag := .Params.tags | default (slice) -}} 
-{{- $category := .Params.categories | default (slice) -}} 
-{{- $hasTags := gt (len $tag) 0 -}}            
-{{- $hasCategories := gt (len $category) 0 -}}
-
-
 {{- if .Store.Get "isPost" -}}
-<script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": {{ .Title }},
-    "description": {{ .Description }},
-    "publisher": {
-      "@type": "Person",
-      "name": {{ .Site.Title }}
-    },
-    "license": "http://creativecommons.org/licenses/by-nc-sa/3.0/us/deed.en_US"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "@id": {{ .Permalink }},
-    "mainEntityOfPage": {{ .Permalink }},
-    "headline": {{ .Title }},
-    "name": {{ .Title }},
-    "description": {{ .Description }},
-    "datePublished": "{{ .Date.Format $iso }}",
-    "dateModified": {{ (.GitInfo.AuthorDate | default .Date) | time.Format $iso }},
-    "author": {
-      "@type": "Person",
-      "name": {{ .Site.Title }}
-    },
-    "image": {
-      "@type": "ImageObject",
-      "url": {{ $image | absURL }},
-      "width": 1200,
-      "height": 1200
-    },
-    "url": {{ .Permalink }},
-    "isPartOf": {
-      "@type": "Blog",
-      {{ with .Parent }}
-      "@id": {{ .RelPermalink }},
-      "name": {{ .Title }},
-      {{ end }}
-      "publisher": {
-        "@type": "Person",
-        "@id": {{ .Site.BaseURL }},
-        "name": {{ .Site.Title }},
-        {{- with .Site.Params.social -}}
-        "sameAs": [
-          {{- with .facebook }}"https://www.facebook.com/{{ . }}",{{ end }}
-          {{- with .instagram }}"https://www.instagram.com/{{ . }}",{{ end }}
-          {{- with .linkedin }}"https://www.linkedin.com/in/{{ . }}",{{ end }}
-          {{- with .github }}"https://github.com/{{ . }}",{{ end }}
-          {{- with .x }}"https://x.com/{{ . }}"{{ end }}
-        ]
-        {{- end -}}
-      }
-      
-    },
-    "wordCount": "{{ .WordCount }}"
-    {{- if or $hasTags $hasCategories }},{{ end }}  
-    {{- if $hasTags }}
-    "keywords": [
-      {{- range $index, $tag -}}
-        {{- if $index }}, {{ end }}"{{ . }}"
-      {{- end }}
-    ]
-    {{- if $hasCategories }},{{ end }}  
-    {{- end }}
+{{- $iso := "2006-01-02T15:04:05Z07:00" -}}
 
-    {{- if $hasCategories }}
-    "articleSection": [
-      {{- range $index, $category -}}
-        {{- if $index }}, {{ end }}"{{ . }}"
-      {{- end }}
-    ]
-    {{- end }}
+{{- /* Core fields */ -}}
+{{- $title := .Title -}}
+{{- $desc  := (.Description | default .Summary | default $title) | markdownify | plainify | chomp -}}
+{{- $published := .Date.Format $iso -}}
+{{- $modified  := (or (and .GitInfo .GitInfo.AuthorDate) .Lastmod .Date).Format $iso -}}
+{{- $tags      := .Params.tags | default (slice) -}}
+{{- $cats      := .Params.categories | default (slice) -}}
+{{- $lang      := .Site.LanguageCode | default "en" -}}
 
-  }
-]
-</script>
+{{- /* Feature/share image */ -}}
+{{- $feature := .Params.feature -}}
+{{- $image   := (cond (and $feature (isset $feature "image")) $feature.image .Site.Params.share) | absURL -}}
+{{- $alt     := cond (and $feature (isset $feature "alt")) $feature.alt (print "Share image for " site.Title) | plainify | chomp -}}
+
+{{- /* Publisher / author (reference your LocalBusiness node) */ -}}
+{{- $publisher := dict "@id" (print .Site.BaseURL "#localbusiness") -}}
+{{- $author    := $publisher -}} {{/* fallback: organization as author; swap to Person if you have .Params.author */}}
+
+{{- /* isPartOf Blog (optionally include parent info) */ -}}
+{{- $isPartOf := dict "@type" "Blog" "publisher" $publisher -}}
+{{- with .Parent -}}
+  {{- $isPartOf = merge $isPartOf (dict "@id" .Permalink "name" .Title) -}}
+{{- end -}}
+
+{{- /* -------- WebPage objet -------- */ -}}
+{{- $web := dict
+  "@context" "https://schema.org"
+  "@type"    "WebPage"
+  "name"     $title
+  "description" $desc
+  "url"      .Permalink
+  "publisher" $publisher
+  "license"  "http://creativecommons.org/licenses/by-nc-sa/3.0/us/deed.en_US"
+-}}
+
+{{- /* -------- BlogPosting object -------- */ -}}
+{{- $post := dict
+  "@context"        "https://schema.org"
+  "@type"           "BlogPosting"
+  "@id"             .Permalink
+  "mainEntityOfPage" (dict "@id" .Permalink)
+  "headline"        $title
+  "name"            $title
+  "description"     $desc
+  "inLanguage"      $lang
+  "datePublished"   $published
+  "dateModified"    $modified
+  "author"          $author
+  "publisher"       $publisher
+  "url"             .Permalink
+  "isPartOf"        $isPartOf
+  "wordCount"       .WordCount
+-}}
+
+{{- if $image -}}
+  {{- $post = merge $post (dict "image" (dict "@type" "ImageObject" "url" $image "caption" $alt "width" 1200 "height" 1200)) -}}
+{{- end -}}
+
+{{- if gt (len $tags) 0 -}}
+  {{- $post = merge $post (dict "keywords" $tags) -}}
+{{- end -}}
+
+{{- if gt (len $cats) 0 -}}
+  {{- $post = merge $post (dict "articleSection" $cats) -}}
+{{- end -}}
+
+<!-- WebPage + BlogPosting Schema -->
+<script type="application/ld+json">{{ (slice $web $post) | jsonify (dict "indent" "  ") }}</script>
 {{- end -}}
