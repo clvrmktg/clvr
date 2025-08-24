@@ -1,8 +1,14 @@
+{{- define "variables" -}}
+{{- .Store.Set "isPost" true -}}
+{{- .Store.Set "noPadding" true -}}
+{{- end -}}
 {{- define "main" -}}
-{{- .Store.Set "hasTwic" true -}}
-<article class="[ post-single h-entry]">
-  <header class="[ post-single__header ]">
-    <h1>{{ .Title }}</h1>
+<article class="[ post-single h-entry ][ grid layout--spacing section--padding ]">
+  <header class="[ post-single__header ][ x--800 ]">
+    <div class="[ pb--1 ]">
+      <h1 class="[ pb--0 ]">{{ .Title }}</h1>
+      {{ partial "breadcrumbs.html" . }}
+    </div>
     {{- $format := "January 2, 2006" -}}
     {{- $iso := "2006-01-02T15:04:05Z07:00" -}}
     {{- $timeFormat := "3:04pm" -}}
@@ -11,7 +17,6 @@
     {{- $lastModified := .Lastmod | default .Date -}}
     {{- $hourDiff := div (sub $lastModified.Unix $published.Unix) 3600 -}}
     <p class="[ meta{{ if .Params.feature.image }} meta--spaced{{ end }} ][ font--small ]">
-        Joseph Pinder |  
         <time datetime="{{ $published.Format $iso }}">
           {{ $published.Format $format }} | {{ $published.Format $timeFormat }}
         </time>
@@ -19,22 +24,11 @@
     </p>
     {{- with .Params.feature -}}
     {{- if .image -}}
-    {{- $image := (printf "/uploads/%s" .image) -}}
-    <figure class="[ pb--2 ]">
-      <picture id="feature" class="[ bg ]">
-        <style>#feature { background-image: url('https://{{ $.Site.Params.twic }}.twic.pics{{ $image }}?twic=v1/output=preview'); }</style>
-        <img data-twic-src="image:{{ $image }}" data-twic-focus="auto" alt="{{ if .alt }}{{ .alt }}{{ end }}" width="700" height="700"/>
-        <noscript>
-        <img class="[ script ]" src="https://{{ $.Site.Params.twic }}.twic.pics{{ $image }}?twic=v1/output=preview" alt="{{ if .alt }}{{ .alt }}{{ end }}" width="683" height="385"/></noscript>
-      </picture>
-      {{- if .figcaption -}}
-      <figcaption class="[ pt--0.5 ]">{{ .figcaption }}</figcaption>
-      {{- end -}}
-    </figure>
+
     {{- end -}}
     {{- end -}}
   </header>
-  <div class="[ content ]">
+  <div class="[ longform x--800 ]">
     {{ .Content }}
   </div>
   <footer>
@@ -68,7 +62,7 @@
       <h2 class="[ tag-header ]">Related Posts</h2>
       <ul class="[ posts ]">
         {{ $currentPost := .Permalink }}
-        {{ $posts := where .Site.RegularPages "Section" "blog" }}
+        {{ $posts := where .Site.RegularPages "Section" "insights" }}
         {{ $posts = shuffle $posts }} <!-- Randomize the posts -->
         {{- range first 2 $posts -}} <!-- Show the first 2 posts after randomizing -->
         {{- if ne .Permalink $currentPost -}} <!-- Exclude the current post -->

@@ -32,8 +32,8 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
 
 [params]
   twic = "clvrmktg"
-  share = "/uploads/joseph-pinder-share.jpg"
-  logo = "/uploads/joseph-pinder-logo.png"
+  share = "/fallbacks/joseph-pinder-share.jpg"
+  logo = "/logo.png"
 
   # Homepage Title | Tagline
   tagline = 'Bahamas Web Design | Nassau, Bahamas'

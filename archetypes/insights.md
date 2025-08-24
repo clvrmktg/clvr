@@ -7,10 +7,15 @@ description = ""
 categories = []
 tags = []
 
+[share]
+path = ""
+alt= ""
+
 [feature]
-  image = ""
-  alt= ""
-  figcaption = ""
+path = ""
+alt= ""
+# This is optional
+figcaption = ""
 
 #Footnotes will be added based on this front matter. Shortcode for footnote reference in text: {{< footnote id="1" >}}.
 

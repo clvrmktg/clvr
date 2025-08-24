@@ -1,28 +1,46 @@
-{{- $serviceName := .Title -}}
-{{- $serviceDesc := .Description | default .Summary | default .Title -}}
-{{- $areaServed := slice "Nassau" "The Bahamas" -}} {{/* adjust as needed */}}
-<!-- Service Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "@id": {{ printf "%q" (print .Permalink "#service") }},
-  "name": {{ printf "%q" $serviceName }},
-  "description": {{ printf "%q" $serviceDesc }},
-  "url": {{ printf "%q" .Permalink }},
-  "serviceType": {{ printf "%q" $serviceName }},
-  "provider": { "@id": {{ printf "%q" (print .Site.BaseURL "#localbusiness") }} },
-  "areaServed": [
-    {{- range $i, $a := $areaServed -}}{{ if $i }}, {{ end }}{{ printf "%q" $a }}{{- end -}}
-  ],
-  {{ with .Params.get }}
-  {{- if gt (len .items) 0 -}}
-  "serviceOutput": [
-    {{- range $i, $it := .items -}}{{ if $i }}, {{ end }}{ "@type": "Thing", "name": {{ printf "%q" $it.title }} }{{- end }}
-  ],
-  {{- end -}}
-{{ end }} 
-"serviceAudience": { "@type": "Audience", "audienceType": "Small businesses in Nassau, Bahamas" }
+{{- /* Service JSON-LD (safe for --minify) */ -}}
 
-}
-</script>
+{{- $serviceName := .Title -}}
+{{- $serviceDesc := (.Description | default .Summary | default .Title) | markdownify | plainify | chomp -}}
+{{- $areaServed  := slice "Nassau" "The Bahamas" -}}
+
+{{- /* Base object */ -}}
+{{- $schema := dict
+  "@context"     "https://schema.org"
+  "@type"        "Service"
+  "@id"          (print .Permalink "#service")
+  "name"         $serviceName
+  "description"  $serviceDesc
+  "url"          .Permalink
+  "serviceType"  $serviceName
+  "provider"     (dict "@id" (print .Site.BaseURL "#localbusiness"))
+  "areaServed"   $areaServed
+-}}
+
+{{- /* Optional: serviceOutput from .Params.get.items */ -}}
+{{- $outputs := slice -}}
+{{- with .Params.get -}}
+  {{- if isset . "items" -}}
+    {{- range $it := .items -}}
+      {{- $title := "" -}}
+      {{- if isset $it "title" -}}{{- $title = index $it "title" -}}{{- end -}}
+      {{- if $title -}}
+        {{- $outputs = $outputs | append (dict
+            "@type" "Thing"
+            "name"  ($title | markdownify | plainify | chomp)
+          ) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if gt (len $outputs) 0 -}}
+  {{- $schema = merge $schema (dict "serviceOutput" $outputs) -}}
+{{- end -}}
+
+{{- /* Audience */ -}}
+{{- $schema = merge $schema (dict
+  "serviceAudience" (dict "@type" "Audience" "audienceType" "Small businesses in Nassau, Bahamas")
+) -}}
+
+<!-- Service Schema -->
+<script type="application/ld+json">{{ $schema | jsonify (dict "indent" "  ") }}</script>

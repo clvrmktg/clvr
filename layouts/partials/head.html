@@ -36,8 +36,7 @@
   <meta name="googlebot" content="noindex, follow">
   {{- end -}}
   {{ partial "assets.html" . }}
-  <link rel="icon" type="image/png" href="/favicon-light.svg" media="(prefers-color-scheme: light)">
-  <link rel="icon" type="image/png" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" href="/favicon-light.svg">
   <link rel="mask-icon" href="/favicon-light.svg" color="#9395A1">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
@@ -47,7 +46,7 @@
   <meta property="og:url" content="{{ .Permalink  }}">
   <meta property="og:type" content="website">
   <meta property="og:title" content="{{ $pageTitle }}">
-  {{- $image := $feature.image | default .Site.Params.share -}}
+  {{- $image := $feature.path | default .Site.Params.share -}}
   {{- $alt := $feature.alt | default "Clever Marketing's logo" -}}
   <meta property="og:description" content="{{- $desc -}}">
   <meta property="og:image" content="{{- $image | absURL -}}">
@@ -72,7 +71,7 @@
   {{ if .Store.Get "isProject" }}
     {{ partial "schema/project.json.html" . }}
   {{ end }}
-  {{ partial "schema/post.html" . }}
+  {{ partial "schema/post.json.html" . }}
   {{ partial "schema/breadcrumbs.json.html" .}}
   {{ partial "schema/faqs.json.html" . }}
 </head>

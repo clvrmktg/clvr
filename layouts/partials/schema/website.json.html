@@ -1,14 +1,20 @@
 {{- if .IsHome -}}
-<!-- Website Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": {{ printf "%q" (print .Site.BaseURL "#website") }},
-  "url": {{ printf "%q" .Permalink }},
-  "name": {{ printf "%q" .Site.Title }},
-  "description": {{ printf "%q" (.Description | default "") }},
-  "publisher": { "@id": {{ printf "%q" (print .Site.BaseURL "#localbusiness") }} }
-}
-</script>
+  {{- $siteID := print .Site.BaseURL "#website" -}}
+  {{- $desc := (.Description | default site.Params.description | default site.Params.tagline | default "") | markdownify | plainify | chomp -}}
+
+  {{- $schema := dict
+      "@context"  "https://schema.org"
+      "@type"     "WebSite"
+      "@id"       $siteID
+      "url"       .Site.BaseURL
+      "name"      site.Title
+      "publisher" (dict "@id" (print .Site.BaseURL "#localbusiness"))
+    -}}
+
+  {{- if $desc -}}
+    {{- $schema = merge $schema (dict "description" $desc) -}}
+  {{- end -}}
+
+  <!-- WebSite Schema -->
+  <script type="application/ld+json">{{ $schema | jsonify (dict "indent" "  ") }}</script>
 {{- end -}}

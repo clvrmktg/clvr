@@ -8,7 +8,7 @@
 {{- $hasCategories := gt (len $category) 0 -}}
 
 
-{{- if .Params.post -}}
+{{- if .Store.Get "isPost" -}}
 <script type="application/ld+json">
 [
   {

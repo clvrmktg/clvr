@@ -45,19 +45,17 @@
             <p>{{ .text }}</p>
           {{ end }}
         </div>
-        <footer class="[ reviewer ][ flex middle ]">
+        <footer class="[ reviewer ][ flex middle col-gap--1 ]">
           {{ if .profile_photo_url }}
-          <figure class="avatar">
+          <figure class="[ avatar ][ ratio--1:1 ]">
             <picture>
               <img src="{{ .profile_photo_url }}" alt="Photo of {{ .author_name }}" width="40" height="40" loading="lazy" decoding="async" referrerpolicy="no-referrer" crossorigin="anonymous">
             </picture>
           </figure>
           {{ end }}
-          <div>
-            <cite class="[ flex flex--column pb--0.25 ]">
-              <span class="[ font--600 ]">{{ .author_name }}</span>
-            </cite>
-            <div class="stars">
+          <div class="[ grid row-gap--0.5 ]">
+            <cite class="[ font--600 ]">{{ .author_name }}</cite>
+            <div class="[ stars ][ flex middle ]">
               {{- $fullStars := int .rating -}}
               {{- $emptyStars := sub 5 $fullStars -}}
               {{- range seq $fullStars -}}★{{- end -}}

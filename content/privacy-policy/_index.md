@@ -8,7 +8,7 @@ description="Learn how Clever Marketing, Ltd. collects, uses, and protects your 
 
 **Effective Date:** {{<date>}}
 
-At Clever Marketing, Ltd., accessible at [https://getclever.marketing](https://getclever.marketing), we value the privacy of our visitors and clients. This Privacy Policy explains what information we collect, how we use it, and the choices you have.
+At Clever Marketing, Ltd. ("Clever"), accessible at [https://getclever.marketing](https://getclever.marketing), we value the privacy of our visitors and clients. This Privacy Policy explains what information we collect, how we use it, and the choices you have.
 
 If you have questions about this policy, you can [contact us](/contact-us).
 

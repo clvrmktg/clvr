@@ -88,7 +88,7 @@ icon = "headset.svg"
 
 [[faqs.items]]
 question = "How much does a website cost in The Bahamas?"
-answer = "The cost of a website in The Bahamas depends on its size, features, and complexity. At Clever Marketing, our web design packages start at $500 for a one-page site and $1,500 for a five-page site, with custom pricing for advanced features or e-commerce. We also offer a price calculator so you can get an instant estimate."
+answer = "The cost of a website in The Bahamas depends on its size, features, and complexity. At Clever, our web design packages start at $500 for a one-page site and $1,500 for a five-page site, with custom pricing for advanced features or e-commerce. We also offer a price calculator so you can get an instant estimate."
 
 [[faqs.items]]
 question = "How long does it take to build my website?"

@@ -6,7 +6,7 @@ description = "Digital marketing services in The Bahamas, including social media
 
 # Hero
 title = "Digital Marketing Bahamas"
-proposition_heading = "Reach the Right Audience. Grow Your Business."
+proposition_heading = "Reach the Right People. Grow Your Business."
 subhead = "Social media, PPC, and email marketing tailored for Bahamian businesses — designed to attract, engage, and convert customers."
 
 [hero]

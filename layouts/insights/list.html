@@ -1,31 +1,11 @@
 {{- define "variables" -}}
+{{- .Store.Set "hasObscure" true -}}
 {{- .Store.Set "webpageType" "CollectionPage" -}}
 {{- end -}}
 {{ define "main" }}
-  <header>
-    <h1>{{ .Title }}</h1>
-  </header>
-  
-  <div class="[ loop-wrap ][ grid ]">
-    <div>
-      <ul class="[ posts ]">
-        {{- $format := "January 2, 2006" -}}
-        {{- $iso := "2006-01-02T15:04:05Z07:00" -}}
-        {{ $paginator := .Paginator }}
-        {{ range $paginator.Pages }}
-        <li class="[ post ]">
-          <a class="[ post__link ]" href="{{ .RelPermalink }}" data-prefetch>
-            <h2>{{ .LinkTitle }}</h2>
-            <time class="[ font--small ]" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "January 2, 2006" }}</time>
-            <p>{{ .Description | truncate 145 "[...]" | plainify }}</p>
-          </a>
-        </li>
-        {{ end }}
-      </ul>
-    </div>
-    
+  {{ partial "hero.html" . }}
+  <div class="[ section--padding ]">
+    {{ partial "insights/loop.html" . }}
     {{ partial "pagination.html" . }}
-
   </div>
-  
 {{ end }}

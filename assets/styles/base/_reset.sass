@@ -116,33 +116,27 @@ img, svg:not([width])
   max-width: 100%
   display: block
 
-
 +ignore
-  figure
+  picture, img
+    border-radius: inherit
+    border-top-right-radius: inherit
+    border-top-left-radius: inherit
+    border-bottom-right-radius: inherit
+    border-bottom-left-radius: inherit
 
-    > picture
-      height: auto
-      border-radius: inherit
-      border-top-right-radius: inherit
-      border-top-left-radius: inherit
-      border-bottom-right-radius: inherit
-      border-bottom-left-radius: inherit
+  picture
+    height: auto
+    background-color: color('grey-300')
 
-      > img
-        height: inherit
-        object-fit: cover
-        border-radius: inherit
-        border-top-right-radius: inherit
-        border-top-left-radius: inherit
-        border-bottom-right-radius: inherit
-        border-bottom-left-radius: inherit
-        opacity: 0
-        +transition(opacity)
+    > img
+      height: inherit
+      object-fit: cover
+      opacity: 0
 
-        &.twic-done, &.twic-error
-          opacity: 1 
+      +transition(opacity)
 
-      &:has(figcaption)
-      
-        > picture
-          margin-bottom: 0.5em
+      &.twic-done, &.twic-error
+        opacity: 1 
+
+  figure:has(figcaption) > picture
+    margin-bottom: 0.5em

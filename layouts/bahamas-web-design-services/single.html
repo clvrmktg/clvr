@@ -14,7 +14,7 @@
         {{ .text | markdownify }}
       </div>
       <div class="[ o--1 lg:o--2 ]">
-        {{partial "image.html" (dict "image" .image "ratio" "1:1" "page" $)}}
+        {{partial "image.html" (dict "image" .image "ratio" "1:1" "helper" "r--10" "page" $)}}
       </div>
     </div>
   </section>
@@ -50,7 +50,7 @@
         {{ .text | markdownify }}
       </div>
       <div class="[ o--1 lg:o--2 ]">
-        {{partial "image.html" (dict "image" .image "ratio" "1:1" "page" $)}}
+        {{partial "image.html" (dict "image" .image "ratio" "1:1" "helper" "r--10" "page" $)}}
       </div>
     </div>
   </section>

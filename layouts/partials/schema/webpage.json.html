@@ -1,34 +1,43 @@
-{{- /* Resolve the page type in order of priority:
-  1) .Store "webpageType"
-  2) .Params.webpageType
-  3) sensible defaults based on page kind
-*/ -}}
-{{- $type := or (.Store.Get "webpageType") .Params.webpageType -}}
+{{- /* WebPage / CollectionPage JSON-LD (safe for --minify) */ -}}
+
+{{- $type := .Store.Get "webpageType" | default .Params.webpageType -}}
 {{- if not $type -}}
-{{- if .IsHome -}}
-{{- $type = "WebPage" -}}        {{/* homepage gets WebSite elsewhere */}}
-{{- else if .IsSection -}}
-{{- $type = "CollectionPage" -}}
-{{- else -}}
-{{- $type = "WebPage" -}}
-{{- end -}}
+  {{- if .IsHome -}}
+    {{- $type = "WebPage" -}}
+  {{- else if .IsSection -}}
+    {{- $type = "CollectionPage" -}}
+  {{- else -}}
+    {{- $type = "WebPage" -}}
+  {{- end -}}
 {{- end -}}
 
-{{- $desc := .Description | default .Summary | default .Title -}}
+{{- $desc := (.Description | default .Summary | default .Title) | markdownify | plainify | chomp -}}
 {{- $webpageID := print .Permalink "#webpage" -}}
+
+{{- $schema := dict
+  "@context" "https://schema.org"
+  "@type"    $type
+  "@id"      $webpageID
+  "url"      .Permalink
+  "name"     .Title
+-}}
+
+{{- if $desc -}}
+  {{- $schema = merge $schema (dict "description" $desc) -}}
+{{- end -}}
+
+{{- $schema = merge $schema (dict
+  "isPartOf"   (dict "@id" (print .Site.BaseURL "#website"))
+  "about"      (dict "@id" (print .Site.BaseURL "#localbusiness"))
+  "breadcrumb" (dict "@id" (print .Permalink   "#breadcrumbs"))
+) -}}
+
+{{- $published := .Date.Format "2006-01-02T15:04:05Z07:00" -}}
+{{- $modified  := .Lastmod.Format "2006-01-02T15:04:05Z07:00" -}}
+{{- $schema = merge $schema (dict
+  "datePublished" $published
+  "dateModified"  $modified
+) -}}
+
 <!-- Webpage Schema -->
-<script type="application/ld+json">
-{
-"@context": "https://schema.org",
-"@type": {{ printf "%q" $type }},
-"@id": {{ printf "%q" $webpageID }},
-"url": {{ printf "%q" .Permalink }},
-"name": {{ printf "%q" .Title }},
-"description": {{ printf "%q" $desc }},
-"isPartOf": { "@id": {{ printf "%q" (print .Site.BaseURL "#website") }} },
-"about":    { "@id": {{ printf "%q" (print .Site.BaseURL "#localbusiness") }} },
-"breadcrumb": { "@id": {{ printf "%q" (print .Permalink "#breadcrumbs") }} },
-"datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
-"dateModified":  "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}"
-}
-</script>
+<script type="application/ld+json">{{ $schema | jsonify (dict "indent" "  ") }}</script>
