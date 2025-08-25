@@ -2,7 +2,7 @@
 {{- if and (eq hugo.Environment "production") $gaID -}}
   {{- $version := .GitInfo.Hash | default (now.Unix) -}}
   {{- $opts := dict "minify" hugo.IsProduction "targetPath" "scripts/ga-init.js" -}}
-  {{- with resources.Get "scripts/ga-init.js" | js.Build $opts -}}
+  {{- with resources.Get "scripts/analytics/ga-init.js" | js.Build $opts -}}
     {{- if hugo.IsProduction -}}
       {{- with . | fingerprint -}}
 <script id="ga-loader"

@@ -2,7 +2,7 @@
 {{- if and (eq hugo.Environment "production") $pixelID -}}
   {{- $version := .GitInfo.Hash | default (now.Unix) -}}
   {{- $opts := dict "minify" hugo.IsProduction "targetPath" "scripts/meta-pixel-init.js" -}}
-  {{- with resources.Get "scripts/meta-pixel-init.js" | js.Build $opts -}}
+  {{- with resources.Get "scripts/analytics/meta-pixel-init.js" | js.Build $opts -}}
     {{- if hugo.IsProduction -}}
       {{- with . | fingerprint -}}
 <script
@@ -23,9 +23,9 @@
     {{- end -}}
   {{- end -}}
 
-  {{/* Proxied noscript beacon */}}
+  {{/* Regular noscript beacon */}}
   <noscript>
     <img height="1" width="1" style="display:none"
-         src="/.netlify/functions/meta-pixel-img?ev=PageView&noscript=1" />
+         src="https://www.facebook.com/tr?id={{ $pixelID }}&ev=PageView&noscript=1" />
   </noscript>
 {{- end -}}
