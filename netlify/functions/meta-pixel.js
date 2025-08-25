@@ -3,7 +3,6 @@ export const handler = async () => {
   try {
     const PIXEL_ID = process.env.META_PIXEL_ID;
 
-    // Always return a 200 with JS (so your <script> never 404s/502s)
     if (!PIXEL_ID) {
       return {
         statusCode: 200,
@@ -17,13 +16,10 @@ export const handler = async () => {
 
     const js = `
 (function(){
-  if (window.__metaPixelLoaded) return;
+  if (window.__metaPixelBootstrapped) return;
+  window.__metaPixelBootstrapped = true;
 
-  function hasAdConsent() {
-    try { return !!(window.__consent && window.__consent.ad === true); }
-    catch (e) { return true; }
-  }
-
+  // fbq stub
   (function(f,b){
     if (f.fbq) return;
     var n = f.fbq = function(){ n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
@@ -36,14 +32,15 @@ export const handler = async () => {
     var s = document.createElement('script');
     s.async = true;
     s.src = 'https://connect.facebook.net/en_US/fbevents.js';
-    var x = document.getElementsByTagName('script')[0];
-    x.parentNode.insertBefore(s, x);
+    var x = document.getElementsByTagName('script')[0] || document.head.firstChild;
+    (x && x.parentNode ? x.parentNode : document.head).insertBefore(s, x || null);
     window.__metaPixelLoaded = true;
   }
 
   function initAndTrack(){
-    if (!hasAdConsent()) return;
+    if (window.__metaPixelInited) return;
     if (!window.fbq) return;
+    window.__metaPixelInited = true;
     fbq('init', '${PIXEL_ID}');
     fbq('track', 'PageView');
   }
@@ -61,13 +58,14 @@ export const handler = async () => {
     var tries = 0;
     (function waitForFB(){
       if (typeof fbq === 'function' && fbq.callMethod) {
-        try { initAndTrack(); } catch(e){}
+        initAndTrack();
       } else if (tries++ < 20) {
         setTimeout(waitForFB, 150);
       }
     })();
   });
 
+  // For SPA route changes:
   window.metaPixelTrackPageView = function(){
     try { if (typeof fbq === 'function') fbq('track', 'PageView'); } catch(e){}
   };
@@ -83,7 +81,6 @@ export const handler = async () => {
       body: js,
     };
   } catch (err) {
-    // Surface an error as JS comment instead of 502
     return {
       statusCode: 200,
       headers: {
