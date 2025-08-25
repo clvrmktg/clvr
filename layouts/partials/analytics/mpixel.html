@@ -1,25 +1,28 @@
 {{- $mpID := getenv "META_PIXEL_ID" -}}
 {{- if and (eq hugo.Environment "production") $mpID -}}
 <script>
-  function loadMetaPixel() {
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    
-    fbq('init', '{{ $mpID }}');
-    fbq('track', 'PageView');
-  }
+  // Delay Meta Pixel with setTimeout (CSP-safe: pass a function, not a string)
+  (function (w, d) {
+    function loadMetaPixel() {
+      !function(f,b,e,v,n,t,s){
+        if(f.fbq) return;
+        n = f.fbq = function(){ n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments) };
+        if(!f._fbq) f._fbq = n;
+        n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
+        t = b.createElement(e); t.async = !0;
+        // Use FB CDN; swap to your proxy if desired (see note below)
+        t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+        s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+      }(w, d, 'script');
 
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(loadMetaPixel, { timeout: 5000 });
-  } else {
-    setTimeout(loadMetaPixel, 3000);
-  }
+      fbq('init', '{{ $mpID }}');
+      fbq('track', 'PageView');
+    }
+
+    // Adjust delay as you like (1500–3000ms typical)
+    w.setTimeout(loadMetaPixel, 3000);
+  })(window, document);
 </script>
 <noscript>
   <img height="1" width="1" style="display:none"
