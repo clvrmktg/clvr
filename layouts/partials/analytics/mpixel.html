@@ -1,34 +1,37 @@
 {{- $mpID := getenv "META_PIXEL_ID" -}}
 {{- if and (eq hugo.Environment "production") $mpID -}}
 <script>
-  // Tiny fbq stub: queue calls until the real library is ready
   (function(w,d){
-    var q = [];
-    function fbq(){ q.push(arguments); }
-    fbq.callMethod = function(){ q.push(arguments); };
-    fbq.push = q; fbq.loaded = false; fbq.version = '2.0';
+    // fbq stub queues calls until library is ready
+    var q=[]; function fbq(){ q.push(arguments); }
+    fbq.push=q; fbq.loaded=false; fbq.version='2.0';
     w.fbq = fbq;
 
-    // Initialize now (queued, zero work done yet)
+    // Init (okay to pass your env var here in prod)
     fbq('init', '{{ $mpID }}');
-    // Don't fire PageView yet—wait for consent/idle/LCP (see below)
 
-    // Lazy load the real library during idle time
-    function load() {
+    // Lazy-load the real library from THIS function
+    function load(){
       if (fbq.loaded) return;
-      var s = d.createElement('script');
-      s.async = true;
-      s.src = '/.netlify/functions/meta-pixel'; // your proxied fbevents.js
-      s.onload = function(){ fbq.loaded = true; };
+      var s=d.createElement('script');
+      s.async=true;
+      s.src='/.netlify/functions/meta-pixel/js';  // ✅ correct path
+      s.onload=function(){ fbq.loaded=true; };
       d.head.appendChild(s);
     }
+    (w.requestIdleCallback || function(cb){ setTimeout(cb,1200); })(load);
 
-    // requestIdleCallback with fallback
-    (w.requestIdleCallback || function(cb){ setTimeout(cb, 1500); })(load);
-  })(window, document);
+    // Fire PageView once LCP is known (performance-friendly)
+    new PerformanceObserver((list,obs)=>{
+      if(!list.getEntries()[0]) return;
+      obs.disconnect();
+      fbq('track','PageView');                   // ✅ actually sends an event
+    }).observe({type:'largest-contentful-paint', buffered:true});
+  })(window,document);
 </script>
+
 <noscript>
   <img height="1" width="1" style="display:none"
-       src="https://www.facebook.com/tr?id={{ $mpID  }}&ev=PageView&noscript=1"/>
+       src="/.netlify/functions/meta-pixel/tr?ev=PageView&noscript=1" />
 </noscript>
 {{- end -}}
