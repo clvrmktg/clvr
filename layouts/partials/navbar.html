@@ -43,12 +43,17 @@
       {{end}}
       </ul>
       <!-- Actions (not a list) -->
-      <div class="[ nav-actions ][ middle col-gap--1 ]" role="group" aria-label="Contact options">
+      <div class="[ nav-actions ][ middle col-gap--2 ]" role="group" aria-label="Contact options">
         <template obscure="obscure" data-p1="+1" data-p2="242" data-p3="376" data-p4="3340">
           <!-- Visible: nicely formatted number; Click: tel:+12423763340 -->
-          <a class="[ phone-link ][ font--700 ]" href="tel:%1%2%3%4" aria-label="Call Clever Marketing at (%2) %3-%4">
-            (%2) %3-%4
-          </a>
+          <span class="[ flex middle center col-gap--0.25 ]">
+            <span class="[ icon ]">
+              {{ readFile "static/icons/tabler/phone.svg" | safeHTML }}
+            </span>
+            <a class="[ phone-link ][ font--700 ]" href="tel:%1%2%3%4" aria-label="Call Clever Marketing at (%2) %3-%4">
+              (%2) %3-%4
+            </a>
+          </span>
         </template>
     
         {{ partial "buttons/ghost.html" (dict "url" "/contact-us/" "text" "Get Your Quote" "small" true) }}
