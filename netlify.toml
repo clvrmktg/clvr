@@ -44,7 +44,7 @@ for = "/*"
 
   Content-Security-Policy-Report-Only = """
     default-src 'none';
-    script-src-elem 'self' 'strict-dynamic' https://connect.facebook.net https://www.googletagmanager.com https://www.google.com https://www.gstatic.com https://www.recaptcha.net;
+    script-src-elem 'self' https://connect.facebook.net https://www.googletagmanager.com https://www.google.com https://www.gstatic.com https://www.recaptcha.net;
     script-src-attr 'none';
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     img-src 'self' data: https://*.twic.pics https://*.googleusercontent.com https://maps.gstatic.com https://www.facebook.com https://*.facebook.com https://www.gstatic.com;
