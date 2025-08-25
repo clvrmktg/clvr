@@ -1,40 +1,28 @@
 {{- $mpID := getenv "META_PIXEL_ID" -}}
 {{- if and (eq hugo.Environment "production") $mpID -}}
 <script>
-  (function(w,d){
-    var q=[]; function fbq(){ q.push(arguments); }
-    fbq.push=q; fbq.loaded=false; fbq.version='2.0';
-    w.fbq = fbq;
+  function loadMetaPixel() {
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    
+    fbq('init', '{{ mpID }}');
+    fbq('track', 'PageView');
+  }
 
-    fbq('init', '{{ $mpID }}');
-
-    function load(){
-      if (fbq.loaded) return;
-      var s=d.createElement('script');
-      s.async=true;
-      s.src='/.netlify/functions/meta-pixel/js';  // ✅ correct path
-      s.onload=function(){ fbq.loaded=true; };
-      d.head.appendChild(s);
-    }
-    (w.requestIdleCallback || function(cb){ setTimeout(cb,1200); })(load);
-
-    // Fire PageView with robust fallbacks (LCP OR load OR timeout)
-    try {
-      new PerformanceObserver((list,obs)=>{
-        if(!list.getEntries()[0]) return;
-        obs.disconnect();
-        fbq('track','PageView');
-        fired = true;
-      }).observe({type:'largest-contentful-paint', buffered:true});
-    } catch(_) {}
-    var fired = false;
-    addEventListener('load', function(){ if(!fired){ fired=true; fbq('track','PageView'); } }, {once:true});
-    setTimeout(function(){ if(!fired){ fired=true; fbq('track','PageView'); } }, 3000);
-  })(window,document);
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(loadMetaPixel, { timeout: 5000 });
+  } else {
+    setTimeout(loadMetaPixel, 3000);
+  }
 </script>
-
 <noscript>
   <img height="1" width="1" style="display:none"
-       src="/.netlify/functions/meta-pixel/tr?ev=PageView&noscript=1" />
+       src="https://www.facebook.com/tr?id={{ mpID }}&ev=PageView&noscript=1"/>
 </noscript>
 {{- end -}}
