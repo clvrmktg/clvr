@@ -40,9 +40,9 @@
     {{- if eq hugo.Environment "production" -}}
       {{- $version := .GitInfo.Hash | default (now.Unix) -}}
       {{ partial "script.html" (dict
-          "path"       "scripts/analytics/mpixel-loader.js"   /* source: assets/ */
-          "targetPath" "scripts/mpixel-loader.js"             /* emitted: /scripts/ */
-          "attributes" (dict "defer" true "data-v" $version)  /* pass deploy version */
+          "path"       "scripts/analytics/mpixel-loader.js" 
+          "targetPath" "scripts/mpixel-loader.js"            
+          "attributes" (dict "defer" true "data-v" $version)
       ) }}
       <noscript>
         <img height="1" width="1" style="display:none"
