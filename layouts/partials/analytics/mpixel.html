@@ -18,7 +18,7 @@
   if ('requestIdleCallback' in window) {
     requestIdleCallback(loadMetaPixel, { timeout: 5000 });
   } else {
-    setTimeout(loadMetaPixel, 3000);
+    document.addEventListener('DOMContentLoaded', loadMetaPixel, { once: true });
   }
 </script>
 <noscript>
