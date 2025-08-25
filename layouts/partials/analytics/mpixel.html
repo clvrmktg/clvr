@@ -1,17 +1,34 @@
 {{- $mpID := getenv "META_PIXEL_ID" -}}
 {{- if and (eq hugo.Environment "production") $mpID -}}
-<!-- Meta Pixel Code -->
-<script type="text/partytown">
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '{{ $mpID }}');
-fbq('track', 'PageView');
+<script>
+  // Tiny fbq stub: queue calls until the real library is ready
+  (function(w,d){
+    var q = [];
+    function fbq(){ q.push(arguments); }
+    fbq.callMethod = function(){ q.push(arguments); };
+    fbq.push = q; fbq.loaded = false; fbq.version = '2.0';
+    w.fbq = fbq;
+
+    // Initialize now (queued, zero work done yet)
+    fbq('init', 'YOUR_PIXEL_ID');
+    // Don't fire PageView yet—wait for consent/idle/LCP (see below)
+
+    // Lazy load the real library during idle time
+    function load() {
+      if (fbq.loaded) return;
+      var s = d.createElement('script');
+      s.async = true;
+      s.src = '/.netlify/functions/meta-pixel-js'; // your proxied fbevents.js
+      s.onload = function(){ fbq.loaded = true; };
+      d.head.appendChild(s);
+    }
+
+    // requestIdleCallback with fallback
+    (w.requestIdleCallback || function(cb){ setTimeout(cb, 1500); })(load);
+  })(window, document);
 </script>
-<!-- End Meta Pixel Code -->
+<noscript>
+  <img height="1" width="1" style="display:none"
+       src="https://www.facebook.com/tr?id={{ {{ $mpID }} }}&ev=PageView&noscript=1"/>
+</noscript>
 {{- end -}}

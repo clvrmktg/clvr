@@ -47,64 +47,10 @@
 {{- if .Store.Get "hasTwic" }}
   <script src="https://{{ .Site.Params.twic }}.twic.pics/?v1" async defer></script>
 {{- end }}
-
-{{- /* partials/partytown-analytics.html */ -}}
-{{- $gaID := getenv "GA_TRACKING_ID" -}}
-{{- $mpID := getenv "META_PIXEL_ID" -}}
-{{- $isProd := eq hugo.Environment "production" -}}
-
-{{- if and $isProd (or $gaID $mpID) -}}
-  {{- /* Build the list of globals to forward into the worker */ -}}
-  {{- $forward := slice -}}
-  {{- if $gaID -}}
-    {{- $forward = $forward | append "gtag" "dataLayer.push" -}}
-  {{- end -}}
-  {{- if $mpID -}}
-    {{- $forward = $forward | append "fbq" -}}
-  {{- end -}}
-
-  <!-- Partytown config + tiny stubs (main thread) -->
-  <script>
-    window.partytown = { forward: {{ $forward | jsonify }} };
-
-    {{- if $gaID -}}
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function(){ dataLayer.push(arguments); };
-    {{- end -}}
-
-    {{- if $mpID -}}
-    window.fbq = function(){ (fbq.q = fbq.q || []).push(arguments); };
-    {{- end -}}
-  </script>
-
-  <!-- Partytown runtime (served from static/~partytown/) -->
-  <script src="/~partytown/partytown.js" defer></script>
-
-  {{- if $gaID -}}
-    <!-- Google Analytics in worker -->
-    <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id={{ $gaID }}"></script>
-    <script type="text/partytown">
-      gtag('js', new Date());
-      gtag('config', '{{ $gaID }}', { send_page_view: true });
-    </script>
-  {{- end -}}
-
-  {{- if $mpID -}}
-    <!-- Meta Pixel Code -->
-    <script type="text/partytown">
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '{{ $mpID }}');
-    fbq('track', 'PageView');
-    </script>
-    <!-- End Meta Pixel Code -->
-  {{- end -}}
-{{- end -}}
-
-
+{{/* 
+  {{- if .Store.Get "hasCode" -}}
+  {{ partial "script.html" (dict "path" "scripts/vendor/prism.js" "targetPath" "scripts/prism.js") }}
+  {{- end -}}  
+*/}}
+{{ partial "analytics/gtag.html" . }}
+  
