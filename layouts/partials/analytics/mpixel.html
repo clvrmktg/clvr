@@ -2,15 +2,12 @@
 {{- if and (eq hugo.Environment "production") $mpID -}}
 <script>
   (function(w,d){
-    // fbq stub queues calls until library is ready
     var q=[]; function fbq(){ q.push(arguments); }
     fbq.push=q; fbq.loaded=false; fbq.version='2.0';
     w.fbq = fbq;
 
-    // Init (okay to pass your env var here in prod)
     fbq('init', '{{ $mpID }}');
 
-    // Lazy-load the real library from THIS function
     function load(){
       if (fbq.loaded) return;
       var s=d.createElement('script');
@@ -21,12 +18,18 @@
     }
     (w.requestIdleCallback || function(cb){ setTimeout(cb,1200); })(load);
 
-    // Fire PageView once LCP is known (performance-friendly)
-    new PerformanceObserver((list,obs)=>{
-      if(!list.getEntries()[0]) return;
-      obs.disconnect();
-      fbq('track','PageView');                   // ✅ actually sends an event
-    }).observe({type:'largest-contentful-paint', buffered:true});
+    // Fire PageView with robust fallbacks (LCP OR load OR timeout)
+    try {
+      new PerformanceObserver((list,obs)=>{
+        if(!list.getEntries()[0]) return;
+        obs.disconnect();
+        fbq('track','PageView');
+        fired = true;
+      }).observe({type:'largest-contentful-paint', buffered:true});
+    } catch(_) {}
+    var fired = false;
+    addEventListener('load', function(){ if(!fired){ fired=true; fbq('track','PageView'); } }, {once:true});
+    setTimeout(function(){ if(!fired){ fired=true; fbq('track','PageView'); } }, 3000);
   })(window,document);
 </script>
 
