@@ -52,11 +52,6 @@
 {{- $gaID := getenv "GA_TRACKING_ID" -}}
 {{- $mpID := getenv "META_PIXEL_ID" -}}
 {{- $isProd := eq hugo.Environment "production" -}}
-{{- $shouldLoad := and $isProd (or $gaID $mpID) -}}
-{{- /* partials/partytown-analytics.html */ -}}
-{{- $gaID := getenv "GA_TRACKING_ID" -}}
-{{- $mpID := getenv "META_PIXEL_ID" -}}
-{{- $isProd := eq hugo.Environment "production" -}}
 
 {{- if and $isProd (or $gaID $mpID) -}}
   {{- /* Build the list of globals to forward into the worker */ -}}
@@ -83,7 +78,7 @@
   </script>
 
   <!-- Partytown runtime (served from static/~partytown/) -->
-  <script src="/~partytown/partytown.js"></script>
+  <script src="/~partytown/partytown.js" defer></script>
 
   {{- if $gaID -}}
     <!-- Google Analytics in worker -->
@@ -95,12 +90,20 @@
   {{- end -}}
 
   {{- if $mpID -}}
-    <!-- Facebook Pixel in worker -->
-    <script type="text/partytown" src="https://connect.facebook.net/en_US/fbevents.js"></script>
+    <!-- Meta Pixel Code -->
     <script type="text/partytown">
-      fbq('init', '{{ $mpID }}');
-      fbq('track', 'PageView');
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '{{ $mpID }}');
+    fbq('track', 'PageView');
     </script>
+    <!-- End Meta Pixel Code -->
   {{- end -}}
 {{- end -}}
 
