@@ -42,19 +42,20 @@ for = "/*"
   X-Permitted-Cross-Domain-Policies = "none"
   Permissions-Policy = "accelerometer=(self), autoplay=(self), camera=(self), encrypted-media=(self), fullscreen=(self), geolocation=(self), gyroscope=(self), magnetometer=(self), microphone=(self), midi=(self), payment=(self), publickey-credentials-get=(self), sync-xhr=(self), usb=(self), xr-spatial-tracking=(self)"
 
-  Content-Security-Policy = """
+  Content-Security-Policy-Report-Only = """
     default-src 'none';
-    style-src 'self' 'unsafe-inline' https:;
-    img-src 'self' https://*.twic.pics https://*.googleusercontent.com https://maps.gstatic.com https://www.facebook.com https://*.facebook.com https://www.gstatic.com data:;
-    font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com;
-    media-src 'self' https:;
-    connect-src 'self' https://www.google-analytics.com https://*.analytics.google.com https://stats.g.doubleclick.net https://www.facebook.com https://graph.facebook.com https://www.google.com https://www.recaptcha.net https://www.facebook.com https://graph.facebook.com https:;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    img-src 'self' data: https://*.twic.pics https://*.googleusercontent.com https://maps.gstatic.com https://www.facebook.com https://*.facebook.com https://www.gstatic.com;
+    font-src 'self' https://fonts.gstatic.com;
+    media-src 'self';
+    connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://stats.g.doubleclick.net https://www.googletagmanager.com https://www.google.com https://www.recaptcha.net https://www.facebook.com https://graph.facebook.com;
     frame-src 'self' https://www.google.com https://www.recaptcha.net;
     form-action 'self';
     frame-ancestors 'none';
     manifest-src 'self';
     base-uri 'self';
   """
+
   # --- CSP (the plugin will add: 'nonce-…' to script-src at runtime) ---
   Content-Security-Policy = """
     default-src 'none';
