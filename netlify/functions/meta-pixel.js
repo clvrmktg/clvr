@@ -1,93 +1,32 @@
-// netlify/functions/meta-pixel.js
-export const handler = async () => {
-  try {
-    const PIXEL_ID = process.env.META_PIXEL_ID;
+// Proxies the 1x1 beacon so the Pixel ID never appears in HTML
+export const handler = async (event) => {
+  const PIXEL_ID = process.env.META_PIXEL_ID;
+  if (!PIXEL_ID) return { statusCode: 204 };
 
-    if (!PIXEL_ID) {
-      return {
-        statusCode: 200,
-        headers: {
-          'Content-Type': 'application/javascript; charset=utf-8',
-          'Cache-Control': 'public, max-age=31536000, immutable',
-        },
-        body: '/* META_PIXEL_ID not set; no-op */',
-      };
-    }
+  // Allow ev=PageView etc. (default PageView)
+  const qs = event.queryStringParameters || {};
+  const ev = qs.ev || "PageView";
 
-    const js = `
-(function(){
-  if (window.__metaPixelBootstrapped) return;
-  window.__metaPixelBootstrapped = true;
+  const url = new URL("https://www.facebook.com/tr");
+  url.searchParams.set("id", PIXEL_ID);
+  url.searchParams.set("ev", ev);
+  url.searchParams.set("noscript", "1");
 
-  // fbq stub
-  (function(f,b){
-    if (f.fbq) return;
-    var n = f.fbq = function(){ n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
-    if (!f._fbq) f._fbq = n;
-    n.push = n; n.loaded = false; n.version = '2.0'; n.queue = [];
-  })(window, document);
-
-  function loadPixel(){
-    if (window.__metaPixelLoaded) return;
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://connect.facebook.net/en_US/fbevents.js';
-    var x = document.getElementsByTagName('script')[0] || document.head.firstChild;
-    (x && x.parentNode ? x.parentNode : document.head).insertBefore(s, x || null);
-    window.__metaPixelLoaded = true;
+  // Forward any extra params except id
+  for (const [k, v] of Object.entries(qs)) {
+    if (k !== "ev") url.searchParams.set(k, v);
   }
 
-  function initAndTrack(){
-    if (window.__metaPixelInited) return;
-    if (!window.fbq) return;
-    window.__metaPixelInited = true;
-    fbq('init', '${PIXEL_ID}');
-    fbq('track', 'PageView');
-  }
-
-  function onIdle(fn){
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(fn, { timeout: 5000 });
-    } else {
-      setTimeout(fn, 3000);
-    }
-  }
-
-  onIdle(function(){
-    loadPixel();
-    var tries = 0;
-    (function waitForFB(){
-      if (typeof fbq === 'function' && fbq.callMethod) {
-        initAndTrack();
-      } else if (tries++ < 20) {
-        setTimeout(waitForFB, 150);
-      }
-    })();
-  });
-
-  // For SPA route changes:
-  window.metaPixelTrackPageView = function(){
-    try { if (typeof fbq === 'function') fbq('track', 'PageView'); } catch(e){}
+  // Fetch the 1x1 GIF and stream it back
+  const res = await fetch(url.toString());
+  const buf = Buffer.from(await res.arrayBuffer());
+  return {
+    statusCode: 200,
+    headers: {
+      "Content-Type": "image/gif",
+      "Cache-Control": "no-store",
+    },
+    body: buf.toString("base64"),
+    isBase64Encoded: true,
   };
-})();
-`.trim();
-
-    return {
-      statusCode: 200,
-      headers: {
-        'Content-Type': 'application/javascript; charset=utf-8',
-        'Cache-Control': 'public, max-age=31536000, immutable',
-      },
-      body: js,
-    };
-  } catch (err) {
-    return {
-      statusCode: 200,
-      headers: {
-        'Content-Type': 'application/javascript; charset=utf-8',
-        'Cache-Control': 'no-store',
-      },
-      body: `/* meta-pixel error: ${String(err)} */`,
-    };
-  }
 };

@@ -1,36 +1,38 @@
+// netlify/functions/gtag.js
 export const handler = async () => {
   const GA_ID = process.env.GA_TRACKING_ID;
-  console.log("GA_TRACKING_ID =", GA_ID);
 
+  // Always return a 200 with JS so the page never breaks
   if (!GA_ID) {
     return {
-      statusCode: 500,
-      body: '// Missing GA_TRACKING_ID',
+      statusCode: 200,
+      headers: {
+        'Content-Type': 'application/javascript; charset=UTF-8',
+        'Cache-Control': 'public, max-age=31536000, immutable',
+      },
+      body: '/* Missing GA_TRACKING_ID; GA disabled */',
     };
   }
 
-  const url = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-  console.log("Fetching:", url);
+  // Load Google's library
+  const res = await fetch(`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`);
+  const lib = await res.text();
 
-  const res = await fetch(url);
-  console.log("Status:", res.status);
+  // Append bootstrap + config so the client doesn't need the ID
+  const bootstrap = `
+    // GA bootstrap + config added by Netlify Function
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '${GA_ID}', { transport_type: 'beacon' });
+  `;
 
-  if (!res.ok) {
-    const errorText = await res.text();
-    console.error("Failed to fetch:", errorText);
-    return {
-      statusCode: 500,
-      body: `// Failed to fetch gtag.js: ${res.status}`,
-    };
-  }
-
-  const js = await res.text();
   return {
     statusCode: 200,
     headers: {
-      'Content-Type': 'text/javascript; charset=UTF-8',
+      'Content-Type': 'application/javascript; charset=UTF-8',
       'Cache-Control': 'public, max-age=31536000, immutable',
     },
-    body: js,
+    body: lib + bootstrap,
   };
 };
