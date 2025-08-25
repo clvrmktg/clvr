@@ -5,26 +5,17 @@
   {{- with resources.Get "scripts/analytics/meta-pixel-init.js" | js.Build $opts -}}
     {{- if hugo.IsProduction -}}
       {{- with . | fingerprint -}}
-<script
-  src="{{ .RelPermalink }}"
-  integrity="{{ .Data.Integrity }}" crossorigin="anonymous"
-  defer
-  data-pixel-id="{{ $pixelID }}"
-  data-locale="en_US"
-  data-version="{{ $version }}"></script>
+<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"
+        defer data-pixel-id="{{ $pixelID }}" data-locale="en_US" data-version="{{ $version }}"></script>
       {{- end -}}
     {{- else -}}
-<script
-  src="{{ .RelPermalink }}"
-  defer
-  data-pixel-id="{{ $pixelID }}"
-  data-locale="en_US"
-  data-version="{{ $version }}"></script>
+<script src="{{ .RelPermalink }}" defer
+        data-pixel-id="{{ $pixelID }}" data-locale="en_US" data-version="{{ $version }}"></script>
     {{- end -}}
   {{- end -}}
 
   <noscript>
     <img height="1" width="1" style="display:none"
          src="/.netlify/functions/meta-pixel/tr?ev=PageView&noscript=1" />
-  </noscript>  
+  </noscript>
 {{- end -}}
