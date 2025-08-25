@@ -10,7 +10,7 @@
     w.fbq = fbq;
 
     // Initialize now (queued, zero work done yet)
-    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('init', '{{ $mpID }}');
     // Don't fire PageView yet—wait for consent/idle/LCP (see below)
 
     // Lazy load the real library during idle time
@@ -18,7 +18,7 @@
       if (fbq.loaded) return;
       var s = d.createElement('script');
       s.async = true;
-      s.src = '/.netlify/functions/meta-pixel-js'; // your proxied fbevents.js
+      s.src = '/.netlify/functions/meta-pixel'; // your proxied fbevents.js
       s.onload = function(){ fbq.loaded = true; };
       d.head.appendChild(s);
     }
@@ -29,6 +29,6 @@
 </script>
 <noscript>
   <img height="1" width="1" style="display:none"
-       src="https://www.facebook.com/tr?id={{ {{ $mpID }} }}&ev=PageView&noscript=1"/>
+       src="https://www.facebook.com/tr?id={{ $mpID  }}&ev=PageView&noscript=1"/>
 </noscript>
 {{- end -}}
