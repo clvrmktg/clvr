@@ -16,7 +16,7 @@
   }
 
   if ('requestIdleCallback' in window) {
-    requestIdleCallback(loadMetaPixel, { timeout: 3000 });
+    requestIdleCallback(loadMetaPixel, { timeout: 5000 });
   } else {
     document.addEventListener('DOMContentLoaded', loadMetaPixel, { once: true });
   }
