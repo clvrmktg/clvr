@@ -1,27 +1,31 @@
-{{- $mpID := getenv "META_PIXEL_ID" -}}
-{{- if and (eq hugo.Environment "production") $mpID -}}
+{{- $pixelID := getenv "META_PIXEL_ID" -}}
+{{- if and (eq hugo.Environment "production") $pixelID -}}
   {{- $version := .GitInfo.Hash | default (now.Unix) -}}
-  <script>
-    (function(){
-      if (window.__mpLazyQueued) return;
-      function loadMetaPixel(){
-        if (window.__mpLazyLoaded) return;
-        var s = document.createElement('script');
-        s.src = '/.netlify/functions/meta-pixel?v={{ $version }}';
-        s.async = true;
-        document.head.appendChild(s);
-        window.__mpLazyLoaded = true;
-      }
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(loadMetaPixel, { timeout: 5000 });
-      } else {
-        setTimeout(loadMetaPixel, 3000);
-      }
-      window.__mpLazyQueued = true;
-    })();
-  </script>
+  {{- $opts := dict "minify" hugo.IsProduction "targetPath" "scripts/meta-pixel-init.js" -}}
+  {{- with resources.Get "scripts/meta-pixel-init.js" | js.Build $opts -}}
+    {{- if hugo.IsProduction -}}
+      {{- with . | fingerprint -}}
+<script
+  src="{{ .RelPermalink }}"
+  integrity="{{ .Data.Integrity }}" crossorigin="anonymous"
+  defer
+  data-pixel-id="{{ $pixelID }}"
+  data-locale="en_US"
+  data-version="{{ $version }}"></script>
+      {{- end -}}
+    {{- else -}}
+<script
+  src="{{ .RelPermalink }}"
+  defer
+  data-pixel-id="{{ $pixelID }}"
+  data-locale="en_US"
+  data-version="{{ $version }}"></script>
+    {{- end -}}
+  {{- end -}}
+
+  {{/* Proxied noscript beacon */}}
   <noscript>
     <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id={{ $mpID }}&ev=PageView&noscript=1" />
+         src="/.netlify/functions/meta-pixel-img?ev=PageView&noscript=1" />
   </noscript>
 {{- end -}}

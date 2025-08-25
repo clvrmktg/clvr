@@ -1,23 +1,23 @@
-{{ $gaID := getenv "GA_TRACKING_ID" }}
-{{ if and (eq hugo.Environment "production") $gaID }}
-{{ $version := .GitInfo.Hash | default (now.Unix) }}
-<script>
-  function loadGA() {
-    const script = document.createElement('script');
-    script.src = '/.netlify/functions/gtag?v={{ $version }}';
-    script.async = true;
-    document.head.appendChild(script);
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', '{{ $gaID }}');
-  }
-
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(loadGA, { timeout: 5000 });
-  } else {
-    setTimeout(loadGA, 3000);
-  }
-</script>
-{{ end }}
+{{- $gaID := getenv "GA_TRACKING_ID" -}}
+{{- if and (eq hugo.Environment "production") $gaID -}}
+  {{- $version := .GitInfo.Hash | default (now.Unix) -}}
+  {{- $opts := dict "minify" hugo.IsProduction "targetPath" "scripts/ga-init.js" -}}
+  {{- with resources.Get "scripts/ga-init.js" | js.Build $opts -}}
+    {{- if hugo.IsProduction -}}
+      {{- with . | fingerprint -}}
+<script id="ga-loader"
+        src="{{ .RelPermalink }}"
+        integrity="{{ .Data.Integrity }}" crossorigin="anonymous"
+        defer
+        data-ga-id="{{ $gaID }}"
+        data-version="{{ $version }}"></script>
+      {{- end -}}
+    {{- else -}}
+<script id="ga-loader"
+        src="{{ .RelPermalink }}"
+        defer
+        data-ga-id="{{ $gaID }}"
+        data-version="{{ $version }}"></script>
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

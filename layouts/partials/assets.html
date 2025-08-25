@@ -52,11 +52,5 @@
   {{ partial "script.html" (dict "path" "scripts/vendor/prism.js" "targetPath" "scripts/prism.js") }}
   {{- end -}}  
 */}}
-{{- if eq hugo.Environment "production" -}}
-  {{ partial "script.html" (dict
-      "path"       "scripts/analytics/gtag-loader.js" 
-      "targetPath" "scripts/gtag-loader.js"            
-      "attributes" (dict "defer" true "data-v" (.GitInfo.Hash | default (now.Unix)))
-  ) }}
-{{- end -}}
+{{ partial "analytics/gtag.html" . }}
   

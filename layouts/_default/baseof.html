@@ -36,18 +36,6 @@
     {{ partial "script.html" (dict "path" "scripts/components/thank-you.js" "targetPath" "scripts/thank-you.js") }}
     {{ end }}
     {{ partial "script.html" (dict "path" "scripts/components/notice.js" "targetPath" "scripts/notice.js") }}
-    {{/* layouts/partials/mpixel.html */}}
-    {{- if eq hugo.Environment "production" -}}
-      {{- $version := .GitInfo.Hash | default (now.Unix) -}}
-      {{ partial "script.html" (dict
-          "path"       "scripts/analytics/mpixel-loader.js" 
-          "targetPath" "scripts/mpixel-loader.js"            
-          "attributes" (dict "defer" true "data-v" $version)
-      ) }}
-      <noscript>
-        <img height="1" width="1" style="display:none"
-             src="/.netlify/functions/meta-pixel-img?ev=PageView" />
-      </noscript>
-    {{- end -}}    
+    {{ partial "analytics/mpixel.html" . }}
   </body>
 </html>
