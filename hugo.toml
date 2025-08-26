@@ -54,6 +54,16 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
   whatsapp = "+1 (242) 376-3340"
   linkedinType = "company" # or "in" for personal profile URLs
 
+
+# -------------------------------------------------
+# MAIN MENU
+# -------------------------------------------------
+# Defines the primary navigation at the top of the site.
+# - Includes top-level pages (Services, Portfolio, About Us, Contact Us).
+# - "Services" acts as a parent with child items for each service.
+# - Weights control left-to-right order in the header.
+# -------------------------------------------------
+
 [[menu.main]]
   identifier = "services"
   name = "Services"
@@ -96,6 +106,7 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
   url = "/about-us/"
   weight = 3
 
+# May be added back later
 # [[menu.main]]
 #   identifier = "insights"
 #   name = "Insights"
@@ -108,6 +119,43 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
   url = "/contact-us/"
   weight = 4
 
+# -------------------------------------------------
+# RESOURCES MENU
+# -------------------------------------------------
+# Defines supporting navigation shown in the footer under "Resources".
+# - Contains content pages like Insights, Portfolio, About Us, Contact Us.
+# - Intended for informational resources and secondary entry points.
+# - Weights control top-to-bottom order in the footer list.
+# -------------------------------------------------
+
+[[menu.resources]]
+  name  = "About Us"
+  url   = "/about-us/"
+  weight = 1
+
+[[menu.resources]]
+  name  = "Portfolio"
+  url   = "/portfolio/"
+  weight = 2
+
+[[menu.resources]]
+  name  = "Insights"
+  url   = "/insights/"
+  weight = 3
+
+[[menu.resources]]
+  name  = "Contact Us"
+  url   = "/contact-us/"
+  weight = 4
+
+# -------------------------------------------------
+# POLICIES MENU
+# -------------------------------------------------
+# Defines the legal/utility links in the footer (bottom bar).
+# - Includes Privacy Policy, Terms of Service, Cookie Policy, Accessibility.
+# - Keeps compliance pages grouped and accessible sitewide.
+# - Weights control left-to-right order in the footer.
+# -------------------------------------------------
 
 [[menu.policies]]
   identifier = "privacy-policy"

@@ -1,0 +1,58 @@
+{{/* 
+  Footer menu component
+  Usage examples:
+    {{ partial "footer/footer-menu.html" (dict 
+        "id" "footer-services" 
+        "title" "Web Design Services" 
+        "menu" "services" 
+        "page" .
+    ) }}
+
+    {{ partial "footer/footer-menu.html" (dict 
+        "id" "footer-company" 
+        "title" "Company" 
+        "menu" "resources" 
+        "page" .
+    ) }}
+
+    {{ partial "footer/footer-menu.html" (dict 
+        "id" "footer-policies" 
+        "title" "Policies" 
+        "menu" "policies" 
+        "page" .
+    ) }}
+*/}}
+
+{{ $id    := .id }}
+{{ $title := .title }}
+{{ $menu  := .menu }}
+{{ $page  := .page }}
+{{ $isServices := eq $menu "services" }}
+
+<nav role="navigation" aria-labelledby="{{ $id }}-heading" class="[ footer-nav footer-nav--{{ $menu }} ]">
+  <h3 id="{{ $id }}-heading" class="[ footer-nav__title ][ font--4 white relative pb--1 mb--1.5 ]">{{ $title }}</h3>
+
+  <ul class="[ footer-nav__list ][ grid row-gap--1 ]">
+    {{ if $isServices }}
+      {{/* Find "services" parent in main menu, then list its children */}}
+      {{ with index (where site.Menus.main "Identifier" "services") 0 }}
+        {{ range .Children.ByWeight }}
+          {{- $active := or ($page.IsMenuCurrent "main" .) ($page.HasMenuCurrent "main" .) -}}
+          <li class="[ footer-nav__item ]{{ if $active }}[ current ]{{ end }}">
+            <a href="{{ .URL }}" data-prefetch>{{ .Name }}</a>
+          </li>
+        {{ end }}
+      {{ end }}
+    {{ else }}
+      {{/* Any other dedicated menu (resources, policies, etc.) */}}
+      {{ with index site.Menus $menu }}
+        {{ range .ByWeight }}
+          {{- $active := or ($page.IsMenuCurrent $menu .) ($page.HasMenuCurrent $menu .) -}}
+          <li class="[ footer-nav__item ]{{ if $active }}[ current ]{{ end }}">
+            <a href="{{ .URL }}" data-prefetch>{{ .Name }}</a>
+          </li>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  </ul>
+</nav>

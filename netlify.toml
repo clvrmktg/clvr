@@ -80,3 +80,88 @@ for = "/*"
   status = 301
   force = true
 
+
+# Defunct links
+
+# --- Legacy Spanish paths -> new site ---
+[[redirects]]
+  from = "/es/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/privacy-policy"
+  to = "/privacy-policy/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/contacto"
+  to = "/contact-us/"
+  status = 301
+  force = true
+
+# --- Services -> new Services hub & pages ---
+[[redirects]]
+  from = "/services"
+  to = "/bahamas-web-design-services/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/"
+  to = "/bahamas-web-design-services/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/website-design"
+  to = "/bahamas-web-design-services/website-design-bahamas/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/digital-marketing"
+  to = "/bahamas-web-design-services/digital-marketing-bahamas/"
+  status = 301
+  force = true
+
+# (If you ever had a direct SEO page at /services/seo, map it too)
+[[redirects]]
+  from = "/services/seo"
+  to = "/bahamas-web-design-services/seo-bahamas/"
+  status = 301
+  force = true
+
+# --- Portfolio ---
+[[redirects]]
+  from = "/work"
+  to = "/portfolio/"
+  status = 301
+  force = true
+
+# Remove old “filter” query-style URLs
+[[redirects]]
+  from = "/portfolio"
+  to = "/portfolio/"
+  status = 301
+  force = true
+  query = { filter = ":any" }
+
+# --- Insights / Blog (old paths & filter URLs) ---
+# Send any old Insights index, article slugs, or filter params to the blog hub
+# Old filter URLs like /insights?filter=Business (keeps working even if other params exist)
+[[redirects]]
+  from = "/insights"
+  to = "/insights/"
+  status = 301
+  force = true
+  query = { filter = ":any" }
+

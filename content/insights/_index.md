@@ -1,8 +1,11 @@
 +++
 date = 2024-11-25T07:00:00-04:00
-draft = true
+draft = false
+description = "Discover practical insights from Clever to help your business grow online. Clear, actionable advice on web design, digital marketing, and strategies for success."
+
 title = 'Insights'
-description = "Practical tips and strategies to help your business make the most of your website, SEO, and digital tools to attract more customers and drive growth."
+proposition_heading = "Practical Insights for Growing Online"
+subhead = "Clear, actionable advice on web design and digital marketing from the team at Clever."
 
 [feature]
   image = ""

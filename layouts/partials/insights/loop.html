@@ -1,26 +1,28 @@
+{{/* layouts/partials/insights/loop.html */}}
 <ul class="[ posts ][ grid md:col--2 lg:col--3 gap--2 ]">
   {{- $format := "January 2, 2006" -}}
-  {{- $iso := "2006-01-02T15:04:05Z07:00" -}}
-  {{ $paginator := .Paginator }}
-  {{ range $i, $p := $paginator.Pages }}
-  <li id="post-{{ add $i 1 }}" class="[ post ]">
-    <a class="[ post__link ][ grid p--0.25 r--10 ]" href="{{ .RelPermalink }}" data-prefetch>
-      {{ partial "image.html" (dict
-          "image" $p.Params.share
-          "class" "project__img"
-          "ratio" "1:1"
-          "page"  $p
-      ) }}
-      <div class="[ py--1 ]">
-        <h3 class="[ font--4 ]">{{ .Title }}</h3>
-        <p>
-          <time class="[ font--small ]" datetime="{{ .Date.Format $iso }}">{{ .Date.Format $format }}</time>
-          | 
-          <small>{{ .ReadingTime }} min read</small>
-          {{/*    <small class="[ pb--0 ]">Joseph Pinder</small> */}}
-        </p>
-      </div>
-    </a>
-  </li>
+  {{- $iso    := "2006-01-02T15:04:05Z07:00" -}}
+
+  {{- $items := .pages -}}
+  {{- with .paginator }}{{- $items = .Pages -}}{{- end -}}
+
+  {{- range $i, $p := $items -}}
+    <li id="post-{{ add $i 1 }}" class="[ post ]">
+      <a class="[ post__link ][ grid p--0.25 r--10 ]" href="{{ $p.RelPermalink }}" data-prefetch>
+        {{ partial "image.html" (dict
+            "image" $p.Params.share
+            "class" "project__img"
+            "ratio" "1:1"
+            "page"  $p
+        ) }}
+        <div class="[ py--1 ]">
+          <h3 class="[ font--4 ]">{{ $p.Title }}</h3>
+          <p>
+            <time class="[ font--small ]" datetime="{{ $p.Date.Format $iso }}">{{ $p.Date.Format $format }}</time>
+            | <small>{{ $p.ReadingTime }} min read</small>
+          </p>
+        </div>
+      </a>
+    </li>
   {{- end -}}
-</ul>  
+</ul>

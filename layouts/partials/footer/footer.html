@@ -3,7 +3,7 @@
     <div class="[ wrapper ][ grid col-gap--3 row-gap--4 ]">
       <div class="[ slogan ]">
         <div class="[ grid row-gap--1 ]">
-          <a class="[ logo ][ flex middle ]" href="/" aria-label="Homepage">
+          <a class="[ logo ][ flex middle ]" href="/" aria-label="{{ site.Title }} — Home" {{ if .IsHome }}aria-current="page"{{ end }} rel="home">
             {{ readFile "static/icons/logo.svg" | safeHTML }}
           </a>
           <small>Digital solutions. Real world results.</small>
@@ -55,50 +55,60 @@
         </div>
       </div>
 
-      <nav aria-label="Footer Services">
-        <h3 class="[ font--4 white relative pb--1 mb--1.5 ]">Web Design Services</h3>
-        <ul class="[ explore ][ grid row-gap--1 ]">
-          {{/* find the top-level Services entry by identifier */}}
-          {{ $svc := first 1 (where site.Menus.main "Identifier" "services") }}
-          {{ with index $svc 0 }}
-            {{ range .Children.ByWeight }}
-              <li><a href="{{ .URL }}" data-prefetch>{{ .Name }}</a></li>
-            {{ end }}
-          {{ end }}
-        </ul>
-      </nav>
+
+      {{ partial "footer/footer-menu.html" (dict 
+          "id" "footer-resources" 
+          "title" "Resources" 
+          "menu" "resources" 
+          "page" .
+      ) }}
+
+      {{ partial "footer/footer-menu.html" (dict 
+          "id" "footer-services" 
+          "title" "Web Design Services" 
+          "menu" "services" 
+          "page" .
+      ) }}
+
+            
+      <section aria-labelledby="footer-contact-heading">
+        <h3 id="footer-contact-heading" class="[ font--4 white relative pb--1 mb--1.5 ]">Contact Us</h3>
       
-      <div>
-        <h3 class="[ font--4 white relative pb--1 mb--1.5 ]">Contact Us</h3>
-        <ul class="[ grid row-gap--1 mb--2 ]">
-          <li class="[ flex middle col-gap--0.5 ]">
-            <span class="[ markers ][ flex middle ]">
-              {{ readFile "static/icons/tabler/map-pin.svg" | safeHTML }}
-            </span>
-            <p class="[ pb--0 ]">Based in Nassau, Bahamas</p>
-          </li>
-          <li class="[ flex middle col-gap--0.5 ]">
-            <span class="[ markers ][ flex middle ]">
-              {{ readFile "static/icons/tabler/mail.svg" | safeHTML }}
-            </span>
-            <template obscure="obscure" data-p1="lets" data-p2="getclever.marketing"  aria-label="Email Clever Marketing at %1@%2"><a href="mailto:%1@%2">%1@%2</a></template>
-          </li>
-          <li class="[ flex middle col-gap--0.5 ]">
-            <span class="[ markers ][ flex middle ]">
-              {{ readFile "static/icons/tabler/phone.svg" | safeHTML }}
-            </span>
-            <template obscure="obscure" data-p1="+1" data-p2="242" data-p3="376" data-p4="3340">
-              <a href="tel:%1%2%3%4"  aria-label="Call Clever Marketing at (%2) %3-%4">(%2) %3-%4</a>
-            </template>
-          </li>
-          {{/* 
-            <li class="[ flex middle col-gap--0.5 ]"><span class="[ markers ]">
-              <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="enable-background:new 0 0 512 512" viewBox="0 0 512 512"><path d="M294.8 324.9c6.6-8 13.1-16 19.7-23.9 4.9-5.9 9.6-12 15-17.5 12.6-12.8 27.8-15.2 44-8.4 35.4 14.8 70.6 30 105.8 45.3 19.3 8.4 27.9 25.7 23.5 46.3l-22.5 104.7c-4.5 20.6-19.2 32.4-40.4 32.6-40.3.3-79.6-5.9-118.3-17.1-59.9-17.3-113.6-45.9-161-86.4-39.4-33.7-71.6-73.1-96.9-118.3-25.7-46-43.5-94.7-50.4-147-2.7-20.5-4-41.1-5.2-61.7C6.8 52.4 19.3 36.3 40 31.7c35.4-7.8 70.9-15.4 106.4-22.8C165 5 183.6 14.5 191.2 32c15.5 35.5 30.7 71 45.7 106.6 7.4 17.5 2.7 34.8-12.3 47.3-10.9 9.1-21.9 18-32.8 27-1.6 1.3-3.1 2.6-4.8 4.1 26.7 45.4 62.4 81.2 107.8 107.9zm162.1 36.7c-2.2-1-3.9-1.8-5.6-2.6l-84-36c-7.8-3.3-7.6-3.2-13 3.2-9.1 10.8-17.9 22-27.8 32.1-12.2 12.5-36.8 17.8-55 6.8-19.3-11.7-37.6-24.6-54.4-39.5-26.8-23.7-49.5-51.1-68.1-81.7-13.4-21.9-9-48.8 11-64.8 9.4-7.6 18.7-15.3 28.3-22.7 3.1-2.4 3.7-4.3 2.1-8-9.4-21.5-18.4-43-27.6-64.6-4.1-9.6-8.2-19.2-12.2-28.5-.8 0-1.1-.1-1.4 0-31 6.8-61.8 13.6-92.5 20.7-1 .2-2.3 2.5-2.2 3.7 2 20.2 3.3 40.6 6.6 60.7 6.4 39.5 19.9 76.8 38.8 112 18.4 34.2 41.2 65.1 68.6 92.5 22.3 22.2 47.1 41.1 74 57.4 23 13.9 47.1 25.2 72.4 33.9 27.9 9.5 56.5 16 85.8 18.9 11.8 1.2 23.7 1.8 35.8 2.7 6.9-32.4 13.7-64.3 20.4-96.2z"/></svg></span>
-              <template obscure="obscure" data-p1="+1" data-p2="813" data-p3="816" data-p4="5978"><a href="tel:%1%2%3%4">(%2) %3-%4</a></template>
-            </li>  
-          */}}
-        </ul>
-      </div>
+        <!-- address is appropriate in the site footer for org contact details -->
+        <address class="[ not-italic ]">
+          <ul class="[ grid row-gap--1 mb--2 ]" aria-label="Company contact information">
+            <li class="[ flex middle col-gap--0.5 ]">
+              <span class="[ markers ][ flex middle ]" aria-hidden="true">
+                {{ readFile "static/icons/tabler/map-pin.svg" | safeHTML }}
+              </span>
+              <span>Based in Nassau, Bahamas</span>
+            </li>
+      
+            <li class="[ flex middle col-gap--0.5 ]">
+              <span class="[ markers ][ flex middle ]" aria-hidden="true">
+                {{ readFile "static/icons/tabler/mail.svg" | safeHTML }}
+              </span>
+              <template obscure="obscure" data-p1="lets" data-p2="getclever.marketing">
+                <a href="mailto:%1@%2" aria-label="Email Clever Marketing at %1@%2">
+                  <span class="hidden">Email: </span>%1@%2
+                </a>
+              </template>
+            </li>
+      
+            <li class="[ flex middle col-gap--0.5 ]">
+              <span class="[ markers ][ flex middle ]" aria-hidden="true">
+                {{ readFile "static/icons/tabler/phone.svg" | safeHTML }}
+              </span>
+              <template obscure="obscure" data-p1="+1" data-p2="242" data-p3="376" data-p4="3340">
+                <a href="tel:%1%2%3%4" aria-label="Call Clever Marketing at (%2) %3-%4">
+                  <span class="hidden">Call: </span>(%2) %3-%4
+                </a>
+              </template>
+            </li>
+          </ul>
+        </address>
+      </section>
+      
     </div>
   </div>
   <div class="[ copy ][ content-grid py--2 ]">

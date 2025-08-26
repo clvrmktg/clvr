@@ -18,15 +18,13 @@
     {{- $hourDiff := div (sub $lastModified.Unix $published.Unix) 3600 -}}
     <p class="[ meta{{ if .Params.feature.image }} meta--spaced{{ end }} ][ font--small ]">
         <time datetime="{{ $published.Format $iso }}">
-          {{ $published.Format $format }} | {{ $published.Format $timeFormat }}
+          {{ $published.Format $format }}
         </time>
       | {{ .ReadingTime }} min read
     </p>
-    {{- with .Params.feature -}}
-    {{- if .image -}}
-
-    {{- end -}}
-    {{- end -}}
+    {{ with .Params.feature }}
+    {{ partial "feature/image.html" (dict "page" $ "image" .) }}
+    {{ end }}
   </header>
   <div class="[ longform x--800 ]">
     {{ .Content }}

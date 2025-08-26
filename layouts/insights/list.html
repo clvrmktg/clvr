@@ -6,7 +6,13 @@
   {{ partial "hero.html" . }}
   <div class="[ section--padding ]">
     <!-- Triggering Deploy -->
-    {{ partial "insights/loop.html" . }}
+    {{/* Get latest Insights posts and paginate them for the home page */}}
+    {{- $insights := where site.RegularPages "Section" "insights" -}}
+    {{- $sorted   := sort $insights "Date" "desc" -}}
+    {{- $paginator := .Paginate $sorted 9 -}}
+
+    {{- $paginator := .Paginate (sort .RegularPages "Date" "desc") 9 -}}
+    {{ partial "insights/loop.html" (dict "paginator" $paginator) }}
     {{ partial "pagination.html" . }}
   </div>
 {{ end }}

@@ -1,0 +1,40 @@
+{{- $p := . -}}
+
+{{- /* Only Insights child pages */ -}}
+{{- if not (and (eq $p.Section "insights") (not $p.IsSection)) -}}{{- return -}}{{- end -}}
+
+{{- $feat := or $p.Params.feature dict -}}
+{{- $path := $feat.path | default "" -}}
+{{- if not $path -}}{{- return -}}{{- end -}}
+
+{{- /* Try page resource first; fall back to raw path */ -}}
+{{- $res := $p.Resources.GetMatch $path -}}
+{{- $rel := "" -}}
+{{- if $res -}}
+  {{- $rel = strings.TrimPrefix "/" $res.RelPermalink -}}
+{{- else -}}
+  {{- /* handle static/global path like "/images/hero.jpg" or "images/hero.jpg" */ -}}
+  {{- $rel = strings.TrimPrefix "/" $path -}}
+{{- end -}}
+
+{{- if not $rel -}}{{- warnf "feature/preload: could not resolve rel path for %q on %q" $path $p.Path -}}{{- return -}}{{- end -}}
+
+{{- /* Support either .Site.Params.twic or .Site.Params.Twic */ -}}
+{{- $twic := or .Site.Params.twic .Site.Params.Twic -}}
+{{- if not $twic -}}{{- warnf "feature/preload: missing Site.Params.twic" -}}{{- return -}}{{- end -}}
+
+{{- $base := printf "https://%s.twic.pics/%s?twic=v1/focus=auto" $twic $rel -}}
+{{- $widths := slice 480 768 1024 1280 1600 1920 -}}
+{{- $srcset := slice -}}
+{{- range $w := $widths -}}
+  {{- $srcset = $srcset | append (printf "%s/cover=%dx1080 %dw" $base $w $w) -}}
+{{- end -}}
+{{- $srcset = delimit $srcset ", " -}}
+
+<link
+  rel="preload"
+  as="image"
+  imagesrcset="{{ $srcset }}"
+  imagesizes="100vw"
+  href="{{ printf "%s/cover=%dx1080" $base 1280 }}"
+  fetchpriority="high">

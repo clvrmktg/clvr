@@ -10,7 +10,7 @@
       <main id="main" class="[ main ][ content-grid {{ if eq .Page.Kind "404" }} error {{ end }}]" id="main">
         {{ block "main" . -}}{{- end }}
       </main>
-      {{- partial "footer.html" . }}
+      {{- partial "footer/footer.html" . }}
     </div>
     {{ partial "notice.html" . }}
     {{partial "script.html" (dict "path" "scripts/components/prefetch.js" "targetPath" "scripts/prefetch.js" "attributes" (dict "defer" true))}}

@@ -82,21 +82,30 @@
   {{ end }}
   {{ partial "reviews/reviews.html" . }}
   {{ partial "faqs.html" . }}
+  {{- /* Latest Insights for the homepage (no pagination) */ -}}
+  {{- $posts := sort (where site.RegularPages "Section" "insights") "Date" "desc" -}}
+  {{- $items := first 3 $posts -}}
+  {{- if gt (len $items) 0 -}}
+    {{- $insightsList := site.GetPage "section" "insights" -}}
+  
+    <section class="[ full-width content-grid bg:blue--50 section--padding layout--spacing ]" aria-labelledby="insights-heading">
+      <div class="[ lg:flex between middle ]">
+        <div>
+          <h2 id="insights-heading" class="[ key ][ font--5 upper ]">Insights</h2>
+          <h3 class="[ font--2 ]">Tips &amp; Tricks To Help Your Business Grow</h3>
+          <p class="[ ch--35 ]">Practical tips and expert advice to help you grow your online presence.</p>
+        </div>
+  
+        <div>
+          {{- with $insightsList -}}
+            {{ partial "buttons/ghost.html" (dict "text" "See All Posts" "url" "/insights/")}}
+          {{- end -}}
+        </div>
+      </div>
+  
+      {{ partial "insights/loop.html" (dict "pages" $items) }}
+    </section>
+  {{- end -}}
+  
   {{ partial "cta.html" . }}
 {{- end -}}
-
-
-{{/* 
-  <section class="[ full-width content-grid bg:blue--50 section--padding layout--spacing ]" aria-labelledby="insights-heading">
-    <div class="[ lg:flex between middle ]">
-      <div>
-        <h2 id="insights-heading" class="[ font--5 upper clever--blue ]">Insights</h2>
-        <h3 class="[ font--2 ]">Tips &amp; Tricks To Help Your Business Grow</h3>
-        <p class="[ ch--35 ]"> Practical tips and expert advice to help you grow your online presence.</p>
-      </div>
-      <div><a class="[ btn btn--lg btn--ghost ][ clever--blue hvr:white ]" href="/insights"><span class="[ btn__text ][ flex center middle col-gap--0.25 ]"><span>Get More Insights</span><span class="[ relative ]">
-               <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 139.4 119.2"><path d="M105.1 69.3H10.3C3.4 69-.4 65.4-.4 59.3c.1-5.9 3.8-9.4 10.4-9.8 1.3-.1 2.7 0 4 0H105.6c-1.9-2-3-3.3-4.2-4.5-9.1-9.3-18.4-18.5-27.7-27.6-3.3-3.2-5-7.3-3.1-11.3 1.3-2.7 4.6-5.6 7.5-6.2 2.7-.6 6.9.8 9 2.9 16.6 16.1 32.9 32.5 49.1 48.9 4.8 4.8 4.7 10.7-.2 15.6-16 16.2-32.1 32.3-48.3 48.3-4.9 4.9-11.2 5.1-15.2.9-3.8-4-3.3-10.4 1.4-15.2 10.2-10.6 20.4-20.9 31.2-32z"/></svg></span></span></a>
-      </div>
-    </div>
-  </section>  
-*/}}
