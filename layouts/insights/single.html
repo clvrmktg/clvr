@@ -6,8 +6,8 @@
 <article class="[ post-single h-entry ][ grid layout--spacing section--padding ]">
   <header class="[ post-single__header ][ x--800 ]">
     <div class="[ pb--1 ]">
-      <h1 class="[ pb--0 ]">{{ .Title }}</h1>
       {{ partial "breadcrumbs.html" . }}
+      <h1 class="[ pb--0 ]">{{ .Title }}</h1>
     </div>
     {{- $format := "January 2, 2006" -}}
     {{- $iso := "2006-01-02T15:04:05Z07:00" -}}
@@ -17,6 +17,13 @@
     {{- $lastModified := .Lastmod | default .Date -}}
     {{- $hourDiff := div (sub $lastModified.Unix $published.Unix) 3600 -}}
     <p class="[ meta{{ if .Params.feature.image }} meta--spaced{{ end }} ][ font--small ]">
+        {{- $cat := "" -}}
+        {{- with .Params.categories }}{{ $cat = index . 0 }}{{ end -}}
+        {{- with $cat -}}
+          {{- $catPage := site.GetPage (printf "/categories/%s" (urlize .)) -}}
+          <a class="badge badge--category" href="{{ cond $catPage $catPage.RelPermalink "#" }}">{{ . }}</a>
+        {{- end -}}
+
         <time datetime="{{ $published.Format $iso }}">
           {{ $published.Format $format }}
         </time>
@@ -56,25 +63,25 @@
       </div>
     </section>
     {{- end -}}
-    <section>
-      <h2 class="[ tag-header ]">Related Posts</h2>
-      <ul class="[ posts ]">
-        {{ $currentPost := .Permalink }}
-        {{ $posts := where .Site.RegularPages "Section" "insights" }}
-        {{ $posts = shuffle $posts }} <!-- Randomize the posts -->
-        {{- range first 2 $posts -}} <!-- Show the first 2 posts after randomizing -->
-        {{- if ne .Permalink $currentPost -}} <!-- Exclude the current post -->
-          <li class="[ post ]">
-            <a class="[ post__link ]" href="{{ .RelPermalink }}" data-prefetch>
-              <h3 class="[ font--2 ]">{{ .LinkTitle }}</h3>
-              <time class="[ font--small ]" datetime="{{ .Date.Format $iso }}">{{ .Date.Format $format }}</time>
-              <p>{{ (.Description | plainify) | strings.Truncate 145 "[...]" | htmlUnescape }}</p>
-            </a>
-          </li>
-        {{- end -}}
-      {{- end -}}
-      </ul>
+    {{- $format := "January 2, 2006" -}}
+    {{- $iso    := "2006-01-02T15:04:05Z07:00" -}}
+    
+    {{- $format := "January 2, 2006" -}}  {{/* if you still need these elsewhere */}}
+    {{- $iso    := "2006-01-02T15:04:05Z07:00" -}}
+    
+    {{- $current := .Permalink -}}
+    {{- $all     := where site.RegularPages "Section" "insights" -}}
+    {{- $others  := where $all "Permalink" "ne" $current -}}
+    {{- $items   := first 2 (sort $others "Date" "desc") -}}  {{/* or: first 2 (shuffle $others) */}}
+    
+    {{- if ge (len $items) 2 -}}
+    <section aria-labelledby="related-heading">
+      <h2 id="related-heading" class="[ tag-header ]">Related Posts</h2>
+      {{ partial "insights/loop.html" (dict "pages" $items) }}
     </section>
+    {{- end -}}
+    
+    
   </footer>
 </article>
 {{- end -}}

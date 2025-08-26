@@ -2,9 +2,9 @@
 date = 2025-08-23T10:53:48-04:00
 draft = true
 title = 'Your Website Is Not About You'
-description = ""
+description = "Your website isn’t about you—it’s about your customers. Discover why design matters more than looks and how to build a site that truly works."
 
-categories = []
+categories = ["Web Design"]
 tags = []
 
 [share]
@@ -25,35 +25,58 @@ figcaption = ""
 
 +++
 
-Your website is not about you—even when it is.
+Your website is not about you—even when it is.  
 
-One of the hardest things communicating to clients is the need to curtail their "vision" in line with best practice.
+One of the hardest things to communicate to clients is that their “vision” has to be shaped by best practice.  
 
-Most people don't really understand how websites work. For the most part, they understand: "[I need a website](/insights/do-i-still-need-website-2025)", they understand it's supposed to at least help people find them or their business online, but in the process of putting them together (especially, the DIYer), they think of it more as art than design. Content takes a backseat to: "that's pretty".
+Most people know they *need* a website. They understand it should help people find their business online. But once the process begins—especially for DIYers—websites often become more about self-expression than effectiveness. Content takes a backseat to “that looks pretty.”  
 
-You might ask: "Aren't websites supposed to be pretty?" Sure, but there's a big difference between pretty and functional, between art and design, between a dud and what converts visitors into customers.
+But here’s the truth: **your website isn’t art. It’s design.** And that difference matters.  
 
-And that's just who your website is for—your visitors.
+---
 
-# Art and Design
+## Art vs. Design  
 
-More often than not, most people want the prettiest, most animated, "make the logo bigger" website they can have. They want the flash.
+Art is subjective. Everyone has their own interpretation of what’s beautiful.  
 
-Pretty is great, but it's also subject to interpretation. That's what art is—subject to interpretation. It's abstract and everybody can walk away with their own opinions as to what it may mean. 
+Design is different. Good design has a purpose. It uses structure, content, and visuals to communicate clearly:  
 
-And while everyone can have an opinion on how your website looks, there should be no confusion about who you are, what you do and what your visitors are supposed to do. 
+- **Who you are.**  
+- **What you do.**  
+- **What the visitor should do next.**  
 
-Enter design.
+If visitors can’t answer those three questions within seconds, your website has failed—no matter how “pretty” it looks.  
 
-Design uses processes, images and symbols to convey a clear message.
+---
 
+## Think of It Like a Store  
 
-# Think of It Like a Store
+Imagine walking into a store where everything is beautifully displayed but nothing is labeled. You can’t find prices, staff, or even the checkout counter.  
 
-Quick access versus not being able to find anything.
+That store might look amazing, but would you buy anything? Probably not.  
 
-# Frame
+Your website works the same way. A beautiful layout that hides the important details—or buries the call to action—will leave visitors frustrated and gone before you know it.  
 
-Type of business determines type of customers.
+---
 
-<!-- Comparison images... man, woman, toilet illustration (Whisk), and get a photo of bathroom sign. -->
+## Form Follows Function  
+
+The type of business you run should dictate how your site is designed.  
+
+- A restaurant website needs clear menus, opening hours, and booking options.  
+- A construction company website should highlight credibility, past projects, and an easy way to request a quote.  
+- An e-commerce store must make finding and buying products effortless.  
+
+Every detail should be framed around your customer’s needs—not your personal preferences.  
+
+---
+
+## Final Thoughts — It’s About Them, Not You  
+
+Websites that convert aren’t about pleasing the business owner’s eye. They’re about making life easier for the customer.  
+
+Pretty matters—but **clarity, usability, and results matter more.**  
+
+At Clever, we build websites that combine design with strategy, so your visitors don’t just admire your site—they act.  
+
+👉 [See how our approach to web design can help your business grow.](/bahamas-web-design-services/website-design-bahamas/)  

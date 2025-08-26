@@ -17,7 +17,7 @@
     {{- $noun     := index (dict "industries" "case studies" "categories" "articles") $plural | default "content" -}}
   
     {{- /* e.g., "Explore case studies in the Accounting industry from Clever Marketing, Ltd." */ -}}
-    {{- $desc := printf "Explore %s in the %s %s from %s." $noun .Title $singular site.Title -}}
+    {{- $desc := printf "Explore %s in the %s %s from %s" $noun .Title $singular site.Title -}}
     <p>{{- $desc -}}</p>
   </header>
   {{ partial "projects.html" (dict "pages" (sort .Pages "Weight" "asc")) }}

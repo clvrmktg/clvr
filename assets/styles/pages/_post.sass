@@ -1,5 +1,11 @@
 @use 'abstracts' as *
 
+// Loop --- Separate into own componnent later
+.post
+  
+  &__link p
+    color: color('text-color')
+
 .post-single
   display: grid
   row-gap: 3em
@@ -8,10 +14,14 @@
     display: inherit
     row-gap: inherit
 
-.content
+// .content
 
-  figure
-    margin-bottom: 1em
+//   figure
+//     margin-bottom: 1em
+
+
+.feature > picture > img
+  opacity: 1
 
 .meta
   color: color('text-grey')

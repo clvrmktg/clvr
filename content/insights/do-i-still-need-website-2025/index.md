@@ -4,7 +4,7 @@ draft = false
 title = 'Do I Still Need a Website in 2025?'
 description = ""
 
-categories = ["Business", "Web Design"]
+categories = ["Web Design"]
 tags = []
 
 [share]
