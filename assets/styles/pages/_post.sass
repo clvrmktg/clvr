@@ -23,12 +23,22 @@
 .feature > picture > img
   opacity: 1
 
++ratio(16, 9)
+
 .meta
   color: color('text-grey')
   padding-bottom: 0
 
   &--spaced
     padding-bottom: 1em
+
+.badge
+  color: color('text-grey')
+  border-bottom: em(1) solid currentcolor
+  +transition((color,border-bottom))
+
+  +hover
+    color: color('clever-blue-light')
 
 .blockquote
   padding:

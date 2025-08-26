@@ -3,32 +3,31 @@
 {{- .Store.Set "noPadding" true -}}
 {{- end -}}
 {{- define "main" -}}
-<article class="[ post-single h-entry ][ grid layout--spacing section--padding ]">
-  <header class="[ post-single__header ][ x--800 ]">
-    <div class="[ pb--1 ]">
+<article class="[ post-single h-entry ][ post-grid layout--spacing section--padding ]">
+  <header class="[ post-single__header ][ post-breakout ]">
+    <div class="[ post-grid pb--1 ]">
       {{ partial "breadcrumbs.html" . }}
       <h1 class="[ pb--0 ]">{{ .Title }}</h1>
+      {{- $format := "January 2, 2006" -}}
+      {{- $iso := "2006-01-02T15:04:05Z07:00" -}}
+      {{- $timeFormat := "3:04pm" -}}
+      
+      {{- $published := .Date -}}
+      {{- $lastModified := .Lastmod | default .Date -}}
+      {{- $hourDiff := div (sub $lastModified.Unix $published.Unix) 3600 -}}
+  
+      <p class="[ meta{{ if .Params.feature.path }} meta--spaced{{ end }} ][font--small ]">
+          {{- $cat := "" -}}
+          {{- with .Params.categories }}{{ $cat = index . 0 }}{{ end -}}
+          {{- with $cat -}}
+            {{- $catPage := site.GetPage (printf "/categories/%s" (urlize .)) -}}
+            <a class="badge badge--category" href="{{ cond $catPage $catPage.RelPermalink "#" }}">{{ . }}</a> 
+          {{- end }}
+  
+        | <time datetime="{{ $published.Format $iso }}">{{ $published.Format $format }}</time>
+        | {{ .ReadingTime }} min read
+      </p>
     </div>
-    {{- $format := "January 2, 2006" -}}
-    {{- $iso := "2006-01-02T15:04:05Z07:00" -}}
-    {{- $timeFormat := "3:04pm" -}}
-    
-    {{- $published := .Date -}}
-    {{- $lastModified := .Lastmod | default .Date -}}
-    {{- $hourDiff := div (sub $lastModified.Unix $published.Unix) 3600 -}}
-    <p class="[ meta{{ if .Params.feature.image }} meta--spaced{{ end }} ][ font--small ]">
-        {{- $cat := "" -}}
-        {{- with .Params.categories }}{{ $cat = index . 0 }}{{ end -}}
-        {{- with $cat -}}
-          {{- $catPage := site.GetPage (printf "/categories/%s" (urlize .)) -}}
-          <a class="badge badge--category" href="{{ cond $catPage $catPage.RelPermalink "#" }}">{{ . }}</a>
-        {{- end -}}
-
-        <time datetime="{{ $published.Format $iso }}">
-          {{ $published.Format $format }}
-        </time>
-      | {{ .ReadingTime }} min read
-    </p>
     {{ with .Params.feature }}
     {{ partial "feature/image.html" (dict "page" $ "image" .) }}
     {{ end }}

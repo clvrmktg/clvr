@@ -19,10 +19,7 @@
 
 
 // https://ryanmulligan.dev/blog/layout-breakouts/
-.content-grid, .full-width
 
-  > :not(.breakout, .full-width)
-    grid-column: content
 
 
 .content-grid
@@ -42,6 +39,30 @@
 
   > .full-width
     grid-column: full-width
+
+.content-grid, .full-width
+
+  > :not(.breakout, .full-width)
+    grid-column: content
+
+.post-grid
+  --padding-inline: 2em
+  --content-max-width: #{rem(700)}
+  --breakout-max-width: #{rem(1000)}
+
+  --content-size: min(100%, var(--content-max-width))
+  --breakout-size: calc((var(--breakout-max-width) - var(--content-max-width)) / 2)
+  
+  display: grid
+  grid-template-columns: 1fr [breakout-start] minmax(0, var(--breakout-size)) [content-start] var((--content-size)) [content-end] minmax(0, var(--breakout-size)) [breakout-end] 1fr
+
+  > .post-breakout
+    grid-column: breakout
+
+.post-grid, .post-breakout
+
+  > :not(.post-breakout)
+    grid-column: content
 
 
 .layout

@@ -2,7 +2,7 @@
 date = 2025-08-22T21:27:38-04:00
 draft = false
 title = 'Do I Still Need a Website in 2025?'
-description = ""
+description = "Do businesses still need websites in 2025? Yes—more than ever. Learn why a website is essential for credibility, visibility, and growth this year."
 
 categories = ["Web Design"]
 tags = []

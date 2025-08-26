@@ -107,5 +107,5 @@
     </section>
   {{- end -}}
   
-  {{ partial "cta.html" . }}
+  {{ partial "cta.html" (dict "page" . "bg" true) }} 
 {{- end -}}

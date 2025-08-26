@@ -34,7 +34,7 @@
 <link
   rel="preload"
   as="image"
-  imagesrcset="{{ $srcset }}"
-  imagesizes="100vw"
   href="{{ printf "%s/cover=%dx1080" $base 1280 }}"
+  {{ printf "imagesrcset=%q" $srcset | safeHTMLAttr }}
+  imagesizes="100vw"
   fetchpriority="high">

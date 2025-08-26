@@ -1,15 +1,13 @@
-<section class="[ full-width content-grid section--padding bg:blue--50 ]">
+{{- $page := .page -}}                 {{/* use $page if you need the page context */}}
+{{- $bg   := .bg   | default false -}} {{/* bool: true => no blue; false => blue */}}
 
+<section class="[ full-width content-grid section--padding {{ if not $bg }}bg:blue--50{{ end }} ]">
   <div class="[ flex flex--column lg:flex--row lg:between gap--2 ]">
     <div class="[ ch--60 ]">
       <h2 class="[ merriweather ]">Ready to get started with your next web design project?</h2>
-      {{/* 
-        <p>Let's build a website that works for your business — fast, secure, and designed to bring you more customers.</p>
-      */}}
     </div>
     <div>
-      {{ partial "buttons/primary.html" (dict "url" "/contact-us/" "text" "Get Your Quote")}}
+      {{ partial "buttons/primary.html" (dict "url" "/contact-us/" "text" "Get Your Quote") }}
     </div>
   </div>
-
 </section>

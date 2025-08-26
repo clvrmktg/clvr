@@ -52,5 +52,5 @@
   </section>
   {{ partial "reviews/reviews.html" . }}
   {{ partial "faqs.html" . }}
-  {{ partial "cta.html" . }}
+  {{ partial "cta.html" (dict "page" . "bg" false) }}
 {{ end }}

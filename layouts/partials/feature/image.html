@@ -18,7 +18,7 @@
 
   {{- $alt := $meta.alt | default $p.Title -}}
 
-  <figure class="[ feature ]">
+  <figure class="[ feature ][ breakout ratio--16:9 ]">
     <picture>
       <img
         src="{{ printf "%s/cover=%dx1080" $base 1280 }}"
