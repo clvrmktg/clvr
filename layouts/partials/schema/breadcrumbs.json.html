@@ -5,45 +5,43 @@
 {{- $nodes := slice -}}
 
 {{- if .IsHome -}}
-{{- /* On homepage, single crumb without URL */ -}}
-{{- $nodes = $nodes | append (dict "name" .LinkTitle "url" "") -}}
+  {{- /* On homepage, single crumb without URL */ -}}
+  {{- $nodes = $nodes | append (dict "name" .LinkTitle "url" "") -}}
 {{- else -}}
-{{- /* Home */ -}}
-{{- $nodes = $nodes | append (dict "name" "Home" "url" ("/" | absURL)) -}}
+  {{- /* Home */ -}}
+  {{- $nodes = $nodes | append (dict "name" "Home" "url" ("/" | absURL)) -}}
 
-{{- /* Ancestors (top → down), skip home */ -}}
-{{- with .Ancestors -}}
- {{- range .Reverse -}}
-   {{- if not .IsHome -}}
-     {{- $nodes = $nodes | append (dict "name" .LinkTitle "url" .Permalink) -}}
-   {{- end -}}
- {{- end -}}
-{{- end -}}
+  {{- /* Ancestors (top → down), skip home */ -}}
+  {{- with .Ancestors -}}
+    {{- range .Reverse -}}
+      {{- if not .IsHome -}}
+        {{- $nodes = $nodes | append (dict "name" .LinkTitle "url" .Permalink) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
 
-{{- /* Current page as final node (no URL) */ -}}
-{{- $nodes = $nodes | append (dict "name" .LinkTitle "url" "") -}}
+  {{- /* Current page as final node (no URL) */ -}}
+  {{- $nodes = $nodes | append (dict "name" .LinkTitle "url" "") -}}
 {{- end -}}
 
 {{- /* Build itemListElement */ -}}
 {{- $items := slice -}}
 {{- range $i, $n := $nodes -}}
-{{- $item := dict
-   "@type"   "ListItem"
-   "position" (add $i 1)
-   "name"    $n.name
- -}}
-{{- if $n.url -}}
- {{- $item = merge $item (dict "item" $n.url) -}}
-{{- end -}}
-{{- $items = $items | append $item -}}
+  {{- $item := dict "@type" "ListItem" "position" (add $i 1) "name" $n.name -}}
+  {{- if $n.url -}}
+    {{- $item = merge $item (dict "item" $n.url) -}}
+  {{- end -}}
+  {{- $items = $items | append $item -}}
 {{- end -}}
 
 {{- if gt (len $items) 0 -}}
-{{- $schema := dict
-   "@context" "https://schema.org"
-   "@type"    "BreadcrumbList"
-   "itemListElement" $items
- -}}
-<!-- Breadcrumbs Schema -->
-<script type="application/ld+json">{{ $schema | jsonify (dict "indent" "  ") }}</script>
+  {{- $id := printf "%s#breadcrumbs" .Permalink -}}
+  {{- $schema := dict
+        "@context" "https://schema.org"
+        "@type"    "BreadcrumbList"
+        "@id"      $id
+        "itemListElement" $items
+     -}}
+  <!-- Breadcrumbs Schema -->
+  <script type="application/ld+json">{{ $schema | jsonify (dict "indent" "  ") }}</script>
 {{- end -}}
