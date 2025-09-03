@@ -1,0 +1,704 @@
+{{- define "variables" -}}
+{{- .Store.Set "hasForm" true -}}
+{{- .Store.Set "hasObscure" true -}}
+{{- .Store.Set "hasQuote" true -}}
+{{- .Store.Set "webpageType" "WebPage" -}}
+{{- .Store.Set "funnel" true -}}
+{{- end -}}
+{{ define "main" }}
+
+<header class="[ quote-hero ][ full-width content-grid ]" role="banner" aria-labelledby="qh-title">
+  <a class="quote-hero__skip" href="#wizard">Skip to calculator</a>
+
+  <div class="[ wrapper ][ grid row-gap--1 section--padding ]">
+    <div>
+      <p class="[ quote-hero__eyebrow ][ pb--0 ]">Instant estimate</p>
+      <h1 id="qh-title" class="[ quote-hero__title ][ display ]">Get Your Web Design Quote</h1>
+      <p id="qh-sub" class="quote-hero__lead">Answer a few quick questions and see your price update in real time.</p>
+    </div>
+
+    <div class="quote-hero__badges">
+      <strong class="quote-hero__pill" aria-label="Starts at five hundred dollars">Starts at $500</strong>
+    </div>
+  
+    <ul role="list" aria-describedby="qh-sub">
+      <li>Mobile-responsive, SEO-ready structure, and a contact form included.</li>
+      <li>~90 seconds • No obligation</li>
+    </ul>
+
+    <div class="quote-hero__cta">
+      <a href="#wizard" class="btn btn--lg btn--primary" aria-describedby="qh-sub">
+        <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
+          <span>Start your quote</span>
+          <span class="[ arrow-right ]">
+            {{ readFile "static/icons/arrow-right.svg" | safeHTML }}
+          </span>
+        </span>
+      </a>
+      <template obscure="obscure" data-p1="+1" data-p2="242" data-p3="376" data-p4="3340">
+        <a href="tel:%1%2%3%4" class="btn btn--lg quote-hero__btnGhost" aria-label="Call Clever Marketing at (%2) %3-%4">Call us</a>
+      </template>
+
+    </div>
+
+    <div class="quote-hero__trust" aria-label="Social proof">
+      <span class="quote-hero__stars" aria-hidden="true">★★★★★</span>
+      <span class="sr-only">Rated five out of five stars</span>
+      <span class="quote-hero__sep" aria-hidden="true">•</span>
+      <span class="quote-hero__tiny">Trusted by local businesses</span>
+      <span class="quote-hero__sep" aria-hidden="true">•</span>
+      <span class="quote-hero__tiny">We'll email your estimate — privacy first</span>
+    </div>
+    {{ partial "reviews/trust-badge.html" . }}
+  </div>
+</header>
+
+
+  <!-- anchor so the CTA scrolls right to the wizard -->
+  <div id="quote"></div>
+  
+  <form id="wizard" class="[ wizard ][ section--padding ]" action="/get-your-web-design-quote/" method="POST"
+  data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true"
+  data-validate novalidate>
+  
+    <input type="hidden" name="form-name" value="contact" />
+    <div class="hidden">
+      <label>
+        Don't fill this out if you're human: <input name="bot-field" />
+      </label>
+    </div>
+    <input id="site" type="hidden" name="site" value="{{ .Permalink }}">
+  
+    <!-- Step toggles (radios drive the UI) -->
+    <input class="step-toggle" type="radio" name="step" id="step-1" checked hidden>
+    <input class="step-toggle" type="radio" name="step" id="step-2" hidden>
+    <input class="step-toggle" type="radio" name="step" id="step-3" hidden>
+    <input class="step-toggle" type="radio" name="step" id="step-4" hidden>
+    <input class="step-toggle" type="radio" name="step" id="step-5" hidden>
+    <input class="step-toggle" type="radio" name="step" id="step-6" hidden>
+    <input class="step-toggle" type="radio" name="step" id="step-7" hidden>
+    <input class="step-toggle" type="radio" name="step" id="step-8" hidden>
+    
+  
+    <!-- Progress -->
+    <div class="progress" aria-hidden="true">
+      <div class="progress__bar"></div>
+    </div>
+  
+    <!-- Slides -->
+    <div class="slider">
+
+      <!-- STEP 1: Outcome -->
+      <section class="card" aria-labelledby="q0">
+        <div>
+          <h2 id="q0" class="[ pb--0 ]">What do you want this website to do first?</h2>
+          <p><small>Add anything you want us to handle.</small></p>
+        </div>
+        <div class="choice">
+          <input id="outcome-leads" type="checkbox" name="outcome_leads" value="1" aria-describedby="outcome-leads-desc">
+          <label for="outcome-leads" class="[ grid gap--0.25 ]">
+            <span class="[ title ][ font--700 ]">Get more leads</span>
+            <span id="outcome-leads-desc" class="desc">Make it easy to contact you and request quotes.</span>
+          </label>
+          <details class="more">
+            <summary class="[ flex middle ]">{{- readFile "static/icons/tabler/caret-down.svg" | safeHTML }}<span>What's included</span></summary>
+            <ul>
+              <li>Clear CTAs, contact details on every page</li>
+              <li>Contact form + WhatsApp/Phone taps (included)</li>
+            </ul>
+          </details>
+        </div>
+    
+        <div class="choice">
+          <input id="outcome-book" type="checkbox" name="outcome_booking" value="1" aria-describedby="outcome-book-desc">
+          <label for="outcome-book" class="[ grid gap--0.25 ]">
+            <span class="[ title ][ font--700 ]">Take bookings/appointments</span>
+            <span id="outcome-book-desc" class="desc">Let customers schedule online 24/7.</span>
+          </label>
+          <details class="more">
+            <summary class="[ flex middle ]">{{- readFile "static/icons/tabler/caret-down.svg" | safeHTML }}<span>What's included</span></summary>
+            <ul>
+              <li>Booking system add-on available (+$350)</li>
+              <li>Confirmation emails &amp; availability rules</li>
+            </ul>
+          </details>
+        </div>
+    
+        <div class="choice">
+          <input id="outcome-portfolio" type="checkbox" name="outcome_portfolio" value="1" aria-describedby="outcome-portfolio-desc">
+          <label for="outcome-portfolio" class="[ grid gap--0.25 ]">
+            <span class="[ title ][ font--700 ]">Showcase portfolio/work</span>
+            <span id="outcome-portfolio-desc" class="desc">Case studies, galleries, testimonials.</span>
+          </label>
+        </div>
+    
+        <div class="choice">
+          <input id="outcome-inform" type="checkbox" name="outcome_inform" value="1" aria-describedby="outcome-inform-desc">
+          <label for="outcome-inform" class="[ grid gap--0.25 ]">
+            <span class="[ title ][ font--700 ]">Inform &amp; build trust</span>
+            <span id="outcome-inform-desc" class="desc">About, services, FAQs, contact.</span>
+          </label>
+        </div>
+    
+        <div class="choice">
+          <input id="outcome-ecom" type="checkbox" name="outcome_ecommerce" value="1" aria-describedby="outcome-ecom-desc">
+          <label for="outcome-ecom" class="[ grid gap--0.25 ]">
+            <span class="[ title ][ font--700 ]">Sell products</span>
+            <span id="outcome-ecom-desc" class="desc">We'll follow up with an e-commerce scope (priced separately).</span>
+          </label>
+        </div>
+    
+        <div class="[ nav ][ grid col-gap--2 ]">
+          <label class="[ next ][ btn btn--lg btn--primary ]" for="step-2">
+            <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
+              <span>Next</span><span class="[ arrow-right ]">{{ readFile "static/icons/arrow-right.svg" | safeHTML }}</span>
+            </span>
+          </label>
+        </div>
+      </section>
+    
+      <!-- STEP 2: Website size (base price) -->
+      <section class="card" aria-labelledby="q1">
+        <h2 id="q1">How big should your website be?</h2>
+    
+        <label class="[ option ]">
+          <input type="radio" name="package" value="one-page" data-price="500" required checked aria-describedby="pkg1-tag">
+          <span class="[ flex between middle ]">
+            <span class="[ title ][ font--700 ]">1 Page</span>
+            <span class="[ price ][ font--600 ]">$500</span>
+          </span>
+          <small class="tagline" id="pkg1-tag">Just get online fast.</small>
+        </label>
+    
+        <label class="[ option ]">
+          <input type="radio" name="package" value="1-5" data-price="1500" required aria-describedby="pkg2-tag">
+          <span class="[ flex between middle ]">
+            <span><span class="[ title ][ font--700 ]">2-5 Pages</span> <small class="[ eyebrow ][ font--700 ]">Most popular</small></span>
+            <span class="[ price ][ font--600 ]">$1,500</span>
+          </span>
+          <small class="tagline" id="pkg2-tag">A solid presence, ready to grow.</small>
+        </label>
+    
+        <label class="[ option ]">
+          <input type="radio" name="package" value="6-10" data-price="3000" required aria-describedby="pkg3-tag">
+          <span class="[ flex between middle ]">
+            <span class="[ title ][ font--700 ]">6-10 Pages</span>
+            <span class="[ price ][ font--600 ]">$3,000</span>
+          </span>
+          <small class="tagline" id="pkg3-tag">Established and credible—show more, win more.</small>
+        </label>
+    
+        <p class="includes">All packages include mobile-responsive design, SEO-ready structure, and a contact form.</p>
+    
+        <div class="[ nav ][ grid col-gap--2 ]">
+          <label class="[ back ][ btn btn--lg ]" for="step-1">Back</label>
+          <label class="[ next ][ btn btn--lg btn--primary ]" for="step-3">
+            <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
+              <span>Next</span><span class="[ arrow-right ]">{{ readFile "static/icons/arrow-right.svg" | safeHTML }}</span>
+            </span>
+          </label>
+        </div>
+      </section>
+    
+      <!-- STEP 3: Design style -->
+      <section class="card" aria-labelledby="q2">
+        <h2 id="q2">What design style fits your business?</h2>
+      
+        <!-- Template -->
+        <label class="option">
+          <input type="radio" name="design" value="template" data-price="0" required checked
+                 aria-describedby="design-tpl-desc">
+          <span class="[ flex between middle ]">
+            <span class="[ title ][ font--700 ]">Template</span>
+            <span class="[ price ][ font--600 muted ]">Included</span>
+          </span>
+          <p class="desc" id="design-tpl-desc">Fastest launch using a proven layout, tailored to your colors, type, and imagery.</p>
+          <details class="more">
+            <summary class="[ flex middle ]">{{ readFile "static/icons/tabler/caret-down.svg" | safeHTML }}<span>What's included</span></summary>
+            <ul>
+              <li>Professional pre-designed layout</li>
+              <li>Color &amp; typography matched to your brand</li>
+              <li>Home + inner page patterns</li>
+            </ul>
+          </details>
+        </label>
+      
+        <!-- Custom Layout -->
+        <label class="option">
+          <input type="radio" name="design" value="custom" data-price="500" required
+                 aria-describedby="design-cust-desc">
+          <span class="[ flex between middle ]">
+            <span class="[ title ][ font--700 ]">Custom Layout</span>
+            <span class="[ price ][ font--600 ]">+$500</span>
+          </span>
+          <p class="desc" id="design-cust-desc">Unique layouts for key pages to match your brand and goals.</p>
+          <details class="more">
+            <summary class="[ flex middle ]">{{ readFile "static/icons/tabler/caret-down.svg" | safeHTML }}<span>What's included</span></summary>
+            <ul>
+              <li>Homepage concept + section variants</li>
+              <li>1-2 inner page layouts</li>
+              <li>Up to 2 revision rounds</li>
+            </ul>
+          </details>
+        </label>
+      
+        <!-- Full Brand Integration -->
+        <label class="option">
+          <input type="radio" name="design" value="brand" data-price="1000" required
+                 aria-describedby="design-brand-desc">
+          <span class="[ flex between middle ]">
+            <span class="[ title ][ font--700 ]">Full Brand Integration</span>
+            <span class="[ price ][ font--600 ]">+$1,000</span>
+          </span>
+          <p class="desc" id="design-brand-desc">Carry your full brand system into the site—components, states, and polish across every page.</p>
+          <details class="more">
+            <summary class="[ flex middle ]">{{ readFile "static/icons/tabler/caret-down.svg" | safeHTML }}<span>What's included</span></summary>
+            <ul>
+              <li>Design tokens (colors, type, spacing) &amp; component library</li>
+              <li>Icon/illustration direction, micro-interactions</li>
+              <li>Consistent patterns across all pages</li>
+            </ul>
+          </details>
+        </label>
+      
+        <div class="[ nav ][ grid col-gap--2 ]">
+          <label class="[ back ][ btn btn--lg ]" for="step-1">Back</label>
+          <label class="[ next ][ btn btn--lg btn--primary ]" for="step-4">
+            <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
+              <span>Next</span>
+              <span class="[ arrow-right ]">{{ readFile "static/icons/arrow-right.svg" | safeHTML }}</span>
+            </span>
+          </label>
+        </div>
+      </section>
+      
+    
+      <!-- STEP 4: Lead capture (engagement) -->
+      <section class="card" aria-labelledby="q3">
+        <div>
+          <h2 id="q3" class="[ pb--0 ]">How should people contact you?</h2>
+          <p><small>Add anything you want us to handle.</small></p>
+        </div>
+    
+        <!-- Contact Form (included) -->
+        <div class="choice" data-locked="true" aria-disabled="true">
+          <input id="lc-form" type="checkbox" name="lead_form" value="1"
+                checked tabindex="-1" data-price="0" aria-describedby="lc-form-desc">
+          <label for="lc-form" class="[ flex between middle ]">
+            <span class="[ title ][ font--700 ]">Contact Form</span>
+            <span class="[ price ][ font--600 muted ]">Included</span>
+          </label>
+          <p class="desc" id="lc-form-desc">Inquiry form with email notifications and spam protection.</p>
+        </div>
+
+        <!-- WhatsApp click-to-chat (included) -->
+        <div class="choice" data-locked="true" aria-disabled="true">
+          <input id="lc-whatsapp" type="checkbox" name="lead_whatsapp" value="1"
+                checked tabindex="-1" data-price="0" aria-describedby="lc-wa-desc">
+          <label for="lc-whatsapp" class="[ flex between middle ]">
+            <span class="[ title ][ font--700 ]">WhatsApp click-to-chat</span>
+            <span class="[ price ][ font--600 muted ]">Included</span>
+          </label>
+          <p class="desc" id="lc-wa-desc">One-tap WhatsApp button for quick chats.</p>
+        </div>
+
+        <!-- Phone Tap Tracking (optional) -->
+        <div class="choice" data-locked="true" aria-disabled="true">
+          <input id="lc-call" type="checkbox" name="tap_to_call" value="1"
+                 checked tabindex="-1" data-price="0" aria-describedby="lc-call-desc">
+          <label for="lc-call" class="[ flex between middle ]">
+            <span class="[ title ][ font--700 ]">Tap-to-Call</span>
+            <span class="[ price ][ font--600 muted ]">Included</span>
+          </label>
+          <p class="desc" id="lc-call-desc">Have visitors call your business directly from your website.</p>
+        </div>
+       
+    
+        <div class="choice">
+          <input id="lc-chat" type="checkbox" name="chat" value="1" data-price="200" aria-describedby="lc-chat-desc lc-chat-note">
+          <label for="lc-chat" class="[ flex between middle ]">
+            <span class="[ title ][ font--700 ]">Live Chat / Chatbot</span>
+            <span class="[ price ][ font--600 ]">+$200</span>
+          </label>
+          <p class="desc" id="lc-chat-desc">Answer instantly or capture after-hours leads.</p>
+          <details class="more">
+            <summary class="[ flex middle ]">{{- readFile "static/icons/tabler/caret-down.svg" | safeHTML }}<span>What's included</span></summary>
+            <ul><li>Install + brand styling, hours &amp; triggers</li><li>Offline email capture; basic FAQ bot</li></ul>
+            <p class="note" id="lc-chat-note">Some chat tools require a subscription; we'll use your preferred provider.</p>
+          </details>
+      
+        </div>
+    
+        <div class="choice">
+          <input id="lc-advforms" type="checkbox" name="adv_forms" value="1" data-price="300" aria-describedby="lc-advforms-desc">
+          <label for="lc-advforms" class="[ flex middle between ]">
+            <span class="[ title ][ font--700 ]">Advanced forms</span>
+            <span class="[ price ][ font--600 ]">+$300</span>
+          </label>
+          <p class="desc" id="lc-advforms-desc">Multi-step/conditional, file upload, autoresponder.</p>
+    
+        </div>
+    
+        <div class="choice">
+          <input id="lc-booking" type="checkbox" name="booking" value="1" data-price="350" aria-describedby="lc-booking-desc lc-booking-note">
+          <label for="lc-booking" class="[ flex middle between ]">
+            <span class="[ title ][ font--700 ]">Booking system</span>
+           <span class="[ price ][ font--600 ]">+$350</span>
+          </label>
+          <p class="desc" id="lc-booking-desc">Let customers schedule online 24/7.</p>
+          <details class="more">
+            <summary class="[ flex middle ]">{{- readFile "static/icons/tabler/caret-down.svg" | safeHTML }}<span>What's included</span></summary>
+            <ul><li>Calendar embed/integration</li><li>Services, durations, availability rules</li><li>Email confirmations</li></ul>
+            <p class="note" id="lc-booking-note">Third-party app fees not included; we integrate your account.</p>
+          </details>
+        </div>
+    
+        <div class="[ nav ][ grid col-gap--2 ]">
+          <label class="[ back ][ btn btn--lg ]" for="step-3">Back</label>
+          <label class="[ next ][ btn btn--lg btn--primary ]" for="step-5">
+            <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
+              <span>Next</span><span class="[ arrow-right ]">{{ readFile "static/icons/arrow-right.svg" | safeHTML }}</span>
+            </span>
+          </label>
+        </div>
+      </section>
+    
+      <!-- STEP 5: Growth &amp; visibility -->
+      <section class="card" aria-labelledby="q4">
+        <div>
+          <h2 id="q4" class="[ pb--0 ]">Growth &amp; visibility</h2>
+          <p><small>Add anything you want us to handle.</small></p>
+        </div>
+
+        <!-- Advanced SEO -->
+        <div class="choice">
+          <input id="seo-adv" type="checkbox" name="advanced_seo" value="1"
+                data-price="500" aria-describedby="seo-adv-desc seo-adv-note">
+          <label for="seo-adv" class="[ flex between middle ]">
+            <span class="[ title ][ font--700 ]">Advanced SEO setup</span>
+            <span class="[ price ][ font--600 ]">+$500</span>
+          </label>
+          <p class="desc" id="seo-adv-desc">Rank locally for your services.</p>
+          <details class="more">
+            <summary class="[ flex middle ]">{{- readFile "static/icons/tabler/caret-down.svg" | safeHTML }}<span>What's included</span></summary>
+            <ul>
+              <li>Keyword research for local intent</li>
+              <li>On-page fixes for up to 5 key pages (titles, headings, copy hints, links, image alts)</li>
+              <li>XML sitemap &amp; Search Console connection</li>
+            </ul>
+            <p class="note" id="seo-adv-note">Beyond 5 key pages: +$75/page. Content writing is separate.</p>
+          </details>
+        </div>
+
+        <!-- Blog setup -->
+        <div class="choice">
+          <input id="blog" type="checkbox" name="blog" value="1"
+                data-price="300" aria-describedby="blog-desc blog-note">
+          <label for="blog" class="[ flex between middle ]">
+            <span class="[ title ][ font--700 ]">Blog setup</span>
+            <span class="[ price ][ font--600 ]">+$300</span>
+          </label>
+          <p class="desc" id="blog-desc">Publish articles to grow organic traffic.</p>
+          <details class="more">
+            <summary class="[ flex middle ]">{{- readFile "static/icons/tabler/caret-down.svg" | safeHTML }}<span>What's included</span></summary>
+            <ul>
+              <li>Blog index &amp; post template</li>
+              <li>Categories/tags, author profile</li>
+              <li>Share cards (OG/Twitter)</li>
+            </ul>
+            <p class="note" id="blog-note">Content migration/imports are scoped separately.</p>
+          </details>
+        </div>
+
+        <!-- Analytics & tracking (beefed up) -->
+        <div class="choice">
+          <input id="analytics" type="checkbox" name="analytics" value="1"
+                data-price="300" aria-describedby="analytics-desc analytics-note">
+          <label for="analytics" class="[ flex between middle ]">
+            <span class="[ title ][ font--700 ]">Analytics &amp; tracking</span>
+            <span class="[ price ][ font--600 ]">+$300</span>
+          </label>
+          <p class="desc" id="analytics-desc">GA4 setup with key site events and conversions.</p>
+          <details class="more">
+            <summary class="[ flex middle ]">
+              {{- readFile "static/icons/tabler/caret-down.svg" | safeHTML }}
+              <span>What's included</span>
+            </summary>
+            <ul>
+              <li>Connect/create GA4 property; base configuration</li>
+              <li>Events: form submit, tap-to-call, WhatsApp click, booking CTA</li>
+              <li>Mark key events as conversions</li>
+              <li>Search Console link + XML sitemap check</li>
+              <li>Consent-aware loading (works with your cookie banner)</li>
+              <li>Validation in Realtime/DebugView before handoff</li>
+            </ul>
+            <p class="note" id="analytics-note">Ad pixels (e.g., Meta) are separate. Advanced dashboards, e-commerce funnels, and call-forwarding services are out of scope here.</p>
+          </details>
+        </div>
+
+        <!-- Meta Pixel -->
+        <div class="choice">
+          <input id="meta-pixel" type="checkbox" name="meta_pixel" value="1"
+                data-price="150" aria-describedby="meta-desc meta-note">
+          <label for="meta-pixel" class="[ flex between middle ]">
+            <span class="[ title ][ font--700 ]">Meta (Facebook) Pixel</span>
+            <span class="[ price ][ font--600 ]">+$150</span>
+          </label>
+          <p class="desc" id="meta-desc">Enable retargeting and ad attribution for Meta campaigns.</p>
+          <details class="more">
+            <summary class="[ flex middle ]">{{- readFile "static/icons/tabler/caret-down.svg" | safeHTML }}<span>What's included</span></summary>
+            <ul>
+              <li>Base pixel install (via GTM or direct)</li>
+              <li>Standard events: <code>PageView</code>, <code>Lead/Contact</code> mapped to your site actions</li>
+              <li>Validation with Meta Pixel Helper</li>
+            </ul>
+            <p class="note" id="meta-note">Requires Meta Business Manager access and a consent banner. If “Analytics &amp; tracking” is selected, we'll map events accordingly.</p>
+          </details>
+        </div>
+
+        <div class="[ nav ][ grid col-gap--2 ]">
+          <label class="[ back ][ btn btn--lg ]" for="step-4">Back</label>
+          <label class="[ next ][ btn btn--lg btn--primary ]" for="step-6">
+            <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
+              <span>Next</span><span class="[ arrow-right ]">{{ readFile "static/icons/arrow-right.svg" | safeHTML }}</span>
+            </span>
+          </label>
+        </div>
+      </section>
+
+    
+      <!-- STEP 6: Content & brand readiness -->
+      <section class="card" aria-labelledby="q5">
+        <div>
+          <h2 id="q5" class="[ pb--0 ]">What are you missing for launch?</h2>
+          <p><small>Add anything you want us to handle.</small></p>
+        </div>
+
+        <!-- Logo design -->
+        <div class="choice">
+          <input id="logo" type="checkbox" name="logo_design" value="1"
+                data-price="150" aria-describedby="logo-desc logo-note">
+          <label for="logo" class="[ flex between middle ]">
+            <span class="[ title ][ font--700 ]">Logo design</span>
+            <span class="[ price ][ font--600 ]">+$150</span>
+          </label>
+          <p class="desc" id="logo-desc">Create or refine a simple brand mark.</p>
+          <details class="more">
+            <summary class="[ flex middle ]">{{ readFile "static/icons/tabler/caret-down.svg" | safeHTML }}<span>What's included</span></summary>
+            <ul>
+              <li>2 concepts + 1 refinement round</li>
+              <li>Deliverables: SVG/PNG + basic color/type picks</li>
+            </ul>
+            <p class="note" id="logo-note">Full brand guidelines are out of scope.</p>
+          </details>
+        </div>
+
+        <!-- Copywriting -->
+        <div class="choice">
+          <input id="copy" type="checkbox" name="copywriting" value="1"
+                data-price="300" aria-describedby="copy-desc copy-note">
+          <label for="copy" class="[ flex between middle ]">
+            <span class="[ title ][ font--700 ]">Website copywriting</span>
+            <span class="[ price ][ font--600 ]">+$300</span>
+          </label>
+          <p class="desc" id="copy-desc">We'll draft clear, conversion-ready copy.</p>
+          <details class="more">
+            <summary class="[ flex middle ]">{{ readFile "static/icons/tabler/caret-down.svg" | safeHTML }}<span>What's included</span></summary>
+            <ul>
+              <li>Up to 4 sections/pages (~800–1,000 words)</li>
+              <li>1 revision pass</li>
+            </ul>
+            <p class="note" id="copy-note">Long-form content or extra pages can be added later.</p>
+          </details>
+        </div>
+
+        <!-- Domain setup -->
+        <div class="choice">
+          <input id="domain" type="checkbox" name="domain_setup" value="1"
+                data-price="50" aria-describedby="domain-desc domain-note">
+          <label for="domain" class="[ flex between middle ]">
+            <span class="[ title ][ font--700 ]">Domain setup</span>
+            <span class="[ price ][ font--600 ]">+$50</span>
+          </label>
+          <p class="desc" id="domain-desc">We'll connect your domain to the site.</p>
+          <details class="more">
+            <summary class="[ flex middle ]">{{ readFile "static/icons/tabler/caret-down.svg" | safeHTML }}<span>What's included</span></summary>
+            <ul>
+              <li>DNS records, SSL, www/non-www redirect</li>
+            </ul>
+            <p class="note" id="domain-note">Domain purchase and email inbox setup are separate.</p>
+          </details>
+        </div>
+
+        <!-- Hosting setup -->
+        <div class="choice">
+          <input id="hosting" type="checkbox" name="hosting_setup" value="1"
+                data-price="100" aria-describedby="hosting-desc hosting-note">
+          <label for="hosting" class="[ flex between middle ]">
+            <span class="[ title ][ font--700 ]">Hosting setup</span>
+            <span class="[ price ][ font--600 ]">+$100</span>
+          </label>
+          <p class="desc" id="hosting-desc">We'll set up reliable hosting for launch.</p>
+          <details class="more">
+            <summary class="[ flex middle ]">{{ readFile "static/icons/tabler/caret-down.svg" | safeHTML }}<span>What's included</span></summary>
+            <ul>
+              <li>Platform setup (e.g., Netlify/Vercel) & deploy</li>
+              <li>SSL, redirects, forms/email routing</li>
+            </ul>
+            <p class="note" id="hosting-note">Hosting fees are paid to your provider.</p>
+          </details>
+        </div>
+
+        <!-- Maintenance -->
+        <div class="choice">
+          <input id="maint" type="checkbox" name="maintenance" value="1"
+                 data-recurring="150" aria-describedby="maint-desc maint-note">
+          <label for="maint" class="[ flex between middle ]">
+            <span class="[ title ][ font--700 ]">Ongoing maintenance</span>
+            <span class="[ price ][ font--600 ]">+$150/mo</span>
+          </label>
+          <p class="desc" id="maint-desc">Updates, backups &amp; security after launch.</p>
+        
+          <details class="more">
+            <summary class="[ flex middle ]">
+              {{ readFile "static/icons/tabler/caret-down.svg" | safeHTML }}
+              <span>What's included</span>
+            </summary>
+            <ul>
+              <li>Core/plugin updates (monthly)</li>
+              <li>Uptime monitoring &amp; offsite backups</li>
+              <li>Security patches; up to 1 hr content tweaks/month</li>
+            </ul>
+            <p class="note" id="maint-note">
+              Higher-tier care plans are available based on your update cadence and application needs
+              (e.g., staging/QA workflow, faster SLAs, headless/JS frameworks, custom integrations).
+              We'll recommend a tier after reviewing your stack and requirements.
+            </p>
+          </details>
+        </div>
+        
+        <div class="[ nav ][ grid col-gap--2 ]">
+          <label class="[ back ][ btn btn--lg ]" for="step-5">Back</label>
+          <label class="[ next ][ btn btn--lg btn--primary ]" for="step-7">
+            <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
+              <span>Next</span><span class="[ arrow-right ]">{{ readFile "static/icons/arrow-right.svg" | safeHTML }}</span>
+            </span>
+          </label>
+        </div>
+      </section>
+
+    
+      <!-- STEP 7: Review &amp; Total -->
+      <section class="card" aria-labelledby="q6" data-summary-card>
+        <h2 id="q6">Review &amp; Total</h2>
+    
+        <ul class="summary__list" id="summaryList" aria-live="polite" aria-atomic="true"></ul>
+    
+        <div class="summary__totals" aria-live="polite" aria-atomic="true">
+          <div class="row" id="oneTimeRow">
+            <span class="label">One-time Total</span><span class="value" id="oneTimeTotal">$0</span>
+          </div>
+          <div class="row" id="monthlyRow">
+            <span class="label">Monthly Total</span><span class="value" id="monthlyTotal">$0</span>
+          </div>
+        </div>
+    
+        <textarea name="estimate_summary" id="estimateSummary" hidden></textarea>
+    
+        <div class="[ nav ][ grid col-gap--2 ]">
+          <label class="[ back ][ btn btn--lg ]" for="step-6">Back</label>
+          <label class="[ next ][ btn btn--lg btn--primary ]" for="step-8">
+            <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
+              <span>Next</span><span class="[ arrow-right ]">{{ readFile "static/icons/arrow-right.svg" | safeHTML }}</span>
+            </span>
+          </label>
+        </div>
+      </section>
+    
+      <!-- STEP 8: Contact &amp; Submit -->
+      <section class="card" aria-labelledby="q7">
+        <h2 id="q7">Where should we send your quote?</h2>
+        
+        <div class="[ grid md:col--2 gap--1 ]">
+          <div>
+            <div class="[ form__field ][ grid row-gap--0.5 ]">
+              <label class="[ form__label ][ font--500 font--600 ]" for="first_name">
+                <span>First Name</span>
+                <abbr class="[ required ]" title="This field is required" aria-label="This field is required">*</abbr>
+              </label>
+              <input class="[ form__input ][ p--0.5 ]"
+                name="first_name" id="first_name" type="text"
+                minlength="2"
+                placeholder="i.e. John/Jane"
+                autocomplete="given-name"
+                required />
+            </div>
+          </div>
+          <div>
+            <div class="[ form__field ][ grid row-gap--0.5 ]">
+              <label class="[ form__label ][ font--500 font--600 ]" for="last_name">Last Name (optional)</label>
+              <input class="[ form__input ][ p--0.5 ]"
+                name="last_name" id="last_name" type="text"
+                minlength="2"
+                placeholder="i.e. Doe"
+                autocomplete="family-name" />
+            </div>
+          </div>
+      
+          <div>
+            <div class="[ form__field ][ grid row-gap--0.5 ]">
+              <label class="[ form__label ]" for="email">
+                <span>Email</span>
+                <abbr class="[ required ]" title="This field is required" aria-label="This field is required">*</abbr>
+              </label>
+              <input class="[ form__input ][ p--0.5 ]"
+              name="email" id="email" type="email"
+              placeholder="i.e. your@email.com"
+              autocomplete="email"
+              required />
+            </div>
+          </div>
+    
+          <div>
+            <div class="[ form__field ][ grid row-gap--0.5 ]">
+              <label class="[ form__label ]" for="phone"><span>Phone (optional)</span></label>
+              <input class="[ form__input ][ p--0.5 ]"
+              name="phone" id="phone" type="tel"
+              pattern="^(?:\+1[ \-]?(?:\(\d{3}\)|\d{3})[ \-]?\d{3}[ \-]?\d{4}|(?:\(\d{3}\)|\d{3})?[ \-]?\d{3}[ \-]?\d{4})$"
+              inputmode="tel" autocomplete="tel"
+              minlength="7" maxlength="18"
+              title="Enter 7-digit local (376-3340) or 10-digit with area code (242-376-3340). +1 optional."
+              placeholder="i.e. (242) 376-3340"
+              data-bouncer-message="Enter a 7-digit local number (376-3340) or 10-digit with area code (242-376-3340). +1 is optional." />
+            </div>
+          </div>
+        </div>
+    
+        <div class="[ form__field ][ grid row-gap--0.5 ]">
+          <label class="[ form__label ]" for="notes"><span>Notes (optional)</span></label>
+          <textarea class="[ form__message ][ p--0.5 ]" id="notes" name="notes" placeholder="Tell us how we can help…" minlength="10" maxlength="2000" autocomplete="off" spellcheck="true"></textarea>
+        </div>
+    
+        <label class="[ flex col-gap--0.5 ]">
+          <span><input type="checkbox" name="consent" value="1" required></span>
+          <span>I agree to be contacted about this quote.</span>
+        </label>
+    
+        <div class="[ nav ][ grid col-gap--2 ]">
+          <label class="[ back ][ btn btn--lg ]" for="step-7">Back</label>
+          <button class="[ next ][ btn btn--lg btn--primary ]" type="submit">
+            <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
+              <span>Email My Quote</span><span class="[ arrow-right ]">{{ readFile "static/icons/arrow-right.svg" | safeHTML }}</span>
+            </span>
+          </button>
+        </div>
+      </section>
+    
+    </div>
+    
+
+  </form>
+  
+
+
+{{ end }}

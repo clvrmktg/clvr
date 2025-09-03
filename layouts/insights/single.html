@@ -1,4 +1,5 @@
 {{- define "variables" -}}
+{{- .Store.Set "hasObscure" true -}}
 {{- .Store.Set "isPost" true -}}
 {{- .Store.Set "noPadding" true -}}
 {{- end -}}
@@ -21,7 +22,7 @@
           {{- with .Params.categories }}{{ $cat = index . 0 }}{{ end -}}
           {{- with $cat -}}
             {{- $catPage := site.GetPage (printf "/categories/%s" (urlize .)) -}}
-            <a class="badge badge--category" href="{{ cond $catPage $catPage.RelPermalink "#" }}">{{ . }}</a> 
+            <a class="[ category ]" href="{{ cond $catPage $catPage.RelPermalink "#" }}">{{ . }}</a> 
           {{- end }}
   
         | <time datetime="{{ $published.Format $iso }}">{{ $published.Format $format }}</time>

@@ -6,7 +6,24 @@
     <a class="screen-reader-text" href="#main">Skip to main content</a>
     <div id="container" class="[ container ]">
       {{ $currentPage := . }}
+      {{ if .Store.Get "funnel" }}
+      <header class="[ navbar ][ full-width content-grid ]" id="navbar" aria-label="Brand">
+        <div class="[ wrap ][ flex between middle col-gap--2 relative ]">
+          <a class="[ logo ]" href="/">{{ readFile "static/icons/logo.svg" | safeHTML }}</a>
+          <template obscure="obscure" data-p1="+1" data-p2="242" data-p3="376" data-p4="3340">
+            <!-- Visible: nicely formatted number; Click: tel:+12423763340 -->
+            <span class="[ flex middle center col-gap--0.25 ]">
+              {{ readFile "static/icons/tabler/phone.svg" | safeHTML }}
+              <a class="[ phone-link ][ font--700 ]" href="tel:%1%2%3%4" aria-label="Call Clever Marketing at (%2) %3-%4">
+                (%2) %3-%4
+              </a>
+            </span>
+        </div>
+        </template>
+      </header>
+      {{else}}
       {{ partial "navbar.html" (dict "context" . "currentPage" $currentPage) }}
+      {{end}}
       <main id="main" class="[ main ][ content-grid {{ if eq .Page.Kind "404" }} error {{ end }}]" id="main">
         {{ block "main" . -}}{{- end }}
       </main>
@@ -32,10 +49,14 @@
     {{ partial "script.html" (dict "path" "scripts/vendor/bouncer.polyfills.js" "targetPath" "scripts/bouncer.js" "raw" true "attributes" (dict "defer" true))}}
     {{ partial "script.html" (dict "path" "scripts/components/validate.js" "targetPath" "scripts/validate.js") }}
     {{ end }}
-    {{ if $.Store.Get "hasThankYou" }}
+    {{ if .Store.Get "hasThankYou" }}
     {{ partial "script.html" (dict "path" "scripts/components/thank-you.js" "targetPath" "scripts/thank-you.js") }}
+    {{ end }}
+    {{ if .Store.Get "hasQuote" }}
+    {{ partial "script.html" (dict "path" "scripts/components/price.js" "targetPath" "scripts/price.js") }}
     {{ end }}
     {{ partial "script.html" (dict "path" "scripts/components/notice.js" "targetPath" "scripts/notice.js") }}
     {{ partial "analytics/mpixel.html" . }}
+
   </body>
 </html>

@@ -1,0 +1,313 @@
+@use 'abstracts' as *
+
+
+// Quote page hero – fully namespaced
+// Quote page hero – dark theme with AA contrast
+.quote-hero
+  --accent: #1464ff
+  --ink: #e6e9f2
+  --muted: #b8c2d6
+  --bg1: #0b1326
+  --bg2: #0b1326
+  --pill-fg: #0b3a91
+  --pill-bg: #e6efff
+  background: linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%)
+  color: var(--ink)
+
+  &__skip
+    position: absolute
+    left: -9999px
+    top: auto
+    width: 1px
+    height: 1px
+    overflow: hidden
+    &:focus
+      position: static
+      width: auto
+      height: auto
+      margin: .25rem auto
+      display: inline-block
+      background: #fff
+      color: #000
+      padding: .5rem .75rem
+      border-radius: .5rem
+      outline: 2px solid var(--accent)
+      outline-offset: 2px
+
+  &__eyebrow
+    margin: 0
+    letter-spacing: .06em
+    text-transform: uppercase
+    color: var(--accent)
+
+  &__title
+    margin: 0
+    color: #f4f7ff
+
+  &__lead
+    margin: .25rem 0 0
+    color: var(--muted)
+
+  &__points
+    list-style: disc
+    padding-left: 1.25rem
+    margin: .25rem 0 0
+    display: grid
+    gap: .5rem
+    color: #d7deee
+
+  &__pill
+    display: inline-flex
+    align-items: center
+    padding: .35rem .6rem
+    border-radius: 999px
+    background: var(--pill-bg)
+    color: var(--pill-fg)
+    font-weight: 800
+    font-size: .9rem
+
+  &__cta
+    display: flex
+    gap: .75rem
+    flex-wrap: wrap
+    margin-top: .25rem
+
+  // keep changes scoped – don’t touch your global .btn
+  .btn
+    min-height: 44px
+    &:focus-visible
+      outline: 3px solid var(--accent)
+      outline-offset: 2px
+
+  &__btnGhost
+    background: transparent
+    border: 1px solid rgba(230, 233, 242, .28)
+    color: var(--ink)
+    &:hover
+      border-color: rgba(230, 233, 242, .5)
+
+  &__trust
+    display: flex
+    flex-wrap: wrap
+    gap: .5rem .75rem
+    align-items: center
+    color: #9fb0c9
+    font-size: .95rem
+    margin-top: .25rem
+
+  &__stars
+    color: #f59e0b
+    letter-spacing: .12em
+
+  &__sep
+    opacity: .5
+
+  &__tiny
+    font-size: .95em
+
+$min: $min-font-size * 3
+$max: $max-font-size * 5
+// ensure the wizard isn't hidden under sticky headers on anchor jump
+#wizard
+  +clamp('scroll-padding', $min, $max)
+
+// prefers reduced motion (avoid jarring smooth-scroll scripts if any)
+// @media (prefers-reduced-motion: reduce)
+//   html:focus-within
+//     scroll-behavior: auto
+
+// smooth scroll offset so the wizard isn’t hidden under sticky nav
+#wizard
+  scroll-margin-top: 72px
+
+@media (prefers-color-scheme: dark)
+  .quote-hero
+    --ink: #e6e9f2
+    --muted: #a8b3c7
+    --bg1: #0b1326
+    --bg2: #0b1326
+    .btn--ghost
+      border-color: rgba(255,255,255,.18)
+
+
+.wizard
+  --steps: 7
+  --step: 1
+  position: relative
+  overflow: hidden
+  // min-height: 100dvh
+  // background: var(--surface, #0a1e46)
+
+  // Update --step purely with radios (requires :has, widely supported in 2025)
+  &:has(#step-2:checked)
+    --step: 2
+  &:has(#step-3:checked)
+    --step: 3
+  &:has(#step-4:checked)
+    --step: 4
+  &:has(#step-5:checked)
+    --step: 5
+  &:has(#step-6:checked)
+    --step: 6
+  &:has(#step-7:checked)
+    --step: 7
+  &:has(#step-8:checked)
+    --step: 8
+    
+.progress
+  height: em(8)
+  background: rgba(10,30,70,.12) 
+  border-radius: em(5)
+  position: sticky
+  top: 0
+  z-index: 5
+
+  &__bar
+    height: 100%
+    width: calc((var(--step) / var(--steps)) * 100%)
+    transition: width .35s ease
+    background: #1464ff // Clever blue
+    border-radius: inherit
+
+.slider
+  display: flex
+  width: 100%
+  transform: translateX(calc(-100% * (var(--step) - 1)))
+  transition: transform .45s ease-in-out
+
+.card
+  flex: 0 0 100%
+  // min-height: calc(100dvh - 6px)
+  padding: clamp(1rem, 4vw, 2rem)
+  // color: #edf5ff
+  display: grid
+  align-content: start
+  gap: 1rem
+
+  h2
+    font: 700 1.5rem/1.2 "DM Sans", system-ui
+    margin-bottom: .5rem
+
+  .muted
+    opacity: .75
+
+  .choice, .option
+    border: em(1) solid color('ink-1')
+
+    .desc
+      opacity: .8
+      font-size: .95rem
+
+  .option
+    // display: grid
+    border-radius: 16px
+    padding: 1rem
+    cursor: pointer
+    
+    input
+      position: absolute
+      opacity: 0
+
+    // span
+    //   font-weight: 600
+
+    small
+      opacity: .8
+
+    &:has(input:checked)
+      outline: 2px solid #1464ff
+      background: rgba(20,100,255,.08)
+
+  &:has(input[type="radio"][required])
+    &:not(:has(input[type="radio"][required]:checked))
+      .nav .next
+        opacity: .5
+        pointer-events: none
+
+  .nav
+    grid-template-columns: [back-start] auto [back-end] 1fr [next-start] auto [next-end]
+
+  .back
+    grid-column: back
+    border: 1px solid rgba(255,255,255,.5)
+
+  .next
+    grid-column: next
+
+
+// Accessibility niceties
+.step-toggle
+  position: absolute
+  inline-size: 1px
+  block-size: 1px
+  opacity: 0
+  pointer-events: none
+
+.eyebrow
+  color: color('clever-blue')
+  margin-left: .5rem
+
+.choice
+  padding: 1rem
+  border: 1px solid rgba(255,255,255,.18)
+  border-radius: 16px
+  background: rgba(255,255,255,.02)
+
+  input
+    position: absolute
+    opacity: 0
+
+  label
+    // display: grid
+    // gap: .25rem
+    cursor: pointer
+
+
+  &:has(input:checked)
+    outline: 2px solid #1464ff
+    background: rgba(20,100,255,.08)
+
+// Only selectable choices get hover emphasis
+.choice:not([data-locked="true"]):hover
+  border-color: rgba(#0a1e46, .28)
+
+// Locked choices (Included by default)
+.choice[data-locked="true"]
+  label
+    cursor: default
+
+  // Softer style so they don't look toggleable
+  &:has(input:checked)
+    border-color: rgba(#0a1e46, .18)
+    background: rgba(#1464ff, .04)
+    box-shadow: none
+
+.more
+  margin-top: .25rem
+  summary
+    cursor: pointer
+    opacity: .85
+  &[open]
+    summary
+      opacity: 1
+
+.summary
+  
+  &__item, &__totals > p
+   border-bottom: em(1) solid color('ink-8')
+
+.amount
+  text-align: right
+  font-variant-numeric: tabular-nums
+  font-feature-settings: "tnum" 1, "lnum" 1
+  color: color('ink-9')
+  font-weight: 500
+
+.amount--included
+  color: color('ink-8')
+  font-weight: 400
+
+#monthlyRow[hidden]
+  display: none
+
+  // 6043026 — Claire Bain
