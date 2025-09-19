@@ -18,8 +18,8 @@
 
   {{- $alt := $meta.alt | default $p.Title -}}
 
-  <figure class="[ feature ][ breakout ratio--16:9 ]">
-    <picture>
+  <figure class="[ feature ][ post-grid ratio--16:9 row-gap--0.5 ]">
+    <picture class="[ post-breakout ]">
       <img
         src="{{ printf "%s/cover=%dx1080" $base 1280 }}"
         srcset="{{ $srcset }}"

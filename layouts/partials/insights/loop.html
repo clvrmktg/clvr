@@ -1,5 +1,7 @@
 {{/* layouts/partials/insights/loop.html */}}
-<ul class="[ posts ][ grid md:col--2 lg:col--3 gap--2 ]">
+{{- $cols := default "3" .cols -}}
+
+<ul class="[ posts ][ grid md:col--2 lg:col--{{ $cols }} gap--2 ]">
   {{- $format := "January 2, 2006" -}}
   {{- $iso    := "2006-01-02T15:04:05Z07:00" -}}
 
@@ -7,7 +9,7 @@
   {{- with .paginator }}{{- $items = .Pages -}}{{- end -}}
 
   {{- range $i, $p := $items -}}
-    <li id="post-{{ add $i 1 }}" class="[ post ]">
+    <li id="post-{{ add $i 1 }}" class="[ post ][ grid row-gap--0 ]">
       <a class="[ post__link ][ grid p--0.25 r--10 ]" href="{{ $p.RelPermalink }}" data-prefetch>
         {{ partial "image.html" (dict
             "image" $p.Params.share
@@ -15,7 +17,7 @@
             "ratio" "1:1"
             "page"  $p
         ) }}
-        <div class="[ text--center py--1 ]">
+        <div class="[ grid text--center py--1 row-gap--0 ]">
           <h3 class="[ font--4 ]">{{ $p.Title }}</h3>
           <p>
             <time class="[ font--small ]" datetime="{{ $p.Date.Format $iso }}">{{ $p.Date.Format $format }}</time>

@@ -100,18 +100,18 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
   url = "/portfolio/"
   weight = 2
 
-[[menu.main]]
-  identifier = "about-us"
-  name = "About Us"
-  url = "/about-us/"
-  weight = 3
+# [[menu.main]]
+#   identifier = "about-us"
+#   name = "About Us"
+#   url = "/about-us/"
+#   weight = 3
 
 # May be added back later
-# [[menu.main]]
-#   identifier = "insights"
-#   name = "Insights"
-#   url = "/insights/"
-#   weight = 4
+[[menu.main]]
+  identifier = "insights"
+  name = "Insights"
+  url = "/insights/"
+  weight = 3
 
 [[menu.main]]
   identifier = "contact-us"

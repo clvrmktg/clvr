@@ -1,24 +1,24 @@
 @use 'abstracts' as *
 
 
-.scale
-  overflow: hidden
+// .scale
+//   overflow: hidden
   
-  > img
-    +transition('scale')
-    transition-duration: 600ms
+//   > img
+//     +transition('scale')
+//     transition-duration: 600ms
 
-    +hover
+//     +hover
 
-      scale: 1.15
+//       scale: 1.15
 
 .loop
 
   &__item
     grid-template-rows: max-content 1fr
     box-shadow: 0 em(5) em(10) 0 rgba(0, 0, 0, 0.13)
-
     +transition('color')
+
 
   &__link
     border-bottom: em(2) solid var(--blue--800--0)

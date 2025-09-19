@@ -1,10 +1,29 @@
 @use 'abstracts' as *
 
+.posts
+  @supports (grid-template-rows: subgrid)
+    grid-template-rows: 1fr repeat(2, max-content)
+
 // Loop --- Separate into own componnent later
 .post
+  grid-row: span 3
   
-  &__link p
-    color: color('text-color')
+  @supports (grid-template-rows: subgrid)
+    grid-template-rows: subgrid
+
+  &__link
+    grid-row: inherit
+
+    @supports (grid-template-rows: subgrid)
+      grid-template-rows: subgrid    
+
+      .text--center
+        grid-row: span 2
+        grid-template-rows: inherit
+        
+
+    p
+      color: color('text-color')
 
 .post-single
   display: grid

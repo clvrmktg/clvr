@@ -26,7 +26,7 @@ figcaption = ""
 +++
 
 
-It's 2025, and believe it or not, people are still asking: *“Do I really need a website?”*  
+It's 2025, and believe it or not, people are still asking: *“Do I really need a website?"*  
 
 The short answer: **yes, you absolutely do.**  
 
@@ -50,7 +50,7 @@ But credibility isn't just about having *any* site. A clean, easy-to-use design 
 
 A website is the foundation of being found online. Sure, social media is great for engagement, but people still turn to Google first.  
 
-- **Local search is huge.** In fact, most “near me” searches end in action—whether that's a call, a visit, or a booking. Without a site optimized for local search, you miss those opportunities.  
+- **Local search is huge.** In fact, most “near me" searches end in action—whether that's a call, a visit, or a booking. Without a site optimized for local search, you miss those opportunities.  
 - **Competition isn't slowing down.** Chances are your competitors already have a website. If you don't, you're giving them an easy win.  
 - **24/7 availability.** Your website works even when you don't. It answers questions, showcases services, and collects leads while you're off the clock.  
 
@@ -60,7 +60,7 @@ If growth is the goal, visibility online is non-negotiable.
 
 ## Social Media Isn't Enough  
 
-This is where many business owners get stuck: *“But I already have Facebook and Instagram—why do I need a website?”*  
+This is where many business owners get stuck: *“But I already have Facebook and Instagram—why do I need a website?"*  
 
 Here's the thing: social media and websites aren't competitors, they're partners.  
 
@@ -108,7 +108,7 @@ If you're serious about keeping your business relevant in the next five years, a
 
 ## Final Thoughts — Do I Still Need a Website in 2025?  
 
-In 2025, the question isn't *“do I need a website?”*—it's *“how can I make my website work harder for my business?”*  
+In 2025, the question isn't *“do I need a website?"*—it's *“how can I make my website work harder for my business?"*  
 
 From building credibility and boosting visibility to future-proofing your growth, a professional website is still the single most powerful tool in your digital toolbox.  
 

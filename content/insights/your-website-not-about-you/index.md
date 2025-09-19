@@ -1,19 +1,18 @@
 +++
-date = 2025-08-23T10:53:48-04:00
-draft = true
-title = 'Your Website Is Not About You'
-description = "Your website isn’t about you—it’s about your customers. Discover why design matters more than looks and how to build a site that truly works."
 
+title = 'Your Website Is Not About You'
+summary = "Most business websites talk too much about the company. Here's why your site should focus on your customers instead."
+description = "Your website isn't about showing how great you are—it's about helping customers solve problems and take action. Learn how to build a site that speaks to your audience and grows your business."
 categories = ["Web Design"]
 tags = []
 
 [share]
-path = ""
-alt= ""
+path = "cover.jpg"
+alt= "A Bahamian shop owner smiles as he helps a customer try on a necklace inside a colorful local craft store, highlighting a customer-focused experience."
 
 [feature]
-path = ""
-alt= ""
+path = "bahamian-business-owner-helping-customer.jpg"
+alt= "A Bahamian shop owner smiles as he helps a customer try on a necklace inside a colorful local craft store, highlighting a customer-focused experience."
 # This is optional
 figcaption = ""
 
@@ -23,60 +22,121 @@ figcaption = ""
 #   id = 1
 #   content = ""
 
+date = 2025-08-23T10:53:48-04:00
+draft = false
+
 +++
 
 Your website is not about you—even when it is.  
 
-One of the hardest things to communicate to clients is that their “vision” has to be shaped by best practice.  
+Here's a hard truth: most business websites are built for the wrong person.  
 
-Most people know they *need* a website. They understand it should help people find their business online. But once the process begins—especially for DIYers—websites often become more about self-expression than effectiveness. Content takes a backseat to “that looks pretty.”  
+Owners often approach a new site thinking, *“What do I want to say about my company?"* The result? A homepage that reads like a résumé, an “About" page that's more like a history book, and long-winded paragraphs that nobody outside the company cares about.  
 
-But here’s the truth: **your website isn’t art. It’s design.** And that difference matters.  
+But a website isn't meant to be a stage for you. It's a bridge for your customers. Its purpose is to help them solve a problem, make a decision, or feel confident enough to take action.  
 
----
-
-## Art vs. Design  
-
-Art is subjective. Everyone has their own interpretation of what’s beautiful.  
-
-Design is different. Good design has a purpose. It uses structure, content, and visuals to communicate clearly:  
-
-- **Who you are.**  
-- **What you do.**  
-- **What the visitor should do next.**  
-
-If visitors can’t answer those three questions within seconds, your website has failed—no matter how “pretty” it looks.  
+If you miss that, you miss the point.  
 
 ---
 
-## Think of It Like a Store  
+## Why People Visit Your Website  
 
-Imagine walking into a store where everything is beautifully displayed but nothing is labeled. You can’t find prices, staff, or even the checkout counter.  
+Think about your own habits online. When you search for a business, you're not looking to be impressed by their life story. You're trying to answer a simple question: *“Can they help me?"*  
 
-That store might look amazing, but would you buy anything? Probably not.  
+That's what your visitors are asking too. They land on your site with three things in mind:  
 
-Your website works the same way. A beautiful layout that hides the important details—or buries the call to action—will leave visitors frustrated and gone before you know it.  
+- Do they understand my problem?  
+- Can I trust them to deliver?  
+- What's the next step?  
 
----
-
-## Form Follows Function  
-
-The type of business you run should dictate how your site is designed.  
-
-- A restaurant website needs clear menus, opening hours, and booking options.  
-- A construction company website should highlight credibility, past projects, and an easy way to request a quote.  
-- An e-commerce store must make finding and buying products effortless.  
-
-Every detail should be framed around your customer’s needs—not your personal preferences.  
+If your site doesn't answer those quickly, visitors click away and move on to someone else.  
 
 ---
 
-## Final Thoughts — It’s About Them, Not You  
+## The Trap of Talking About Yourself  
 
-Websites that convert aren’t about pleasing the business owner’s eye. They’re about making life easier for the customer.  
+It's tempting to pack your website with information about your company—how long you've been around, the awards you've won, the details of your process. None of that is wrong. It's just not what people are looking for first.  
 
-Pretty matters—but **clarity, usability, and results matter more.**  
+Imagine walking into a store where the clerk starts telling you about their life instead of asking what you need. That's what a self-focused website feels like.  
 
-At Clever, we build websites that combine design with strategy, so your visitors don’t just admire your site—they act.  
+Your website isn't your autobiography. It's your customer's roadmap.  
 
-👉 [See how our approach to web design can help your business grow.](/bahamas-web-design-services/website-design-bahamas/)  
+---
+
+## Make It About Them  
+
+So how do you shift the focus from you to your audience?  
+
+### 1. Lead With Value  
+Start by stating what you do in a way that connects directly to your customer's needs. Instead of:  
+
+> “We are a locally owned construction company with 30 years of experience."  
+
+Try:  
+
+> “We build safe, hurricane-ready homes for families in The Bahamas."  
+
+The difference is huge. One talks about you. The other talks about what matters to them.  
+
+### 2. Keep Navigation Simple  
+Visitors shouldn't have to hunt for what they need. Your services, pricing, and contact info should be clear and easy to find. Confusing menus or buried pages make people leave before they ever reach out.  
+
+### 3. Use Calls-to-Action That Guide  
+Every page should point the visitor to the next step—whether that's booking, calling, or filling out a form. A button that says “Get a Free Quote" works far better than “Submit."  
+
+### 4. Show Proof, Not Hype  
+Don't just *say* you're the best. Prove it. Testimonials, reviews, case studies, or before-and-after photos speak louder than any claims you can write. Real stories build real trust.  
+
+### 5. Design for Speed and Access  
+Slow sites, broken layouts, or pages that don't work on mobile phones instantly kill credibility. A clean, fast, mobile-friendly site tells people you respect their time.  
+
+---
+
+## The Local Angle  
+
+In The Bahamas, word of mouth still matters, but the first impression often happens online. A tourist searching “glass storefront Nassau" or a homeowner Googling “impact windows near me" isn't looking for a company biography. They want reassurance: quick answers, visible expertise, and an easy way to reach you.  
+
+If your website talks only about you—and not what they came to find—you hand those leads to your competitors.  
+
+---
+
+## Your Website Is a Salesperson  
+
+The best way to think about it is this: your website is your digital salesperson. And like any good salesperson, it should:  
+
+- Ask what the customer needs.  
+- Provide a clear solution.  
+- Offer proof that it works.  
+- Make the next step easy.  
+
+If your salesperson only talked about themselves, they'd never close a deal. The same is true for your website.  
+
+---
+
+## Putting It All Together  
+
+Your story and experience still matter—but they're not the headline. They're the supporting details that help someone feel comfortable choosing you *after* they've seen that you understand their needs.  
+
+Here's a simple structure that works for most small businesses:  
+
+1. **Homepage:** What you do, who it's for, why it matters.  
+2. **Services:** A clear breakdown of how you solve their problems.  
+3. **Proof:** Reviews, testimonials, or case studies that build trust.  
+4. **About:** A brief story that adds credibility without taking center stage.  
+5. **Contact:** Easy ways to get started—forms, calls, or booking links.  
+
+When your website is built around your audience instead of yourself, you shift from “look at us" to “we can help you." That's the difference between a digital brochure and a real business tool.  
+
+---
+
+## The Takeaway  
+
+Your website is not about you—it's about the people you're trying to reach.  
+
+When you flip the perspective—when you write and design for your audience—you stop building a vanity project and start building a tool that works. A site that attracts visitors, builds trust, and helps your business grow.  
+
+Your website is not about you—even when it is.  
+
+---
+
+👉 At Clever, we design websites with this philosophy in mind. If you're ready for a site that gets your customers to take action instead of just talking about you, [**get a free quote today**](/contact-us/)
