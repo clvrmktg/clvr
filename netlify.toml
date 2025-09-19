@@ -165,9 +165,17 @@ for = "/*"
   force = true
   query = { filter = ":any" }
 
+[[redirects]]
+  from = "/insights/does-my-business-need-a-website-in-2025/"
+  to = "/insights/do-i-still-need-website-2025/"
+  status = 301
+  force = true
+
 
 [[redirects]]
   from = "/bahamas-web-design"
   to = "/"
   status = 301
   force = true
+
+

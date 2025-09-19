@@ -1,0 +1,39 @@
+{{/* layouts/shortcodes/mcq.html */}}
+
+{{- $id := .Get "id" -}}
+{{- $question := .Get "question" -}}
+{{- $options := split (.Get "options") "|" -}}
+{{- $answer := .Get "answer" | default "1" -}}
+{{- $explanation := .Get "explanation" | default "" -}}
+
+<div class="mcq" id="{{ $id }}" data-correct="{{ $answer }}">
+  <p class="mcq__q">{{ $question }}</p>
+
+  <form class="mcq__form">
+    {{- range $i, $opt := $options -}}
+      {{- $idx := add $i 1 -}}
+      <div class="mcq__option">
+        <input
+          type="radio"
+          name="{{ $id }}-opt"
+          id="{{ $id }}-opt-{{ $idx }}"
+          value="{{ $idx }}"
+          required
+        />
+        <label for="{{ $id }}-opt-{{ $idx }}">{{ $opt }}</label>
+      </div>
+    {{- end -}}
+    <button type="submit" class="mcq__submit" aria-controls="{{ $id }}-feedback">
+      Check answer
+    </button>
+  </form>
+
+  <div class="mcq__feedback" id="{{ $id }}-feedback" role="status" aria-live="polite"></div>
+
+  {{- if $explanation -}}
+    <details class="mcq__explain">
+      <summary>Why?</summary>
+      <p>{{ $explanation }}</p>
+    </details>
+  {{- end -}}
+</div>

@@ -1,30 +1,56 @@
 +++
 
 date = '2025-08-13T19:21:44-04:00'
-draft = true
-title = 'Clear Choice Glass'
-description = ""
+draft = false
 
+# Meta description (120–155 chars, include “Bahamas web design” naturally)
+description = "We designed a modern, responsive website for Clear Choice Glass, a Nassau-based manufacturer of hurricane-rated windows and doors."
 
-# Taxonomies
-portfolio_categories = ["Business"]
-portfolio_deliverables = ["Website Design", "Website Maintenance"]
+# Page title (usually client name)
+title = "Clear Choice Glass"
 
-# External link
-project_link = ""
+# Short proposition heading
+proposition_heading = "Manufacturing Website Design"
+
+# Subhead
+subhead = "Hurricane-Rated Windows & Doors Made in Nassau, Bahamas"
+
+# Overview paragraph
+overview = "We partnered with Clear Choice Glass, a Nassau-based manufacturer of hurricane-rated windows and doors, to create a professional, responsive website. The new site highlights their product range, strengthens their local presence, and provides a clear path for customer inquiries."
+
+# Industries this project belongs to
+industries = ["Construction", "Manufacturing"]
+
+# Deliverables (must match Services menu names to auto-link)
+deliverables = ["Web Design", "Website Maintenance"]
+
+# Client website link
+project_link = "https://clear-choiceglass.com" # adjust if different
+
+# Client description
+client = "Clear Choice Glass is a manufacturer in Nassau, Bahamas, producing hurricane-rated windows, doors, and custom glass solutions for homes and businesses."
+
+# Client challenge
+challenge = "They needed a modern website to showcase their products, communicate their manufacturing advantage, and support customer inquiries."
+
+# Solution provided
+solution = "We designed a fast, mobile-friendly website with product galleries, detailed service pages, and an easy-to-use contact system."
+
+# Optional client logo
+logo = "clear-choice-logo-white.svg"
 
 # Page resource refs (add the files to this folder)
 [thumb]
-path = ""
-alt  = ""
+path = "clear-choice-thumbnail.jpg"
+alt  = "Clear Choice Glass website thumbnail"
 
 [share]
-path = ""
-alt  = ""
+path = "clear-choice-share-image.jpg"
+alt  = "Clear Choice Glass web design project"
 
 [screen]
-path = ""
-alt  = ""
+path = "clear-choice-laptop-view.jpg"
+alt  = "Responsive web design for Clear Choice Glass"
 
 +++
 
