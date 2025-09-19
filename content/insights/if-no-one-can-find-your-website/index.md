@@ -1,4 +1,6 @@
 +++
+date = 2025-09-19T11:07:45-04:00
+draft = false
 
 title = "If No One Can Find Your Website, Does It Even Exist?"
 summary = "A beautiful website doesn’t mean much if no one can find it. Here’s why SEO matters and how to make sure customers see your business online."
@@ -23,8 +25,6 @@ figcaption = "Local search results often determine which businesses customers ch
 #   id = 1
 #   content = ""
 
-date = 2025-09-19T11:07:45-04:00
-draft = false
 
 +++
 

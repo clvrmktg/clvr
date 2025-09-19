@@ -1,4 +1,6 @@
 +++
+date = 2025-08-23T10:53:48-04:00
+draft = false
 
 title = 'Your Website Is Not About You'
 summary = "Most business websites talk too much about the company. Here's why your site should focus on your customers instead."
@@ -22,8 +24,7 @@ figcaption = ""
 #   id = 1
 #   content = ""
 
-date = 2025-08-23T10:53:48-04:00
-draft = false
+
 
 +++
 
@@ -31,7 +32,7 @@ Your website is not about you—even when it is.
 
 Here's a hard truth: most business websites are built for the wrong person.  
 
-Owners often approach a new site thinking, *“What do I want to say about my company?"* The result? A homepage that reads like a résumé, an “About" page that's more like a history book, and long-winded paragraphs that nobody outside the company cares about.  
+Owners often approach a new site thinking, *"What do I want to say about my company?"* The result? A homepage that reads like a résumé, an "About" page that's more like a history book, and long-winded paragraphs that nobody outside the company cares about.  
 
 But a website isn't meant to be a stage for you. It's a bridge for your customers. Its purpose is to help them solve a problem, make a decision, or feel confident enough to take action.  
 
@@ -41,7 +42,7 @@ If you miss that, you miss the point.
 
 ## Why People Visit Your Website  
 
-Think about your own habits online. When you search for a business, you're not looking to be impressed by their life story. You're trying to answer a simple question: *“Can they help me?"*  
+Think about your own habits online. When you search for a business, you're not looking to be impressed by their life story. You're trying to answer a simple question: *"Can they help me?"*  
 
 That's what your visitors are asking too. They land on your site with three things in mind:  
 
@@ -70,11 +71,11 @@ So how do you shift the focus from you to your audience?
 ### 1. Lead With Value  
 Start by stating what you do in a way that connects directly to your customer's needs. Instead of:  
 
-> “We are a locally owned construction company with 30 years of experience."  
+> We are a locally owned construction company with 30 years of experience.  
 
 Try:  
 
-> “We build safe, hurricane-ready homes for families in The Bahamas."  
+> We build safe, hurricane-ready homes for families in The Bahamas. 
 
 The difference is huge. One talks about you. The other talks about what matters to them.  
 
@@ -82,7 +83,7 @@ The difference is huge. One talks about you. The other talks about what matters 
 Visitors shouldn't have to hunt for what they need. Your services, pricing, and contact info should be clear and easy to find. Confusing menus or buried pages make people leave before they ever reach out.  
 
 ### 3. Use Calls-to-Action That Guide  
-Every page should point the visitor to the next step—whether that's booking, calling, or filling out a form. A button that says “Get a Free Quote" works far better than “Submit."  
+Every page should point the visitor to the next step—whether that's booking, calling, or filling out a form. A button that says "Get a Free Quote" works far better than "Submit."  
 
 ### 4. Show Proof, Not Hype  
 Don't just *say* you're the best. Prove it. Testimonials, reviews, case studies, or before-and-after photos speak louder than any claims you can write. Real stories build real trust.  
@@ -94,7 +95,7 @@ Slow sites, broken layouts, or pages that don't work on mobile phones instantly 
 
 ## The Local Angle  
 
-In The Bahamas, word of mouth still matters, but the first impression often happens online. A tourist searching “glass storefront Nassau" or a homeowner Googling “impact windows near me" isn't looking for a company biography. They want reassurance: quick answers, visible expertise, and an easy way to reach you.  
+In The Bahamas, word of mouth still matters, but the first impression often happens online. A tourist searching "glass storefront Nassau" or a homeowner Googling "impact windows near me" isn't looking for a company biography. They want reassurance: quick answers, visible expertise, and an easy way to reach you.  
 
 If your website talks only about you—and not what they came to find—you hand those leads to your competitors.  
 
@@ -125,7 +126,7 @@ Here's a simple structure that works for most small businesses:
 4. **About:** A brief story that adds credibility without taking center stage.  
 5. **Contact:** Easy ways to get started—forms, calls, or booking links.  
 
-When your website is built around your audience instead of yourself, you shift from “look at us" to “we can help you." That's the difference between a digital brochure and a real business tool.  
+When your website is built around your audience instead of yourself, you shift from "look at us" to "we can help you." That's the difference between a digital brochure and a real business tool.  
 
 ---
 

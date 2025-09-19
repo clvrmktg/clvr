@@ -1,6 +1,9 @@
-<figure class="[ blockquote ]">
+<figure class="[ blockquote ][ mb--1.5 r--10 ]">
   <div>
-    <blockquote{{ with .Attributes.cite }} cite="{{ . }}"{{ end }}>
+    <div class="[ quote ][ mb--1 ]">
+      {{ readFile "static/icons/quote.svg" | safeHTML }}
+    </div>  
+    <blockquote class="[ font--4 ]" {{ with .Attributes.cite }} cite="{{ . }}"{{ end }}>
       {{ .Text }}
     </blockquote>
 

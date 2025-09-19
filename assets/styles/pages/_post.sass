@@ -1,5 +1,8 @@
 @use 'abstracts' as *
 
+.project
+  background-color: color('white')
+
 .posts
   @supports (grid-template-rows: subgrid)
     grid-template-rows: 1fr repeat(2, max-content)
