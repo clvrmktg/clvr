@@ -36,7 +36,7 @@ solution = "We built a fast, responsive site with clear service pages and engagi
 
 # Page resource refs (add the files to this folder)
 [thumb]
-path = "chickcharney-challenge-thumbnaile.jpg"
+path = "chickcharney-challenge-thumbnail.jpg"
 alt  = "Chickcharney Challenge website homepage snapshot"
 
 [share]
