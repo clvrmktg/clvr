@@ -7,61 +7,19 @@
 {{- end -}}
 {{ define "main" }}
 
-<header class="[ quote-hero ][ full-width content-grid ]" role="banner" aria-labelledby="qh-title">
-  <a class="quote-hero__skip" href="#wizard">Skip to calculator</a>
-
-  <div class="[ wrapper ][ grid row-gap--1 section--padding ]">
-    <div>
-      <p class="[ quote-hero__eyebrow ][ pb--0 ]">Instant estimate</p>
-      <h1 id="qh-title" class="[ quote-hero__title ][ display ]">Get Your Web Design Quote</h1>
-      <p id="qh-sub" class="quote-hero__lead">Answer a few quick questions and see your price update in real time.</p>
-    </div>
-
-    <div class="quote-hero__badges">
-      <strong class="quote-hero__pill" aria-label="Starts at five hundred dollars">Starts at $500</strong>
-    </div>
   
-    <ul role="list" aria-describedby="qh-sub">
-      <li>Mobile-responsive, SEO-ready structure, and a contact form included.</li>
-      <li>~90 seconds • No obligation</li>
-    </ul>
-
-    <div class="quote-hero__cta">
-      <a href="#wizard" class="btn btn--lg btn--primary" aria-describedby="qh-sub">
-        <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
-          <span>Start your quote</span>
-          <span class="[ arrow-right ]">
-            {{ readFile "static/icons/arrow-right.svg" | safeHTML }}
-          </span>
-        </span>
-      </a>
-      <template obscure="obscure" data-p1="+1" data-p2="242" data-p3="376" data-p4="3340">
-        <a href="tel:%1%2%3%4" class="btn btn--lg quote-hero__btnGhost" aria-label="Call Clever Marketing at (%2) %3-%4">Call us</a>
-      </template>
-
-    </div>
-
-    <div class="quote-hero__trust" aria-label="Social proof">
-      <span class="quote-hero__stars" aria-hidden="true">★★★★★</span>
-      <span class="sr-only">Rated five out of five stars</span>
-      <span class="quote-hero__sep" aria-hidden="true">•</span>
-      <span class="quote-hero__tiny">Trusted by local businesses</span>
-      <span class="quote-hero__sep" aria-hidden="true">•</span>
-      <span class="quote-hero__tiny">We'll email your estimate — privacy first</span>
-    </div>
-    {{ partial "reviews/trust-badge.html" . }}
-  </div>
-</header>
-
+  <header>
+    <h1 class="[ section--padding-top ]">Get Your Free Web Design Quote</h1>
+  </header>
 
   <!-- anchor so the CTA scrolls right to the wizard -->
   <div id="quote"></div>
   
-  <form id="wizard" class="[ wizard ][ section--padding ]" action="/get-your-web-design-quote/" method="POST"
+  <form id="wizard" class="[ wizard ][ section--padding ]" action="/web-design-quote/" method="POST"
   data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true"
   data-validate novalidate>
   
-    <input type="hidden" name="form-name" value="contact" />
+    <input type="hidden" name="form-name" value="wizard" />
     <div class="hidden">
       <label>
         Don't fill this out if you're human: <input name="bot-field" />
@@ -542,7 +500,7 @@
           <details class="more">
             <summary class="[ flex middle ]">{{ readFile "static/icons/tabler/caret-down.svg" | safeHTML }}<span>What's included</span></summary>
             <ul>
-              <li>Platform setup (e.g., Netlify/Vercel) & deploy</li>
+              <li>Platform setup (e.g., Netlify/Vercel) &amp; deploy</li>
               <li>SSL, redirects, forms/email routing</li>
             </ul>
             <p class="note" id="hosting-note">Hosting fees are paid to your provider.</p>
@@ -684,8 +642,11 @@
           <span>I agree to be contacted about this quote.</span>
         </label>
     
+        <div data-netlify-recaptcha="true"></div>
+
         <div class="[ nav ][ grid col-gap--2 ]">
           <label class="[ back ][ btn btn--lg ]" for="step-7">Back</label>
+
           <button class="[ next ][ btn btn--lg btn--primary ]" type="submit">
             <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
               <span>Email My Quote</span><span class="[ arrow-right ]">{{ readFile "static/icons/arrow-right.svg" | safeHTML }}</span>

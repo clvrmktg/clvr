@@ -109,6 +109,7 @@ $inline: 2em
         left: 0
         +transition(width)
 
+
   &--ghost
     --button-color: #{color('clever-blue-light')}
     color: var(--button-color)
@@ -148,7 +149,6 @@ $inline: 2em
 
     svg
       width: 1em
-
       
 .ghost--white
   color: color('white')
@@ -161,3 +161,12 @@ $inline: 2em
   +hover
     color: color('clever-blue')
     border: $border solid color('white')
+
+.btn.back
+  --button-color: #{color('text-color')}
+  color: var(--button-color)
+  border: $border solid var(--button-color)
+
+  +hover
+    color: color('white')
+    background-color: color('text-color')
