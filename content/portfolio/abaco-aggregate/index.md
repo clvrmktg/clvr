@@ -27,7 +27,7 @@ solution = "We built a modern site highlighting their paving projects, boosting 
 logo = "aac-logo-white.svg"
 
 [thumb]
-path = "aac-thumb.jpg"
+path = "aac-thumbnail.jpg"
 alt= "Snapshot of Abaco Aggregate & Cement, Ltd. website homepage"
 
 [share]

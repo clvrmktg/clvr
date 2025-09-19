@@ -44,7 +44,7 @@ path = "chickcharney-challenge-share-image.jpg"
 alt  = "Chickcharney Challenge website homepage snapshot"
 
 [screen]
-path = "chickcharney-challenge-laptop-view.jpg"
+path = "chickcharney-challenge-laptop.jpg"
 alt  = "Chickcharney Challenge website homepage snapshot"
 
 +++
