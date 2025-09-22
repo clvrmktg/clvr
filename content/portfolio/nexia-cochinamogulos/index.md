@@ -48,7 +48,7 @@ path = "nexia-cochinamogulos-website-share.jpg"
 alt  = "Snapshot of Nexia Financial Solutions Bahamas website homepage"
 
 [screen]
-path = "nexia-cochinamogulos-website-laptop-view.jpg"
+path = "nexia-cochinamogulos-website-laptop.jpg"
 alt  = "Snapshot of Nexia Financial Solutions Bahamas website homepage"
 
 [sitemap]
