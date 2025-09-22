@@ -1,8 +1,0 @@
-{
-  "name": "hugo-site",
-  "version": "1.0.0",
-  "private": true,
-  "devDependencies": {
-    "@livechat/netlify-plugin-index-now": "^1.0.0"
-  }
-}

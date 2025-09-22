@@ -17,24 +17,10 @@
   GO_VERSION = "1.23.5"
   TZ = "America/New_York"
 
-[context.production.environment]
-  HUGO_VERSION = "0.142.0"
-
-[context.deploy-preview.environment]
-  HUGO_VERSION = "0.142.0"
-
-[context.branch-deploy.environment]
-  HUGO_VERSION = "0.142.0"
-
 [dev]
   command = "hugo server"
   port = 8888
   targetPort = 1313
-
-[build]
-  command = "hugo"
-  publish = "public"
-  node_version = "20"
 
 [[plugins]]
   # File-based (local) plugin install — must start with "./" or "/"
