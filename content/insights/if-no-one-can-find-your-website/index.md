@@ -11,11 +11,11 @@ tags = []
 
 [share]
 path = "cover.jpg"
-alt= "A person holds a smartphone outdoors showing Google search results for "restaurants near me," illustrating how customers find local businesses online."
+alt= "A person holds a smartphone outdoors showing Google search results for \"restaurants near me,\" illustrating how customers find local businesses online."
 
 [feature]
 path = "restaurants-near-me-search.jpg"
-alt= "A person holds a smartphone outdoors showing Google search results for "restaurants near me," illustrating how customers find local businesses online."
+alt= "A person holds a smartphone outdoors showing Google search results for \"restaurants near me,\" illustrating how customers find local businesses online."
 # This is optional
 figcaption = "Local search results often determine which businesses customers choose first."
 
