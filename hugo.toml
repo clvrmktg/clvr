@@ -165,9 +165,9 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
   weight = 1
 
 [[menu.policies]]
-  identifier = "terms-service"
+  identifier = "terms-of-service"
   name = "Terms of Service"
-  url = "/terms-service/"
+  url = "/terms-of-service/"
   weight = 2
 
 [[menu.policies]]
