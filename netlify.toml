@@ -31,6 +31,15 @@
   port = 8888
   targetPort = 1313
 
+[[plugins]]
+  package = "@livechat/netlify-plugin-index-now"
+
+  [plugins.inputs]
+    site = "https://getclever.marketing"
+    sitemap = "https://getclever.marketing/sitemap.xml"
+    key = "477602aae1744f79938f7d5730913391"
+
+
 # netlify.toml
 [[headers]]
 for = "/*"
