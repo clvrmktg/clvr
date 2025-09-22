@@ -3,7 +3,7 @@
 date = '2025-08-13T19:21:44-04:00'
 draft = false
 
-# Meta description (120–155 chars, include “Bahamas web design” naturally)
+# Meta description (120–155 chars, include "Bahamas web design" naturally)
 description = "We designed a modern, responsive website for Clear Choice Glass, a Nassau-based manufacturer of hurricane-rated windows and doors."
 
 # Page title (usually client name)
@@ -85,7 +85,7 @@ The primary goals were to:
 ---
 
 ## Our Approach
-Clever Marketing, Ltd. took Clear Choice Glass’s **existing brand assets** and transformed them into a complete digital presence.  
+Clever Marketing, Ltd. took Clear Choice Glass's **existing brand assets** and transformed them into a complete digital presence.  
 
 ### 1. Brand Translation to Web
 We started by analyzing their logo, business cards, and flyers to extract colors, typography, and visual patterns. This ensured the new site stayed consistent with their offline identity while elevating it for the web.  

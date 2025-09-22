@@ -3,7 +3,7 @@ date = 2024-11-25T08:00:00-04:00
 draft = false
 
 
-description = "Professional website design in The Bahamas — custom-built for speed, security, and results. We create mobile-friendly, SEO-ready websites that help Bahamian businesses attract customers, build trust, and grow online."
+description = "Professional website design in The Bahamas—fast, secure, mobile-friendly, SEO-ready sites that help businesses attract customers, build trust, and grow."
 
 
 # Hero

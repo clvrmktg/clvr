@@ -2,7 +2,7 @@
 date = 2024-11-26T12:20:00-04:00
 draft = false
 
-description = "Digital marketing services in The Bahamas, including social media, PPC, and email campaigns that connect you with the right audience and drive measurable results."
+description = "Digital marketing in The Bahamas—social media, PPC, and email campaigns that connect you with the right audience and deliver results."
 
 # Hero
 title = "Digital Marketing Bahamas"

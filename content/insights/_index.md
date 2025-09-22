@@ -3,7 +3,7 @@ date = 2024-11-25T07:00:00-04:00
 draft = false
 
 
-description = "Discover practical insights from Clever to help your business grow online. Clear, actionable advice on web design, digital marketing, and strategies for success."
+description = "Discover practical insights from Clever to grow your business online with clear, actionable advice on web design, digital marketing, and strategy."
 
 title = 'Insights'
 proposition_heading = "Practical Insights for Growing Online"

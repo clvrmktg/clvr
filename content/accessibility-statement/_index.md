@@ -2,7 +2,7 @@
 date = 2024-12-11T15:05:00-04:00
 draft = false
 title = 'Accessibility Statement'
-description = "Clever Marketing, Ltd. is committed to providing an accessible website for all users, following WCAG 2.1 Level AA standards. Learn about our accessibility features, ongoing improvements, and how to share feedback."
+description = "Clever is committed to accessibility for all users, following WCAG 2.1 AA standards. Explore our features, improvements, and ways to share feedback."
 
 [sitemap]
   changefreq = 'monthly'
@@ -12,7 +12,7 @@ description = "Clever Marketing, Ltd. is committed to providing an accessible we
 
 **Last Updated**: {{<date>}}
 
-At Clever Marketing, Ltd. (“Clever”), we are committed to making our website accessible to everyone, including people with disabilities. We want all visitors to be able to access the information and services we provide without barriers.
+At Clever Marketing, Ltd. ("Clever"), we are committed to making our website accessible to everyone, including people with disabilities. We want all visitors to be able to access the information and services we provide without barriers.
 
 ## Our Commitment
 

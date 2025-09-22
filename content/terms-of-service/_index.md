@@ -2,7 +2,7 @@
 date = 2024-12-11T14:35:00-04:00
 draft = false
 title = 'Terms of Service'
-description = 'Review the Terms of Service for Clever Marketing, Ltd., covering service scope, payment terms, client responsibilities, intellectual property, and dispute resolution.'
+description = "Review the Terms of Service for Clever, covering service scope, payment terms, client responsibilities, intellectual property, and dispute resolution."
 
 [sitemap]
   changefreq = 'monthly'
@@ -12,7 +12,7 @@ description = 'Review the Terms of Service for Clever Marketing, Ltd., covering 
 
 **Effective Date:** {{<date>}}
 
-These Terms of Service (“Terms”) govern your use of services provided by Clever Marketing, Ltd. (“Clever,” “we,” or “us”) and your interactions with our website. By accessing our website or purchasing our services, you agree to these Terms.
+These Terms of Service ("Terms") govern your use of services provided by Clever Marketing, Ltd. ("Clever," "we," or "us") and your interactions with our website. By accessing our website or purchasing our services, you agree to these Terms.
 
 ## Services Overview
 

@@ -2,7 +2,7 @@
 date = 2024-11-25T07:05:00-04:00
 draft = false
 title = 'Privacy Policy'
-description="Learn how Clever Marketing, Ltd. collects, uses, and protects your personal information, including details on analytics, tracking, and data sharing practices."
+description="Learn how Clever collects, uses, and protects your personal information, including details on analytics, tracking, and data sharing practices."
 
 [sitemap]
   changeFreq = 'monthly'

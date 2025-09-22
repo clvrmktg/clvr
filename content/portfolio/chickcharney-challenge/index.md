@@ -3,14 +3,14 @@
 date = 2024-12-11T16:35:00-04:00
 draft = false
 
-description = "Bahamas web design for Chickcharney Challenge. We built a fast, responsive adventure tourism website showcasing rock climbing, obstacle courses, and team events in Nassau."
+description = "Bahamas web design for Chickcharney Challenge—fast, responsive site showcasing rock climbing, obstacle courses, and team adventure events in Nassau."
 
 title = 'Chickcharney Challenge'
 
-# Short proposition heading (e.g. “Construction Website Design”)
+# Short proposition heading (e.g. "Construction Website Design")
 proposition_heading = "Adventure Tourism Website Design"
 
-# Subhead (e.g. “Civil Engineers Based in Abaco, Bahamas”)
+# Subhead (e.g. "Civil Engineers Based in Abaco, Bahamas")
 subhead = "Rock Climbing & Obstacle Course Events in Nassau, Bahamas"
 
 # Overview paragraph (intro summary before deliverables/quick facts)
@@ -25,13 +25,13 @@ deliverables = ["Web Design"]
 # Client website link
 project_link = "https://chickcharneychallenge.com"
 
-# Client description (used in “Client” section)
+# Client description (used in "Client" section)
 client = "Chickcharney is an adventure company in The Bahamas offering rock climbing, obstacle courses, and team challenge events."
 
-# Client challenge (used in “Challenge” section)
+# Client challenge (used in "Challenge" section)
 challenge = "Their old website was slow, inconsistent on mobile, and struggled to keep up with their expanding services and events."
 
-# Solution provided (used in “Solution” section)
+# Solution provided (used in "Solution" section)
 solution = "We built a fast, responsive site with clear service pages and engaging design that reflects their adventurous spirit."
 
 # Page resource refs (add the files to this folder)

@@ -59,7 +59,7 @@ icon = "support_agent.svg"
 
 [why] 
 text = """
-A website isn't “set it and forget it.” Without regular updates and monitoring, your site can become slow, vulnerable to security risks, or even go offline — costing you customers and credibility.
+A website isn't "set it and forget it." Without regular updates and monitoring, your site can become slow, vulnerable to security risks, or even go offline — costing you customers and credibility.
 
 With ongoing maintenance, we keep your site fast, secure, and reliable so you can focus on your business with peace of mind.
 """

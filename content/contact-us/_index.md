@@ -1,7 +1,7 @@
 +++
 date = 2024-11-25T07:00:00-04:00
 draft = false
-description = "Contact Clever Marketing, Bahamas web design experts. Reach our Nassau team for websites, SEO, and digital marketing solutions tailored to local businesses."
+description = "Contact Clever, Bahamas web design experts. Reach our Nassau team for websites, SEO, and digital marketing tailored to local businesses."
 
 title = 'Contact Us'
 proposition_heading = "Bahamas Web Design Experts"

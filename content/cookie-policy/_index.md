@@ -2,7 +2,7 @@
 date = 2024-12-11T15:05:00-04:00
 draft = false
 title = 'Cookie Policy'
-description = "Read how Clever Marketing, Ltd. uses cookies and tracking tools like Google Analytics and Meta Pixel to improve your browsing experience and marketing."
+description = "Read how Clever uses cookies and tracking tools like Google Analytics and Meta Pixel to improve your browsing experience and marketing."
 
 [sitemap]
   changefreq = 'monthly'
@@ -12,7 +12,7 @@ description = "Read how Clever Marketing, Ltd. uses cookies and tracking tools l
 
 **Effective Date:** {{<date>}}
 
-Clever Marketing, Ltd. (“Clever”), accessible at [https://getclever.marketing](/), uses cookies and similar tracking technologies to provide a better experience for visitors, improve site performance, and support our marketing efforts. This Cookie Policy explains the types of cookies we use and how you can manage them.
+Clever Marketing, Ltd. ("Clever"), accessible at [https://getclever.marketing](/), uses cookies and similar tracking technologies to provide a better experience for visitors, improve site performance, and support our marketing efforts. This Cookie Policy explains the types of cookies we use and how you can manage them.
 
 ## What Are Cookies?
 
