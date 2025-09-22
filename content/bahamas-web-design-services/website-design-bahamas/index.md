@@ -1,6 +1,8 @@
 +++
 date = 2024-11-25T08:00:00-04:00
 draft = false
+
+
 description = "Professional website design in The Bahamas — custom-built for speed, security, and results. We create mobile-friendly, SEO-ready websites that help Bahamian businesses attract customers, build trust, and grow online."
 
 
@@ -114,4 +116,9 @@ answer = "Absolutely — we design secure, mobile-friendly e-commerce sites with
 question = "How long will it take to complete my website?"
 answer = "Most sites are completed within 2–4 weeks, depending on size, features, and feedback turnaround."
 
+[sitemap]
+  changefreq = 'weekly'
+  disable = true
+  priority = 0.8
+  
 +++

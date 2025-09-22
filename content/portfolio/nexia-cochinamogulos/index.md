@@ -1,8 +1,9 @@
 +++
 
 date = 2024-11-25T08:05:00-04:00
-
 draft = false
+
+
 description = "Bahamas web design for Nexia Bahamas, a trusted accounting firm. We refreshed their website with a clean, responsive design aligned with Nexia International's brand."
 
 title = "Nexia Bahamas"
@@ -49,5 +50,10 @@ alt  = "Snapshot of Nexia Financial Solutions Bahamas website homepage"
 [screen]
 path = "nexia-cochinamogulos-website-laptop-view.jpg"
 alt  = "Snapshot of Nexia Financial Solutions Bahamas website homepage"
+
+[sitemap]
+  filename = "sitemap.xml"
+  changefreq = 'monthly'
+  priority = 0.6
 
 +++

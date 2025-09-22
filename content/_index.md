@@ -2,20 +2,21 @@
 date = 2024-11-25T07:05:00-04:00
 draft = false
 
-# Page Description
-description = "Clever designs and develops fast, secure, SEO-friendly websites for Bahamian businesses — helping you get online, reach more customers, and focus on what matters most."
-
 # Hero
 title = 'Bahamas Web Design'
 proposition_heading = 'Manage Your Business, Not Your Website'
-# proposition_heading = "We create fast, secure websites and keep them running"
 subtitle = "We build fast, secure, SEO-friendly websites for Bahamian businesses — helping you get online, reach more customers, and focus on what matters most."
-# subtitle = "We'll get you online, help you reach more customers, and save time so you can manage your business, not your website."
+
+# Page Description
+description = "Clever designs and develops fast, secure, SEO-friendly websites for Bahamian businesses — helping you get online, reach more customers, and focus on what matters most."
+
+[sitemap]
+  changefreq = 'weekly'
+  priority = 1.0
 
 [hero]
 path = "young-black-woman-blue-hoodie-pointing.jpg"
 alt = "Young Black woman working on a laptop at a colorful café in The Bahamas, sipping coffee and smiling"
-
 
 [snapshot]
 heading = """

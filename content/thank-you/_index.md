@@ -4,4 +4,10 @@ draft = false
 title = 'Thank You'
 description = ""
 
+[sitemap]
+  changeFreq = ''
+  disable = true
+  filename = 'sitemap.xml'
+  priority = -1
+
 +++

@@ -1,7 +1,7 @@
 +++
 date = 2024-11-25T07:05:00-04:00
-
 draft = false
+
 description = "Bahamas web design services for busy business owners. We handle your website so you can focus on customers and have a site that not only looks great but performs."
 
 # Hero
@@ -53,5 +53,10 @@ answer = "In many cases, yes. If your current site is in good shape, we can make
 question = "How do I know if I need website maintenance?"
 answer = "If your site has outdated content, broken features, or hasn't had security updates in months, maintenance is a smart investment to protect and improve it."
 
+
+[sitemap]
+  changefreq = 'weekly'
+  disable = true
+  priority = 0.9
 
 +++

@@ -4,6 +4,10 @@ draft = false
 title = 'Cookie Policy'
 description = "Read how Clever Marketing, Ltd. uses cookies and tracking tools like Google Analytics and Meta Pixel to improve your browsing experience and marketing."
 
+[sitemap]
+  changefreq = 'monthly'
+  priority = 0.3
+  
 +++
 
 **Effective Date:** {{<date>}}

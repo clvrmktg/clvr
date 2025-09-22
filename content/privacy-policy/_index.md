@@ -4,6 +4,10 @@ draft = false
 title = 'Privacy Policy'
 description="Learn how Clever Marketing, Ltd. collects, uses, and protects your personal information, including details on analytics, tracking, and data sharing practices."
 
+[sitemap]
+  changeFreq = 'monthly'
+  priority = 0.3
+
 +++
 
 **Effective Date:** {{<date>}}

@@ -24,7 +24,10 @@ figcaption = ""
 #   id = 1
 #   content = ""
 
-
+[sitemap]
+  filename = "sitemap.xml"
+  changefreq = 'monthly'
+  priority = 0.6
 
 +++
 

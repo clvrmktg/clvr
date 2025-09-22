@@ -1,8 +1,8 @@
 +++
 
 date = 2024-12-11T15:20:00-04:00
-
 draft = false
+
 description = "Discover how our Bahamas web design team built a fast, professional website for Abaco Aggregate to showcase road paving projects and attract new clients."
 
 title = 'Abaco Aggregate'
@@ -37,5 +37,11 @@ alt = "Snapshot of Abaco Aggregate & Cement, Ltd. website homepage"
 [screen]
 path = "aac-laptop-view.jpg"
 alt = "Snapshot of Abaco Aggregate & Cement, Ltd. website homepage"
+
+[sitemap]
+  filename = "sitemap.xml"
+  changefreq = 'monthly'
+  priority = 0.6
+
 
 +++

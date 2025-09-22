@@ -1,7 +1,7 @@
 +++
 date = 2024-11-25T07:00:00-04:00
-
 draft = false
+
 description = "SEO services in The Bahamas to help your business rank higher, reach more customers, and grow online visibility."
 
 # Hero
@@ -108,5 +108,10 @@ answer = "Yes — we can optimize your current site or work alongside your web d
 [[faqs.items]]
 question = "Is SEO worth it for small businesses?"
 answer = "Yes. SEO helps local businesses reach more customers, build trust, and compete with larger companies without paying for every click."
+
+[sitemap]
+  changefreq = 'weekly'
+  disable = true
+  priority = 0.8
 
 +++

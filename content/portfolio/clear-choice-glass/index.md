@@ -52,6 +52,13 @@ alt  = "Clear Choice Glass web design project"
 path = "clear-choice-laptop-view.jpg"
 alt  = "Responsive web design for Clear Choice Glass"
 
+
+[sitemap]
+  filename = "sitemap.xml"
+  changefreq = 'monthly'
+  priority = 0.6
+
+
 +++
 
 

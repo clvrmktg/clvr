@@ -1,7 +1,7 @@
 +++
 date = 2024-11-26T12:20:00-04:00
-
 draft = false
+
 description = "Website maintenance services in The Bahamas — keeping your site secure, updated, and running smoothly so you can focus on your business."
 
 # Hero
@@ -107,5 +107,10 @@ answer = "Yes — we can take over the maintenance of most websites, even if we 
 [[faqs.items]]
 question = "How much does website maintenance cost?"
 answer = "Our maintenance plans start at $50/month for single-page websites, $150/month for standard five-page sites, and $250/month for larger or CMS-based websites. Advanced options with additional coverage are also available depending on your needs."
+
+[sitemap]
+  changefreq = 'weekly'
+  disable = true
+  priority = 0.8
 
 +++

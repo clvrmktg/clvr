@@ -4,6 +4,10 @@ draft = false
 title = 'Terms of Service'
 description = 'Review the Terms of Service for Clever Marketing, Ltd., covering service scope, payment terms, client responsibilities, intellectual property, and dispute resolution.'
 
+[sitemap]
+  changefreq = 'monthly'
+  priority = 0.3
+  
 +++
 
 **Effective Date:** {{<date>}}

@@ -1,7 +1,7 @@
 +++
 date = 2024-11-26T12:20:00-04:00
-
 draft = false
+
 description = "Digital marketing services in The Bahamas, including social media, PPC, and email campaigns that connect you with the right audience and drive measurable results."
 
 # Hero
@@ -106,5 +106,10 @@ answer = "Yes — we can create content, schedule posts, and manage engagement t
 [[faqs.items]]
 question = "Can I see the results of my campaigns?"
 answer = "Absolutely. We provide clear reports showing your traffic, conversions, and ROI so you can see exactly how your campaigns perform."
+
+[sitemap]
+  changefreq = 'weekly'
+  disable = true
+  priority = 0.8
 
 +++

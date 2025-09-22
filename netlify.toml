@@ -177,4 +177,10 @@ for = "/*"
   status = 301
   force = true
 
+[[redirects]]
+  from = "/terms-service/"
+  to = "/terms-of-service/"
+  status = 301
+  force = true
+
 

@@ -1,8 +1,8 @@
 +++
 
 date = 2024-12-11T16:35:00-04:00
-
 draft = false
+
 description = "Bahamas web design for Chickcharney Challenge. We built a fast, responsive adventure tourism website showcasing rock climbing, obstacle courses, and team events in Nassau."
 
 title = 'Chickcharney Challenge'
@@ -46,5 +46,10 @@ alt  = "Chickcharney Challenge website homepage snapshot"
 [screen]
 path = "chickcharney-challenge-laptop.jpg"
 alt  = "Chickcharney Challenge website homepage snapshot"
+
+[sitemap]
+  filename = "sitemap.xml"
+  changefreq = 'monthly'
+  priority = 0.6
 
 +++

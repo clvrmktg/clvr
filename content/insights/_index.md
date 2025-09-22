@@ -1,6 +1,8 @@
 +++
 date = 2024-11-25T07:00:00-04:00
 draft = false
+
+
 description = "Discover practical insights from Clever to help your business grow online. Clear, actionable advice on web design, digital marketing, and strategies for success."
 
 title = 'Insights'
@@ -23,4 +25,10 @@ subhead = "Clear, actionable advice on web design and digital marketing from the
   post = true
   categories = []
   tags = []
+
+[sitemap]
+  changefreq = 'monthly'
+  priority = 0.7
+
+
 +++

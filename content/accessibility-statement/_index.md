@@ -4,6 +4,10 @@ draft = false
 title = 'Accessibility Statement'
 description = "Clever Marketing, Ltd. is committed to providing an accessible website for all users, following WCAG 2.1 Level AA standards. Learn about our accessibility features, ongoing improvements, and how to share feedback."
 
+[sitemap]
+  changefreq = 'monthly'
+  priority = 0.3
+
 +++
 
 **Last Updated**: {{<date>}}
