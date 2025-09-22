@@ -31,8 +31,14 @@
   port = 8888
   targetPort = 1313
 
+[build]
+  command = "hugo"
+  publish = "public"
+  node_version = "20"
+
 [[plugins]]
-  package = "@livechat/netlify-plugin-index-now"
+  # File-based (local) plugin install — must start with "./" or "/"
+  package = "./plugins/indexnow"
 
   [plugins.inputs]
     site = "https://getclever.marketing"

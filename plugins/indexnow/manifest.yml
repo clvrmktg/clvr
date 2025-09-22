@@ -1,0 +1,12 @@
+name: netlify-plugin-indexnow-local
+inputs:
+  - name: site
+    description: "Your production site URL (must match Hugo baseURL)."
+    required: true
+  - name: key
+    description: "Your IndexNow key (the string inside the .txt file)."
+    required: true
+  - name: sitemap
+    description: "Absolute sitemap URL (optional, recommended)."
+    required: false
+    default: ""
