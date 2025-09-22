@@ -31,16 +31,6 @@
   port = 8888
   targetPort = 1313
 
-[[plugins]]
-  # File-based (local) plugin install — must start with "./" or "/"
-  package = "./plugins/indexnow"
-
-  [plugins.inputs]
-    site = "https://getclever.marketing"
-    sitemap = "https://getclever.marketing/sitemap.xml"
-    key = "477602aae1744f79938f7d5730913391"
-
-
 # netlify.toml
 [[headers]]
 for = "/*"
