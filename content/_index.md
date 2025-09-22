@@ -8,7 +8,7 @@ proposition_heading = 'Manage Your Business, Not Your Website'
 subtitle = "We build fast, secure, SEO-friendly websites for Bahamian businesses — helping you get online, reach more customers, and focus on what matters most."
 
 # Page Description
-description = "Clever designs and develops fast, secure, SEO-friendly websites for Bahamian businesses — helping you get online, reach more customers, and focus on what matters most."
+description = "Clever designs and develops fast, secure, SEO-friendly websites that help Bahamian businesses get online, reach more customers, and focus on what matters most."
 
 [sitemap]
   changefreq = 'weekly'

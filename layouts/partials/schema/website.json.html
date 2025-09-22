@@ -1,13 +1,14 @@
 {{- if .IsHome -}}
   {{- $siteID := print .Site.BaseURL "#website" -}}
   {{- $desc := (.Description | default site.Params.description | default site.Params.tagline | default "") | markdownify | plainify | chomp -}}
-
+  {{- $alt := site.Params.shortname | default "Clever" -}}
   {{- $schema := dict
       "@context"  "https://schema.org"
       "@type"     "WebSite"
       "@id"       $siteID
       "url"       .Site.BaseURL
       "name"      site.Title
+      "alternateName" $alt
       "publisher" (dict "@id" (print .Site.BaseURL "#localbusiness"))
     -}}
 
