@@ -1,6 +1,6 @@
 baseURL = 'https://getclever.marketing/'
 languageCode = 'en-us'
-title = 'Clever Marketing, Ltd.'
+title = 'Clever'
 enableGitInfo = true
 
 [sass]
@@ -36,7 +36,7 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
   logo = "/logo.png"
 
   # Homepage Title | Tagline
-  tagline = 'Bahamas Web Design | Nassau, Bahamas'
+  tagline = 'Bahamas Web Design'
 
 [params.google]
   api_key = "AIzaSyDGa9bRzCbbmJ-L9PIX1hrZSymdSC4ZEtA"
