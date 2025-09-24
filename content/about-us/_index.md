@@ -41,7 +41,7 @@ Our mission is simple: to deliver digital solutions that create real-world resul
 """
 
 [story.image]
-path = "joseph-pinder-managing-principal-clever.jpg"
+path = "joseph-pinder-clever.jpg"
 alt = "Joseph Pinder, Managing Principal at Clever Marketing, Ltd."
 caption = """<strong class="[ font--5 upper ]">Joseph Pinder</strong><br>
 <span>Managing Principal | CEO</span>"""

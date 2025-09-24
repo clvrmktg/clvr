@@ -16,7 +16,7 @@ proposition_heading = "Manufacturing Website Design"
 subhead = "Hurricane-Rated Windows & Doors Made in Nassau, Bahamas"
 
 # Overview paragraph
-overview = "We partnered with Clear Choice Glass, a Nassau-based manufacturer of hurricane-rated windows and doors, to create a professional, responsive website. The new site highlights their product range, strengthens their local presence, and provides a clear path for customer inquiries."
+overview = "We partnered with Clear Choice Glass, a Nassau manufacturer of hurricane-rated windows and doors, to design a responsive website featuring their project gallery, strengthening local presence, and streamlining customer inquiries."
 
 # Industries this project belongs to
 industries = ["Construction", "Manufacturing"]
