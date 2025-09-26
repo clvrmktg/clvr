@@ -35,14 +35,13 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
   twic = "clvrmktg"
   share = "/fallbacks/clvr-cover.jpg"
   logo = "/logo.png"
-
+  app_id = 9879175018863603
   # Homepage Title | Tagline
   tagline = 'Bahamas Web Design'
 
 [params.google]
   api_key = "AIzaSyDGa9bRzCbbmJ-L9PIX1hrZSymdSC4ZEtA"
   place_id = "ChIJpwI7ux9nL4kRn7lrM-ie_dk"
-  app_id = 9879175018863603
   error = true
 
 
