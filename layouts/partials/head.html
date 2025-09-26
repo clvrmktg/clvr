@@ -2,9 +2,9 @@
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   {{- $pageTitle := "" -}}
   {{- if .IsHome -}}
-  {{- $pageTitle = printf "%s | %s" .Site.Params.tagline .Site.Title -}}
+  {{- $pageTitle = printf "%s | Clever" .Site.Params.tagline -}}
   {{- else -}}
-  {{- $pageTitle = printf "%s | %s" .Title .Site.Title -}}
+  {{- $pageTitle = printf "%s | Clever" .Title -}}
   {{- end -}}
   {{- $desc := "" -}}
   {{- if .Description -}}
@@ -25,7 +25,19 @@
   {{- end -}}
   
   {{- $feature := .Params.feature -}}
-  {{- $cover := .Params.cover -}}
+  {{- $share   := .Params.share -}}
+  
+  {{/* 1) Try to get a resource from the bundle: [share].path, then [feature].path */}}
+  {{- $imgRes := cond (and $share $share.path) (.Resources.GetMatch $share.path) nil -}}
+  {{- if not $imgRes -}}
+    {{- if and $feature $feature.path -}}
+      {{- $imgRes = .Resources.GetMatch $feature.path -}}
+    {{- end -}}
+  {{- end -}}
+  
+  {{/* 2) URL + ALT fallbacks */}}
+  {{- $imageURL := cond $imgRes $imgRes.Permalink (absURL .Site.Params.share) -}}
+  {{- $alt      := or (and $share $share.alt) (and $feature $feature.alt) "Clever Marketing's logo" -}}
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>{{ $pageTitle }}</title>
@@ -45,10 +57,8 @@
   <meta property="og:url" content="{{ .Permalink }}">
   <meta property="og:type" content="{{ if eq .Section "insights" }}article{{ else }}website{{ end }}">
   <meta property="og:title" content="{{ $pageTitle }}">
-  {{- $image := $feature.path | default .Site.Params.share -}}
-  {{- $alt := $feature.alt | default "Clever Marketing's logo" -}}
   <meta property="og:description" content="{{- $desc -}}">
-  <meta property="og:image" content="{{- $image | absURL -}}">
+  <meta property="og:image" content="{{- $imageURL -}}">
   <meta property="og:image:alt" content="{{ $alt }}">
   <meta property="fb:app_id" content="{{ $.Site.Params.app_id }}">
   <meta name="twitter:card" content="summary_large_image">
@@ -56,8 +66,9 @@
   <meta name="twitter:creator" content="{{ .Site.Params.social.x }}">
   <meta name="twitter:title" content="{{ $pageTitle }}">
   <meta name="twitter:description" content="{{- $desc -}}">
-  <meta name="twitter:image" content="{{- $image | absURL -}}">
-  <meta name="author" content="{{ .Site.Params.author | default "Clever Marketing" }}">
+  <meta name="twitter:image" content="{{- $imageURL -}}">
+  <meta name="author" content="{{ .Site.Params.author | default "Clever" }}">
+  
   {{ if eq .Section "insights" }}
     <meta property="article:published_time" content="{{ .Date.Format $iso }}">
   {{ end }}
