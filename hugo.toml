@@ -34,7 +34,7 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
   short = "Clever"
   twic = "clvrmktg"
   share = "/fallbacks/clvr-cover.jpg"
-  logo = "/logo.png"
+  logo = "/logo.jpg"
   app_id = 9879175018863603
   # Homepage Title | Tagline
   tagline = 'Bahamas Web Design'

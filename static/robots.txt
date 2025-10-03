@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /.netlify/
+Disallow: /thank-you/
+Disallow: /tags/
+Disallow: /insights/categories/
+Disallow: /portfolio/industries/     
+Disallow: /drafts/
+Disallow: /404.html
