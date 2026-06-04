@@ -6,14 +6,14 @@ subhead = "We don't just put you online — we build websites that bring custome
 [[services.items]]
 key   = "web-design"
 title = "Web Design"
-blurb = "Custom websites built for speed, mobile performance, and conversion — designed for businesses in The Bahamas."
+blurb = "High-performing, fast, and secure websites tailored specifically for businesses in The Bahamas."
 href  = "/bahamas-web-design-services/website-design-bahamas/"
 icon = "responsive-glow-up.svg"
 
 [[services.items]]
 key   = "seo"
 title = "Local SEO"
-blurb = "Strategies that help you rank higher on Google and reach more local and international customers."
+blurb = "Strategies to help your Bahamian business rank higher on local search results and reach nearby customers."
 cta   = "Request an SEO Review"
 href  = "/bahamas-web-design-services/seo-bahamas/"
 

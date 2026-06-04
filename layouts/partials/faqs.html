@@ -10,13 +10,13 @@
       {{partial "buttons/ghost.html" (dict "url" "/contact-us/" "text" "Ask a Question")}}
     </div>
     <div class="[ grid gap--2 ]">
-      {{ range .Params.faqs.items }}
-      <details class="[ faq ]" name="faqs">
+      {{ range $index, $item := .Params.faqs.items }}
+      <details class="[ faq ]" name="faqs"{{ if eq $index 0 }} open{{ end }}>
         <summary class="[ question ][ flex between middle font--600 pb--1 ]">
           <span>{{ .question }} </span>
           <span class="marker">{{ readFile "static/icons/chevron-right.svg" | safeHTML }}</span>
         </summary>
-        <div class="[ answer ][ pb--2 ]">{{ .answer }}</div>
+        <div class="[ answer ][ pb--2 ]">{{ .answer | markdownify }}</div>
       </details>
       {{ end }}
       {{/*  <figure class="[ ratio--1:1 o--1 ]">

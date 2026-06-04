@@ -4,7 +4,7 @@
   {{- if .IsHome -}}
   {{- $pageTitle = printf "%s | Clever" .Site.Params.tagline -}}
   {{- else -}}
-  {{- $pageTitle = printf "%s | Clever" .Title -}}
+  {{- $pageTitle = printf "%s | Clever" (.Params.longTitle | default .Title) -}}
   {{- end -}}
   {{- $desc := "" -}}
   {{- if .Description -}}

@@ -66,31 +66,31 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
 [[menu.main]]
   identifier = "services"
   name = "Services"
-  url = "/bahamas-web-design-services/"
+  url = "/services/"
   weight = 1
 
 [[menu.main]]
   parent = "services"
   name = "Web Design"
-  url = "/bahamas-web-design-services/website-design-bahamas/"
+  url = "/services/web-design-bahamas/"
   weight = 1
 
 [[menu.main]]
   parent = "services"
   name = "Search Engine Optimization"
-  url = "/bahamas-web-design-services/seo-bahamas/"
+  url = "/services/seo-bahamas/"
   weight = 2
 
 [[menu.main]]
   parent = "services"
   name = "Digital Marketing"
-  url = "/bahamas-web-design-services/digital-marketing-bahamas/"
+  url = "/services/digital-marketing-bahamas/"
   weight = 3
 
 [[menu.main]]
   parent = "services"
   name = "Website Maintenance"
-  url = "/bahamas-web-design-services/website-maintenance/"
+  url = "/services/website-maintenance/"
   weight = 4
 
 [[menu.main]]

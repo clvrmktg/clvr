@@ -15,20 +15,20 @@
             <p>{{ .text }}</p>
             <ul class="[ benefits ][ mb--1 ]">
               {{ range .benefits }}
-              <li class="[ benefit ][ flex col-gap--0.5 ]">
+              <li class="[ benefit ][ grid col-gap--0.5 ]">
                 <span class="[ icon ][ pt--0.35 ]">{{ readFile "static/icons/circle-check.svg" | safeHTML }}</span>
-                <span>{{ .text | markdownify}}</span>
+                <div><h3 class="[ font--5 inline pb--0 ]">{{ .lead }}:</h3> {{ .text | markdownify}}</div>
               </li>
               {{end }}
             </ul>
             <p><strong>Stop missing out on customers</strong> — get a website that works for you.</p>
           <div class="[ flex flex--column lg:flex--row col-gap--1 row-gap--0.5 ]">
             {{ partial "buttons/ghost.html" (dict "url" "/about-us" "text" "More About Us")}}
-            {{ partial "buttons/primary.html" (dict "url" "/contact-us/" "text" "Get Your Quote")}}
+            {{ partial "buttons/primary.html" (dict "url" "/contact-us/" "text" "Get Started Today")}}
           </div>
       </div>
       <div class="[ o--1 ]">
-        {{partial "image.html" (dict "image" .image "ratio" "1:1" "helper" "r--10" "page" $)}}
+        {{partial "image.html" (dict "image" .image "ratio" "1:1" "helper" "lg:ratio--4:5 r--10" "page" $)}}
       </div>
     </div>
 </section>

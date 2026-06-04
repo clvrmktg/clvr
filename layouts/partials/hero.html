@@ -4,18 +4,18 @@
   <style>#hero {background-image: url('https://{{ $.Site.Params.twic }}.twic.pics{{ .RelPermalink }}?twic=v1/output=preview');}</style>
   <noscript><style>#hero {background-image: url('https://{{ $.Site.Params.twic }}.twic.pics{{ .RelPermalink }}');}</style></noscript>
   {{- end }}
-  <div class="[ wrapper ][ full-width content-grid section--padding ]">
+  <div class="[ wrapper ][ full-width content-grid ]">
     <div class="[ grid middle ]">
       <div class="[ hero__content ]">
         <div>
-          <div class="[ lead__heading ][ mb--1 ]">
+          {{/*  <div class="[ lead__heading ][ mb--1 ]">
             <h1 class="[ bar-before ][ relative font--5 font--400 upper flex flex--column row-gap--1 ]">{{ .Title }}</h1>
-          </div>
-          <h2 class="[ display ch--18 mb--0.5 ]">{{ .Page.Params.proposition_heading }}</h2>
+          </div>  */}}
+          <h1 class="[ display ch--18 mb--0.5 ]">{{ .Page.Params.proposition_heading }}</h1>
           <p class="[ ch--50 ]">{{ .Params.subtitle }}</p>
           <div class="[ grid gap--1 ]">
             <div class="[ flex flex--column lg:flex--row col-gap--1 row-gap--0.5 ]">
-              {{ partial "buttons/primary.html" (dict "url" "/contact-us/" "text" "Get Your Quote")}}
+              {{ partial "buttons/primary.html" (dict "url" "/contact-us/" "text" "Get Started Today")}}
             </div>
             {{ partial "reviews/trust-badge.html" . }}
           </div>
@@ -35,9 +35,9 @@
       <div class="[ hero__content ]">
         {{ if .Params.subhead }}
         <div class="[ lead__heading ][ mb--1 ]">
-          <h1 class="[ bar-before ][ relative font--5 font--400 upper flex flex--column row-gap--1 ]">{{ .Title }}</h1>
+          <span class="[ bar-before ][ relative font--5 font--400 upper flex flex--column row-gap--1 ]">{{ .Title }}</span>
         </div>
-        <h2 class="[ font--1 ch--18 pb--0 mb--0.5 ]">{{ .Params.proposition_heading }}</h2>
+        <h1 class="[ ch--18 pb--0 mb--0.5 ]">{{ .Params.proposition_heading }}</h1>
         <p>{{ .Params.subhead }}</p>
         {{- else -}}
         <h1 class="[ merriweather ]">{{ .Title }}</h1>
