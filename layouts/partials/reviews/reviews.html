@@ -1,17 +1,21 @@
+{{- if and (eq hugo.Environment "production") (not hugo.IsServer) -}}
 {{- $placeId := site.Params.google.place_id -}}
 {{- $apiKey  := site.Params.google.api_key -}}
 
+{{- if and $placeId $apiKey -}}
 {{- $url := printf "https://maps.googleapis.com/maps/api/place/details/json?place_id=%s&fields=name,rating,user_ratings_total,reviews(author_name,profile_photo_url,rating,text,time)&key=%s" (urlquery $placeId) (urlquery $apiKey) -}}
-{{ $remote := resources.GetRemote $url }}
-{{ $json := $remote.Content | transform.Unmarshal }}
+{{- with resources.GetRemote $url -}}
+{{- $json := .Content | transform.Unmarshal -}}
 
-{{ $all := slice }}
-{{ range $json.result.reviews }}
-  {{ if and (ge .rating 4) (ne .text "") }}
-    {{ $all = $all | append . }}
-  {{ end }}
-{{ end }}
-{{ if gt (len $all) 0 }}
+{{- $all := slice -}}
+{{- if eq $json.status "OK" -}}
+  {{- range $json.result.reviews -}}
+    {{- if and (ge .rating 4) (ne .text "") -}}
+      {{- $all = $all | append . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if gt (len $all) 0 -}}
 <section class="[ full-width content-grid section--padding layout--spacing bg:blue--50 ]" aria-labelledby="reviews-heading">
   <div class="[ grid center text--center ]">
     <h2 id="reviews-heading" class="[ grid row-gap--0.5 ]">
@@ -72,7 +76,10 @@
     <a href="{{ $reviewsUrl }}" target="_blank" rel="noopener">Read more reviews</a>
   </div>
 </section>
-{{ end }}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
 
 
 {{/* 

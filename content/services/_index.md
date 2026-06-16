@@ -2,7 +2,7 @@
 date = 2024-11-25T07:05:00-04:00
 draft = false
 
-title = "Web Design, SEO & Digital Marketing Services in The Bahamas | Clever Marketing"
+title = "Web Design, SEO & Digital Marketing Services in The Bahamas"
 description = "Professional Bahamas web design and digital marketing services for small businesses. Fast, secure, SEO-friendly websites that help your brand grow online."
 
 # Hero
