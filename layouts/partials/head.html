@@ -1,7 +1,8 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   {{- $pageTitle := "" -}}
-  {{- $pageTitle = printf "%s | Clever" (.Params.longTitle | default .Title) -}}
+  {{- $titleBase := .Params.longTitle | default .Title -}}
+  {{- $pageTitle = cond (strings.Contains $titleBase "|") $titleBase (printf "%s | %s" $titleBase .Site.Title) -}}
   {{- $desc := "" -}}
   {{- if .Description -}}
     {{- $desc = .Description -}}

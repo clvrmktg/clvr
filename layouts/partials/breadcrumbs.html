@@ -14,14 +14,14 @@
     {{- if not .IsHome -}}
     <li class="[ breadcrumb ][ font--600 ]">
       <a class="[ breadcrumb__link ]" href="{{ .RelPermalink }}" data-prefetch>
-        {{ .LinkTitle }}
+        {{ .Params.heading | default .LinkTitle | default .Title }}
       </a>
     </li>
     {{- end -}}
   {{- end -}}
     <li class="[ breadcrumb ][ font--600 ]">
       <a class="[ breadcrumb__link--last ]" href="{{ .RelPermalink }}" aria-current="page" data-prefetch>
-        {{ .LinkTitle }}
+        {{ .Params.heading | default .LinkTitle | default .Title }}
       </a>
     </li>
   </ol>

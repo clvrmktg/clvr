@@ -2,13 +2,13 @@
 date = 2024-11-25T07:05:00-04:00
 draft = false
 
-description = "Looking to launch or grow your business online? Explore Clever's core services—from custom web design and local SEO to digital marketing and site maintenance."
+title = "Web Design, SEO & Digital Marketing Services in The Bahamas | Clever Marketing"
+description = "Professional Bahamas web design and digital marketing services for small businesses. Fast, secure, SEO-friendly websites that help your brand grow online."
 
 # Hero
-title = 'Services'
-longTitle = 'Web Design, SEO & Digital Marketing Services'
-proposition_heading = "Digital Services Built to Grow Your Business"
-subhead = "From custom web design and Google rankings to hands-free site maintenance, our Nassau team has you covered. Explore our four core services below to find the perfect fit for your business."
+heading = "Our Services"
+proposition_heading = "Bahamas Web Design, SEO & Digital Marketing That Deliver Results"
+subhead = "We help Bahamian businesses look professional online, rank higher in search, and reach more customers. From website design and SEO to ongoing maintenance, we handle the technical details so you can focus on running your business."
 
 # [hero]
 # path = "bahamas-business-owner-using-tablet-web-design.jpg"
@@ -35,24 +35,24 @@ description = "Visitors become customers. Clear calls to action turn new visitor
 icon= "user-plus.svg"
 
 [[faqs.items]]
-question = "Which digital service should my business start with?"
-answer = "If you don't have an online presence yet, we recommend starting with our custom Web Design packages, then layer in local SEO and marketing to grow your traffic. If you already have an active site but aren't generating leads, a targeted SEO and Digital Marketing audit is usually the best place to start."
+question = "Which service should I start with?"
+answer = "If you don't have a website yet, we recommend starting with Web Design, then adding SEO and marketing to grow your audience. If you already have a site but aren't seeing results, SEO and Digital Marketing may be the right place to start."
 
 [[faqs.items]]
-question = "Can I combine web design and SEO into a custom package?"
-answer = "Yes — most of our clients combine custom Web Design with local SEO or Digital Marketing campaigns for maximum impact. We will build a tailored digital strategy that fits your exact growth goals and marketing budget."
+question = "Can I combine services into one package?"
+answer = "Yes — many clients combine Web Design with SEO or Digital Marketing for the best results. We'll create a custom plan that fits your goals and budget."
 
 [[faqs.items]]
-question = "Do you work with businesses outside Nassau and across the Family Islands?"
-answer = "Absolutely. While we are based in Nassau, we work with businesses across the Family Islands (including Grand Bahama, Abaco, and Exuma) as well as international clients. We use seamless online collaboration tools to keep your project moving forward smoothly regardless of your location."
+question = "Do you work with businesses outside Nassau?"
+answer = "Absolutely. We work with clients across the Family Islands and internationally, using online tools to keep projects moving smoothly."
 
 [[faqs.items]]
-question = "Can you redesign or update my existing website instead of building a new one?"
-answer = "In many cases, yes. If your current platform has a solid foundation, we can make targeted improvements to upgrade its mobile design, optimize page speed, fix broken SEO elements, or refresh content without requiring a costly full rebuild."
+question = "Can you update my existing website instead of building a new one?"
+answer = "In many cases, yes. If your current site is in good shape, we can make targeted improvements in design, speed, SEO, or content without a full rebuild."
 
 [[faqs.items]]
-question = "How do I know if my business needs a monthly website maintenance plan?"
-answer = "If your site has outdated content, broken layout features, slow loading times, or hasn't had critical security updates in months, a professional website maintenance plan is essential. Regular updates protect your digital investment and keep your user experience pristine for search engines."
+question = "How do I know if I need website maintenance?"
+answer = "If your site has outdated content, broken features, or hasn't had security updates in months, maintenance is a smart investment to protect and improve it."
 
 
 [sitemap]

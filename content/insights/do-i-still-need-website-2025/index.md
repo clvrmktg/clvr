@@ -122,6 +122,4 @@ From building credibility and boosting visibility to future-proofing your growth
 
 At Clever, we design websites that don't just look good—they help your business grow. If you're ready to move beyond social media and start building an online presence that actually works for you, we can help.  
 
-👉 [Learn more about our web design services today.](/bahamas-web-design-services/website-design-bahamas/)  
-
-
+👉 [Learn more about our web design services today.](/services/web-design-bahamas/)

@@ -93,9 +93,9 @@ icon = "headset.svg"
 [[faqs.items]]
 question = "How much does a custom website cost in The Bahamas?"
 answer = """
-The cost depends on your site's size, features, and complexity. 
+The cost depends on your site's size, features, and complexity.
 
-At Clever, our transparent web design packages start at $500 for a single-page layout and $1,500 for a standard five-page business site. 
+At Clever, our transparent web design packages start at $500 for a single-page layout and $1,500 for a standard five-page business site.
 
 We offer custom pricing for advanced features or e-commerce integrations, alongside a free price calculator for an instant, hassle-free estimate.
 """

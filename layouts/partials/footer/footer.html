@@ -1,9 +1,10 @@
 <footer id="site-footer" class="[ footer ][ white ]">
+  {{- $legalName := site.Params.legalName | default site.Title -}}
   <div class="[ content-grid section--padding ]">
     <div class="[ wrapper ][ grid col-gap--3 row-gap--4 ]">
       <div class="[ slogan ]">
         <div class="[ grid row-gap--1 ]">
-          <a class="[ logo ][ flex middle ]" href="/" aria-label="{{ site.Title }} — Home" {{ if .IsHome }}aria-current="page"{{ end }} rel="home">
+          <a class="[ logo ][ flex middle ]" href="/" aria-label="{{ $legalName }} — Home" {{ if .IsHome }}aria-current="page"{{ end }} rel="home">
             {{ readFile "static/icons/logo.svg" | safeHTML }}
           </a>
           <small>Digital solutions. Real world results.</small>
@@ -124,7 +125,7 @@
         {{end}}
         </ul>
       </nav>
-      <small class="[ o--2 lg:o--1 ]">© {{ time.Now.Format "2006"}} Clever Marketing, Ltd. All rights reserved.</small>
+      <small class="[ o--2 lg:o--1 ]">© {{ now.Year }} {{ $legalName }} All rights reserved.</small>
     </div>
   </div>
 </footer>

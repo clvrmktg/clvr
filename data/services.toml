@@ -6,8 +6,8 @@ subhead = "We don't just put you online — we build websites that bring custome
 [[services.items]]
 key   = "web-design"
 title = "Web Design"
-blurb = "High-performing, fast, and secure websites tailored specifically for businesses in The Bahamas."
-href  = "/bahamas-web-design-services/website-design-bahamas/"
+blurb = "Custom websites built for speed, mobile performance, and conversion — designed for businesses in The Bahamas."
+href  = "/services/web-design-bahamas/"
 icon = "responsive-glow-up.svg"
 
 [[services.items]]
@@ -15,18 +15,18 @@ key   = "seo"
 title = "Local SEO"
 blurb = "Strategies to help your Bahamian business rank higher on local search results and reach nearby customers."
 cta   = "Request an SEO Review"
-href  = "/bahamas-web-design-services/seo-bahamas/"
+href  = "/services/seo-bahamas/"
 
 [[services.items]]
 key   = "digital-marketing"
 title = "Digital Marketing"
 blurb = "Social media, PPC, and email campaigns tailored to your audience in The Bahamas."
 cta   = "Plan a Campaign"
-href  = "/bahamas-web-design-services/digital-marketing-bahamas/"
+href  = "/services/digital-marketing-bahamas/"
 
 [[services.items]]
 key   = "maintenance"
 title = "Website Maintenance"
 blurb = "Keeping your site secure, updated, and running smoothly so you can focus on your business."
 cta   = "Start Maintenance"
-href  = "/bahamas-web-design-services/website-maintenance/"
+href  = "/services/website-maintenance/"

@@ -24,12 +24,16 @@
   "closes"  "17:00"
 ) -}}
 
+{{- $name := site.Params.shortname | default site.Title -}}
+{{- $legalName := site.Params.legalName | default site.Title -}}
+{{- $alternateName := site.Params.alternateName | default $legalName -}}
+
 {{- /* Base schema object */ -}}
 {{- $schema := dict
   "@context" "https://schema.org"
   "@type"    "ProfessionalService"
   "@id"      (print .Site.BaseURL "#localbusiness")
-  "name"     site.Title
+  "name"     $name
   "url"      .Site.BaseURL
   "telephone" "+1-242-376-3340"
   "email"     "lets@getclever.marketing"
@@ -52,8 +56,10 @@
   "openingHoursSpecification" $hours
 -}}
 
-{{- $short := site.Params.shortname | default "Clever" -}}
-{{- $schema = merge $schema (dict "legalName" site.Title "alternateName" $short) -}}
+{{- $schema = merge $schema (dict
+  "legalName" $legalName
+  "alternateName" $alternateName
+) -}}
 
 {{- if gt (len $sameAs) 0 -}}
   {{- $schema = merge $schema (dict "sameAs" $sameAs) -}}

@@ -3,7 +3,7 @@
 .container
   display: grid
   grid-template-rows: [ navbar-start ] max-content [ navbar-end main-start ] 1fr [main-end cta-start] max-content [cta-end footer-start] max-content [footer-end]
-  +svh(min-height, 100)
+  +dvh(min-height, 100)
 
 .navbar
   grid-row: navbar
@@ -88,9 +88,10 @@
 
 +display(flex, lg)
 
++direction(col)
 +direction(column)
-+direction(column, 'md')
-+direction(column, 'lg')
++direction(col, 'md')
++direction(col, 'lg')
 
 +direction(row)
 +direction(row, 'md')

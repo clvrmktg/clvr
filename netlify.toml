@@ -117,9 +117,13 @@ for = "/*"
   status = 301
   force = true
 
-# --- REMOVED OLD LOOP REGEX — NEW CLEAN SERVICES MAPPING ---
+# --- Services -> new Services hub & pages ---
+[[redirects]]
+  from = "/bahamas-web-design-services/"
+  to = "/services/"
+  status = 301
+  force = true
 
-# 1. Map the old bloated paths to the new flat structure
 [[redirects]]
   from = "/bahamas-web-design-services/website-design-bahamas/"
   to = "/services/web-design-bahamas/"
@@ -144,7 +148,6 @@ for = "/*"
   status = 301
   force = true
 
-# 2. Map the very old legacy paths to the new flat structure (Catch-all insurance)
 [[redirects]]
   from = "/services/website-design"
   to = "/services/web-design-bahamas/"
@@ -160,13 +163,6 @@ for = "/*"
 [[redirects]]
   from = "/services/seo"
   to = "/services/seo-bahamas/"
-  status = 301
-  force = true
-
-# 3. Handle the main hub root cleanly
-[[redirects]]
-  from = "/bahamas-web-design-services/"
-  to = "/services/"
   status = 301
   force = true
 
@@ -204,7 +200,7 @@ for = "/*"
 
 [[redirects]]
   from = "/bahamas-web-design"
-  to = "/"
+  to = "/services/web-design-bahamas/"
   status = 301
   force = true
 
@@ -213,5 +209,3 @@ for = "/*"
   to = "/terms-of-service/"
   status = 301
   force = true
-
-

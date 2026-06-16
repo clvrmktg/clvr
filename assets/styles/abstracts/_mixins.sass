@@ -509,6 +509,14 @@
     #{$property}: #{$value}svh
 
 
+=dvh($property, $value)
+  &
+    #{$property}: #{$value}vh
+
+  @supports (#{$property}: #{$value}dvh)
+    #{$property}: #{$value}dvh
+
+
 =display($value, $breakpoint: null)
   $breakpoints: (sm: phone, md: tablet, lg: desktop, xl: xl)
   @if map.get($breakpoints, $breakpoint) != null
@@ -521,54 +529,22 @@
       display: $value
 
 =direction($value, $breakpoint: null)
+  // Shorthand map
+  $map: (row: row, col: column)
+
+  // Translate shorthand if it exists, else keep as-is
+  $resolved: if(map.has-key($map, $value), map.get($map, $value), $value)
+
   $breakpoints: (sm: phone, md: tablet, lg: desktop, xl: xl)
-  @if map.get($breakpoints, $breakpoint) != null
+
+  @if map.has-key($breakpoints, $breakpoint)
     .#{$breakpoint}\:flex--#{$value}
       +breakpoint(map.get($breakpoints, $breakpoint))
-        flex-direction: $value
-
+        flex-direction: $resolved
   @else
     .flex--#{$value}
-      flex-direction: $value
+      flex-direction: $resolved
 
 =radius($value)
   .r--#{$value}
     border-radius: rem($value)
-
-=align($value, $breakpoint: null)
-  $breakpoints: (sm: phone, md: tablet, lg: desktop, xl: xl)
-  @if map.get($breakpoints, $breakpoint) != null
-    .#{$breakpoint}\:#{$value}
-      +breakpoint(map.get($breakpoints, $breakpoint))
-        align-items: $value
-
-  @else
-    .#{$value}
-      align-items: $value
-
-=justify($value, $breakpoint: null)
-  $breakpoints: (sm: phone, md: tablet, lg: desktop, xl: xl)
-  @if map.get($breakpoints, $breakpoint) != null
-    .#{$breakpoint}\:align-#{$value}
-      +breakpoint(map.get($breakpoints, $breakpoint))
-        justify-content: $value
-
-  @else
-    .align-#value
-      justify-content: $value
-
-=text-align($value, $breakpoint: null)
-  $breakpoints: (sm: phone, md: tablet, lg: desktop, xl: xl)
-  @if map.get($breakpoints, $breakpoint) != null
-    .#{$breakpoint}\:text--#{$value}
-      +breakpoint(map.get($breakpoints, $breakpoint))
-        text-align: $value
-
-  @else
-    .text--#value
-      text-align: $value
-
-
-=width($value)
-  .x--#{$value}
-    max-width: rem($value)

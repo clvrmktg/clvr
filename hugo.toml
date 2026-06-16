@@ -1,6 +1,6 @@
 baseURL = 'https://getclever.marketing/'
 languageCode = 'en-us'
-title = 'Clever Marketing, Ltd.'
+title = 'Clever'
 enableGitInfo = true
 
 [sass]
@@ -31,7 +31,9 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
 
 
 [params]
-  short = "Clever"
+  shortname = "Clever"
+  alternateName = "Clever Marketing"
+  legalName = "Clever Marketing, Ltd."
   twic = "clvrmktg"
   share = "/fallbacks/clvr-cover.jpg"
   logo = "/logo.jpg"
