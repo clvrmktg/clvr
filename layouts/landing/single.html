@@ -1,0 +1,215 @@
+{{- define "variables" -}}
+{{- .Store.Set "hasTwic" true -}}
+{{- .Store.Set "webpageType" "WebPage" -}}
+{{- end -}}
+
+{{- define "main" -}}
+  {{- with .Params.hero -}}
+  <header class="[ landing-hero ][ full-width content-grid section--padding ]">
+    <div class="[ grid lg:col--2 middle col-gap--4 row-gap--3 ]">
+      <div class="[ landing-hero__content ][ grid row-gap--1 ]">
+        <h1>{{ .heading }}</h1>
+        <p class="[ landing-hero__lead font--4 ]">{{ .text }}</p>
+        {{- with .cta -}}
+        <div class="[ landing-hero__actions ][ flex wrap col-gap--0.75 row-gap--0.75 ]">
+          <a class="[ btn btn--lg btn--cta ]" href="{{ .url }}" data-prefetch>
+            <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
+              <span>{{ .text }}</span>
+              <span class="[ arrow-right ]">{{ readFile "static/icons/arrow-right.svg" | safeHTML }}</span>
+            </span>
+          </a>
+          {{- with $.Params.hero.secondary_cta -}}
+          <a class="[ btn btn--lg btn--ghost ]" href="{{ .url }}" data-prefetch>
+            <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
+              <span>{{ .text }}</span>
+              <span class="[ arrow-right ]">{{ readFile "static/icons/arrow-right.svg" | safeHTML }}</span>
+            </span>
+          </a>
+          {{- end -}}
+        </div>
+        {{- end -}}
+      </div>
+      {{- with .image -}}
+      <div class="[ landing-hero__media ]">
+        {{ partial "image.html" (dict "image" . "ratio" "4:3" "helper" "r--10" "page" $) }}
+      </div>
+      {{- end -}}
+    </div>
+  </header>
+  {{- end -}}
+
+  {{- with .Params.pain_points -}}
+  <section class="[ landing-section section--padding ]" aria-labelledby="pain-heading">
+    <div class="[ grid center text--center row-gap--0.5 mb--2 ]">
+      <h2 id="pain-heading">{{ .heading }}</h2>
+    </div>
+    <ul class="[ landing-card-grid ][ grid md:col--2 gap--1.5 ]">
+      {{- range .items -}}
+      <li class="[ landing-card ][ grid row-gap--0.75 p--1.5 r--10 ]">
+        <span class="[ landing-icon ][ flex center middle ]" aria-hidden="true">
+          {{- $icon := .icon | default "alert-triangle.svg" -}}
+          {{- readFile (printf "static/icons/tabler/%s" $icon) | safeHTML -}}
+        </span>
+        <h3>{{ .heading }}</h3>
+        <p>{{ .body }}</p>
+      </li>
+      {{- end -}}
+    </ul>
+  </section>
+  {{- end -}}
+
+  {{- with .Params.pricing -}}
+  <section id="website-packages" class="[ landing-section landing-pricing ][ full-width content-grid bg:blue--50 section--padding ]" aria-labelledby="pricing-heading">
+    <div class="[ grid center text--center row-gap--0.5 mb--2 ]">
+      <h2 id="pricing-heading">{{ .heading }}</h2>
+      {{- with .text -}}<p class="[ ch--60 ]">{{ . }}</p>{{- end -}}
+    </div>
+    <div class="[ pricing-grid ][ grid lg:col--2 gap--1.5 ]">
+      {{- range .packages -}}
+      <article class="[ price-card{{ if .featured }} price-card--featured{{ end }} ][ grid row-gap--1 p--1.5 r--10 ]">
+        <div class="[ flex between middle gap--1 ]">
+          <h3>{{ .title }}</h3>
+          {{- if .featured -}}<span class="[ price-card__tag font--700 ]">Most Popular</span>{{- end -}}
+        </div>
+        <p class="[ price-card__price ]">{{ .price }}</p>
+        {{- with .description -}}<p>{{ . }}</p>{{- end -}}
+        <ul class="[ grid row-gap--0.5 ]">
+          {{- range .features -}}
+          <li class="[ flex col-gap--0.5 ]"><span class="[ check ]" aria-hidden="true">{{ readFile "static/icons/checkmark.svg" | safeHTML }}</span><span>{{ . }}</span></li>
+          {{- end -}}
+        </ul>
+        {{- with .cta -}}
+        <a class="[ btn btn--lg btn--primary ]" href="{{ .url }}" data-prefetch>
+          <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
+            <span>{{ .text }}</span>
+            <span class="[ arrow-right ]">{{ readFile "static/icons/arrow-right.svg" | safeHTML }}</span>
+          </span>
+        </a>
+        {{- end -}}
+      </article>
+      {{- end -}}
+    </div>
+  </section>
+  {{- end -}}
+
+  {{- with .Params.included -}}
+  <section class="[ landing-section section--padding ]" aria-labelledby="included-heading">
+    <div class="[ grid center text--center row-gap--0.5 mb--2 ]">
+      <h2 id="included-heading">{{ .heading }}</h2>
+      {{- with .text -}}<p class="[ ch--60 ]">{{ . }}</p>{{- end -}}
+    </div>
+    <div class="[ landing-card-grid ][ grid md:col--2 lg:col--3 gap--1.5 ]">
+      {{- range .items -}}
+      <article class="[ landing-card ][ grid row-gap--0.75 p--1.5 r--10 ]">
+        <h3>{{ .heading }}</h3>
+        <p>{{ .body }}</p>
+      </article>
+      {{- end -}}
+    </div>
+  </section>
+  {{- end -}}
+
+  {{- with .Params.addons -}}
+  <section class="[ landing-section section--padding ]" aria-labelledby="addons-heading">
+    <div class="[ grid center text--center row-gap--0.5 mb--2 ]">
+      <h2 id="addons-heading">{{ .heading }}</h2>
+      {{- with .text -}}<p class="[ ch--60 ]">{{ . }}</p>{{- end -}}
+    </div>
+    <div class="[ landing-card-grid ][ grid md:col--2 gap--1.5 ]">
+      {{- range .items -}}
+      <article class="[ landing-card ][ grid row-gap--0.75 p--1.5 r--10 ]">
+        <h3>{{ .heading }}</h3>
+        <p>{{ .body }}</p>
+      </article>
+      {{- end -}}
+    </div>
+  </section>
+  {{- end -}}
+
+  {{- with .Params.why_choose -}}
+  <section class="[ landing-section landing-proof ][ full-width content-grid bg:blue--50 section--padding ]" aria-labelledby="why-heading">
+    <div class="[ grid center text--center row-gap--0.5 mb--2 ]">
+      <h2 id="why-heading">{{ .heading }}</h2>
+    </div>
+    <div class="[ landing-card-grid ][ grid md:col--2 lg:col--3 gap--1.5 ]">
+      {{- range .items -}}
+      <article class="[ landing-card ][ grid row-gap--0.75 p--1.5 r--10 ]">
+        <h3>{{ .heading }}</h3>
+        <p>{{ .body }}</p>
+      </article>
+      {{- end -}}
+    </div>
+  </section>
+  {{- end -}}
+
+  {{- with .Params.process -}}
+  <section class="[ landing-section section--padding ]" aria-labelledby="process-heading">
+    <div class="[ grid center text--center row-gap--0.5 mb--2 ]">
+      <h2 id="process-heading">{{ .heading }}</h2>
+    </div>
+    <ol class="[ process-grid ][ grid md:col--2 lg:col--4 gap--1.5 ]">
+      {{- range $index, $item := .items -}}
+      <li class="[ process-step ][ grid row-gap--0.75 p--1.5 r--10 ]">
+        <span class="[ process-step__number font--700 ]">{{ printf "%02d" (add $index 1) }}</span>
+        <h3>{{ .heading }}</h3>
+        <p>{{ .body }}</p>
+      </li>
+      {{- end -}}
+    </ol>
+  </section>
+  {{- end -}}
+
+  {{- with .Params.portfolio -}}
+    {{- $portfolio := site.GetPage "section" "portfolio" -}}
+    {{- with $portfolio -}}
+      {{- $items := first 3 (.Pages.ByWeight) -}}
+      {{- if gt (len $items) 0 -}}
+  <section class="[ full-width content-grid layout--spacing section--padding bg:blue--50 ]" aria-labelledby="landing-portfolio-heading">
+    <div class="[ lg:flex between ]">
+      <div>
+        <h2 id="landing-portfolio-heading" class="[ grid row-gap--0.5 ]">
+          {{- with $.Params.portfolio.key -}}<span class="[ key ][ font--5 upper clever--blue ]">{{ . }}</span>{{- end -}}
+          <span>{{ $.Params.portfolio.heading }}</span>
+        </h2>
+        {{- with $.Params.portfolio.text -}}<p class="[ font--4 ch--35 ]">{{ . }}</p>{{- end -}}
+      </div>
+      {{- with $.Params.portfolio.cta -}}
+      <div>
+        <a class="[ btn btn--lg btn--ghost ]" href="{{ .url }}" data-prefetch>
+          <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
+            <span>{{ .text }}</span>
+            <span class="[ arrow-right ]">{{ readFile "static/icons/arrow-right.svg" | safeHTML }}</span>
+          </span>
+        </a>
+      </div>
+      {{- end -}}
+    </div>
+    {{ partial "projects.html" (dict "pages" $items) }}
+  </section>
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{ partial "reviews/reviews.html" . }}
+
+  {{ partial "faqs.html" . }}
+
+  {{- with .Params.final_cta -}}
+  <section class="[ landing-final ][ full-width content-grid section--padding ]" aria-labelledby="final-cta-heading">
+    <div class="[ grid center text--center row-gap--1 ]">
+      <h2 id="final-cta-heading">{{ .heading }}</h2>
+      <p class="[ font--4 ch--60 ]">{{ .text }}</p>
+      {{- with .cta -}}
+      <div>
+        <a class="[ btn btn--lg btn--cta ]" href="{{ .url }}" data-prefetch>
+          <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
+            <span>{{ .text }}</span>
+            <span class="[ arrow-right ]">{{ readFile "static/icons/arrow-right.svg" | safeHTML }}</span>
+          </span>
+        </a>
+      </div>
+      {{- end -}}
+    </div>
+  </section>
+  {{- end -}}
+{{- end -}}

@@ -1,17 +1,31 @@
 +++
 date = 2024-11-25T07:00:00-04:00
 draft = false
-description = "Contact Clever, Bahamas web design experts. Reach our Nassau team for websites, SEO, and digital marketing tailored to local businesses."
+description = "Contact Clever to discuss your website, Local SEO, or website maintenance needs. Tell us about your project and we'll get back to you within one business day."
 
 title = 'Contact Us'
-proposition_heading = "Bahamas Web Design Experts"
+proposition_heading = "Let's Discuss Your Project"
 # Need to fill this... this will go in the hero
-subhead = "Get in touch with Clever Marketing for web design, SEO, and digital solutions tailored to businesses in The Bahamas."
+subhead = "Tell us about your business and what you're looking to achieve. We'll review your request and get back to you as soon as possible."
 
 
 [intro]
-heading = "How to Reach Us"
-text = "Getting started is simple. Fill out the form with your details and let us know how we can help. Whether you're exploring a new website, need SEO support, or ongoing maintenance, our team will respond quickly to guide you through the next steps."
+heading = "What Happens Next?"
+text = """
+1. Submit your request.
+2. We'll review your information.
+3. We'll contact you within one business day.
+4. We'll recommend the best solution for your business.
+"""
+
+[trust]
+heading = "Why Work With Clever?"
+items = [
+  "Transparent pricing",
+  "Direct communication",
+  "No long-term contracts",
+  "Local support from Nassau, Bahamas"
+]
 
 
 +++

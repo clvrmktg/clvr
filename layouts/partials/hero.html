@@ -15,7 +15,7 @@
           <p class="[ ch--50 ]">{{ .Params.subtitle }}</p>
           <div class="[ grid gap--1 ]">
             <div class="[ flex flex--column lg:flex--row col-gap--1 row-gap--0.5 ]">
-              {{ partial "buttons/primary.html" (dict "url" "/contact-us/" "text" "Get Started Today")}}
+              {{ partial "buttons/primary.html" (dict "url" "/contact-us/" "text" "Let's Talk")}}
             </div>
             {{ partial "reviews/trust-badge.html" . }}
           </div>
@@ -34,9 +34,6 @@
     <div class="[ grid middle md:col--2 ]">
       <div class="[ hero__content ]">
         {{ if .Params.subhead }}
-        <div class="[ lead__heading ][ mb--1 ]">
-          <span class="[ bar-before ][ relative font--5 font--400 upper flex flex--column row-gap--1 ]">{{ .Title }}</span>
-        </div>
         <h1 class="[ ch--18 pb--0 mb--0.5 ]">{{ .Params.proposition_heading }}</h1>
         <p>{{ .Params.subhead }}</p>
         {{- else -}}

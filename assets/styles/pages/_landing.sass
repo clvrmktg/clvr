@@ -1,0 +1,108 @@
+@use '../abstracts' as *
+
+.landing-hero
+  background-color: color('section-background')
+
+  h1
+    max-width: 13ch
+
+  &__lead
+    max-width: 58ch
+
+  &__media
+    align-self: stretch
+
+    figure,
+    picture
+      height: 100%
+
+  &__actions
+    align-items: center
+
+.landing-eyebrow
+  color: color('clever-blue')
+  letter-spacing: 0
+
+.landing-card,
+.price-card,
+.process-step
+  background-color: color('white')
+  border: rem(1) solid color('grey-300')
+  box-shadow: 0 rem(14) rem(35) rgba(13, 17, 23, 0.06)
+
+.landing-card
+  align-content: start
+
+  p
+    padding-bottom: 0
+
+.landing-icon
+  width: rem(44)
+  aspect-ratio: 1
+  color: color('clever-blue')
+  background-color: color('section-background')
+  border-radius: rem(8)
+
+  svg
+    width: rem(24)
+    stroke: currentColor
+
+.price-card
+  position: relative
+  align-content: start
+
+  &--featured
+    border-color: color('clever-blue')
+    box-shadow: 0 rem(18) rem(45) rgba(20, 100, 255, 0.14)
+
+  &__tag
+    color: color('clever-navy')
+    background-color: color('clever-cta')
+    border-radius: rem(5)
+    padding: rem(4) rem(8)
+    white-space: nowrap
+
+  &__price
+    color: color('clever-navy')
+    font-size: var(--step-5)
+    font-weight: 800
+    line-height: 1
+    padding-bottom: 0
+
+  .check
+    color: color('clever-blue')
+    width: rem(18)
+    min-width: rem(18)
+
+    svg
+      fill: currentColor
+
+.process-step
+  list-style: none
+  align-content: start
+
+  &__number
+    color: color('clever-blue')
+    padding-bottom: 0
+
+.landing-final
+  color: color('white')
+  background-color: color('clever-navy')
+
+  h2
+    color: inherit
+
+  p
+    color: color('blue-grey')
+
+@media (max-width: 799px)
+  .landing-hero
+    text-align: center
+
+    h1,
+    &__lead
+      margin-inline: auto
+
+  .price-card
+    &__tag
+      white-space: normal

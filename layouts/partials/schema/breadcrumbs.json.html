@@ -15,13 +15,15 @@
   {{- with .Ancestors -}}
     {{- range .Reverse -}}
       {{- if not .IsHome -}}
-        {{- $nodes = $nodes | append (dict "name" .LinkTitle "url" .Permalink) -}}
+        {{- $name := .Params.heading | default .LinkTitle | default .Title -}}
+        {{- $nodes = $nodes | append (dict "name" $name "url" .Permalink) -}}
       {{- end -}}
     {{- end -}}
   {{- end -}}
 
   {{- /* Current page as final node (no URL) */ -}}
-  {{- $nodes = $nodes | append (dict "name" .LinkTitle "url" "") -}}
+  {{- $name := .Params.heading | default .LinkTitle | default .Title -}}
+  {{- $nodes = $nodes | append (dict "name" $name "url" "") -}}
 {{- end -}}
 
 {{- /* Build itemListElement */ -}}

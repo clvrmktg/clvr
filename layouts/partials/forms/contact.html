@@ -60,13 +60,26 @@ data-validate novalidate>
     </div>
 
     <!-- ====================
+      Current website field
+      ==================== -->
+    <div class="[ form__field ][ grid row-gap--0.5 ]">
+      <label class="[ form__label ][ font--500 font--600 ]" for="current_website">Current Website <span class="[ font--400 ]">(Optional)</span></label>
+      <input class="[ form__input ][ p--0.5 ]"
+        name="current_website" id="current_website" type="url"
+        placeholder="i.e. https://example.com"
+        autocomplete="url"
+        inputmode="url"
+        data-bouncer-message="Enter a full website URL, including https://." />
+    </div>
+
+    <!-- ====================
       Email and Phone fields
       ==================== -->
     <div class="[ grid md:col--2 gap--1 ]">
       <div>
         <div class="[ form__field ][ grid row-gap--0.5 ]">
           <label class="[ form__label ][ font--500 font--600 ]" for="email">
-            Email<abbr class="[ required ]" title="This field is required" aria-label="This field is required">*</abbr>
+            Email <abbr class="[ required ]" title="This field is required" aria-label="This field is required">*</abbr>
           </label>
           <input class="[ form__input ][ p--0.5 ]"
             name="email" id="email" type="email"
@@ -91,11 +104,38 @@ data-validate novalidate>
     </div>
 
     <!-- ====================
+      Service interest field
+      ==================== -->
+    <fieldset class="[ form__field ][ grid row-gap--0.5 ]">
+      <legend class="[ form__label ][ font--500 font--600 ]">
+        Service of Interest <abbr class="[ required ]" title="This field is required" aria-label="This field is required">*</abbr>
+      </legend>
+      <div class="[ grid md:col--2 gap--0.5 ]">
+        <label class="[ flex middle col-gap--0.5 ]" for="help_website_design">
+          <input id="help_website_design" type="radio" name="help_with" value="Website Design" required>
+          <span>Website Design</span>
+        </label>
+        <label class="[ flex middle col-gap--0.5 ]" for="help_website_maintenance">
+          <input id="help_website_maintenance" type="radio" name="help_with" value="Website Maintenance" required>
+          <span>Website Maintenance</span>
+        </label>
+        <label class="[ flex middle col-gap--0.5 ]" for="help_local_seo">
+          <input id="help_local_seo" type="radio" name="help_with" value="Local SEO" required>
+          <span>Local SEO</span>
+        </label>
+        <label class="[ flex middle col-gap--0.5 ]" for="help_not_sure">
+          <input id="help_not_sure" type="radio" name="help_with" value="I'm Not Sure" required>
+          <span>I'm Not Sure</span>
+        </label>
+      </div>
+    </fieldset>
+
+    <!-- ====================
       Message field
       ==================== -->
     <div class="[ form__field ][ grid row-gap--0.5 ]">
       <label class="[ form__label ][ font--500 font--600 ]" for="message">
-        Message<abbr class="[ required ]" title="This field is required" aria-label="This field is required">*</abbr>
+        Tell us about your project <abbr class="[ required ]" title="This field is required" aria-label="This field is required">*</abbr>
       </label>
       <textarea class="[ form__message ][ p--0.5 ]"
         name="message" id="message"
@@ -130,7 +170,7 @@ data-validate novalidate>
       <button class="[ btn btn--lg btn--primary ]"
         form="contact" type="submit" value="submit">
         <span class="[ btn__text ][ flex center middle col-gap--0.25 ]">
-          <span>Send</span>
+          <span>Request Consultation</span>
           <span class="[ arrow-right ]">
             {{ readFile "static/icons/arrow-right.svg" | safeHTML }}
           </span>

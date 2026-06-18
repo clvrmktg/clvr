@@ -8,54 +8,66 @@
 <div class="[ grid lg:col--2 col-gap--4 layout--spacing section--padding lg:py--0 ]">
   <div class="[ lg:py--5 ]">
     <div class="[ grid row-gap--1 ]">
-      {{with .Params.intro }}
+      {{ with .Params.intro }}
+      <!-- What Happens Next - Start -->
       <section aria-labelledby="intro-heading">
           <h2 id="intro-heading">{{ .heading }}</h2>
-          <p>{{ .text }}</p>
-      </section>
+          <div class="[ longform ]">{{ .text | markdownify }}</div>
+      </section>      
+      <!-- What Happens Next - End -->
       {{ end }}
-      <section class="contact-details" aria-labelledby="contact-title">
-        <h2 id="contact-title" class="[ font--3 ]">Contact Details</h2>
-      
-        <p>
-          <strong>Clever Marketing, Ltd.</strong>
-          <br>
-          Bahamas Web Design &amp; Marketing
-        </p>
-        <address>
-          <p>Shirley Street
-            <br>
-          Nassau, Bahamas</p>
-          <dl class="contact-list">
-            <div class="[ contact-list__row ][ flex col-gap--0.5 ]">
-              <dt class="[ font--700 ]">Phone:</dt>
-              <dd>
-                <template obscure="obscure" data-p1="+1" data-p2="242" data-p3="376" data-p4="3340">
-                  <a href="tel:%1%2%3%4" aria-label="Call Clever Marketing at (%2) %3-%4">(%2) %3-%4</a>
-                </template>
-              </dd>
-            </div>
-            <div class="[ contact-list__row ][ flex col-gap--0.5 ]">
-              <dt class="[ font--700 ]">Email:</dt>
-              <dd>
-                <template obscure="obscure" data-p1="lets" data-p2="getclever.marketing" aria-label="Email Clever Marketing at %1@%2"><a href="mailto:%1@%2">%1@%2</a></template>
-              </dd>
-            </div>
-          </dl>
-        </address>
+      {{ with .Params.trust }}
+      <!-- Trust Section - Start -->
+      <section aria-labelledby="trust-heading">
+        <h2 id="trust-heading">{{ .heading }}</h2>
+        <ul class="[ contact-trust benefits ][ mb--1 ]">
+          {{ range .items }}
+          <li class="[ benefit ][ grid col-gap--0.5 ]">
+            <span class="[ icon ][ pt--0.35 ]" aria-hidden="true">{{ readFile "static/icons/circle-check.svg" | safeHTML }}</span>
+            <span>{{ . }}</span>
+          </li>
+          {{ end }}
+        </ul>
       </section>
-      <section class="business-hours" aria-labelledby="hours-title">
-        <h3 id="hours-title">Business Hours</h3>
-        <dl>
-          <div>
-            <dt>Monday – Friday</dt>
-            <dd>9:00 am – 5:00 pm (EST)</dd>
+      <!-- Trust Section - End -->
+      {{ end }}
+      <!-- Contact Details - Start -->
+      <section class="contact-details" aria-labelledby="contact-title">
+        <h2 id="contact-title" class="[ font--3 ]">Prefer to Contact Us Directly?</h2>
+        <dl class="contact-list">
+          <div class="[ contact-list__row ][ flex col-gap--0.5 ]">
+            <dt class="[ font--700 ]">Phone</dt>
+            <dd>
+              <template obscure="obscure" data-p1="+1" data-p2="242" data-p3="376" data-p4="3340">
+                <a href="tel:%1%2%3%4" aria-label="Call Clever Marketing at (%2) %3-%4">
+                  (%2) %3-%4
+                </a>
+              </template>
+            </dd>
           </div>
+      
+      <div class="[ contact-list__row ][ flex col-gap--0.5 ]">
+        <dt class="[ font--700 ]">Email</dt>
+        <dd>
+          <template obscure="obscure" data-p1="lets" data-p2="getclever.marketing">
+            <a href="mailto:%1@%2">%1@%2</a>
+          </template>
+        </dd>
+      </div>
+      
+      <div class="[ contact-list__row ][ flex col-gap--0.5 ]">
+        <dt class="[ font--700 ]">Available</dt>
+        <dd>Monday—Friday, 9:00 AM—5:00 PM (EST)</dd>
+      </div>
+      
+      <div class="[ contact-list__row ][ flex col-gap--0.5 ]">
+        <dt class="[ font--700 ]">Location</dt>
+        <dd>Nassau, Bahamas</dd>
+      </div>
+      
         </dl>
       </section>
-      <p class="follow-note">
-        Want to stay connected? <a href="#site-footer">Follow us on social media</a>.
-      </p>
+      <!-- Contact Details - End -->
       
     </div>
   </div>

@@ -48,6 +48,7 @@
     {{ if .Store.Get "hasForm" }}
     {{ partial "script.html" (dict "path" "scripts/vendor/bouncer.polyfills.js" "targetPath" "scripts/bouncer.js" "raw" true "attributes" (dict "defer" true))}}
     {{ partial "script.html" (dict "path" "scripts/components/validate.js" "targetPath" "scripts/validate.js") }}
+    {{ partial "script.html" (dict "path" "scripts/components/resend.js" "targetPath" "scripts/resend.js") }}
     {{ end }}
     {{ if .Store.Get "hasThankYou" }}
     {{ partial "script.html" (dict "path" "scripts/components/thank-you.js" "targetPath" "scripts/thank-you.js") }}
