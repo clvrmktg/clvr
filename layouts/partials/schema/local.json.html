@@ -24,9 +24,9 @@
   "closes"  "17:00"
 ) -}}
 
-{{- $name := site.Params.shortname | default site.Title -}}
+{{- $name := site.Title -}}
 {{- $legalName := site.Params.legalName | default site.Title -}}
-{{- $alternateName := site.Params.alternateName | default $legalName -}}
+{{- $alternateName := site.Params.alternateName | default site.Params.shortname | default site.Title -}}
 
 {{- /* Base schema object */ -}}
 {{- $schema := dict

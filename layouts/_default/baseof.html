@@ -18,13 +18,13 @@
                 (%2) %3-%4
               </a>
             </span>
+          </template>
         </div>
-        </template>
       </header>
       {{else}}
       {{ partial "navbar.html" (dict "context" . "currentPage" $currentPage) }}
       {{end}}
-      <main id="main" class="[ main ][ content-grid {{ if eq .Page.Kind "404" }} error {{ end }}]" id="main">
+      <main id="main" class="[ main ][ content-grid {{ if eq .Page.Kind "404" }} error {{ end }}]">
         {{ block "main" . -}}{{- end }}
       </main>
       {{- partial "footer/footer.html" . }}

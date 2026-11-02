@@ -58,3 +58,15 @@ This repository and its contents are © 2025 Clever Marketing, Ltd.
 All rights reserved. Unauthorized use, reproduction, or distribution is prohibited.  
 
 ---
+
+## Google reviews
+
+Production builds fetch Google reviews using Places API (New). Set the secret
+build environment variable `HUGO_GOOGLE_PLACES_API_KEY` in Netlify to a key from
+a project with billing and Places API (New) enabled. Restrict the key to that
+API; website referrer restrictions cannot be used for build requests.
+The business Place ID is configured in `hugo.toml` under `params.google`.
+
+After changing the key, trigger a production deploy with the build cache cleared.
+Reviews and the trust badge share one request per build. Local `hugo server`
+previews do not fetch or display reviews. Fetch failures produce a build warning.

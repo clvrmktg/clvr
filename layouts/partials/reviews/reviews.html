@@ -1,17 +1,9 @@
-{{- if and (eq hugo.Environment "production") (not hugo.IsServer) -}}
-{{- $placeId := site.Params.google.place_id -}}
-{{- $apiKey  := site.Params.google.api_key -}}
-
-{{- if and $placeId $apiKey -}}
-{{- $url := printf "https://maps.googleapis.com/maps/api/place/details/json?place_id=%s&fields=name,rating,user_ratings_total,reviews(author_name,profile_photo_url,rating,text,time)&key=%s" (urlquery $placeId) (urlquery $apiKey) -}}
-{{- with resources.GetRemote $url -}}
-{{- $json := .Content | transform.Unmarshal -}}
-
+{{- $place := partialCached "reviews/data.html" . -}}
 {{- $all := slice -}}
-{{- if eq $json.status "OK" -}}
-  {{- range $json.result.reviews -}}
-    {{- if and (ge .rating 4) (ne .text "") -}}
-      {{- $all = $all | append . -}}
+{{- with $place -}}
+  {{- range $place.reviews -}}
+    {{- if and (ge .rating 4) (ne (.text.text | default "") "") -}}
+      {{- $all = $all | append (dict "rating" .rating "text" .text.text "author_name" .authorAttribution.displayName "author_uri" .authorAttribution.uri "profile_photo_url" .authorAttribution.photoUri) -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
@@ -58,12 +50,11 @@
           </figure>
           {{ end }}
           <div class="[ grid row-gap--0.5 ]">
-            <cite class="[ font--600 ]">{{ .author_name }}</cite>
+            <cite class="[ font--600 ]">{{ with .author_uri }}<a href="{{ . }}" target="_blank" rel="noopener">{{ end }}{{ .author_name }}{{ if .author_uri }}</a>{{ end }}</cite>
             <div class="[ stars ][ flex middle ]">
               {{- $fullStars := int .rating -}}
               {{- $emptyStars := sub 5 $fullStars -}}
-              {{- range seq $fullStars -}}★{{- end -}}
-              {{- range seq $emptyStars -}}☆{{- end -}}
+              {{- strings.Repeat $fullStars "★" -}}{{- strings.Repeat $emptyStars "☆" -}}
             </div>
           </div>
         </footer>
@@ -72,18 +63,8 @@
     {{ end }}
   </ul>
   <div class="[ text--center ]">
-    {{- $reviewsUrl := printf "https://search.google.com/local/reviews?placeid=%s" (urlquery site.Params.google.place_id) -}}
+    {{- $reviewsUrl := $place.googleMapsUri -}}
     <a href="{{ $reviewsUrl }}" target="_blank" rel="noopener">Read more reviews</a>
   </div>
 </section>
 {{- end -}}
-{{- end -}}
-{{- end -}}
-{{- end -}}
-
-
-{{/* 
-<div>
-  {{ $json.result.reviews | jsonify (dict "indent" "  ") }}
-</div>
-*/}}

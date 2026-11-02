@@ -1,14 +1,6 @@
-{{- if and (eq hugo.Environment "production") (not hugo.IsServer) -}}
-{{- $placeId := site.Params.google.place_id -}}
-{{- $apiKey  := site.Params.google.api_key -}}
-
-{{- if and $placeId $apiKey -}}
-{{- $url := printf "https://maps.googleapis.com/maps/api/place/details/json?place_id=%s&fields=rating&key=%s" (urlquery $placeId) (urlquery $apiKey) -}}
-{{- with resources.GetRemote $url -}}
-{{- $json := .Content | transform.Unmarshal -}}
-
-{{- if and (eq $json.status "OK") $json.result.rating -}}
-  {{- with $json.result -}}
+{{- $place := partialCached "reviews/data.html" . -}}
+{{- with $place -}}
+  {{- if .rating -}}
     {{- $rating := .rating -}}
     {{- $full  := int (math.Round $rating) -}}
     {{- $empty := sub 5 $full -}}
@@ -20,7 +12,4 @@
       </small>
     </div>
   {{- end -}}
-{{- end -}}
-{{- end -}}
-{{- end -}}
 {{- end -}}

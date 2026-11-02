@@ -4,7 +4,7 @@ draft = true
 type = "landing"
 
 title = "Affordable Web Design for Small Business"
-longTitle = "Affordable Web Design for Small Business | Websites from $500 | Clever"
+longTitle = "Affordable Web Design for Small Business | Websites from $500 | Clever Marketing"
 description = "Affordable web design for small business from Clever. Professional one-page websites starting at $500 and five-page websites from $1,500 with transparent pricing, local support, and no hidden fees."
 
 [share]

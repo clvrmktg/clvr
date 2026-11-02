@@ -1,0 +1,17 @@
+{{- with .Resources.GetMatch .Params.hero.path -}}
+  {{- $base := printf "https://%s.twic.pics%s?twic=v1" site.Params.twic .RelPermalink -}}
+  {{- $desktop := slice -}}
+  {{- range slice 768 1024 1408 1920 -}}
+    {{- $desktop = $desktop | append (printf "%s/resize=%d %dw" $base . .) -}}
+  {{- end -}}
+  {{- $mobile := slice -}}
+  {{- range slice 480 768 960 -}}
+    {{- $mobile = $mobile | append (printf "%s/cover=%dx%d %dw" $base . (mul . 2) .) -}}
+  {{- end -}}
+  <picture class="hero__media" aria-hidden="true">
+    <source media="(max-width: 767px)" srcset="{{ delimit $mobile ", " }}" sizes="100vw" width="480" height="960">
+    <img src="{{ $base }}/resize=1408" srcset="{{ delimit $desktop ", " }}" sizes="100vw"
+      width="{{ .Width }}" height="{{ .Height }}" alt=""
+      loading="eager" fetchpriority="high" decoding="async">
+  </picture>
+{{- end -}}

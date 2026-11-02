@@ -1,9 +1,6 @@
 {{ if .IsHome -}}
-<header id="hero" class="[ hero hero--home ][ full-width bg ]"{{ with .Resources.GetMatch (.Params.hero.path ) }} data-twic-background="url(image:{{ .RelPermalink }})"{{ end }}>
-  {{ with .Resources.GetMatch (.Params.hero.path ) -}}
-  <style>#hero {background-image: url('https://{{ $.Site.Params.twic }}.twic.pics{{ .RelPermalink }}?twic=v1/output=preview');}</style>
-  <noscript><style>#hero {background-image: url('https://{{ $.Site.Params.twic }}.twic.pics{{ .RelPermalink }}');}</style></noscript>
-  {{- end }}
+<header id="hero" class="[ hero hero--home ][ full-width bg ]">
+  {{ partial "hero/image.html" . }}
   <div class="[ wrapper ][ full-width content-grid ]">
     <div class="[ grid middle ]">
       <div class="[ hero__content ]">
@@ -25,7 +22,7 @@
   </div>
 </header>
 {{- else -}}
-<header class="[ hero ][ full-width content-grid bg ]"{{ with .Resources.GetMatch (.Params.hero.path ) }} data-twic-background="url(image:{{ .RelPermalink }})"{{ end }}>
+<header id="hero" class="[ hero ][ full-width content-grid bg ]"{{ with .Resources.GetMatch (.Params.hero.path ) }} data-twic-background="url(image:{{ .RelPermalink }})"{{ end }}>
   {{ with .Resources.GetMatch (.Params.hero.path ) -}}
   <style>#hero {background-image: url('https://{{ $.Site.Params.twic }}.twic.pics{{ .RelPermalink }}?twic=v1/output=preview');}</style>
   <noscript><style>#hero {background-image: url('https://{{ $.Site.Params.twic }}.twic.pics{{ .RelPermalink }}');}</style></noscript>

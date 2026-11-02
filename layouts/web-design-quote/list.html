@@ -20,9 +20,9 @@
   data-validate novalidate>
   
     <input type="hidden" name="form-name" value="wizard" />
-    <div class="hidden">
+    <div hidden>
       <label>
-        Don't fill this out if you're human: <input name="bot-field" />
+        Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" />
       </label>
     </div>
     <input id="site" type="hidden" name="site" value="{{ .Permalink }}">

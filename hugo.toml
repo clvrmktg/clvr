@@ -1,6 +1,6 @@
 baseURL = 'https://getclever.marketing/'
 languageCode = 'en-us'
-title = 'Clever'
+title = 'Clever Marketing'
 enableGitInfo = true
 
 [sass]
@@ -32,7 +32,7 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
 
 [params]
   shortname = "Clever"
-  alternateName = "Clever Marketing"
+  alternateName = "Clever"
   legalName = "Clever Marketing, Ltd."
   twic = "clvrmktg"
   share = "/fallbacks/clvr-cover.jpg"
@@ -42,9 +42,7 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
   tagline = 'Bahamas Web Design'
 
 [params.google]
-  api_key = "AIzaSyDGa9bRzCbbmJ-L9PIX1hrZSymdSC4ZEtA"
   place_id = "ChIJpwI7ux9nL4kRn7lrM-ie_dk"
-  error = true
 
 
 [params.social]

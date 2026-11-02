@@ -1,0 +1,12 @@
+{{- $res := .Resources.GetMatch .Params.feature.path -}}
+{{- $data := dict -}}
+{{- with $res -}}
+  {{- $base := printf "https://%s.twic.pics%s?twic=v1/focus=auto" site.Params.twic .RelPermalink -}}
+  {{- $sources := slice -}}
+  {{- range slice 480 768 1024 1280 1600 1920 -}}
+    {{- $height := int (math.Round (div (mul . 9.0) 16)) -}}
+    {{- $sources = $sources | append (printf "%s/cover=%dx%d %dw" $base . $height .) -}}
+  {{- end -}}
+  {{- $data = dict "src" (printf "%s/cover=1280x720" $base) "srcset" (delimit $sources ", ") "sizes" "(min-width: 1000px) 1000px, 100vw" -}}
+{{- end -}}
+{{- return $data -}}

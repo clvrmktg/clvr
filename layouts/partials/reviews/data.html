@@ -1,0 +1,26 @@
+{{- $data := dict -}}
+{{- if and (eq hugo.Environment "production") (not hugo.IsServer) -}}
+  {{- $placeId := site.Params.google.place_id -}}
+  {{- $apiKey := os.Getenv "HUGO_GOOGLE_PLACES_API_KEY" -}}
+  {{- if and $placeId $apiKey -}}
+    {{- $url := printf "https://places.googleapis.com/v1/places/%s" $placeId -}}
+    {{- $options := dict "headers" (dict
+      "X-Goog-Api-Key" $apiKey
+      "X-Goog-FieldMask" "rating,reviews,googleMapsUri"
+    ) -}}
+    {{- with try (resources.GetRemote $url $options) -}}
+      {{- if .Err -}}
+        {{- warnf "Google reviews could not be fetched. Check the Places API key, restrictions, and billing." -}}
+      {{- else -}}
+        {{- with .Value -}}
+          {{- $data = .Content | transform.Unmarshal -}}
+        {{- else -}}
+          {{- warnf "Google reviews place was not found. Check params.google.place_id." -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- else -}}
+    {{- warnf "Google reviews need HUGO_GOOGLE_PLACES_API_KEY and params.google.place_id." -}}
+  {{- end -}}
+{{- end -}}
+{{- return $data -}}
