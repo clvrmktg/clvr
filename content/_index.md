@@ -8,7 +8,7 @@ proposition_heading = 'Fast, Affordable Web Design in The Bahamas'
 subtitle = "We design, build, and maintain high-performing websites tailored for businesses in Nassau and across The Bahamas. Get a website that works for you—not the other way around."
 
 # Page Description
-description = "Looking for affordable web design in The Bahamas? Clever builds fast, secure, custom websites designed to rank on Google and convert visitors into customers."
+description = "Clever builds fast, secure websites for businesses in The Bahamas. Get professional web design, accessible pricing and support to grow your business online."
 
 [sitemap]
   changefreq = 'weekly'
