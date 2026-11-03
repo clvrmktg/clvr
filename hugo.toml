@@ -200,3 +200,8 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
   filename = "sitemap.xml"
   changefreq = "monthly"
   priority = 0.5
+
+# Google serves gtag without a filename extension. Trust its JavaScript MIME type
+# explicitly so resources.GetRemote does not depend on the build OS MIME database.
+[security.http]
+  mediaTypes = ['^application/javascript(;.*)?$']
