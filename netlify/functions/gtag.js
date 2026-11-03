@@ -29,7 +29,8 @@ export const handler = async () => {
     statusCode: 200,
     headers: {
       'Content-Type': 'text/javascript; charset=UTF-8',
-      'Cache-Control': 'public, max-age=31536000, immutable',
+      // This URL proxies a vendor script that can change between site deploys.
+      'Cache-Control': 'public, max-age=3600, must-revalidate',
     },
     body: js,
   };

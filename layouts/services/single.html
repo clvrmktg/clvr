@@ -46,7 +46,7 @@
   <section aria-labelledby="why-heading" class="[ section--padding ]">
     <div class="[ grid middle lg:col--2 lg:col-gap--4 col-gap--2 row-gap--2 ]">
       <div class="[ o--2 lg:o--1 ]">
-        <h2 id="why-heading">Why It Matters</h2>
+        <h2 id="why-heading">{{ .heading | default "Why It Matters" }}</h2>
         {{ .text | markdownify }}
       </div>
       <div class="[ o--1 lg:o--2 ]">
@@ -77,6 +77,27 @@
     </ul>
   </section>
   {{ end }}
+  {{ with .Params.selected_work }}
+  <section class="[ full-width content-grid layout--spacing section--padding ]" aria-labelledby="selected-work-heading">
+    <div class="[ lg:flex between ]">
+      <div>
+        <h2 id="selected-work-heading">{{ .heading }}</h2>
+        <p class="[ font--4 ch--35 ]">{{ .text }}</p>
+      </div>
+      <div>
+        {{ partial "buttons/ghost.html" (dict "url" "/portfolio" "text" "See Our Work") }}
+      </div>
+    </div>
+    {{ $projects := slice }}
+    {{ range .projects }}
+      {{ with site.GetPage . }}
+        {{ $projects = $projects | append . }}
+      {{ end }}
+    {{ end }}
+    {{ partial "projects.html" (dict "pages" $projects "columns" 2) }}
+  </section>
+  {{ partial "reviews/reviews.html" $ }}
+  {{ end -}}
   {{partial "faqs.html" . }}
 
   {{ partial "cta.html" (dict "page" . "bg" false) }}

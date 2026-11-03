@@ -5,7 +5,7 @@
         <span class="[ key ][ font--5 upper ]">{{ .Title }}</span>
         <span>Frequently Asked Questions</span>
       </h2>
-      <p class="[ lg:ch--35 ]">Got questions about our web design services in The Bahamas? We're here to help your business grow online.</p>
+      <p class="[ lg:ch--35 ]">{{ with .Params.faqs.intro }}{{ . }}{{ else }}Got questions about our web design services in The Bahamas? We're here to help your business grow online.{{ end }}</p>
       <p>Don't see your question?</p>
       {{partial "buttons/ghost.html" (dict "url" "/contact-us/" "text" "Ask a Question")}}
     </div>

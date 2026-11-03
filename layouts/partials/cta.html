@@ -4,7 +4,8 @@
 <section class="[ full-width content-grid section--padding {{ if not $bg }}bg:blue--50{{ end }} ]">
   <div class="[ flex flex--column lg:flex--row lg:between gap--2 ]">
     <div class="[ ch--60 ]">
-      <h2 class="[ merriweather ]">Ready to get started with your next web design project?</h2>
+      <h2 class="[ merriweather ]">{{ $page.Params.cta.heading | default "Ready to get started with your next web design project?" }}</h2>{{ with $page.Params.cta.text }}
+      <p>{{ . }}</p>{{ end }}
     </div>
     <div>
       {{ partial "buttons/primary.html" (dict "url" "/contact-us/" "text" "Let's Talk") }}

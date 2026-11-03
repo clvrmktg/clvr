@@ -1,9 +1,16 @@
 {{- $mpID := getenv "META_PIXEL_ID" -}}
 {{- if and (eq hugo.Environment "production") $mpID -}}
 <script>
-  // Delay Meta Pixel with setTimeout (CSP-safe: pass a function, not a string)
   (function (w, d) {
+    let metaLoaded = false;
+    function hasMetaConsent() {
+      if (typeof w.cleverAnalyticsConsent === 'boolean') return w.cleverAnalyticsConsent;
+      try { return w.localStorage.getItem('analytics_consent') === 'true'; }
+      catch { return false; }
+    }
     function loadMetaPixel() {
+      if (metaLoaded || !hasMetaConsent()) return;
+      metaLoaded = true;
       !function(f,b,e,v,n,t,s){
         if(f.fbq) return;
         n = f.fbq = function(){ n.callMethod ?
@@ -20,12 +27,11 @@
       fbq('track', 'PageView');
     }
 
-    // Adjust delay as you like (1500–3000ms typical)
-    w.setTimeout(loadMetaPixel, 3000);
+    function scheduleMetaPixel() {
+      if (hasMetaConsent() && !metaLoaded) w.setTimeout(loadMetaPixel, 3000);
+    }
+    w.addEventListener('analytics-consent', scheduleMetaPixel);
+    scheduleMetaPixel();
   })(window, document);
 </script>
-<noscript>
-  <img height="1" width="1" style="display:none"
-       src="https://www.facebook.com/tr?id={{ $mpID }}&ev=PageView&noscript=1"/>
-</noscript>
 {{- end -}}

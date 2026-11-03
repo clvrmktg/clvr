@@ -110,7 +110,6 @@ answer = "Our maintenance plans start at $50/month for single-page websites, $15
 
 [sitemap]
   changefreq = 'weekly'
-  disable = true
   priority = 0.8
 
 +++

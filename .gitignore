@@ -6,3 +6,8 @@
 .DS_Store
 functions.md
 /codeblocks.txt
+
+# Local environment files may contain API keys. Keep only the safe template.
+.env
+.env.*
+!.env.example

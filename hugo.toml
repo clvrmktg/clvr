@@ -77,21 +77,15 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
 
 [[menu.main]]
   parent = "services"
-  name = "Search Engine Optimization"
+  name = "Local SEO"
   url = "/services/seo-bahamas/"
   weight = 2
 
 [[menu.main]]
   parent = "services"
-  name = "Digital Marketing"
-  url = "/services/digital-marketing-bahamas/"
-  weight = 3
-
-[[menu.main]]
-  parent = "services"
   name = "Website Maintenance"
   url = "/services/website-maintenance/"
-  weight = 4
+  weight = 3
 
 [[menu.main]]
   identifier = "portfolio"
@@ -146,6 +140,12 @@ term     = ["HTML"]      # no /<taxonomy>/<term>/index.xml
   name  = "Contact Us"
   url   = "/contact-us/"
   weight = 4
+
+# Temporarily withdrawn; retain this footer entry for reactivation.
+# [[menu.resources]]
+#   name = "Digital Marketing"
+#   url = "/services/digital-marketing-bahamas/"
+#   weight = 5
 
 # -------------------------------------------------
 # POLICIES MENU

@@ -3,14 +3,14 @@ date = 2024-11-25T08:00:00-04:00
 draft = false
 
 
-description = "Professional website design in The Bahamas—fast, secure, mobile-friendly, SEO-ready sites that help businesses attract customers, build trust, and grow."
+description = "Clever builds high-performance websites that attract customers, showcase your business and come with reliable, ongoing support across The Bahamas."
 
 
 # Hero
-title = 'Web Design'
-longTitle = 'Custom Web Design Services in The Bahamas'
-proposition_heading = "Professional Web Design Tailored for Bahamian Businesses"
-subhead = "We build secure, high-performance websites designed to grow your business without breaking the bank. From fast turnarounds to total mobile optimization, explore our streamlined design and launch process below."
+title = 'Web Design Bahamas'
+longTitle = 'Web Design Bahamas | Make a Strong First Impression | Clever Marketing'
+proposition_heading = "Web Design Bahamas"
+subhead = "Web design in The Bahamas should help your business stand out, attract customers and make it easy for them to get in touch. Clever builds professional websites that do just that."
 
 # [hero]
 # path = "bahamas-web-design-professionals-collaboration.jpg"
@@ -18,14 +18,9 @@ subhead = "We build secure, high-performance websites designed to grow your busi
 
 # Intro
 [intro]
-heading = "More Than a Website — A 24/7 Business Tool"
+heading = "Make a Strong First Impression"
 text = """
-Your website shouldn't just sit there looking pretty—it should actively capture leads while you sleep. 
-
-Our streamlined web design services deliver a fast, fully responsive, and Google-ready site that earns trust and drives local phone calls or inquiries. 
-
-Whether you are launching a startup in Nassau or upgrading an existing brand, we handle the technical heavy lifting so you get an elite tool built to perform in the Bahamian market.
-
+Your website is often where customers form their first impression of your business. We bring together professional design, clear service information and thoughtful functionality to present your business with the credibility it deserves.
 """
 
 [intro.image]
@@ -35,39 +30,38 @@ alt = "Woman browsing a Bahamian construction company website on her laptop whil
 # What You Get
 
 [get]
-tagline = "Everything your business needs to launch a fast, professional website—without the agency bloat."
+tagline = "Website design and support options suited to your business."
 
 [[get.items]]
-title = "Tailored Brand Layouts"
-description = "A clean, professional look crafted specifically to match your brand assets and appeal directly to your target Bahamian audience."
+title = "Custom Website Design"
+description = "Professionally designed layouts that reflect your brand, communicate your services and give your business a distinctive online presence."
 icon = "brush.svg"
 
 [[get.items]]
-title = "Mobile-First Optimization"
-description = "Flawless performance across all smartphones, tablets, and desktops so local customers can easily navigate your site on mobile data networks."
+title = "Responsive Development"
+description = "Carefully developed websites that adapt to different screen sizes, with navigation and functionality designed for mobile and desktop visitors."
 icon = "mobile.svg"
 
 [[get.items]]
-title = "Speed & Built-in Security"
-description = "Lightweight, static-based structures and compressed media that load instantly while keeping your business data completely secure from online threats."
+title = "Performance & Security"
+description = "Lightweight architecture, optimised assets and fewer unnecessary dependencies help improve loading performance and reduce maintenance risks."
 icon = "speed.svg"
 
 [[get.items]]
-title = "Local Search Visibility"
-description = "Properly structured code, optimized image tags, and clear heading hierarchies engineered to help your business rank higher on Google search results."
+title = "Search-Ready Development"
+description = "Well-structured content, meaningful metadata and technical SEO foundations help search engines discover and understand your website."
 icon = "search.svg"
 
 [[get.items]]
-title = "Simple Content Updates"
-description = "An optional, straightforward editing dashboard that lets you update text, pricing, or images easily without ever needing to touch a line of code."
+title = "Ongoing Website Support"
+description = "Reliable maintenance, technical updates and professional assistance to keep your website working as your business needs evolve."
 icon = "edit_note.svg"
 # Why It Matters
 
 [why]
+heading = "A Better Experience for Your Customers"
 text = """
-In today’s market, an outdated or slow mobile website is a silent liability that drives local customers straight to your competitors. Users judge the legitimacy of your business within the first few seconds of landing on your page.
-
-We make sure those critical first impressions work in your favor by pairing clean, modern visuals with unmistakable buttons and contact links that guide visitors to call, message, or request a quote immediately.
+Whether someone is looking for your services, comparing options or ready to contact you, your website should make the process simple. Clear information, intuitive navigation and accessible design help customers find what they need without frustration.
 """
 
 [why.image]
@@ -79,53 +73,57 @@ alt = "Smiling man making a phone call on his mobile, representing a satisfied c
 [process]
 key = "Streamlined & Stress-Free"
 headline = "Our 4-Step Launch Process"
-subhead = "We’ve removed the complexity from web development. Here is how we get your business online quickly and efficiently."
+subhead = "A clear process from planning and development to launch and ongoing support."
 
 [[process.items]]
 title = "Plan"
-description = "We define your goals, collect your brand assets, and choose the perfect streamlined layout."
+description = "We discuss your business, website requirements, content and project scope."
 
 [[process.items]]
-title = "Build"
-description = "Our team handles the coding, image compression, and content setup to bring your new site to life."
+title = "Design"
+description = "We create your website around the agreed design, pages and functionality."
 
 [[process.items]]
-title = "Optimize"
-description = "Before going live, we configure your local SEO tags and test your mobile layout to ensure lightning-fast speeds."
+title = "Review"
+description = "We review content, layouts and functionality before preparing for launch."
 
 [[process.items]]
 title = "Launch"
-description = "We flip the switch, connect your domain, and submit your new site directly to Google to start ranking."
+description = "We publish your website, complete launch checks and discuss ongoing support."
 
 # FAQs
 
 [[faqs.items]]
-question = "How much does a professional website design cost in The Bahamas?"
-answer = "Our streamlined website design packages start at $500 for a high-performance one-page site and $1,500 for a complete multi-page business site. We focus on transparent pricing without any hidden agency fees, and we provide custom quotes for larger platforms."
+question = "How much does website design cost in The Bahamas?"
+answer = "Our website design packages start at $500 for a single-page website and $1,500 for a standard five-page business website. We'll provide a clear quotation based on your requirements before work begins."
 
 [[faqs.items]]
-question = "Can you modernize my existing website instead of starting over?"
-answer = "Yes. If your current domain has a solid foundation, we can upgrade its layout, maximize mobile loading speeds, and optimize your local search setup. This gives you a premium, fast website without the cost of a full ground-up rebuild."
+question = "Can Clever redesign my existing website?"
+answer = "Absolutely. Whether your website needs a visual refresh, improved functionality or a complete rebuild, we'll assess what you have and recommend the best approach for your business."
 
 [[faqs.items]]
-question = "Do you build e-commerce websites with local Bahamian payment integrations?"
-answer = "Absolutely. We build secure, budget-friendly e-commerce platforms complete with mobile-first shopping carts, simple product management dashboards, and seamless integration for local payment gateways to process card payments safely."
+question = "Can you build an online store for my business?"
+answer = "Yes. We develop e-commerce websites with product catalogues, shopping carts and secure checkout options. We'll help you identify suitable payment solutions for your business in The Bahamas."
 
 [[faqs.items]]
-question = "How long does your streamlined website design process take?"
-answer = "Most of our professional business websites are fully developed, optimized, and launched live on Google within 2 to 4 weeks, depending on how quickly we collect your brand text and images."
+question = "How long does it take to build a website?"
+answer = "Most standard business websites take approximately 2–4 weeks, depending on the project's requirements. We'll establish a clear development schedule so you know what to expect from start to launch."
 
 [[faqs.items]]
-question = "Are there mandatory monthly fees after my website is launched?"
-answer = "No, we don't trap you in mandatory recurring contracts. Once your website is paid for and launched, you own it entirely. We offer completely optional, budget-friendly maintenance plans if you want us to handle updates, but you are never forced into a monthly subscription."
+question = "Will I own my website after it's completed?"
+answer = "Yes. Your website is developed for your business, and we'll explain ownership, hosting and any third-party services before the project begins. We also offer ongoing maintenance and support to keep your website running smoothly."
 
 [[faqs.items]]
-question = "Will my website work well for customers browsing on BTC and Aliv mobile networks?"
-answer = "Yes, mobile performance is our top priority. We build lightweight, static-based website structures that are specifically optimized to load instantly on local mobile networks, ensuring you never lose a customer due to slow loading speeds on data roaming."
+question = "Will my website work well on mobile phones?"
+answer = "Absolutely. Every website we develop is designed to work across mobile phones, tablets and desktops, with careful attention to navigation, readability and loading performance."
+
+[selected_work]
+heading = "Websites We've Built for Bahamian Businesses"
+text = "Explore websites we've designed and developed for businesses in The Bahamas."
+projects = ["/portfolio/abaco-aggregate/", "/portfolio/clear-choice-glass/"]
 
 [sitemap]
   changefreq = 'weekly'
-  disable = true
   priority = 0.8
   
 +++

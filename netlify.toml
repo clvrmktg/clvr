@@ -41,6 +41,12 @@
     key = "477602aae1744f79938f7d5730913391"
 
 
+# Content-hashed analytics assets can be cached permanently.
+[[headers]]
+for = "/scripts/analytics/*"
+  [headers.values]
+  Cache-Control = "public, max-age=31536000, immutable"
+
 # netlify.toml
 [[headers]]
 for = "/*"
@@ -138,8 +144,8 @@ for = "/*"
 
 [[redirects]]
   from = "/bahamas-web-design-services/digital-marketing-bahamas/"
-  to = "/services/digital-marketing-bahamas/"
-  status = 301
+  to = "/services/"
+  status = 302
   force = true
 
 [[redirects]]
@@ -156,8 +162,8 @@ for = "/*"
 
 [[redirects]]
   from = "/services/digital-marketing"
-  to = "/services/digital-marketing-bahamas/"
-  status = 301
+  to = "/services/"
+  status = 302
   force = true
 
 [[redirects]]
@@ -208,4 +214,41 @@ for = "/*"
   from = "/terms-service/"
   to = "/terms-of-service/"
   status = 301
+  force = true
+
+
+# Withdrawn, unapproved estimator. Serve the error document with a real 404,
+# even if an older generated file is accidentally present in a build directory.
+[[redirects]]
+  from = "/web-design-quote"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/web-design-quote/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/get-your-web-design-quote"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/get-your-web-design-quote/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+
+# Temporary Digital Marketing withdrawal. Netlify matches this rule with or
+# without a trailing slash; separate slash rules would be duplicates.
+# Remove on reactivation and restore the historical alias destinations above.
+[[redirects]]
+  from = "/services/digital-marketing-bahamas/"
+  to = "/services/"
+  status = 302
   force = true

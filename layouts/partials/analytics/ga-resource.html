@@ -1,0 +1,16 @@
+{{- /* Fetch once per build; publish vendor bytes unchanged with a content hash. */ -}}
+{{- $url := printf "https://www.googletagmanager.com/gtag/js?id=%s" (urlquery .) -}}
+{{- $options := dict "key" (printf "%s-%d" $url now.Unix) -}}
+{{- $script := false -}}
+{{- with try (resources.GetRemote $url $options) -}}
+  {{- if .Err -}}
+    {{- errorf "Unable to fetch Google tag for fingerprinting: %s" .Err -}}
+  {{- else -}}
+    {{- with .Value -}}
+      {{- $script = . | resources.Copy "scripts/analytics/gtag.js" | resources.Fingerprint "sha384" -}}
+    {{- else -}}
+      {{- errorf "Google tag was not found at %s" $url -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $script -}}

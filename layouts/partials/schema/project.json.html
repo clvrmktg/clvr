@@ -13,11 +13,19 @@
 {{- $datePublished := .Date.Format "2006-01-02T15:04:05Z07:00" -}}
 {{- $dateModified  := (.Lastmod | default .Date).Format "2006-01-02T15:04:05Z07:00" -}}
 
-{{/* Choose best image (share > screen > thumb) */}}
+{{/* Resolve the first available project image from its page bundle. */}}
 {{- $img := "" -}}
-{{- with .Params.share.path  }}{{ $img = (print $.Site.BaseURL .) }}{{ end -}}
-{{- if eq $img "" }}{{ with .Params.screen.path }}{{ $img = (print $.Site.BaseURL .) }}{{ end }}{{ end -}}
-{{- if eq $img "" }}{{ with .Params.thumb.path  }}{{ $img = (print $.Site.BaseURL .) }}{{ end }}{{ end -}}
+{{- range slice .Params.share .Params.screen .Params.thumb -}}
+  {{- if not $img -}}
+    {{- with . -}}
+      {{- with .path -}}
+        {{- with $.Resources.GetMatch . -}}
+          {{- $img = .Permalink -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
 
 {{/* Build keywords from industries + deliverables (as a single string) */}}
 {{- $keywords := slice -}}

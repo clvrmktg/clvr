@@ -111,7 +111,6 @@ answer = "Yes. SEO helps local businesses reach more customers, build trust, and
 
 [sitemap]
   changefreq = 'weekly'
-  disable = true
   priority = 0.8
 
 +++

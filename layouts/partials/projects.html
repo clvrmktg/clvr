@@ -1,6 +1,6 @@
 {{- $pages := .pages -}}
 
-<ul class="[ projects ][ grid md:col--2 lg:col--3 gap--2 ]">
+<ul class="[ projects ][ grid md:col--2 lg:col--{{ .columns | default 3 }} gap--2 ]">
   {{- range $i, $p := $pages -}}
     {{- $id := printf "picture-%d" (add $i 1) -}}
     <li class="[ project ]">

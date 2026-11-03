@@ -10,10 +10,24 @@
 {{- $cats      := .Params.categories | default (slice) -}}
 {{- $lang      := .Site.LanguageCode | default "en" -}}
 
-{{- /* Feature/share image */ -}}
-{{- $feature := .Params.feature -}}
-{{- $image   := (cond (and $feature (isset $feature "image")) $feature.image .Site.Params.share) | absURL -}}
-{{- $alt     := cond (and $feature (isset $feature "alt")) $feature.alt (print "Share image for " site.Title) | plainify | chomp -}}
+{{- /* Use the published article image, then its share image, then the site fallback. */ -}}
+{{- $image := .Site.Params.share | absURL -}}
+{{- $alt := print "Share image for " site.Title -}}
+{{- $imageResource := false -}}
+{{- range slice .Params.feature .Params.share -}}
+  {{- if not $imageResource -}}
+    {{- with . -}}
+      {{- $meta := . -}}
+      {{- with .path -}}
+        {{- with $.Resources.GetMatch . -}}
+          {{- $imageResource = . -}}
+          {{- $image = .Permalink -}}
+          {{- $alt = $meta.alt | default $alt -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
 
 {{- /* Publisher / author (reference your LocalBusiness node) */ -}}
 {{- $publisher := dict "@id" (print .Site.BaseURL "#localbusiness") -}}
@@ -25,23 +39,12 @@
   {{- $isPartOf = merge $isPartOf (dict "@id" .Permalink "name" .Title) -}}
 {{- end -}}
 
-{{- /* -------- WebPage objet -------- */ -}}
-{{- $web := dict
-  "@context" "https://schema.org"
-  "@type"    "WebPage"
-  "name"     $title
-  "description" $desc
-  "url"      .Permalink
-  "publisher" $publisher
-  "license"  "http://creativecommons.org/licenses/by-nc-sa/3.0/us/deed.en_US"
--}}
-
 {{- /* -------- BlogPosting object -------- */ -}}
 {{- $post := dict
   "@context"        "https://schema.org"
   "@type"           "BlogPosting"
   "@id"             .Permalink
-  "mainEntityOfPage" (dict "@id" .Permalink)
+  "mainEntityOfPage" (dict "@id" (print .Permalink "#webpage"))
   "headline"        $title
   "name"            $title
   "description"     $desc
@@ -56,7 +59,11 @@
 -}}
 
 {{- if $image -}}
-  {{- $post = merge $post (dict "image" (dict "@type" "ImageObject" "url" $image "caption" $alt "width" 1200 "height" 1200)) -}}
+  {{- $imageObject := dict "@type" "ImageObject" "url" $image "caption" ($alt | plainify | chomp) -}}
+  {{- with $imageResource -}}
+    {{- $imageObject = merge $imageObject (dict "width" .Width "height" .Height) -}}
+  {{- end -}}
+  {{- $post = merge $post (dict "image" $imageObject) -}}
 {{- end -}}
 
 {{- if gt (len $tags) 0 -}}
@@ -67,6 +74,6 @@
   {{- $post = merge $post (dict "articleSection" $cats) -}}
 {{- end -}}
 
-<!-- WebPage + BlogPosting Schema -->
-<script type="application/ld+json">{{ (slice $web $post) | jsonify (dict "indent" "  ") }}</script>
+<!-- BlogPosting Schema -->
+<script type="application/ld+json">{{ $post | jsonify (dict "indent" "  ") }}</script>
 {{- end -}}

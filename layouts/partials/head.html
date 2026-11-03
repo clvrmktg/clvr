@@ -2,7 +2,20 @@
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   {{- $pageTitle := "" -}}
   {{- $titleBase := .Params.longTitle | default .Title -}}
-  {{- $pageTitle = cond (strings.Contains $titleBase "|") $titleBase (printf "%s | %s" $titleBase .Site.Title) -}}
+  {{- /* Preserve topic/benefit wording and normalise only trailing site-name segments. */ -}}
+  {{- $brandNames := slice .Site.Title .Site.Params.alternateName .Site.Params.shortname .Site.Params.legalName -}}
+  {{- $titleParts := split $titleBase "|" -}}
+  {{- $partCount := len $titleParts -}}
+  {{- range seq $partCount -}}
+    {{- if gt $partCount 1 -}}
+      {{- $lastPart := strings.TrimSpace (index $titleParts (sub $partCount 1)) -}}
+      {{- if in $brandNames $lastPart -}}
+        {{- $partCount = sub $partCount 1 -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $titleBase = strings.TrimSpace (delimit (first $partCount $titleParts) "|") -}}
+  {{- $pageTitle = printf "%s | %s" $titleBase .Site.Title -}}
   {{- $desc := "" -}}
   {{- if .Description -}}
     {{- $desc = .Description -}}
@@ -46,7 +59,6 @@
   {{- end -}}
   {{ partial "assets.html" . }}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="mask-icon" href="/favicon-light.svg" color="#9395A1">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#0d1117">

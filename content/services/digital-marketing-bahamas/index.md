@@ -1,6 +1,6 @@
 +++
 date = 2024-11-26T12:20:00-04:00
-draft = false
+draft = true
 
 description = "Digital marketing in The Bahamas—social media, PPC, and email campaigns that connect you with the right audience and deliver results."
 
@@ -109,7 +109,6 @@ answer = "Absolutely. We provide clear reports showing your traffic, conversions
 
 [sitemap]
   changefreq = 'weekly'
-  disable = true
   priority = 0.8
 
 +++

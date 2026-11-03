@@ -4,10 +4,10 @@
 <section class="[ grid layout--spacing section--padding ]" aria-labelledby="services-heading">
   <div class="[ grid center text--center ]">
     <h2 id="services-heading" class="[ grid ]">
-      <span class="[ key ][ font--5 upper ]">{{ .key }}</span>
-      <span>{{ .headline }}</span>
+      <span class="[ key ][ font--5 upper ]">{{ $.Params.services_intro.key | default .key }}</span>
+      <span>{{ $.Params.services_intro.heading | default .headline }}</span>
     </h2>
-    <p class="[ font--4 ch--35 ]">{{ .subhead }}</p>
+    <p class="[ font--4 ch--35 ]">{{ $.Params.services_intro.text | default .subhead }}</p>
   </div>
 
   <div class="[ services ][ grid middle lg:col--2 lg:col-gap--4 row-gap--4 ]">
@@ -39,7 +39,7 @@
     <div class="[ grid gap--2 ]">
       {{ range $i, $item := .items }}
         {{ $isPrimary := eq $item.key "web-design" }}
-        {{ if not $isPrimary }}
+        {{ if and (not $isPrimary) (or (not $.Params.service_keys) (in $.Params.service_keys $item.key)) }}
         <article class="[ service service--{{ $i }} ][ flex flex--column lg:flex--row center lg:middle col-gap--1.5 row-gap--2 ]">
           <a class="[ service__link ]" href="{{ $item.href }}" data-prefetch>
             {{ if $item.icon }}

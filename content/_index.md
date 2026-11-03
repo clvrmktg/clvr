@@ -4,8 +4,11 @@ draft = false
 
 # Hero
 title = 'Affordable Web Design in The Bahamas'
+# Temporarily omit Digital Marketing; preserve the shared entry for reactivation.
+service_keys = ["web-design", "seo", "maintenance"]
+longTitle = 'Affordable Web Design Bahamas | Professional Sites, Fair Prices'
 proposition_heading = 'Fast, Affordable Web Design in The Bahamas'
-subtitle = "We design, build, and maintain high-performing websites tailored for businesses in Nassau and across The Bahamas. Get a website that works for you—not the other way around."
+subtitle = "We design, build and maintain professional websites for businesses in Nassau and across The Bahamas, with clear project scope and dependable support."
 
 # Page Description
 description = "Clever builds fast, secure websites for businesses in The Bahamas. Get professional web design, accessible pricing and support to grow your business online."
@@ -23,23 +26,23 @@ heading = """
 Smart, Stress-Free Web Design
 """
 text = """
-We partner with small and medium-sized businesses across The Bahamas to deliver digital solutions that focus on your commercial goals, delight your customers, and launch on time and on budget.
+We partner with small and medium-sized businesses across The Bahamas to develop websites around your business goals, customer needs and agreed project scope.
 """
 [[snapshot.benefits]]
 lead = "User-Focused"
 text = """
-Websites that are intuitive, easy to navigate, and built to give your audience a seamless browsing experience on any device.
+Websites designed to be clear, easy to navigate and usable across phones, tablets and desktops.
 """
 [[snapshot.benefits]]
-lead = "Results-Driven"
+lead = "Business-Focused"
 text = """
-Tailored layouts built by a local web designer to actively convert everyday visitors into paying customers, driving measurable business growth.
+Tailored layouts that explain your services and make it easier for visitors to take the next step.
 """
 
 [[snapshot.benefits]]
 lead = "Proven Process"
 text = """
-Every custom website design project is executed using industry best practices to ensure lightning-fast performance, airtight security, and long-term reliability.
+A clear development process with attention to performance, practical security measures and long-term maintenance.
 """
 
 [snapshot.image]
@@ -48,73 +51,66 @@ alt = "Young Bahamian man and woman collaborating on a website design at a brigh
 
 
 [features]
-key = "Fast, Secure, and Affordable"
+key = "Professional Sites. Fair Prices."
 headline = "Websites That Work"
-subhead  = "At Clever, you don't get a template — we build custom digital solutions that help your business capture leads, build trust, and scale online."
+subhead  = "Clever develops professional websites around your business, with clear content, practical functionality and ongoing support options."
 
 [[features.items]]
 # key = "Responsive"
 title = "Mobile-Responsive"
-description = "From mobile phones in Nassau to desktops worldwide, your site will look and perform flawlessly on every screen—ensuring a great first impression."
+description = "Layouts designed for phones, tablets and desktops, with attention to readable content and straightforward navigation."
 icon = "devices.svg"
 
 [[features.items]]
 # key = "Faster"
 title = "Speed & Performance"
-description = "We build fast-loading pages that keep your visitors engaged, lower your bounce rates, and satisfy Google’s Core Web Vitals for higher rankings."
+description = "We focus on lightweight pages and optimised assets to improve loading performance and usability."
 icon = "bolt.svg"
 
 [[features.items]]
 # key = "Custom"
 title = "Custom Functionality"
-description = "Get tailored features built specifically for your unique business operations, delivering a secure, flexible site that scales alongside your company."
+description = "Features selected around your business requirements, with attention to usability and future maintenance."
 icon = "settings.svg"
 
 [[features.items]]
 # key = "Enhanced"
 title = "Local SEO"
-description = "Smart, built-in local SEO strategies ensure your business ranks where it matters most, driving consistent, organic traffic from Google searchers."
+description = "Technical SEO foundations and Local SEO services help search engines understand your website and improve local visibility."
 icon = "eye.svg"
 
 
 [[features.items]]
 # key = "Better"
 title = "Web Accessibility"
-description = "Every custom website design project ensures your content is accessible to all users, meeting modern web standards and maximizing your market reach."
+description = "We consider accessibility in content, navigation and development to help more people use your website."
 icon = "accessible.svg"
 
 
 [[features.items]]
 # key = "Ongoing"
 title = "Reliable Support"
-description = "Stay worry-free with ongoing maintenance, airtight security updates, and local support so you can focus entirely on running your business."
+description = "Ongoing maintenance, technical updates and local support options help keep your website dependable."
 icon = "headset.svg"
 
 [[faqs.items]]
-question = "How much does a custom website cost in The Bahamas?"
-answer = """
-The cost depends on your site's size, features, and complexity.
-
-At Clever, our transparent web design packages start at $500 for a single-page layout and $1,500 for a standard five-page business site.
-
-We offer custom pricing for advanced features or e-commerce integrations, alongside a free price calculator for an instant, hassle-free estimate.
-"""
-
+question = "How much does a professional website cost in The Bahamas?"
+answer = "Clever's website packages start at $500 for a single-page website and $1,500 for a standard five-page business website. We provide a clear quotation based on your requirements, so you know what you're paying for before work begins."
 
 [[faqs.items]]
-question = "How long does it take to build and launch a website?"
-answer = "Most small business websites are fully designed, developed, and launched within 2–4 weeks. This timeline depends on the project scope and how quickly we receive your core content and feedback. Larger or more complex custom builds may take longer, but our local team always delivers on time and on budget."
+question = "How does Clever keep website design affordable without compromising quality?"
+answer = "We focus on the features your business actually needs, using efficient development practices that reduce unnecessary complexity and costs. Every website receives professional attention to design, performance and usability."
 
 [[faqs.items]]
-question = "Will my website be mobile-friendly and responsive?"
-answer = "Yes — every website we build features a fully responsive design. Your site will look and perform flawlessly on every screen, from mobile phones in Nassau to desktops worldwide. This seamless mobile experience is essential for keeping local visitors engaged and securing higher Google search engine rankings."
+question = "Can Clever improve my existing website instead of building a new one?"
+answer = "Absolutely. We can improve your website's design, performance and functionality where practical. If a rebuild is the better option, we'll explain why and recommend an approach that fits your requirements."
 
 [[faqs.items]]
-question = "Can you help my Bahamian business rank higher on Google?"
-answer = "Absolutely. Every custom website design project we execute includes built-in, proven local SEO practices. We optimize your site's structure and visibility from day one, making it easy for local and international customers in The Bahamas to find you online. We also provide ongoing digital marketing and SEO support for sustained long-term growth."
+question = "Can you help customers find my business on Google?"
+answer = "Yes. We build websites with sound technical SEO foundations and offer Local SEO services to help improve your visibility in relevant searches, including Google Maps and local search results."
 
 [[faqs.items]]
-question = "Do you provide reliable website maintenance after launch?"
-answer = "Yes — we offer dedicated website maintenance plans to keep your platform secure, updated, and running at peak performance. Our service includes automated software updates, continuous security monitoring, regular cloud backups, and reliable technical support so you can focus entirely on running your day-to-day business operations."
+question = "What happens after my website launches?"
+answer = "Clever provides ongoing maintenance and technical support to help keep your website secure, updated and performing reliably. We offer support options suited to your website and business needs."
 
 +++

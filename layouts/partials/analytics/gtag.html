@@ -1,10 +1,20 @@
 {{ $gaID := getenv "GA_TRACKING_ID" }}
 {{ if and (eq hugo.Environment "production") $gaID }}
-{{ $version := .GitInfo.Hash | default (now.Unix) }}
+{{ $gaScript := partialCached "analytics/ga-resource.html" $gaID $gaID }}
 <script>
+  let gaLoaded = false;
+  function hasGAConsent() {
+    if (typeof window.cleverAnalyticsConsent === 'boolean') return window.cleverAnalyticsConsent;
+    try { return localStorage.getItem('analytics_consent') === 'true'; }
+    catch { return false; }
+  }
   function loadGA() {
+    if (gaLoaded || !hasGAConsent()) return;
+    gaLoaded = true;
     const script = document.createElement('script');
-    script.src = '/.netlify/functions/gtag?v={{ $version }}';
+    script.src = '{{ $gaScript.RelPermalink }}';
+    script.integrity = '{{ $gaScript.Data.Integrity }}';
+    script.crossOrigin = 'anonymous';
     script.async = true;
     document.head.appendChild(script);
 
@@ -14,10 +24,15 @@
     gtag('config', '{{ $gaID }}');
   }
 
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(loadGA, { timeout: 5000 });
-  } else {
-    setTimeout(loadGA, 3000);
+  function scheduleGA() {
+    if (!hasGAConsent() || gaLoaded) return;
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadGA, { timeout: 5000 });
+    } else {
+      setTimeout(loadGA, 3000);
+    }
   }
+  window.addEventListener('analytics-consent', scheduleGA);
+  scheduleGA();
 </script>
 {{ end }}

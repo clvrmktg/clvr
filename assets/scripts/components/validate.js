@@ -74,15 +74,18 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('bouncerFormValid', function (e) {
       trimFields(form);
 
-      // If Netlify reCAPTCHA is on the form, Netlify takes over the submit flow.
-      // Do NOT programmatically submit, or you’ll bypass the challenge.
+      // Bouncer cancels the original submit event, including valid submissions.
+      // Require the injected Netlify reCAPTCHA token before the native POST.
       if (form.querySelector('[data-netlify-recaptcha]')) {
-        // Let the natural submit proceed (button click or Enter key)
-        return;
+        const token = form.querySelector('[name="g-recaptcha-response"]');
+        if (!token || !token.value.trim()) {
+          announce('Please complete the security check before submitting.');
+          setSubmitting(false);
+          return;
+        }
       }
 
-      // No reCAPTCHA: safe to submit programmatically
-      form.submit();
+      HTMLFormElement.prototype.submit.call(form);
     });
 
     // Invalid form: announce and focus first problem
@@ -112,9 +115,8 @@ document.addEventListener('DOMContentLoaded', function () {
         setSubmitting(false);
         // Bouncer will fire bouncerFormInvalid, which will handle focus + announce
       }
-      // If valid, either:
-      // - Netlify reCAPTCHA is present → natural submit continues (Netlify handles)
-      // - No reCAPTCHA → bouncerFormValid handler will programmatically submit
+      // Bouncer validates and cancels this event at document level. Its valid
+      // handler performs the native POST once the security check is complete.
     });
   });
 });

@@ -1,0 +1,33 @@
+name: Weekly production rebuild
+
+on:
+  schedule:
+    - cron: '17 9 * * 1'
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: weekly-production-rebuild
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Trigger Netlify production build
+        env:
+          NETLIFY_BUILD_HOOK_URL: ${{ secrets.NETLIFY_BUILD_HOOK_URL }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "$NETLIFY_BUILD_HOOK_URL" ]]; then
+            echo "::error::Set the NETLIFY_BUILD_HOOK_URL repository secret to a Netlify build hook for main."
+            exit 1
+          fi
+          curl --fail --silent --show-error --output /dev/null \
+            --connect-timeout 15 --max-time 60 \
+            --request POST --data '{}' \
+            "${NETLIFY_BUILD_HOOK_URL}?trigger_branch=main&clear_cache=true"
